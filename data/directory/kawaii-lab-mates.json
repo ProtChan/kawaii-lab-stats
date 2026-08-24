@@ -1,0 +1,73 @@
+{
+  "slug": "kawaii-lab-mates",
+  "name": "KAWAII LAB. MATES",
+  "type": "GROUP",
+  "category": "TRAINEE",
+  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
+  "accounts": [
+    { "platform": "INSTAGRAM", "handle": "kawaiilab.mates", "url": "https://www.instagram.com/kawaiilab.mates/" },
+    { "platform": "TIKTOK", "handle": "kawaiilab.mates", "url": "https://www.tiktok.com/@kawaiilab.mates" }
+  ],
+  "members": [
+    { "slug": "momo-aoshima", "name": "青島 もも", "accounts": [
+      { "platform": "X", "handle": "momo_KLM0306", "url": "https://x.com/momo_KLM0306" },
+      { "platform": "INSTAGRAM", "handle": "momo_klm0306", "url": "https://www.instagram.com/momo_klm0306" },
+      { "platform": "TIKTOK", "handle": "momo_klm0306", "url": "https://www.tiktok.com/@momo_klm0306" }
+    ]},
+    { "slug": "erena-itami", "name": "伊丹 恵玲奈", "accounts": [
+      { "platform": "X", "handle": "erena_0701", "url": "https://x.com/erena_0701" },
+      { "platform": "INSTAGRAM", "handle": "erena_klm0701", "url": "https://www.instagram.com/erena_klm0701" },
+      { "platform": "TIKTOK", "handle": "itami__erena", "url": "https://www.tiktok.com/@itami__erena" }
+    ]},
+    { "slug": "konomi-kato", "name": "加藤 好実", "accounts": [
+      { "platform": "X", "handle": "konomi_KLM1017_", "url": "https://x.com/konomi_KLM1017_" },
+      { "platform": "INSTAGRAM", "handle": "konomi_klm1017", "url": "https://www.instagram.com/konomi_klm1017" },
+      { "platform": "TIKTOK", "handle": "konomi_klm1017", "url": "https://www.tiktok.com/@konomi_klm1017" }
+    ]},
+    { "slug": "shui-sato", "name": "佐藤 朱緋", "accounts": [
+      { "platform": "X", "handle": "shui_KLM0418", "url": "https://x.com/shui_KLM0418" },
+      { "platform": "INSTAGRAM", "handle": "shui_klm0418", "url": "https://www.instagram.com/shui_klm0418" },
+      { "platform": "TIKTOK", "handle": "shui_klm0418", "url": "https://www.tiktok.com/@shui_klm0418" }
+    ]},
+    { "slug": "yuika-shimasaki", "name": "嶋﨑 結花", "notes": "The official profile currently points the TikTok label to the Instagram URL, so TikTok is intentionally omitted until independently verified.", "accounts": [
+      { "platform": "X", "handle": "yuika_KLM1125", "url": "https://x.com/yuika_KLM1125" },
+      { "platform": "INSTAGRAM", "handle": "yuika_klm1125", "url": "https://www.instagram.com/yuika_klm1125/" }
+    ]},
+    { "slug": "saki-sogawa", "name": "曽川 咲葵", "accounts": [
+      { "platform": "X", "handle": "saki_KLM0819", "url": "https://x.com/saki_KLM0819" },
+      { "platform": "INSTAGRAM", "handle": "saki_klm0819", "url": "https://www.instagram.com/saki_klm0819" },
+      { "platform": "TIKTOK", "handle": "saki_klm0819", "url": "https://www.tiktok.com/@saki_klm0819" }
+    ]},
+    { "slug": "kaho-takayama", "name": "高山 かほ", "accounts": [
+      { "platform": "X", "handle": "kaho_klm1218", "url": "https://x.com/kaho_klm1218" },
+      { "platform": "INSTAGRAM", "handle": "kaho_klm1218", "url": "https://www.instagram.com/kaho_klm1218/" },
+      { "platform": "TIKTOK", "handle": "kaho_klm1218", "url": "https://www.tiktok.com/@kaho_klm1218" }
+    ]},
+    { "slug": "lilica-tsuji", "name": "辻 りりか", "accounts": [
+      { "platform": "X", "handle": "lilica_KLM0517", "url": "https://x.com/lilica_KLM0517" },
+      { "platform": "INSTAGRAM", "handle": "lilica_klm0517", "url": "https://www.instagram.com/lilica_klm0517/" },
+      { "platform": "TIKTOK", "handle": "lilica_klm0517", "url": "https://www.tiktok.com/@lilica_klm0517" }
+    ]},
+    { "slug": "leona-nakamori", "name": "中森 玲緒奈", "accounts": [
+      { "platform": "X", "handle": "leona_KLM0627", "url": "https://x.com/leona_KLM0627" },
+      { "platform": "INSTAGRAM", "handle": "leona_klm0627", "url": "https://www.instagram.com/leona_klm0627" },
+      { "platform": "TIKTOK", "handle": "leona_klm0627", "url": "https://www.tiktok.com/@leona_klm0627" }
+    ]},
+    { "slug": "keina-hashimoto", "name": "橋本 けいな", "accounts": [
+      { "platform": "X", "handle": "keina_klm0109", "url": "https://x.com/keina_klm0109" },
+      { "platform": "INSTAGRAM", "handle": "keina109", "url": "https://www.instagram.com/keina109" },
+      { "platform": "TIKTOK", "handle": "ke_na0109", "url": "https://www.tiktok.com/@ke_na0109" }
+    ]},
+    { "slug": "coco-yamashita", "name": "山下 ここ", "accounts": [
+      { "platform": "X", "handle": "coco_klm_0218", "url": "https://x.com/coco_klm_0218" },
+      { "platform": "INSTAGRAM", "handle": "coco_klm_0218", "url": "https://www.instagram.com/coco_klm_0218" },
+      { "platform": "TIKTOK", "handle": "coco_klm_0218", "url": "https://www.tiktok.com/@coco_klm_0218" }
+    ]},
+    { "slug": "kanon-yokoyama", "name": "横山 かのん", "accounts": [
+      { "platform": "X", "handle": "kanon_klm1003", "url": "https://x.com/kanon_klm1003" },
+      { "platform": "INSTAGRAM", "handle": "kanon_klm1003", "url": "https://www.instagram.com/kanon_klm1003" },
+      { "platform": "TIKTOK", "handle": "kanon_klm1003", "url": "https://www.tiktok.com/@kanon_klm1003" }
+    ]}
+  ]
+}
