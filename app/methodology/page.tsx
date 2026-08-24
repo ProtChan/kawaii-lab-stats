@@ -28,13 +28,19 @@ export default function MethodologyPage() {
         <article className="panel">
           <p className="eyebrow">SOURCE</p>
           <h2>公開プロフィール値</h2>
-          <p className="lead">X / Instagram / TikTok / YouTube の公開プロフィールURLを日次で読み取り、followers、YouTube subscribers、posts/videos、TikTok total likes等の公開値を保存します。取得元URLと取得時刻をraw JSONに保持します。</p>
+          <p className="lead">X / Instagram / TikTok は公開プロフィールを1日1回読み取り、followers、following、posts、TikTok total likesなどを保存します。YouTubeは公開チャンネルのAboutページを1日1回読み取り、subscribers、videos、total channel viewsを同時に保存します。</p>
         </article>
         <article className="panel">
           <p className="eyebrow">MISSING DATA</p>
           <h2>欠測 ≠ 0</h2>
           <p className="lead">ログイン壁、非公開、削除、取得エラーなどは0として集計しません。coverageを併記し、観測できたアカウントだけの合計であることが分かるようにします。</p>
         </article>
+      </section>
+
+      <section className="panel">
+        <p className="eyebrow">ENGAGEMENT METRICS</p>
+        <h2>YouTube総再生 / TikTok総いいね</h2>
+        <p className="lead">YouTubeの総再生回数はチャンネル全体の公開累計views、TikTokの総いいねはプロフィールに表示される累計likes/heartsです。どちらもフォロワー数とは別の指標として保存し、グループ別にも合計します。</p>
       </section>
 
       <section className="panel">
@@ -48,7 +54,7 @@ export default function MethodologyPage() {
       <section className="panel">
         <p className="eyebrow">PRECISION</p>
         <h2>公開表示以上の精度を作らない</h2>
-        <p className="lead">YouTubeなどプラットフォーム側が公開値を丸めている場合、その丸められた値をそのまま保存します。推測で桁を補完しません。日次差も公開観測値同士の差として扱います。</p>
+        <p className="lead">YouTube登録者数などプラットフォーム側が公開値を丸めている場合、その丸められた値をそのまま保存します。総再生回数も公開Aboutページの表示値以上の精度を推測しません。日次差は公開観測値同士の差として扱います。</p>
       </section>
 
       <footer>Fanmade / unofficial project. Methodology may evolve, but historical source/capture metadata should remain auditable.</footer>
