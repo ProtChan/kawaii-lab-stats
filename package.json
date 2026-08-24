@@ -14,6 +14,7 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "node prisma/seed.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
+    "collect:x": "node scripts/collect-x.mjs",
     "import:snapshots": "node scripts/import-snapshots.mjs"
   },
   "prisma": {
