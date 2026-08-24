@@ -13,6 +13,12 @@ enum EntityType {
   MEMBER
 }
 
+enum EntityStatus {
+  ACTIVE
+  HIATUS
+  INACTIVE
+}
+
 enum SocialPlatform {
   X
   INSTAGRAM
@@ -30,49 +36,96 @@ enum MetricKey {
   VIDEOS
 }
 
+enum CollectionStatus {
+  RUNNING
+  SUCCESS
+  PARTIAL
+  FAILED
+}
+
 model Entity {
-  id          String          @id @default(cuid())
-  type        EntityType
-  slug        String          @unique
-  name        String
-  parentId    String?
-  parent      Entity?         @relation("EntityTree", fields: [parentId], references: [id])
-  children    Entity[]        @relation("EntityTree")
-  accounts    SocialAccount[]
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id                String             @id @default(cuid())
+  type              EntityType
+  status            EntityStatus       @default(ACTIVE)
+  slug              String             @unique
+  name              String
+  parentId          String?
+  parent            Entity?            @relation("EntityTree", fields: [parentId], references: [id])
+  children          Entity[]           @relation("EntityTree")
+  accounts          SocialAccount[]
+  officialSourceUrl String?
+  verifiedAt        DateTime?
+  metadata          Json?
+  memberships       EntityMembership[] @relation("MemberMemberships")
+  members           EntityMembership[] @relation("ParentMemberships")
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+}
+
+model EntityMembership {
+  id        String   @id @default(cuid())
+  memberId  String
+  parentId  String
+  member    Entity   @relation("MemberMemberships", fields: [memberId], references: [id], onDelete: Cascade)
+  parent    Entity   @relation("ParentMemberships", fields: [parentId], references: [id], onDelete: Cascade)
+  validFrom DateTime?
+  validTo   DateTime?
+  sourceUrl String?
+  createdAt DateTime @default(now())
+
+  @@index([memberId, validTo])
+  @@index([parentId, validTo])
 }
 
 model SocialAccount {
-  id          String          @id @default(cuid())
-  entityId    String
-  entity      Entity          @relation(fields: [entityId], references: [id], onDelete: Cascade)
-  platform    SocialPlatform
-  handle      String
-  profileUrl  String?
-  platformId  String?
-  active      Boolean         @default(true)
-  snapshots   MetricSnapshot[]
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id            String           @id @default(cuid())
+  entityId      String
+  entity        Entity           @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  platform      SocialPlatform
+  handle        String
+  profileUrl    String?
+  platformId    String?
+  active        Boolean          @default(true)
+  verifiedByUrl String?
+  verifiedAt    DateTime?
+  snapshots     MetricSnapshot[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
 
   @@unique([platform, handle])
   @@index([entityId, platform])
 }
 
+model CollectionRun {
+  id         String           @id @default(cuid())
+  platform   SocialPlatform
+  collector  String
+  status     CollectionStatus @default(RUNNING)
+  startedAt  DateTime         @default(now())
+  finishedAt DateTime?
+  error      String?
+  snapshots  MetricSnapshot[]
+  createdAt  DateTime         @default(now())
+
+  @@index([platform, startedAt(sort: Desc)])
+}
+
 model MetricSnapshot {
-  id          BigInt          @id @default(autoincrement())
-  accountId   String
-  account     SocialAccount   @relation(fields: [accountId], references: [id], onDelete: Cascade)
-  metric      MetricKey
-  value       BigInt
-  capturedAt  DateTime
-  sourceUrl   String?
-  sourceType  String?
-  raw         Json?
-  createdAt   DateTime        @default(now())
+  id              BigInt         @id @default(autoincrement())
+  accountId       String
+  account         SocialAccount  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  collectionRunId String?
+  collectionRun   CollectionRun? @relation(fields: [collectionRunId], references: [id], onDelete: SetNull)
+  metric          MetricKey
+  value           BigInt
+  capturedAt      DateTime
+  sourceUrl       String?
+  sourceType      String?
+  raw             Json?
+  createdAt       DateTime       @default(now())
 
   @@unique([accountId, metric, capturedAt])
   @@index([accountId, metric, capturedAt(sort: Desc)])
   @@index([capturedAt])
+  @@index([collectionRunId])
 }
