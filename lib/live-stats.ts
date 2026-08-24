@@ -74,6 +74,7 @@ const goodAccounts = liveSnapshot.accounts.filter(
   (account) => !account.error && trustedAccount(account) && typeof account.followers === "number" && Number.isFinite(account.followers),
 );
 const metricAccounts = liveSnapshot.accounts.filter((account) => !account.error && trustedAccount(account));
+const attemptedAccounts = liveSnapshot.attempted ?? liveSnapshot.accounts.length;
 
 const previousPoint = liveSeries.length >= 2 ? liveSeries[liveSeries.length - 2] : null;
 
@@ -136,9 +137,9 @@ export const liveTimeline = liveSeries.map((point) => {
 export const liveSummary = {
   date: liveSnapshot.date,
   collectedAt: liveSnapshot.collectedAt,
-  attempted: liveSnapshot.attempted ?? liveSnapshot.accounts.length,
-  successful: liveSnapshot.successful ?? goodAccounts.length,
-  failed: liveSnapshot.failed ?? liveSnapshot.accounts.filter((account) => account.error).length,
+  attempted: attemptedAccounts,
+  successful: goodAccounts.length,
+  failed: Math.max(0, attemptedAccounts - goodAccounts.length),
   observedAudience: liveGroupStats.reduce((sum, group) => sum + group.ecosystemFollowers, 0),
   youtubeViews: sumOptional(liveGroupStats.map((group) => group.youtubeViews)),
   tiktokLikes: sumOptional(liveGroupStats.map((group) => group.tiktokLikes)),
