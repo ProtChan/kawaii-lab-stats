@@ -9,6 +9,8 @@ on:
     paths:
       - ".github/workflows/collect-social-stats.yml"
       - "scripts/collect-*.mjs"
+      - "scripts/validate-directory.mjs"
+      - "data/directory/**"
       - "data/collectors/**"
       - "package.json"
       - "prisma/schema.prisma"
@@ -45,6 +47,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Validate official account directory
+        run: npm run directory:validate
 
       - name: Check database configuration
         id: database
