@@ -1,0 +1,18 @@
+{
+  "slug": "piki",
+  "name": "PiKi",
+  "type": "GROUP",
+  "category": "SPECIAL_UNIT",
+  "verifiedAt": "2026-08-24T18:15:00+09:00",
+  "sourceUrl": "https://piki.asobisystem.com/",
+  "accounts": [
+    { "platform": "X", "handle": "piki__official", "url": "https://x.com/piki__official" },
+    { "platform": "INSTAGRAM", "handle": "piki__official", "url": "https://www.instagram.com/piki__official" },
+    { "platform": "TIKTOK", "handle": "piki__official", "url": "https://www.tiktok.com/@piki__official" },
+    { "platform": "YOUTUBE", "handle": "@PiKi_officialchannel", "url": "https://www.youtube.com/@PiKi_officialchannel" }
+  ],
+  "members": [
+    { "slug": "karen-matsumoto", "name": "松本 かれん", "relationOnly": true, "accounts": [] },
+    { "slug": "haruka-sakuraba", "name": "桜庭 遥花", "relationOnly": true, "accounts": [] }
+  ]
+}
