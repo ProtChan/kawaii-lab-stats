@@ -23,6 +23,7 @@ GitHub Pages static export:
 https://protchan.github.io/kawaii-lab-stats/
 https://protchan.github.io/kawaii-lab-stats/demo/
 https://protchan.github.io/kawaii-lab-stats/directory/
+https://protchan.github.io/kawaii-lab-stats/methodology/
 https://protchan.github.io/kawaii-lab-stats/data/latest.json
 ```
 
@@ -31,6 +32,7 @@ Routes:
 - `/` — real daily observations
 - `/demo/` — fictional placeholder UI only
 - `/directory/` — verified official-account directory
+- `/methodology/` — collection and aggregation rules
 - `/data/latest.json` — latest machine-readable public snapshot
 - `/data/history/YYYY-MM-DD.json` — one daily snapshot
 - `/data/series.json` — group-level daily series used by the chart
@@ -39,7 +41,7 @@ Routes:
 
 `.github/workflows/collect-daily-public.yml` is the only automatic social-profile collection workflow.
 
-It runs once per day at `10:08 UTC` (`19:08 JST`) and calls the public-profile reader for every canonical account exactly once for that JST day. The collector first checks `data/live/history/YYYY-MM-DD.json`; if that day's completed snapshot already exists, it exits before making any profile request.
+It runs once per day at `10:08 UTC` (`19:08 JST`) and reads every canonical account exactly once for that JST day. The collector first checks `data/live/history/YYYY-MM-DD.json`; if that day's completed snapshot already exists, it exits before making any profile request.
 
 The workflow can also be dispatched manually, but the same completed-day guard prevents a second set of profile reads for that JST day.
 
@@ -53,36 +55,77 @@ npm run collect:daily-public
 
 No PostgreSQL or social-platform API secret is required for this public snapshot path.
 
-## Public-profile reader
+## Per-platform daily metrics
 
-The daily collector uses Pulse's profile endpoint:
+### X
+
+The public profile observation stores, when available:
+
+- followers
+- following
+- posts
+- verification state
+
+### Instagram
+
+The public profile observation stores, when available:
+
+- followers
+- following
+- posts
+
+A login wall is recorded as a missing observation, never as zero.
+
+### TikTok
+
+The public profile observation stores, when available:
+
+- followers
+- following
+- videos/posts
+- **profile total likes/hearts**
+
+`likes` is the cumulative profile-level TikTok likes value, not the likes on one video. The dashboard and group series expose this separately from followers.
+
+### YouTube
+
+YouTube uses one public channel About-page read per channel per JST day. The same page is used to capture:
+
+- subscribers
+- video count
+- **total channel views**
+
+The collector does not make a second YouTube channel read just for total views. Publicly abbreviated values remain marked as abbreviated rather than being reverse-engineered.
+
+## Public-profile readers
+
+X / Instagram / TikTok use Pulse's profile endpoint:
 
 ```text
 https://pulse.walls.sh/profile/batch
 ```
 
-It accepts up to 50 public profile URLs per batch and normalizes profile-level fields across YouTube, X, TikTok and Instagram. This project uses batches of 40 with a 25-second gap so the free 120-lookups/minute limit is not exceeded.
+The project uses batches of 40 with a 25-second gap so the provider's free rate limit is not exceeded.
+
+YouTube is intentionally routed separately to the channel's public About page so total channel views can be captured in the same single daily channel read.
 
 Stored fields include, when public/available:
 
 - followers / YouTube subscribers
 - following
 - post/video count
-- TikTok total likes where returned
-- verification state
-- source URL
+- TikTok total likes
+- YouTube total channel views
+- verification state where available
+- source URL / source type
 - capture timestamp
 - extraction error instead of a fabricated zero
-
-YouTube public subscriber values may be abbreviated/rounded by the platform; `precision=PUBLIC_ABBREVIATED` is retained for those observations.
-
-Pulse's free terms are described as suitable for personal/indie projects; if this site becomes a commercial product, review and use the provider's commercial license before continuing that source.
 
 ## Once-per-day guarantee
 
 The collector intentionally does **not retry individual profiles on the same JST day**. A failed or login-walled profile is recorded as a missing observation for that day.
 
-This gives each account a stable observation cadence instead of repeatedly hammering profiles until they succeed.
+This gives each account a stable observation cadence instead of repeatedly hitting profiles until they succeed. Known-problem accounts should be assigned the best reader before the next daily run rather than receiving a same-day fallback request.
 
 ## Automatic publication flow
 
@@ -91,7 +134,7 @@ This gives each account a stable observation cadence instead of repeatedly hamme
    ↓
 validate data/directory
    ↓
-read each canonical profile once
+read each canonical account once
    ↓
 data/live/history/YYYY-MM-DD.json
 public/data/history/YYYY-MM-DD.json
@@ -111,10 +154,12 @@ The site treats missing observations as missing. It never converts a fetch failu
 
 For each primary group the site exposes:
 
-- `official` — sum of the group's official SNS accounts
-- `members` — sum of that group's member SNS accounts
+- `official` — sum of the group's official SNS account audiences
+- `members` — sum of that group's member SNS account audiences
 - `ecosystem` — official + members
-- platform mix — X / Instagram / TikTok / YouTube account-count sums
+- platform mix — X / Instagram / TikTok / YouTube audience sums
+- `youtubeViews` — total channel-view sum for observed YouTube accounts
+- `tiktokLikes` — total profile-like sum for observed TikTok accounts
 - coverage — successfully observed accounts / expected canonical accounts
 - daily gain — today's ecosystem sum minus the previous daily snapshot
 
@@ -126,14 +171,16 @@ PiKi membership does not duplicate 松本かれん or 桜庭遥花 into the main
 
 - KAWAII LAB. and MATES references to the same `@kawaiilab.mates` TikTok have one canonical owner
 - KAWAII LAB. Instagram `@kawaii_lab.2022` is included from an official ASOBISYSTEM source
+- KAWAII LAB. and 鎮西寿々歌 YouTube entries use stable channel-ID URLs
+- 澤村いろは Instagram/TikTok use the newer official 2026 birthday-page handle `@iroha_sawamura`
+- 有村心晴 TikTok uses current `@koha_ru411`; recent public posts link to that handle although the main KAWAII LAB profile page still lists the previous `@__koharu0411`
 - MORE STAR's 鈴木花梨 and 山本るしあ remain members and are marked `HIATUS`
-- the malformed official MATES TikTok link for 嶋﨑結花 is not guessed
 - unknown values remain unknown
 - source and capture time are preserved in the public JSON
 
 ## Legacy DB/API path
 
-The PostgreSQL + Prisma models and official X / YouTube / Meta collectors remain in the repository for later higher-fidelity use. `.github/workflows/collect-social-stats.yml` is now manual-only so it cannot create additional automatic reads beyond the one-per-day public snapshot.
+The PostgreSQL + Prisma models and official X / YouTube / Meta collectors remain in the repository for later higher-fidelity use. `.github/workflows/collect-social-stats.yml` is manual-only so it cannot create additional automatic reads beyond the one-per-day public snapshot.
 
 ```bash
 cp .env.example .env
@@ -155,6 +202,7 @@ Open:
 http://localhost:3000/
 http://localhost:3000/demo/
 http://localhost:3000/directory/
+http://localhost:3000/methodology/
 ```
 
 ## License / trademarks
