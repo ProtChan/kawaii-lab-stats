@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EntityType {
+  PROJECT
+  GROUP
+  MEMBER
+}
+
+enum SocialPlatform {
+  X
+  INSTAGRAM
+  TIKTOK
+  YOUTUBE
+  OTHER
+}
+
+enum MetricKey {
+  FOLLOWERS
+  SUBSCRIBERS
+  LIKES
+  VIEWS
+  POSTS
+  VIDEOS
+}
+
+model Entity {
+  id          String          @id @default(cuid())
+  type        EntityType
+  slug        String          @unique
+  name        String
+  parentId    String?
+  parent      Entity?         @relation("EntityTree", fields: [parentId], references: [id])
+  children    Entity[]        @relation("EntityTree")
+  accounts    SocialAccount[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+model SocialAccount {
+  id          String          @id @default(cuid())
+  entityId    String
+  entity      Entity          @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  platform    SocialPlatform
+  handle      String
+  profileUrl  String?
+  platformId  String?
+  active      Boolean         @default(true)
+  snapshots   MetricSnapshot[]
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@unique([platform, handle])
+  @@index([entityId, platform])
+}
+
+model MetricSnapshot {
+  id          BigInt          @id @default(autoincrement())
+  accountId   String
+  account     SocialAccount   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  metric      MetricKey
+  value       BigInt
+  capturedAt  DateTime
+  sourceUrl   String?
+  sourceType  String?
+  raw         Json?
+  createdAt   DateTime        @default(now())
+
+  @@unique([accountId, metric, capturedAt])
+  @@index([accountId, metric, capturedAt(sort: Desc)])
+  @@index([capturedAt])
+}
