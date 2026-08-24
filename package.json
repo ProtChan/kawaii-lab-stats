@@ -1,6 +1,6 @@
 {
   "name": "kawaii-lab-stats",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,6 +16,9 @@
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "collect:x": "node scripts/collect-x.mjs",
     "collect:instagram": "node scripts/collect-instagram.mjs",
+    "collect:provider": "node scripts/collect-provider.mjs",
+    "collect:web": "node scripts/collect-authorized-web.mjs",
+    "collect:all": "node scripts/collect-all.mjs",
     "import:snapshots": "node scripts/import-snapshots.mjs"
   },
   "prisma": {
