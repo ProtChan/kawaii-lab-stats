@@ -9,6 +9,7 @@ const PUBLIC_DATA_DIR = path.join(ROOT, "public", "data");
 const SUPPORTED = new Set(["X", "INSTAGRAM", "TIKTOK", "YOUTUBE"]);
 const BATCH_SIZE = 40;
 const BATCH_DELAY_MS = 25_000;
+const YOUTUBE_DELAY_MS = 750;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -50,6 +51,32 @@ function numericOrNull(value) {
   return Number.isFinite(numeric) ? numeric : null;
 }
 
+function parseHumanCount(text) {
+  if (!text) return null;
+  const normalized = String(text).replace(/,/g, "").trim();
+  const match = normalized.match(/([0-9]+(?:\.[0-9]+)?)\s*([KMB])?/i);
+  if (!match) return null;
+  const value = Number(match[1]);
+  if (!Number.isFinite(value)) return null;
+  const multiplier = match[2]?.toUpperCase() === "K" ? 1_000 : match[2]?.toUpperCase() === "M" ? 1_000_000 : match[2]?.toUpperCase() === "B" ? 1_000_000_000 : 1;
+  return Math.round(value * multiplier);
+}
+
+function extractJsonText(html, key) {
+  const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const simple = new RegExp(`"${escaped}":\\{"simpleText":"([^"]+)"`).exec(html)?.[1];
+  if (simple) return simple;
+  const runs = new RegExp(`"${escaped}":\\{"runs":\\[\\{"text":"([^"]+)"`).exec(html)?.[1];
+  return runs ?? null;
+}
+
+function extractMeta(html, property) {
+  const escaped = property.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`<meta[^>]+property=["']${escaped}["'][^>]+content=["']([^"']+)["']`, "i").exec(html)?.[1]
+    ?? new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${escaped}["']`, "i").exec(html)?.[1]
+    ?? null;
+}
+
 async function loadDirectory() {
   const files = (await readdir(DIRECTORY_DIR)).filter((file) => file.endsWith(".json")).sort();
   const accounts = [];
@@ -68,6 +95,7 @@ async function loadDirectory() {
           groupName: null,
           platform: account.platform,
           handle: account.handle,
+          platformId: account.platformId ?? null,
           profileUrl: account.url,
         });
       }
@@ -87,6 +115,7 @@ async function loadDirectory() {
         category: data.category,
         platform: account.platform,
         handle: account.handle,
+        platformId: account.platformId ?? null,
         profileUrl: account.url,
       });
     }
@@ -105,6 +134,7 @@ async function loadDirectory() {
           category: data.category,
           platform: account.platform,
           handle: account.handle,
+          platformId: account.platformId ?? null,
           profileUrl: account.url,
         });
       }
@@ -120,14 +150,14 @@ async function loadDirectory() {
   return { accounts: [...unique.values()], primaryGroups };
 }
 
-async function fetchBatch(batch) {
+async function fetchPulseBatch(batch) {
   const url = new URL("https://pulse.walls.sh/profile/batch");
   for (const account of batch) url.searchParams.append("url", account.profileUrl);
 
   const response = await fetch(url, {
     headers: {
       Accept: "application/json",
-      "User-Agent": "kawaii-lab-stats/0.4 (+https://github.com/ProtChan/kawaii-lab-stats)",
+      "User-Agent": "kawaii-lab-stats/0.5 (+https://github.com/ProtChan/kawaii-lab-stats)",
     },
   });
 
@@ -141,17 +171,81 @@ async function fetchBatch(batch) {
   return payload.results;
 }
 
+async function fetchYouTubeProfile(account) {
+  const sourceUrl = account.platformId
+    ? new URL(`https://www.youtube.com/channel/${account.platformId}/about`)
+    : new URL(account.profileUrl);
+
+  if (!account.platformId) {
+    sourceUrl.pathname = `${sourceUrl.pathname.replace(/\/$/, "")}/about`;
+  }
+  sourceUrl.search = "";
+  sourceUrl.searchParams.set("hl", "en");
+  sourceUrl.searchParams.set("persist_hl", "1");
+
+  const response = await fetch(sourceUrl, {
+    redirect: "follow",
+    headers: {
+      Accept: "text/html,application/xhtml+xml",
+      "Accept-Language": "en-US,en;q=0.9",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/151.0.0.0 Safari/537.36 kawaii-lab-stats/0.5",
+    },
+  });
+
+  if (!response.ok) throw new Error(`YouTube HTTP ${response.status}`);
+  const html = await response.text();
+
+  const subscriberText = extractJsonText(html, "subscriberCountText")
+    ?? html.match(/([0-9.,]+\s*[KMB]?)\s+subscribers/i)?.[1]
+    ?? null;
+  const viewText = extractJsonText(html, "viewCountText")
+    ?? html.match(/([0-9.,]+\s*[KMB]?)\s+views/i)?.[1]
+    ?? null;
+  const videoText = extractJsonText(html, "videosCountText")
+    ?? extractJsonText(html, "videoCountText")
+    ?? html.match(/([0-9.,]+\s*[KMB]?)\s+videos/i)?.[1]
+    ?? null;
+
+  const followers = parseHumanCount(subscriberText);
+  if (!Number.isFinite(followers)) throw new Error("YouTube subscriber count was not found on the public About page");
+
+  return {
+    platform: "youtube",
+    handle: account.handle,
+    name: extractMeta(html, "og:title") ?? account.entityName,
+    followers,
+    following: null,
+    posts: parseHumanCount(videoText),
+    likes: null,
+    views: parseHumanCount(viewText),
+    viewsPrecision: viewText && /[KMB]/i.test(viewText) ? "PUBLIC_ABBREVIATED" : viewText ? "PUBLIC_EXACT" : null,
+    verified: null,
+    avatar: extractMeta(html, "og:image"),
+    sourceUrl: sourceUrl.toString(),
+  };
+}
+
 function summarize(snapshot, primaryGroups) {
-  const good = snapshot.accounts.filter((account) => !account.error && Number.isFinite(account.followers));
+  const followerRows = snapshot.accounts.filter((account) => !account.error && Number.isFinite(account.followers));
+  const metricRows = snapshot.accounts.filter((account) => !account.error);
   const groups = {};
 
+  const sumMetric = (items, key) => {
+    const values = items.map((item) => item[key]).filter((value) => Number.isFinite(value));
+    return values.length ? values.reduce((total, value) => total + value, 0) : null;
+  };
+
   for (const group of primaryGroups) {
-    const rows = good.filter((account) => account.groupSlug === group.slug);
+    const rows = followerRows.filter((account) => account.groupSlug === group.slug);
+    const metrics = metricRows.filter((account) => account.groupSlug === group.slug);
     const officialRows = rows.filter((account) => account.entityType === "GROUP" && account.entitySlug === group.slug);
     const memberRows = rows.filter((account) => account.entityType === "MEMBER");
     const sum = (items) => items.reduce((total, item) => total + item.followers, 0);
     const platforms = { X: 0, Instagram: 0, TikTok: 0, YouTube: 0 };
     for (const row of rows) platforms[normalizePlatform(row.platform)] += row.followers;
+
+    const youtubeRows = metrics.filter((account) => account.platform === "YOUTUBE");
+    const tiktokRows = metrics.filter((account) => account.platform === "TIKTOK");
 
     groups[group.slug] = {
       name: group.name,
@@ -159,6 +253,10 @@ function summarize(snapshot, primaryGroups) {
       members: sum(memberRows),
       ecosystem: sum(rows),
       platforms,
+      youtubeViews: sumMetric(youtubeRows, "views"),
+      youtubeViewAccounts: youtubeRows.filter((row) => Number.isFinite(row.views)).length,
+      tiktokLikes: sumMetric(tiktokRows, "likes"),
+      tiktokLikeAccounts: tiktokRows.filter((row) => Number.isFinite(row.likes)).length,
       observedAccounts: rows.length,
       expectedAccounts: snapshot.accounts.filter((account) => account.groupSlug === group.slug).length,
     };
@@ -197,17 +295,20 @@ async function main() {
   const collectedAt = new Date().toISOString();
   const observations = [];
   const errors = [];
+  const pulseAccounts = accounts.filter((account) => account.platform !== "YOUTUBE");
+  const youtubeAccounts = accounts.filter((account) => account.platform === "YOUTUBE");
 
   console.log(`Daily public-profile collection: ${accounts.length} unique accounts for ${date} JST.`);
+  console.log(`Pulse profiles: ${pulseAccounts.length}; direct YouTube About pages: ${youtubeAccounts.length}.`);
 
-  for (let offset = 0; offset < accounts.length; offset += BATCH_SIZE) {
-    const batch = accounts.slice(offset, offset + BATCH_SIZE);
+  for (let offset = 0; offset < pulseAccounts.length; offset += BATCH_SIZE) {
+    const batch = pulseAccounts.slice(offset, offset + BATCH_SIZE);
     const batchNo = Math.floor(offset / BATCH_SIZE) + 1;
-    const batchCount = Math.ceil(accounts.length / BATCH_SIZE);
-    console.log(`Batch ${batchNo}/${batchCount}: ${batch.length} profiles`);
+    const batchCount = Math.ceil(pulseAccounts.length / BATCH_SIZE);
+    console.log(`Pulse batch ${batchNo}/${batchCount}: ${batch.length} profiles`);
 
     try {
-      const results = await fetchBatch(batch);
+      const results = await fetchPulseBatch(batch);
       for (let index = 0; index < batch.length; index += 1) {
         const account = batch[index];
         const result = results[index] ?? { error: "missing_result" };
@@ -229,10 +330,12 @@ async function main() {
           following: numericOrNull(result.following),
           posts: numericOrNull(result.posts),
           likes: numericOrNull(result.likes),
+          views: numericOrNull(result.views),
           verified: typeof result.verified === "boolean" ? result.verified : null,
           avatar: result.avatar ?? null,
-          audienceMetric: account.platform === "YOUTUBE" ? "SUBSCRIBERS" : "FOLLOWERS",
-          precision: account.platform === "YOUTUBE" ? "PUBLIC_ABBREVIATED" : "PUBLIC_PROFILE",
+          audienceMetric: "FOLLOWERS",
+          precision: "PUBLIC_PROFILE",
+          engagementMetric: account.platform === "TIKTOK" ? "TOTAL_LIKES" : null,
         });
       }
     } catch (error) {
@@ -243,7 +346,41 @@ async function main() {
       }
     }
 
-    if (offset + BATCH_SIZE < accounts.length) await sleep(BATCH_DELAY_MS);
+    if (offset + BATCH_SIZE < pulseAccounts.length) await sleep(BATCH_DELAY_MS);
+  }
+
+  for (let index = 0; index < youtubeAccounts.length; index += 1) {
+    const account = youtubeAccounts[index];
+    const base = { ...account, capturedAt: collectedAt, sourceType: "YOUTUBE_PUBLIC_ABOUT" };
+    console.log(`YouTube ${index + 1}/${youtubeAccounts.length}: ${account.entityName} ${account.handle}`);
+
+    try {
+      const result = await fetchYouTubeProfile(account);
+      observations.push({
+        ...base,
+        sourceUrl: result.sourceUrl,
+        providerPlatform: result.platform,
+        providerHandle: result.handle,
+        providerName: result.name,
+        followers: result.followers,
+        following: null,
+        posts: result.posts,
+        likes: null,
+        views: result.views,
+        viewsPrecision: result.viewsPrecision,
+        verified: null,
+        avatar: result.avatar,
+        audienceMetric: "SUBSCRIBERS",
+        precision: "PUBLIC_ABBREVIATED",
+        engagementMetric: "TOTAL_CHANNEL_VIEWS",
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      observations.push({ ...base, error: "youtube_public_about_failed", detail: message });
+      errors.push(`${account.entityName} ${account.platform} @${account.handle}: youtube_public_about_failed`);
+    }
+
+    if (index + 1 < youtubeAccounts.length) await sleep(YOUTUBE_DELAY_MS);
   }
 
   const successful = observations.filter((row) => !row.error && Number.isFinite(row.followers)).length;
@@ -255,11 +392,13 @@ async function main() {
     successful,
     failed: accounts.length - successful,
     source: {
-      name: "Pulse",
-      url: "https://pulse.walls.sh/docs",
-      method: "public-profile-read",
-      note: "One scheduled lookup per canonical account per JST day; no same-day retries.",
+      method: "one-public-profile-read-per-account-per-jst-day",
+      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses one public channel About-page read so subscriber/video/view totals are captured without a second channel access.",
     },
+    sources: [
+      { name: "Pulse", url: "https://pulse.walls.sh/docs", platforms: ["X", "INSTAGRAM", "TIKTOK"] },
+      { name: "YouTube public About page", url: "https://www.youtube.com/", platforms: ["YOUTUBE"] },
+    ],
     accounts: observations,
     errors,
   };
