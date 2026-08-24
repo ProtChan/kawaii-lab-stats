@@ -39,9 +39,9 @@ Routes:
 
 `.github/workflows/collect-daily-public.yml` is the only automatic social-profile collection workflow.
 
-It runs once per day at `03:17 UTC` (`12:17 JST`) and calls the public-profile reader for every canonical account exactly once for that JST day. The collector first checks `data/live/history/YYYY-MM-DD.json`; if that day's completed snapshot already exists, it exits before making any profile request.
+It runs once per day at `10:08 UTC` (`19:08 JST`) and calls the public-profile reader for every canonical account exactly once for that JST day. The collector first checks `data/live/history/YYYY-MM-DD.json`; if that day's completed snapshot already exists, it exits before making any profile request.
 
-The initial workflow definition also has a narrow `push` trigger so deployment/collector changes can start the first snapshot. Data-only commits do not retrigger collection.
+The workflow can also be dispatched manually, but the same completed-day guard prevents a second set of profile reads for that JST day.
 
 Run locally:
 
@@ -87,7 +87,7 @@ This gives each account a stable observation cadence instead of repeatedly hamme
 ## Automatic publication flow
 
 ```text
-12:17 JST daily
+19:08 JST daily
    ↓
 validate data/directory
    ↓
