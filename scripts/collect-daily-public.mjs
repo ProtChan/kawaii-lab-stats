@@ -44,6 +44,12 @@ function normalizePlatform(platform) {
   return platform === "YOUTUBE" ? "YouTube" : platform === "INSTAGRAM" ? "Instagram" : platform === "TIKTOK" ? "TikTok" : "X";
 }
 
+function numericOrNull(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const numeric = Number(value);
+  return Number.isFinite(numeric) ? numeric : null;
+}
+
 async function loadDirectory() {
   const files = (await readdir(DIRECTORY_DIR)).filter((file) => file.endsWith(".json")).sort();
   const accounts = [];
@@ -121,7 +127,7 @@ async function fetchBatch(batch) {
   const response = await fetch(url, {
     headers: {
       Accept: "application/json",
-      "User-Agent": "kawaii-lab-stats/0.3 (+https://github.com/ProtChan/kawaii-lab-stats)",
+      "User-Agent": "kawaii-lab-stats/0.4 (+https://github.com/ProtChan/kawaii-lab-stats)",
     },
   });
 
@@ -214,16 +220,15 @@ async function main() {
           continue;
         }
 
-        const followers = Number(result.followers);
         observations.push({
           ...base,
           providerPlatform: result.platform ?? null,
           providerHandle: result.handle ?? null,
           providerName: result.name ?? null,
-          followers: Number.isFinite(followers) ? followers : null,
-          following: Number.isFinite(Number(result.following)) ? Number(result.following) : null,
-          posts: Number.isFinite(Number(result.posts)) ? Number(result.posts) : null,
-          likes: Number.isFinite(Number(result.likes)) ? Number(result.likes) : null,
+          followers: numericOrNull(result.followers),
+          following: numericOrNull(result.following),
+          posts: numericOrNull(result.posts),
+          likes: numericOrNull(result.likes),
           verified: typeof result.verified === "boolean" ? result.verified : null,
           avatar: result.avatar ?? null,
           audienceMetric: account.platform === "YOUTUBE" ? "SUBSCRIBERS" : "FOLLOWERS",
