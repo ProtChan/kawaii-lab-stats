@@ -2,6 +2,7 @@ import { officialGroups } from "@/lib/official-directory";
 import { accountStats, allMembers, getGroupStats, getMemberStats, historySnapshots } from "@/lib/analytics";
 
 export type CompareMetricKey = "audience" | "tiktokLikes" | "youtubeViews";
+export type PlatformAudience = { X: number; Instagram: number; TikTok: number; YouTube: number };
 
 export type ComparePoint = {
   date: string;
@@ -17,6 +18,7 @@ export type CompareEntity = {
   groupSlugs: string[];
   primaryGroupName?: string | null;
   current: Omit<ComparePoint, "date">;
+  platforms: PlatformAudience;
   history: ComparePoint[];
 };
 
@@ -42,6 +44,7 @@ export function buildComparePayload() {
         tiktokLikes: current.tiktokLikes,
         youtubeViews: current.youtubeViews,
       },
+      platforms: current.platformFollowers,
       history: historySnapshots.map((snapshot) => ({
         date: snapshot.date ?? "—",
         ...metricsForRows(snapshot.accounts.filter((account) => account.groupSlug === group.slug)),
@@ -62,6 +65,7 @@ export function buildComparePayload() {
         tiktokLikes: current.tiktokLikes,
         youtubeViews: current.youtubeViews,
       },
+      platforms: current.platformFollowers,
       history: historySnapshots.map((snapshot) => ({
         date: snapshot.date ?? "—",
         ...metricsForRows(snapshot.accounts.filter((account) => account.entitySlug === member.slug)),
