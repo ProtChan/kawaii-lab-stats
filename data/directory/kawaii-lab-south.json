@@ -3,7 +3,7 @@
   "name": "KAWAII LAB. SOUTH",
   "type": "GROUP",
   "category": "TRAINEE",
-  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "verifiedAt": "2026-08-24T20:38:00+09:00",
   "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
   "accounts": [
     { "platform": "INSTAGRAM", "handle": "kawaiilab_south", "url": "https://www.instagram.com/kawaiilab_south" },
@@ -27,8 +27,8 @@
     ]},
     { "slug": "iroha-sawamura", "name": "澤村 いろは", "accounts": [
       { "platform": "X", "handle": "iroha_KLS0208", "url": "https://x.com/iroha_KLS0208" },
-      { "platform": "INSTAGRAM", "handle": "irohano_iroiro", "url": "https://www.instagram.com/irohano_iroiro" },
-      { "platform": "TIKTOK", "handle": "yasetai_iroha", "url": "https://www.tiktok.com/@yasetai_iroha" }
+      { "platform": "INSTAGRAM", "handle": "iroha_sawamura", "url": "https://www.instagram.com/iroha_sawamura/", "sourceUrl": "https://kawaiilab.asobisystem.com/news/detail/58494" },
+      { "platform": "TIKTOK", "handle": "iroha_sawamura", "url": "https://www.tiktok.com/@iroha_sawamura", "sourceUrl": "https://kawaiilab.asobisystem.com/news/detail/58494" }
     ]},
     { "slug": "aiko-hamasaki", "name": "濵嵜 愛子", "accounts": [
       { "platform": "X", "handle": "aiko_KLS1018", "url": "https://x.com/aiko_KLS1018" },
