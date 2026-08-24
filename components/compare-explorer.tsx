@@ -53,7 +53,9 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
     return orderedCandidates.slice(0, scope === "members" && groupSlug ? 8 : 5).map((entity) => entity.slug);
   }, [selected, candidates, orderedCandidates, scope, groupSlug]);
 
-  const selectedEntities = effectiveSelected.map((slug) => candidates.find((entity) => entity.slug === slug)).filter((entity): entity is CompareEntity => Boolean(entity));
+  const selectedEntities = effectiveSelected
+    .map((slug) => candidates.find((entity) => entity.slug === slug))
+    .filter((entity): entity is CompareEntity => Boolean(entity));
 
   const chartData = useMemo(() => {
     const dates = [...new Set(selectedEntities.flatMap((entity) => entity.history.map((point) => point.date)))].sort();
@@ -148,7 +150,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">HISTORY COMPARE</p><h2>{metricLabels[metric]} 推移</h2></div><span>{selectedEntities.length} selected</span></div>
         <div className="selectionLegend">{selectedEntities.map((entity) => <button key={entity.slug} onClick={() => toggleEntity(entity.slug)}>{entity.name} ×</button>)}</div>
-        {chartData.length >= 2 ? <GrowthChart data={chartData as Record<string, string | number>[]} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} /> : <p className="lead">この指標は履歴が2点以上になると比較推移を表示します。現在値ランキングは上で利用できます。</p>}
+        {chartData.length >= 2 ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} /> : <p className="lead">この指標は履歴が2点以上になると比較推移を表示します。現在値ランキングは上で利用できます。</p>}
       </section>
     </>
   );
