@@ -14,7 +14,7 @@ const allowedMetrics = new Set(["FOLLOWERS", "SUBSCRIBERS", "LIKES", "VIEWS", "P
 
 async function main() {
   const run = await prisma.collectionRun.create({
-    data: { platform: null, collector: "snapshot-provider", status: "RUNNING" },
+    data: { platform: "OTHER", collector: "snapshot-provider", status: "RUNNING" },
   });
 
   const response = await fetch(endpoint, {
