@@ -1,0 +1,75 @@
+{
+  "slug": "fruits-zipper",
+  "name": "FRUITS ZIPPER",
+  "type": "GROUP",
+  "category": "DEBUTED",
+  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
+  "accounts": [
+    { "platform": "X", "handle": "FRUITS_ZIPPER", "url": "https://x.com/FRUITS_ZIPPER" },
+    { "platform": "INSTAGRAM", "handle": "fruits_zipper", "url": "https://www.instagram.com/fruits_zipper/" },
+    { "platform": "TIKTOK", "handle": "fruits_zipper", "url": "https://www.tiktok.com/@fruits_zipper" },
+    { "platform": "YOUTUBE", "handle": "@fruitszipper3040", "url": "https://www.youtube.com/@fruitszipper3040" }
+  ],
+  "members": [
+    {
+      "slug": "amane-tsukiashi", "name": "月足 天音",
+      "accounts": [
+        { "platform": "X", "handle": "amane_fz1026", "url": "https://x.com/amane_fz1026" },
+        { "platform": "INSTAGRAM", "handle": "am1026_official", "url": "https://www.instagram.com/am1026_official/" },
+        { "platform": "TIKTOK", "handle": "am1026_official", "url": "https://www.tiktok.com/@am1026_official" },
+        { "platform": "YOUTUBE", "handle": "UCYH_GZdDHYrrh_8iQOi4P0g", "platformId": "UCYH_GZdDHYrrh_8iQOi4P0g", "url": "https://www.youtube.com/channel/UCYH_GZdDHYrrh_8iQOi4P0g" }
+      ]
+    },
+    {
+      "slug": "suzuka-chinzei", "name": "鎮西 寿々歌",
+      "accounts": [
+        { "platform": "X", "handle": "suzuka_fz1124", "url": "https://x.com/suzuka_fz1124" },
+        { "platform": "INSTAGRAM", "handle": "tarasuzuka24", "url": "https://www.instagram.com/tarasuzuka24/" },
+        { "platform": "TIKTOK", "handle": "oooooossssss24", "url": "https://www.tiktok.com/@oooooossssss24" },
+        { "platform": "YOUTUBE", "handle": "@おすずのあいまいにぃ", "url": "https://www.youtube.com/@おすずのあいまいにぃ/videos" }
+      ]
+    },
+    {
+      "slug": "yui-sakurai", "name": "櫻井 優衣",
+      "accounts": [
+        { "platform": "X", "handle": "yui_fz0221", "url": "https://x.com/yui_fz0221" },
+        { "platform": "INSTAGRAM", "handle": "yui.sakurai_7", "url": "https://www.instagram.com/yui.sakurai_7/" },
+        { "platform": "TIKTOK", "handle": "sakuraiyui2", "url": "https://www.tiktok.com/@sakuraiyui2" }
+      ]
+    },
+    {
+      "slug": "luna-nakagawa", "name": "仲川 瑠夏",
+      "accounts": [
+        { "platform": "X", "handle": "luna_fz0703", "url": "https://x.com/luna_fz0703" },
+        { "platform": "INSTAGRAM", "handle": "luna_7373", "url": "https://www.instagram.com/luna_7373/" },
+        { "platform": "TIKTOK", "handle": "luna_luna073", "url": "https://www.tiktok.com/@luna_luna073" }
+      ]
+    },
+    {
+      "slug": "mana-manaka", "name": "真中 まな",
+      "accounts": [
+        { "platform": "X", "handle": "manafy_fz0422", "url": "https://x.com/manafy_fz0422" },
+        { "platform": "INSTAGRAM", "handle": "manafy_baby", "url": "https://www.instagram.com/manafy_baby/" },
+        { "platform": "TIKTOK", "handle": "manafy_fz0422", "url": "https://www.tiktok.com/@manafy_fz0422" }
+      ]
+    },
+    {
+      "slug": "karen-matsumoto", "name": "松本 かれん",
+      "accounts": [
+        { "platform": "X", "handle": "karen_fz0328", "url": "https://x.com/karen_fz0328" },
+        { "platform": "INSTAGRAM", "handle": "__matsumotokaren", "url": "https://www.instagram.com/__matsumotokaren/" },
+        { "platform": "TIKTOK", "handle": "__matsumotokaren", "url": "https://www.tiktok.com/@__matsumotokaren" }
+      ]
+    },
+    {
+      "slug": "noel-hayase", "name": "早瀬 ノエル",
+      "accounts": [
+        { "platform": "X", "handle": "noel_fz1229", "url": "https://x.com/noel_fz1229" },
+        { "platform": "INSTAGRAM", "handle": "noel_hayase", "url": "https://www.instagram.com/noel_hayase/" },
+        { "platform": "TIKTOK", "handle": "hysnl1229", "url": "https://www.tiktok.com/@hysnl1229" },
+        { "platform": "YOUTUBE", "handle": "UCRMZBDvn6YRX12YQb7NR59A", "platformId": "UCRMZBDvn6YRX12YQb7NR59A", "url": "https://www.youtube.com/channel/UCRMZBDvn6YRX12YQb7NR59A" }
+      ]
+    }
+  ]
+}
