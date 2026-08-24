@@ -10,6 +10,7 @@ const SUPPORTED = new Set(["X", "INSTAGRAM", "TIKTOK", "YOUTUBE"]);
 const BATCH_SIZE = 40;
 const BATCH_DELAY_MS = 25_000;
 const YOUTUBE_DELAY_MS = 750;
+const YOUTUBE_PARSER_VERSION = "ABOUT_CHANNEL_VIEW_MODEL_V1";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -62,19 +63,69 @@ function parseHumanCount(text) {
   return Math.round(value * multiplier);
 }
 
-function extractJsonText(html, key) {
-  const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const simple = new RegExp(`"${escaped}":\\{"simpleText":"([^"]+)"`).exec(html)?.[1];
-  if (simple) return simple;
-  const runs = new RegExp(`"${escaped}":\\{"runs":\\[\\{"text":"([^"]+)"`).exec(html)?.[1];
-  return runs ?? null;
-}
-
 function extractMeta(html, property) {
   const escaped = property.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return new RegExp(`<meta[^>]+property=["']${escaped}["'][^>]+content=["']([^"']+)["']`, "i").exec(html)?.[1]
     ?? new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${escaped}["']`, "i").exec(html)?.[1]
     ?? null;
+}
+
+function extractJsonObjectAfterKey(text, key) {
+  const needle = `"${key}":`;
+  let from = 0;
+
+  while (from < text.length) {
+    const keyIndex = text.indexOf(needle, from);
+    if (keyIndex < 0) return null;
+    let start = keyIndex + needle.length;
+    while (/\s/.test(text[start] ?? "")) start += 1;
+    if (text[start] !== "{") {
+      from = start + 1;
+      continue;
+    }
+
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+    for (let index = start; index < text.length; index += 1) {
+      const char = text[index];
+      if (inString) {
+        if (escaped) escaped = false;
+        else if (char === "\\") escaped = true;
+        else if (char === '"') inString = false;
+        continue;
+      }
+      if (char === '"') {
+        inString = true;
+        continue;
+      }
+      if (char === "{") depth += 1;
+      else if (char === "}") {
+        depth -= 1;
+        if (depth === 0) {
+          try {
+            return JSON.parse(text.slice(start, index + 1));
+          } catch {
+            break;
+          }
+        }
+      }
+    }
+    from = start + 1;
+  }
+  return null;
+}
+
+function textValue(value) {
+  if (typeof value === "string") return value;
+  if (!value || typeof value !== "object") return null;
+  if (typeof value.simpleText === "string") return value.simpleText;
+  if (typeof value.content === "string") return value.content;
+  if (Array.isArray(value.runs)) {
+    const combined = value.runs.map((run) => run?.text).filter((text) => typeof text === "string").join("");
+    return combined || null;
+  }
+  return null;
 }
 
 async function loadDirectory() {
@@ -176,9 +227,7 @@ async function fetchYouTubeProfile(account) {
     ? new URL(`https://www.youtube.com/channel/${account.platformId}/about`)
     : new URL(account.profileUrl);
 
-  if (!account.platformId) {
-    sourceUrl.pathname = `${sourceUrl.pathname.replace(/\/$/, "")}/about`;
-  }
+  if (!account.platformId) sourceUrl.pathname = `${sourceUrl.pathname.replace(/\/$/, "")}/about`;
   sourceUrl.search = "";
   sourceUrl.searchParams.set("hl", "en");
   sourceUrl.searchParams.set("persist_hl", "1");
@@ -188,26 +237,24 @@ async function fetchYouTubeProfile(account) {
     headers: {
       Accept: "text/html,application/xhtml+xml",
       "Accept-Language": "en-US,en;q=0.9",
-      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/151.0.0.0 Safari/537.36 kawaii-lab-stats/0.5",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/151.0.0.0 Safari/537.36 kawaii-lab-stats/0.6",
     },
   });
 
   if (!response.ok) throw new Error(`YouTube HTTP ${response.status}`);
   const html = await response.text();
+  const about = extractJsonObjectAfterKey(html, "aboutChannelViewModel");
+  if (!about) throw new Error("YouTube aboutChannelViewModel was not found");
 
-  const subscriberText = extractJsonText(html, "subscriberCountText")
-    ?? html.match(/([0-9.,]+\s*[KMB]?)\s+subscribers/i)?.[1]
-    ?? null;
-  const viewText = extractJsonText(html, "viewCountText")
-    ?? html.match(/([0-9.,]+\s*[KMB]?)\s+views/i)?.[1]
-    ?? null;
-  const videoText = extractJsonText(html, "videosCountText")
-    ?? extractJsonText(html, "videoCountText")
-    ?? html.match(/([0-9.,]+\s*[KMB]?)\s+videos/i)?.[1]
-    ?? null;
-
+  const subscriberText = textValue(about.subscriberCountText);
+  const viewText = textValue(about.viewCountText);
+  const videoText = textValue(about.videoCountText) ?? textValue(about.videosCountText);
   const followers = parseHumanCount(subscriberText);
-  if (!Number.isFinite(followers)) throw new Error("YouTube subscriber count was not found on the public About page");
+  const views = parseHumanCount(viewText);
+  const posts = parseHumanCount(videoText);
+
+  if (!Number.isFinite(followers)) throw new Error("YouTube subscriber count was not found in aboutChannelViewModel");
+  if (!Number.isFinite(views)) throw new Error("YouTube channel view count was not found in aboutChannelViewModel");
 
   return {
     platform: "youtube",
@@ -215,19 +262,21 @@ async function fetchYouTubeProfile(account) {
     name: extractMeta(html, "og:title") ?? account.entityName,
     followers,
     following: null,
-    posts: parseHumanCount(videoText),
+    posts,
     likes: null,
-    views: parseHumanCount(viewText),
-    viewsPrecision: viewText && /[KMB]/i.test(viewText) ? "PUBLIC_ABBREVIATED" : viewText ? "PUBLIC_EXACT" : null,
+    views,
+    viewsPrecision: viewText && /[KMB]/i.test(viewText) ? "PUBLIC_ABBREVIATED" : "PUBLIC_EXACT",
     verified: null,
     avatar: extractMeta(html, "og:image"),
     sourceUrl: sourceUrl.toString(),
+    parserVersion: YOUTUBE_PARSER_VERSION,
   };
 }
 
 function summarize(snapshot, primaryGroups) {
-  const followerRows = snapshot.accounts.filter((account) => !account.error && Number.isFinite(account.followers));
-  const metricRows = snapshot.accounts.filter((account) => !account.error);
+  const trusted = (account) => account.platform !== "YOUTUBE" || account.parserVersion === YOUTUBE_PARSER_VERSION;
+  const followerRows = snapshot.accounts.filter((account) => !account.error && trusted(account) && Number.isFinite(account.followers));
+  const metricRows = snapshot.accounts.filter((account) => !account.error && trusted(account));
   const groups = {};
 
   const sumMetric = (items, key) => {
@@ -279,139 +328,126 @@ async function rebuildSeries(primaryGroups) {
 async function main() {
   await mkdir(HISTORY_DIR, { recursive: true });
   await mkdir(PUBLIC_DATA_DIR, { recursive: true });
-
   const date = jstDateKey();
-  const historyFile = path.join(HISTORY_DIR, `${date}.json`);
+  const historyPath = path.join(HISTORY_DIR, `${date}.json`);
+  const publicHistoryPath = path.join(PUBLIC_DATA_DIR, "history", `${date}.json`);
+  await mkdir(path.dirname(publicHistoryPath), { recursive: true });
 
-  if (await exists(historyFile)) {
-    const previous = await readJson(historyFile);
-    if (previous.complete) {
-      console.log(`Daily collection already completed for ${date} JST; no profile URLs will be accessed again.`);
+  if (await exists(historyPath)) {
+    const existing = await readJson(historyPath);
+    if (existing.complete) {
+      console.log(`Daily snapshot ${date} already exists; no public profile requests will be made.`);
       return;
     }
   }
 
   const { accounts, primaryGroups } = await loadDirectory();
-  const collectedAt = new Date().toISOString();
-  const observations = [];
+  const capturedAt = new Date().toISOString();
+  const results = [];
   const errors = [];
+
   const pulseAccounts = accounts.filter((account) => account.platform !== "YOUTUBE");
-  const youtubeAccounts = accounts.filter((account) => account.platform === "YOUTUBE");
-
-  console.log(`Daily public-profile collection: ${accounts.length} unique accounts for ${date} JST.`);
-  console.log(`Pulse profiles: ${pulseAccounts.length}; direct YouTube About pages: ${youtubeAccounts.length}.`);
-
   for (let offset = 0; offset < pulseAccounts.length; offset += BATCH_SIZE) {
     const batch = pulseAccounts.slice(offset, offset + BATCH_SIZE);
-    const batchNo = Math.floor(offset / BATCH_SIZE) + 1;
-    const batchCount = Math.ceil(pulseAccounts.length / BATCH_SIZE);
-    console.log(`Pulse batch ${batchNo}/${batchCount}: ${batch.length} profiles`);
-
     try {
-      const results = await fetchPulseBatch(batch);
+      const responseRows = await fetchPulseBatch(batch);
       for (let index = 0; index < batch.length; index += 1) {
         const account = batch[index];
-        const result = results[index] ?? { error: "missing_result" };
-        const base = { ...account, capturedAt: collectedAt, sourceType: "PULSE_PUBLIC_PROFILE" };
-
-        if (result.error) {
-          const error = String(result.error);
-          observations.push({ ...base, error, detail: result.detail ?? null });
-          errors.push(`${account.entityName} ${account.platform} @${account.handle}: ${error}`);
-          continue;
-        }
-
-        observations.push({
-          ...base,
-          providerPlatform: result.platform ?? null,
-          providerHandle: result.handle ?? null,
-          providerName: result.name ?? null,
-          followers: numericOrNull(result.followers),
-          following: numericOrNull(result.following),
-          posts: numericOrNull(result.posts),
-          likes: numericOrNull(result.likes),
-          views: numericOrNull(result.views),
-          verified: typeof result.verified === "boolean" ? result.verified : null,
-          avatar: result.avatar ?? null,
-          audienceMetric: "FOLLOWERS",
+        const row = responseRows[index] ?? {};
+        const error = row.error ? String(row.error) : null;
+        results.push({
+          ...account,
+          capturedAt,
+          sourceType: "PULSE_PUBLIC_PROFILE",
+          providerPlatform: row.platform ?? null,
+          providerHandle: row.handle ?? null,
+          providerName: row.name ?? null,
+          followers: error ? null : numericOrNull(row.followers),
+          following: error ? null : numericOrNull(row.following),
+          posts: error ? null : numericOrNull(row.posts),
+          likes: error ? null : numericOrNull(row.likes),
+          views: null,
+          verified: error ? null : row.verified ?? null,
+          avatar: error ? null : row.avatar ?? null,
+          audienceMetric: account.platform === "YOUTUBE" ? "SUBSCRIBERS" : "FOLLOWERS",
           precision: "PUBLIC_PROFILE",
-          engagementMetric: account.platform === "TIKTOK" ? "TOTAL_LIKES" : null,
+          engagementMetric: account.platform === "TIKTOK" && !error ? "TOTAL_LIKES" : null,
+          ...(error ? { error, detail: row.detail ?? null } : {}),
         });
+        if (error) errors.push(`${account.entitySlug}:${account.platform}:${account.handle}: ${error}`);
       }
     } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
       for (const account of batch) {
-        observations.push({ ...account, capturedAt: collectedAt, sourceType: "PULSE_PUBLIC_PROFILE", error: "batch_failed", detail: message });
-        errors.push(`${account.entityName} ${account.platform} @${account.handle}: ${message}`);
+        const message = error instanceof Error ? error.message : String(error);
+        results.push({ ...account, capturedAt, sourceType: "PULSE_PUBLIC_PROFILE", followers: null, following: null, posts: null, likes: null, views: null, error: "batch_failed", detail: message });
+        errors.push(`${account.entitySlug}:${account.platform}:${account.handle}: ${message}`);
       }
     }
-
     if (offset + BATCH_SIZE < pulseAccounts.length) await sleep(BATCH_DELAY_MS);
   }
 
+  const youtubeAccounts = accounts.filter((account) => account.platform === "YOUTUBE");
   for (let index = 0; index < youtubeAccounts.length; index += 1) {
     const account = youtubeAccounts[index];
-    const base = { ...account, capturedAt: collectedAt, sourceType: "YOUTUBE_PUBLIC_ABOUT" };
-    console.log(`YouTube ${index + 1}/${youtubeAccounts.length}: ${account.entityName} ${account.handle}`);
-
     try {
-      const result = await fetchYouTubeProfile(account);
-      observations.push({
-        ...base,
-        sourceUrl: result.sourceUrl,
-        providerPlatform: result.platform,
-        providerHandle: result.handle,
-        providerName: result.name,
-        followers: result.followers,
+      const row = await fetchYouTubeProfile(account);
+      results.push({
+        ...account,
+        capturedAt,
+        sourceType: "YOUTUBE_PUBLIC_ABOUT",
+        sourceUrl: row.sourceUrl,
+        providerPlatform: "youtube",
+        providerHandle: row.handle,
+        providerName: row.name,
+        followers: numericOrNull(row.followers),
         following: null,
-        posts: result.posts,
+        posts: numericOrNull(row.posts),
         likes: null,
-        views: result.views,
-        viewsPrecision: result.viewsPrecision,
+        views: numericOrNull(row.views),
+        viewsPrecision: row.viewsPrecision,
         verified: null,
-        avatar: result.avatar,
+        avatar: row.avatar,
+        parserVersion: row.parserVersion,
         audienceMetric: "SUBSCRIBERS",
         precision: "PUBLIC_ABBREVIATED",
         engagementMetric: "TOTAL_CHANNEL_VIEWS",
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      observations.push({ ...base, error: "youtube_public_about_failed", detail: message });
-      errors.push(`${account.entityName} ${account.platform} @${account.handle}: youtube_public_about_failed`);
+      results.push({ ...account, capturedAt, sourceType: "YOUTUBE_PUBLIC_ABOUT", followers: null, following: null, posts: null, likes: null, views: null, parserVersion: YOUTUBE_PARSER_VERSION, error: "youtube_about_failed", detail: message });
+      errors.push(`${account.entitySlug}:${account.platform}:${account.handle}: ${message}`);
     }
-
     if (index + 1 < youtubeAccounts.length) await sleep(YOUTUBE_DELAY_MS);
   }
 
-  const successful = observations.filter((row) => !row.error && Number.isFinite(row.followers)).length;
   const snapshot = {
     date,
-    collectedAt,
+    collectedAt: capturedAt,
     complete: true,
     attempted: accounts.length,
-    successful,
-    failed: accounts.length - successful,
+    successful: results.filter((row) => !row.error).length,
+    failed: results.filter((row) => row.error).length,
     source: {
       method: "one-public-profile-read-per-account-per-jst-day",
-      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses one public channel About-page read so subscriber/video/view totals are captured without a second channel access.",
+      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses aboutChannelViewModel from one public channel About-page read.",
     },
     sources: [
       { name: "Pulse", url: "https://pulse.walls.sh/docs", platforms: ["X", "INSTAGRAM", "TIKTOK"] },
-      { name: "YouTube public About page", url: "https://www.youtube.com/", platforms: ["YOUTUBE"] },
+      { name: "YouTube public About page", url: "https://www.youtube.com/", platforms: ["YOUTUBE"], parserVersion: YOUTUBE_PARSER_VERSION },
     ],
-    accounts: observations,
+    accounts: results,
     errors,
   };
 
   const serialized = `${JSON.stringify(snapshot, null, 2)}\n`;
-  await writeFile(historyFile, serialized);
+  await writeFile(historyPath, serialized);
+  await writeFile(publicHistoryPath, serialized);
   await writeFile(path.join(LIVE_DIR, "latest.json"), serialized);
   await writeFile(path.join(PUBLIC_DATA_DIR, "latest.json"), serialized);
-  await mkdir(path.join(PUBLIC_DATA_DIR, "history"), { recursive: true });
-  await writeFile(path.join(PUBLIC_DATA_DIR, "history", `${date}.json`), serialized);
   await rebuildSeries(primaryGroups);
 
-  console.log(`Saved ${successful}/${accounts.length} follower/subscriber observations for ${date} JST.`);
+  console.log(`Daily snapshot ${date}: ${snapshot.successful}/${snapshot.attempted} profiles captured.`);
+  if (errors.length) console.warn(`${errors.length} profile(s) unavailable; stored as missing.`);
 }
 
 main().catch((error) => {
