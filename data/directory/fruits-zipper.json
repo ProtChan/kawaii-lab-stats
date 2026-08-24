@@ -3,7 +3,7 @@
   "name": "FRUITS ZIPPER",
   "type": "GROUP",
   "category": "DEBUTED",
-  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "verifiedAt": "2026-08-24T20:20:00+09:00",
   "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
   "accounts": [
     { "platform": "X", "handle": "FRUITS_ZIPPER", "url": "https://x.com/FRUITS_ZIPPER" },
@@ -27,7 +27,7 @@
         { "platform": "X", "handle": "suzuka_fz1124", "url": "https://x.com/suzuka_fz1124" },
         { "platform": "INSTAGRAM", "handle": "tarasuzuka24", "url": "https://www.instagram.com/tarasuzuka24/" },
         { "platform": "TIKTOK", "handle": "oooooossssss24", "url": "https://www.tiktok.com/@oooooossssss24" },
-        { "platform": "YOUTUBE", "handle": "@おすずのあいまいにぃ", "url": "https://www.youtube.com/@おすずのあいまいにぃ/videos" }
+        { "platform": "YOUTUBE", "handle": "@おすずのあいまいにぃ", "platformId": "UC0XgLUbhD1Wdj_hgknrDo7A", "url": "https://www.youtube.com/channel/UC0XgLUbhD1Wdj_hgknrDo7A", "sourceUrl": "https://www.youtube.com/channel/UC0XgLUbhD1Wdj_hgknrDo7A" }
       ]
     },
     {
