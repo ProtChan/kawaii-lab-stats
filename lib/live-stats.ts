@@ -2,6 +2,8 @@ import latestJson from "@/data/live/latest.json";
 import seriesJson from "@/data/live/series.json";
 import { debutedGroups } from "@/lib/official-directory";
 
+export const TRUSTED_YOUTUBE_PARSER = "ABOUT_CHANNEL_VIEW_MODEL_V1";
+
 export type LiveAccount = {
   entitySlug: string;
   entityName: string;
@@ -14,6 +16,7 @@ export type LiveAccount = {
   profileUrl: string;
   capturedAt: string;
   sourceType: string;
+  parserVersion?: string | null;
   followers?: number | null;
   following?: number | null;
   posts?: number | null;
@@ -64,10 +67,13 @@ export const liveSnapshot = latestJson as Snapshot;
 export const liveSeries = seriesJson as SeriesPoint[];
 export const hasLiveData = Boolean(liveSnapshot.complete && liveSnapshot.collectedAt && liveSnapshot.accounts.length);
 
+export const trustedAccount = (account: LiveAccount) =>
+  account.platform !== "YOUTUBE" || account.parserVersion === TRUSTED_YOUTUBE_PARSER;
+
 const goodAccounts = liveSnapshot.accounts.filter(
-  (account) => !account.error && typeof account.followers === "number" && Number.isFinite(account.followers),
+  (account) => !account.error && trustedAccount(account) && typeof account.followers === "number" && Number.isFinite(account.followers),
 );
-const metricAccounts = liveSnapshot.accounts.filter((account) => !account.error);
+const metricAccounts = liveSnapshot.accounts.filter((account) => !account.error && trustedAccount(account));
 
 const previousPoint = liveSeries.length >= 2 ? liveSeries[liveSeries.length - 2] : null;
 
