@@ -13,6 +13,7 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:seed": "node prisma/seed.mjs",
+    "directory:validate": "node scripts/validate-directory.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "collect:x": "node scripts/collect-x.mjs",
     "collect:instagram": "node scripts/collect-instagram.mjs",
