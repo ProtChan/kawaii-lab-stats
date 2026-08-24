@@ -2,7 +2,7 @@ name: Daily public social snapshot
 
 on:
   schedule:
-    - cron: "8 10 * * *"
+    - cron: "0 15 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -55,6 +55,6 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Cadence: once per JST day at 19:08 JST."
+          echo "Cadence: once per JST day at 00:00 JST (15:00 UTC)."
           echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
           echo "Raw public output: public/data/latest.json and public/data/history/YYYY-MM-DD.json"
