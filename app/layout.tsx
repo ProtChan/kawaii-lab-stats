@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./visuals.css";
 
 export const metadata: Metadata = {
   title: "KAWAII LAB. Stats",
