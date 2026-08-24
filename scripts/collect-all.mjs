@@ -44,5 +44,8 @@ for (const job of jobs) {
 console.log("\nCollection summary");
 for (const result of results) console.log(`- ${result.name}: ${result.status}`);
 
+for (const result of results.filter((item) => item.status === "PARTIAL")) {
+  console.warn(`⚠ ${result.name}: partial collection; usable snapshots were kept.`);
+}
+
 if (results.some((result) => result.status === "FAILED")) process.exitCode = 1;
-else if (results.some((result) => result.status === "PARTIAL")) process.exitCode = 2;
