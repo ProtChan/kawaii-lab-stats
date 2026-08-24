@@ -2,15 +2,8 @@ name: Daily public social snapshot
 
 on:
   schedule:
-    - cron: "5 10 * * *"
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/collect-daily-public.yml"
-      - "scripts/collect-daily-public.mjs"
-      - "scripts/validate-directory.mjs"
-      - "data/directory/**"
-      - "package.json"
+    - cron: "30 10 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -58,6 +51,6 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Cadence: once per JST day at 19:05 JST."
+          echo "Cadence: once per JST day at 19:30 JST."
           echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
           echo "Raw public output: public/data/latest.json and public/data/history/YYYY-MM-DD.json"
