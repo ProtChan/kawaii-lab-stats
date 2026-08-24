@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { GrowthChart } from "@/components/growth-chart";
 import { SiteNav } from "@/components/site-nav";
 import { allMembers, getMember, getMemberStats, getMemberTimeline, memberGrowth } from "@/lib/analytics";
+import { trustedAccount } from "@/lib/live-stats";
 
 const fmt = (value: number | null) => value == null ? "—" : new Intl.NumberFormat("ja-JP").format(value);
 const signed = (value: number | null) => value == null ? "—" : `${value >= 0 ? "+" : ""}${fmt(value)}`;
@@ -64,12 +65,16 @@ export default async function MemberPage({ params }: { params: Promise<{ slug: s
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">SOCIAL ACCOUNTS</p><h2>アカウント別観測値</h2></div><span>raw public-profile observations</span></div>
         <div className="accountDataGrid">
-          {liveAccounts.map((account) => (
-            <a className={`accountDataCard ${account.error ? "isMissing" : ""}`} href={account.profileUrl} target="_blank" rel="noreferrer" key={`${account.platform}-${account.handle}`}>
-              <div><span>{account.platform}</span><strong>@{account.handle.replace(/^@/, "")}</strong></div>
-              {account.error ? <><b>Unavailable</b><small>{account.error}</small></> : <><b>{fmt(account.followers ?? null)}</b><small>{account.platform === "YOUTUBE" ? "subscribers" : "followers"}{account.platform === "TIKTOK" && account.likes != null ? ` · ${fmt(account.likes)} likes` : ""}{account.platform === "YOUTUBE" && account.views != null ? ` · ${fmt(account.views)} views` : ""}</small></>}
-            </a>
-          ))}
+          {liveAccounts.map((account) => {
+            const trusted = trustedAccount(account);
+            const unavailable = Boolean(account.error) || !trusted;
+            return (
+              <a className={`accountDataCard ${unavailable ? "isMissing" : ""}`} href={account.profileUrl} target="_blank" rel="noreferrer" key={`${account.platform}-${account.handle}`}>
+                <div><span>{account.platform}</span><strong>@{account.handle.replace(/^@/, "")}</strong></div>
+                {unavailable ? <><b>Unavailable</b><small>{account.error ?? "parser result excluded from analytics"}</small></> : <><b>{fmt(account.followers ?? null)}</b><small>{account.platform === "YOUTUBE" ? "subscribers" : "followers"}{account.platform === "TIKTOK" && account.likes != null ? ` · ${fmt(account.likes)} likes` : ""}{account.platform === "YOUTUBE" && account.views != null ? ` · ${fmt(account.views)} views` : ""}</small></>}
+              </a>
+            );
+          })}
         </div>
       </section>
 
