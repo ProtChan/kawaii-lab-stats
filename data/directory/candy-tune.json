@@ -1,0 +1,52 @@
+{
+  "slug": "candy-tune",
+  "name": "CANDY TUNE",
+  "type": "GROUP",
+  "category": "DEBUTED",
+  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
+  "accounts": [
+    { "platform": "X", "handle": "candy_tune_", "url": "https://x.com/candy_tune_" },
+    { "platform": "INSTAGRAM", "handle": "candy__tune", "url": "https://www.instagram.com/candy__tune" },
+    { "platform": "TIKTOK", "handle": "candy_tune", "url": "https://www.tiktok.com/@candy_tune" },
+    { "platform": "YOUTUBE", "handle": "@candy_tune", "url": "https://www.youtube.com/@candy_tune" }
+  ],
+  "members": [
+    { "slug": "rino-fukuyama", "name": "福山 梨乃", "accounts": [
+      { "platform": "X", "handle": "rino_ct1224", "url": "https://x.com/rino_ct1224" },
+      { "platform": "INSTAGRAM", "handle": "rinomaru_", "url": "https://www.instagram.com/rinomaru_/" },
+      { "platform": "TIKTOK", "handle": "rinomaru_", "url": "https://www.tiktok.com/@rinomaru_" }
+    ]},
+    { "slug": "mizuki-kirihara", "name": "桐原 美月", "accounts": [
+      { "platform": "X", "handle": "mizuki_ct0221", "url": "https://x.com/mizuki_ct0221" },
+      { "platform": "INSTAGRAM", "handle": "kirihara_mizuki", "url": "https://www.instagram.com/kirihara_mizuki/" },
+      { "platform": "TIKTOK", "handle": "kirihara_mizuki", "url": "https://www.tiktok.com/@kirihara_mizuki" }
+    ]},
+    { "slug": "natsu-minami", "name": "南 なつ", "accounts": [
+      { "platform": "X", "handle": "natsu_ct0317", "url": "https://x.com/natsu_ct0317" },
+      { "platform": "INSTAGRAM", "handle": "nattanntan", "url": "https://www.instagram.com/nattanntan/" },
+      { "platform": "TIKTOK", "handle": "nattanntan", "url": "https://www.tiktok.com/@nattanntan" }
+    ]},
+    { "slug": "nanako-ogawa", "name": "小川 奈々子", "accounts": [
+      { "platform": "X", "handle": "nachico_ct1001", "url": "https://x.com/nachico_ct1001" },
+      { "platform": "INSTAGRAM", "handle": "__nchisan__", "url": "https://www.instagram.com/__nchisan__/" },
+      { "platform": "TIKTOK", "handle": "__nachisan__", "url": "https://www.tiktok.com/@__nachisan__" }
+    ]},
+    { "slug": "kotomi-tachibana", "name": "立花 琴未", "accounts": [
+      { "platform": "X", "handle": "kotomi_ct0525", "url": "https://x.com/kotomi_ct0525" },
+      { "platform": "INSTAGRAM", "handle": "kotomi_5chan", "url": "https://www.instagram.com/kotomi_5chan/" },
+      { "platform": "TIKTOK", "handle": "kotomi_5chan", "url": "https://www.tiktok.com/@kotomi_5chan" }
+    ]},
+    { "slug": "shizuka-miyano", "name": "宮野 静", "accounts": [
+      { "platform": "X", "handle": "shizuka_ct0530", "url": "https://x.com/shizuka_ct0530" },
+      { "platform": "INSTAGRAM", "handle": "miyano_shizuka", "url": "https://www.instagram.com/miyano_shizuka" },
+      { "platform": "TIKTOK", "handle": "miyano_shicha", "url": "https://www.tiktok.com/@miyano_shicha" }
+    ]},
+    { "slug": "bibian-murakawa", "name": "村川 緋杏", "accounts": [
+      { "platform": "X", "handle": "bibian_ct1203", "url": "https://x.com/bibian_ct1203" },
+      { "platform": "INSTAGRAM", "handle": "murakawabibiann", "url": "https://www.instagram.com/murakawabibiann/" },
+      { "platform": "TIKTOK", "handle": "murakawabibiann", "url": "https://www.tiktok.com/@murakawabibiann" },
+      { "platform": "YOUTUBE", "handle": "@murakawabibiann", "url": "https://www.youtube.com/@murakawabibiann" }
+    ]}
+  ]
+}
