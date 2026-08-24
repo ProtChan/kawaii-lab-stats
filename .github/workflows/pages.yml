@@ -24,6 +24,8 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install
+      - name: Validate official account directory
+        run: npm run directory:validate
       - name: Build static demo
         run: npm run build
       - name: Upload Pages artifact
