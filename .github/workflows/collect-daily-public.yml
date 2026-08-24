@@ -1,0 +1,63 @@
+name: Daily public social snapshot
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/collect-daily-public.yml"
+      - "scripts/collect-daily-public.mjs"
+      - "scripts/validate-directory.mjs"
+      - "data/directory/**"
+      - "package.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-public-social-snapshot
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate canonical official-account directory
+        run: npm run directory:validate
+
+      - name: Collect each canonical public profile once for the JST day
+        run: npm run collect:daily-public
+
+      - name: Commit the daily snapshot
+        shell: bash
+        run: |
+          if git diff --quiet -- data/live public/data && [ -z "$(git status --porcelain -- data/live public/data)" ]; then
+            echo "No new daily snapshot to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live public/data
+          git commit -m "data: daily social snapshot $(TZ=Asia/Tokyo date +%F)"
+          git push
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "Cadence: once per JST day."
+          echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
+          echo "Raw public output: public/data/latest.json and public/data/history/YYYY-MM-DD.json"
