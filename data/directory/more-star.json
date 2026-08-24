@@ -3,7 +3,7 @@
   "name": "MORE STAR",
   "type": "GROUP",
   "category": "DEBUTED",
-  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "verifiedAt": "2026-08-24T18:15:00+09:00",
   "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
   "accounts": [
     { "platform": "X", "handle": "MORE_STAR_", "url": "https://x.com/MORE_STAR_" },
@@ -27,7 +27,7 @@
       { "platform": "INSTAGRAM", "handle": "nanaka_MS0707", "url": "https://www.instagram.com/nanaka_MS0707" },
       { "platform": "TIKTOK", "handle": "nanaka.0707", "url": "https://www.tiktok.com/@nanaka.0707" }
     ]},
-    { "slug": "karin-suzuki", "name": "鈴木 花梨", "accounts": [
+    { "slug": "karin-suzuki", "name": "鈴木 花梨", "status": "HIATUS", "statusSourceUrl": "https://morestar.asobisystem.com/news/detail/82787", "accounts": [
       { "platform": "X", "handle": "karin_ms0910", "url": "https://x.com/karin_ms0910" },
       { "platform": "INSTAGRAM", "handle": "suzuki.karin0910", "url": "https://instagram.com/suzuki.karin0910" },
       { "platform": "TIKTOK", "handle": "suzuki_karin", "url": "https://www.tiktok.com/@suzuki_karin" }
@@ -52,7 +52,7 @@
       { "platform": "INSTAGRAM", "handle": "ami__morita", "url": "https://www.instagram.com/ami__morita" },
       { "platform": "TIKTOK", "handle": "ami_morita_", "url": "https://www.tiktok.com/@ami_morita_" }
     ]},
-    { "slug": "rushia-yamamoto", "name": "山本 るしあ", "accounts": [
+    { "slug": "rushia-yamamoto", "name": "山本 るしあ", "status": "HIATUS", "statusSourceUrl": "https://morestar.asobisystem.com/news/detail/82787", "accounts": [
       { "platform": "X", "handle": "rushia_ms1013", "url": "https://x.com/rushia_ms1013" },
       { "platform": "INSTAGRAM", "handle": "ruushia_", "url": "https://www.instagram.com/ruushia_" },
       { "platform": "TIKTOK", "handle": "ruushia_", "url": "https://www.tiktok.com/@ruushia_" }
