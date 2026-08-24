@@ -1,4 +1,5 @@
 name: Daily public social snapshot
+# One-time clean recollection trigger for 2026-08-24. The daily guard prevents duplicate reads once the new snapshot is written.
 
 on:
   schedule:
