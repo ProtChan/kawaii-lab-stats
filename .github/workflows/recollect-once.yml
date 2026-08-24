@@ -8,12 +8,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: recollect-2026-08-24
+  group: recollect-clean-aug24
   cancel-in-progress: false
 
 jobs:
   recollect:
-    if: github.head_ref == 'recollect-2026-08-24' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.head_ref == 'recollect-clean-aug24' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
