@@ -1,0 +1,59 @@
+{
+  "slug": "kawaii-lab-south",
+  "name": "KAWAII LAB. SOUTH",
+  "type": "GROUP",
+  "category": "TRAINEE",
+  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
+  "accounts": [
+    { "platform": "INSTAGRAM", "handle": "kawaiilab_south", "url": "https://www.instagram.com/kawaiilab_south" },
+    { "platform": "TIKTOK", "handle": "kawaiilab_south", "url": "https://www.tiktok.com/@kawaiilab_south" }
+  ],
+  "members": [
+    { "slug": "koharu-arimura", "name": "有村 心晴", "accounts": [
+      { "platform": "X", "handle": "koharu_kls0411", "url": "https://x.com/koharu_kls0411" },
+      { "platform": "INSTAGRAM", "handle": "koha_ru411", "url": "https://www.instagram.com/koha_ru411" },
+      { "platform": "TIKTOK", "handle": "__koharu0411", "url": "https://www.tiktok.com/@__koharu0411" }
+    ]},
+    { "slug": "seri-ohkawa", "name": "大川 世莉", "accounts": [
+      { "platform": "X", "handle": "seri_KLS0616", "url": "https://x.com/seri_KLS0616" },
+      { "platform": "INSTAGRAM", "handle": "seri_ohkawa", "url": "https://www.instagram.com/seri_ohkawa" },
+      { "platform": "TIKTOK", "handle": "seri_ohkawa0616", "url": "https://www.tiktok.com/@seri_ohkawa0616" }
+    ]},
+    { "slug": "ayaka-kadokura", "name": "門倉 彩花", "accounts": [
+      { "platform": "X", "handle": "ayaka_kls1202", "url": "https://x.com/ayaka_kls1202" },
+      { "platform": "INSTAGRAM", "handle": "ayaka_mon1202", "url": "https://www.instagram.com/ayaka_mon1202" },
+      { "platform": "TIKTOK", "handle": "ayaka_mon1202", "url": "https://www.tiktok.com/@ayaka_mon1202" }
+    ]},
+    { "slug": "iroha-sawamura", "name": "澤村 いろは", "accounts": [
+      { "platform": "X", "handle": "iroha_KLS0208", "url": "https://x.com/iroha_KLS0208" },
+      { "platform": "INSTAGRAM", "handle": "irohano_iroiro", "url": "https://www.instagram.com/irohano_iroiro" },
+      { "platform": "TIKTOK", "handle": "yasetai_iroha", "url": "https://www.tiktok.com/@yasetai_iroha" }
+    ]},
+    { "slug": "aiko-hamasaki", "name": "濵嵜 愛子", "accounts": [
+      { "platform": "X", "handle": "aiko_KLS1018", "url": "https://x.com/aiko_KLS1018" },
+      { "platform": "INSTAGRAM", "handle": "ai_luvly", "url": "https://www.instagram.com/ai_luvly" },
+      { "platform": "TIKTOK", "handle": "ailuvly", "url": "https://www.tiktok.com/@ailuvly" }
+    ]},
+    { "slug": "nana-matsuda", "name": "松田 奈々", "accounts": [
+      { "platform": "X", "handle": "nana_kls0404", "url": "https://x.com/nana_kls0404" },
+      { "platform": "INSTAGRAM", "handle": "nana___matsuda", "url": "https://www.instagram.com/nana___matsuda" },
+      { "platform": "TIKTOK", "handle": "nana_kawaiilab", "url": "https://www.tiktok.com/@nana_kawaiilab" }
+    ]},
+    { "slug": "mene-morino", "name": "森野 めね", "accounts": [
+      { "platform": "X", "handle": "mene_kls0114", "url": "https://x.com/mene_kls0114" },
+      { "platform": "INSTAGRAM", "handle": "mene_morino", "url": "https://www.instagram.com/mene_morino" },
+      { "platform": "TIKTOK", "handle": "mene_0114", "url": "https://www.tiktok.com/@mene_0114" }
+    ]},
+    { "slug": "mao-kuroda", "name": "黒田 真央", "accounts": [
+      { "platform": "X", "handle": "mao_KLS0519", "url": "https://x.com/mao_KLS0519" },
+      { "platform": "INSTAGRAM", "handle": "mao_kls0519", "url": "https://www.instagram.com/mao_kls0519" },
+      { "platform": "TIKTOK", "handle": "kurodamao", "url": "https://www.tiktok.com/@kurodamao" }
+    ]},
+    { "slug": "kaede-fukumoto", "name": "福本 楓", "accounts": [
+      { "platform": "X", "handle": "kaede_KLS0108", "url": "https://x.com/kaede_KLS0108" },
+      { "platform": "INSTAGRAM", "handle": "kaede_kls018", "url": "https://www.instagram.com/kaede_kls018" },
+      { "platform": "TIKTOK", "handle": "kaede_kls018", "url": "https://www.tiktok.com/@kaede_kls018" }
+    ]}
+  ]
+}
