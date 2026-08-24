@@ -33,7 +33,8 @@ Additional current official sources are stored where needed, including PiKi's of
 - collection-run audit trail
 - YouTube Data API collector
 - X API v2 follower collector
-- generic JSON snapshot importer for Instagram/TikTok/manual/provider observations
+- Instagram Business Discovery collector for eligible Professional accounts
+- generic JSON snapshot importer for unsupported/manual/provider observations
 - GitHub Pages static-demo workflow
 
 ## View the placeholder dashboard locally
@@ -72,7 +73,7 @@ https://protchan.github.io/kawaii-lab-stats/demo/
 https://protchan.github.io/kawaii-lab-stats/directory/
 ```
 
-Because the repository is currently private, Pages availability depends on the GitHub plan. The intended public fanmade release can later make the repository/site public if desired.
+Because the repository is currently private, Pages availability depends on the GitHub plan. GitHub Free personal accounts require a public repository for Pages; GitHub Pro supports Pages from private personal repositories. A Pages site from a private repo is not automatically private — private publication itself is an Enterprise Cloud organization feature.
 
 ## Important: demo values are fictional
 
@@ -162,11 +163,34 @@ Collected metrics:
 
 The collector also resolves and stores the stable X user ID.
 
-## Instagram / TikTok
+## Instagram collection
 
-These are deliberately not backed by an unaudited HTML scraper in the core project. Until compliant API/provider access is selected, snapshots can be imported with provenance.
+For targets that Meta Business Discovery can return, add:
 
-See `docs/collection-strategy.md`.
+```text
+META_ACCESS_TOKEN=...
+META_IG_USER_ID=...
+META_GRAPH_VERSION=...
+```
+
+Then:
+
+```bash
+npm run collect:instagram
+```
+
+Collected metrics:
+
+- followers
+- media/post count
+
+This collector is deliberately partial: targets that are not eligible/discoverable through Business Discovery are recorded as failures for that run and are **not** silently scraped from HTML.
+
+## TikTok
+
+TikTok Research API can query public usernames and return follower/like/video counts, but Research Tools require a separate eligibility/application/approval process. The normal `user.info.stats` API is tied to an authorized user's own profile, so it is not sufficient for a general cross-account KAWAII LAB. tracker.
+
+Until approved research access or another compliant source is available, use the generic snapshot import path. See `docs/collection-strategy.md`.
 
 ## Generic snapshot import
 
@@ -205,8 +229,8 @@ npm run import:snapshots -- ./snapshots.json
 
 1. verify the static build/deployment in GitHub Actions
 2. connect a PostgreSQL host and run the directory seed
-3. collect the first real X and YouTube snapshots
-4. choose compliant Instagram and TikTok collection sources
+3. collect the first real X / YouTube / eligible Instagram snapshots
+4. obtain an approved/compliant TikTok collection source
 5. replace the placeholder dashboard query layer with DB-backed statistics
 6. add member/group detail pages and daily/7d/30d growth calculations
 7. schedule collectors and account-directory change detection
