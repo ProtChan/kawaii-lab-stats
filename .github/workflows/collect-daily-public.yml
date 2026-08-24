@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "8 10 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/collect-daily-public.yml"
 
 permissions:
   contents: write
