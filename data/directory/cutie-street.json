@@ -1,0 +1,56 @@
+{
+  "slug": "cutie-street",
+  "name": "CUTIE STREET",
+  "type": "GROUP",
+  "category": "DEBUTED",
+  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
+  "accounts": [
+    { "platform": "X", "handle": "CUTIE_STREET_", "url": "https://x.com/CUTIE_STREET_" },
+    { "platform": "INSTAGRAM", "handle": "cutie_street_", "url": "https://www.instagram.com/cutie_street_/" },
+    { "platform": "TIKTOK", "handle": "cutie_street", "url": "https://www.tiktok.com/@cutie_street" },
+    { "platform": "YOUTUBE", "handle": "@CUTIE_STREET", "url": "https://www.youtube.com/@CUTIE_STREET" }
+  ],
+  "members": [
+    { "slug": "risa-furusawa", "name": "古澤 里紗", "accounts": [
+      { "platform": "X", "handle": "risa_cs1108", "url": "https://x.com/risa_cs1108" },
+      { "platform": "INSTAGRAM", "handle": "fuuuuu_ri", "url": "https://www.instagram.com/fuuuuu_ri/" },
+      { "platform": "TIKTOK", "handle": "fuuuuu_ri", "url": "https://www.tiktok.com/@fuuuuu_ri" }
+    ]},
+    { "slug": "aika-sano", "name": "佐野 愛花", "accounts": [
+      { "platform": "X", "handle": "aika_cs1126", "url": "https://x.com/aika_cs1126" },
+      { "platform": "INSTAGRAM", "handle": "aika.sano_official", "url": "https://www.instagram.com/aika.sano_official/" },
+      { "platform": "TIKTOK", "handle": "aika_sano_", "url": "https://www.tiktok.com/@aika_sano_" }
+    ]},
+    { "slug": "kana-itakura", "name": "板倉 可奈", "accounts": [
+      { "platform": "X", "handle": "kana_cs1111", "url": "https://x.com/kana_cs1111" },
+      { "platform": "INSTAGRAM", "handle": "kana.sii.i", "url": "https://www.instagram.com/kana.sii.i/" },
+      { "platform": "TIKTOK", "handle": "kana.sii.i", "url": "https://www.tiktok.com/@kana.sii.i" }
+    ]},
+    { "slug": "ayano-masuda", "name": "増田 彩乃", "accounts": [
+      { "platform": "X", "handle": "ayano_cs0526", "url": "https://x.com/ayano_cs0526" },
+      { "platform": "INSTAGRAM", "handle": "m_ayano26", "url": "https://www.instagram.com/m_ayano26/" },
+      { "platform": "TIKTOK", "handle": "m_ayano26", "url": "https://www.tiktok.com/@m_ayano26" }
+    ]},
+    { "slug": "emiru-kawamoto", "name": "川本 笑瑠", "accounts": [
+      { "platform": "X", "handle": "emiru_cs0422", "url": "https://x.com/emiru_cs0422" },
+      { "platform": "INSTAGRAM", "handle": "_emiru._", "url": "https://www.instagram.com/_emiru._/" },
+      { "platform": "TIKTOK", "handle": "_emiru._", "url": "https://www.tiktok.com/@_emiru._" }
+    ]},
+    { "slug": "miyu-umeda", "name": "梅田 みゆ", "accounts": [
+      { "platform": "X", "handle": "miyu_cs0913", "url": "https://x.com/miyu_cs0913" },
+      { "platform": "INSTAGRAM", "handle": "miyu_.0913", "url": "https://www.instagram.com/miyu_.0913/" },
+      { "platform": "TIKTOK", "handle": "miyu_ume", "url": "https://www.tiktok.com/@miyu_ume" }
+    ]},
+    { "slug": "nagisa-manabe", "name": "真鍋 凪咲", "accounts": [
+      { "platform": "X", "handle": "nagisa_cs0628", "url": "https://x.com/nagisa_cs0628" },
+      { "platform": "INSTAGRAM", "handle": "nagisa_manabe", "url": "https://www.instagram.com/nagisa_manabe/" },
+      { "platform": "TIKTOK", "handle": "nagisa_manabe", "url": "https://www.tiktok.com/@nagisa_manabe" }
+    ]},
+    { "slug": "haruka-sakuraba", "name": "桜庭 遥花", "accounts": [
+      { "platform": "X", "handle": "haruka_cs0129", "url": "https://x.com/haruka_cs0129" },
+      { "platform": "INSTAGRAM", "handle": "pa___.ru", "url": "https://www.instagram.com/pa___.ru/" },
+      { "platform": "TIKTOK", "handle": "sakuraba_haruka", "url": "https://www.tiktok.com/@sakuraba_haruka" }
+    ]}
+  ]
+}
