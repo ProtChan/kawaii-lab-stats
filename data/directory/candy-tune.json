@@ -3,7 +3,7 @@
   "name": "CANDY TUNE",
   "type": "GROUP",
   "category": "DEBUTED",
-  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "verifiedAt": "2026-08-24T21:00:00+09:00",
   "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
   "accounts": [
     { "platform": "X", "handle": "candy_tune_", "url": "https://x.com/candy_tune_" },
@@ -35,7 +35,7 @@
     { "slug": "kotomi-tachibana", "name": "立花 琴未", "accounts": [
       { "platform": "X", "handle": "kotomi_ct0525", "url": "https://x.com/kotomi_ct0525" },
       { "platform": "INSTAGRAM", "handle": "kotomi_5chan", "url": "https://www.instagram.com/kotomi_5chan/" },
-      { "platform": "TIKTOK", "handle": "kotomi_5chan", "url": "https://www.tiktok.com/@kotomi_5chan" }
+      { "platform": "TIKTOK", "handle": "kotomi_tachibana", "url": "https://www.tiktok.com/@kotomi_tachibana", "previousHandle": "kotomi_5chan", "sourceNote": "Current profile candidate supplied 2026-08-24; verify on next daily observation." }
     ]},
     { "slug": "shizuka-miyano", "name": "宮野 静", "accounts": [
       { "platform": "X", "handle": "shizuka_ct0530", "url": "https://x.com/shizuka_ct0530" },
