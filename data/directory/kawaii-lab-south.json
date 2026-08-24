@@ -13,7 +13,7 @@
     { "slug": "koharu-arimura", "name": "有村 心晴", "accounts": [
       { "platform": "X", "handle": "koharu_kls0411", "url": "https://x.com/koharu_kls0411" },
       { "platform": "INSTAGRAM", "handle": "koha_ru411", "url": "https://www.instagram.com/koha_ru411" },
-      { "platform": "TIKTOK", "handle": "__koharu0411", "url": "https://www.tiktok.com/@__koharu0411" }
+      { "platform": "TIKTOK", "handle": "koha_ru411", "url": "https://www.tiktok.com/@koha_ru411", "previousHandle": "__koharu0411", "sourceNote": "Recent public posts in June-July 2026 link to @koha_ru411; the main KAWAII LAB profile page still shows the previous handle." }
     ]},
     { "slug": "seri-ohkawa", "name": "大川 世莉", "accounts": [
       { "platform": "X", "handle": "seri_KLS0616", "url": "https://x.com/seri_KLS0616" },
