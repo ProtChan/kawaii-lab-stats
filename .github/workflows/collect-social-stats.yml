@@ -1,25 +1,13 @@
-name: Collect social statistics
+name: Manual API collection (legacy DB path)
 
 on:
-  schedule:
-    - cron: "23 */6 * * *"
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/collect-social-stats.yml"
-      - "scripts/collect-*.mjs"
-      - "scripts/validate-directory.mjs"
-      - "data/directory/**"
-      - "data/collectors/**"
-      - "package.json"
-      - "prisma/schema.prisma"
 
 permissions:
   contents: read
 
 concurrency:
-  group: collect-social-stats
+  group: manual-api-social-stats
   cancel-in-progress: false
 
 jobs:
@@ -35,44 +23,19 @@ jobs:
       META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
       SNAPSHOT_PROVIDER_URL: ${{ secrets.SNAPSHOT_PROVIDER_URL }}
       SNAPSHOT_PROVIDER_TOKEN: ${{ secrets.SNAPSHOT_PROVIDER_TOKEN }}
-      ENABLE_AUTHORIZED_WEB_SCRAPING: ${{ vars.ENABLE_AUTHORIZED_WEB_SCRAPING }}
-      ALLOW_DIRECT_PLATFORM_SCRAPING: ${{ vars.ALLOW_DIRECT_PLATFORM_SCRAPING }}
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-
       - name: Install dependencies
         run: npm install
-
       - name: Validate official account directory
         run: npm run directory:validate
-
-      - name: Check database configuration
-        id: database
-        shell: bash
-        run: |
-          if [ -z "$DATABASE_URL" ]; then
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::DATABASE_URL secret is missing; collection is skipped."
-          else
-            echo "configured=true" >> "$GITHUB_OUTPUT"
-          fi
-
+      - name: Require database
+        run: test -n "$DATABASE_URL"
       - name: Generate Prisma client
-        if: steps.database.outputs.configured == 'true'
         run: npm run db:generate
-
-      - name: Collect all configured sources
-        if: steps.database.outputs.configured == 'true'
+      - name: Collect configured API/provider sources manually
         run: npm run collect:all
-
-      - name: Collection note
-        if: always()
-        run: |
-          echo "Scheduled cadence: every 6 hours."
-          echo "Project/group/unit/member official accounts are included because collectors query every active SocialAccount for each platform."
-          echo "Direct social-platform scraping remains disabled unless explicit permission is recorded and the repository variable is deliberately enabled."
