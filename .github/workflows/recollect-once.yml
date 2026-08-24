@@ -1,0 +1,44 @@
+name: One-time clean recollection
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recollect-2026-08-24
+  cancel-in-progress: false
+
+jobs:
+  recollect:
+    if: github.head_ref == 'recollect-2026-08-24' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Validate canonical directory
+        run: npm run directory:validate
+      - name: Collect 2026-08-24 once
+        run: npm run collect:daily-public
+      - name: Commit clean snapshot to recollection branch
+        shell: bash
+        run: |
+          if git diff --quiet -- data/live public/data && [ -z "$(git status --porcelain -- data/live public/data)" ]; then
+            echo "No new snapshot to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live public/data
+          git commit -m "data: clean 2026-08-24 social snapshot"
+          git push origin HEAD:${{ github.head_ref }}
