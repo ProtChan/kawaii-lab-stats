@@ -15,6 +15,7 @@
     "db:seed": "node prisma/seed.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "collect:x": "node scripts/collect-x.mjs",
+    "collect:instagram": "node scripts/collect-instagram.mjs",
     "import:snapshots": "node scripts/import-snapshots.mjs"
   },
   "prisma": {
