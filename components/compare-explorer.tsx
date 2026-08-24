@@ -11,6 +11,7 @@ const metricLabels: Record<CompareMetricKey, string> = {
   youtubeViews: "YouTube total views",
 };
 
+const platformKeys = ["X", "Instagram", "TikTok", "YouTube"] as const;
 const fmt = (value: number | null) => value == null ? "—" : new Intl.NumberFormat("ja-JP").format(value);
 
 function validMetric(value: string | null): CompareMetricKey {
@@ -128,6 +129,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">CURRENT RANKING</p><h2>{metricLabels[metric]}</h2></div><span>{orderedCandidates.length} candidates</span></div>
+        {metric === "audience" ? <div className="platformLegend">{platformKeys.map((platform) => <span key={platform}><i className={`platformDot platform${platform}`} />{platform}</span>)}</div> : null}
         <div className="compareBarList">
           {orderedCandidates.map((entity, index) => {
             const value = entity.current[metric];
@@ -138,7 +140,15 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
                 <button className="comparePick" onClick={() => toggleEntity(entity.slug)} aria-label={`${entity.name}を比較${isSelected ? "から外す" : "に追加"}`}><span>{isSelected ? "●" : "○"}</span></button>
                 <div className="compareBarMain">
                   <div className="barRankTop"><b>{String(index + 1).padStart(2, "0")}</b><div><strong>{entity.name}</strong><small>{entity.primaryGroupName ?? (entity.type === "GROUP" ? "GROUP / UNIT" : "MEMBER")}</small></div><em>{fmt(value)}</em></div>
-                  <div className="barTrack"><i style={{ width: `${ratio}%` }} /></div>
+                  {metric === "audience" ? (
+                    <div className="barTrack stackedAudience" aria-label={`${entity.name} SNS platform mix`}>
+                      {platformKeys.map((platform) => {
+                        const platformValue = entity.platforms[platform];
+                        const width = max > 0 ? (platformValue / max) * 100 : 0;
+                        return width > 0 ? <i key={platform} className={`platformSegment platform${platform}`} style={{ width: `${width}%` }} title={`${platform}: ${fmt(platformValue)}`} /> : null;
+                      })}
+                    </div>
+                  ) : <div className="barTrack"><i style={{ width: `${ratio}%` }} /></div>}
                 </div>
                 <Link className="detailArrow" href={entity.type === "GROUP" ? `/groups/${entity.slug}` : `/members/${entity.slug}`}>↗</Link>
               </div>
