@@ -1,6 +1,6 @@
 {
   "name": "kawaii-lab-stats",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,6 +14,7 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "node prisma/seed.mjs",
     "directory:validate": "node scripts/validate-directory.mjs",
+    "collect:daily-public": "node scripts/collect-daily-public.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "collect:x": "node scripts/collect-x.mjs",
     "collect:instagram": "node scripts/collect-instagram.mjs",
