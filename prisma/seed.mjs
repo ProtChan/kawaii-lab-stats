@@ -42,7 +42,7 @@ async function upsertGroup(projectId, data) {
       slug: data.slug,
       name: data.name,
       type: "GROUP",
-      status: "ACTIVE",
+      status: data.status ?? "ACTIVE",
       parentId: projectId,
       officialSourceUrl: data.sourceUrl,
       verifiedAt,
@@ -51,7 +51,7 @@ async function upsertGroup(projectId, data) {
     update: {
       name: data.name,
       type: "GROUP",
-      status: "ACTIVE",
+      status: data.status ?? "ACTIVE",
       parentId: projectId,
       officialSourceUrl: data.sourceUrl,
       verifiedAt,
@@ -93,26 +93,31 @@ async function seedPrimaryGroup(projectId, data) {
   for (const memberData of data.members ?? []) {
     if (memberData.relationOnly) continue;
 
+    const memberStatus = memberData.status ?? "ACTIVE";
+    const memberMetadata = {
+      ...(memberData.notes ? { notes: memberData.notes } : {}),
+      ...(memberData.statusSourceUrl ? { statusSourceUrl: memberData.statusSourceUrl } : {}),
+    };
     const member = await prisma.entity.upsert({
       where: { slug: memberData.slug },
       create: {
         slug: memberData.slug,
         name: memberData.name,
         type: "MEMBER",
-        status: "ACTIVE",
+        status: memberStatus,
         parentId: group.id,
         officialSourceUrl: data.sourceUrl,
         verifiedAt,
-        metadata: memberData.notes ? { notes: memberData.notes } : undefined,
+        metadata: Object.keys(memberMetadata).length ? memberMetadata : undefined,
       },
       update: {
         name: memberData.name,
         type: "MEMBER",
-        status: "ACTIVE",
+        status: memberStatus,
         parentId: group.id,
         officialSourceUrl: data.sourceUrl,
         verifiedAt,
-        metadata: memberData.notes ? { notes: memberData.notes } : undefined,
+        metadata: Object.keys(memberMetadata).length ? memberMetadata : undefined,
       },
     });
     memberSlugs.push(member.slug);
