@@ -1,0 +1,65 @@
+name: Collect social statistics
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: collect-social-stats
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+      META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+      META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION }}
+      SNAPSHOT_PROVIDER_URL: ${{ secrets.SNAPSHOT_PROVIDER_URL }}
+      SNAPSHOT_PROVIDER_TOKEN: ${{ secrets.SNAPSHOT_PROVIDER_TOKEN }}
+      ENABLE_AUTHORIZED_WEB_SCRAPING: ${{ vars.ENABLE_AUTHORIZED_WEB_SCRAPING }}
+      ALLOW_DIRECT_PLATFORM_SCRAPING: ${{ vars.ALLOW_DIRECT_PLATFORM_SCRAPING }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check database configuration
+        id: database
+        shell: bash
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::DATABASE_URL secret is missing; collection is skipped."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate Prisma client
+        if: steps.database.outputs.configured == 'true'
+        run: npm run db:generate
+
+      - name: Collect all configured sources
+        if: steps.database.outputs.configured == 'true'
+        run: npm run collect:all
+
+      - name: Collection note
+        if: always()
+        run: |
+          echo "Scheduled cadence: every 6 hours (UTC cron; storage timestamps are absolute)."
+          echo "Group/project official accounts are included because collectors query every active SocialAccount for each platform."
