@@ -4,6 +4,7 @@ import { directorySummary } from "@/lib/official-directory";
 import { hasLiveData, liveGroupStats, liveSummary, liveTimeline } from "@/lib/live-stats";
 
 const fmt = (value: number) => new Intl.NumberFormat("ja-JP").format(value);
+const optionalFmt = (value: number | null) => value == null ? "—" : fmt(value);
 const signed = (value: number | null) => value == null ? "—" : `${value >= 0 ? "+" : ""}${fmt(value)}`;
 
 export default function Home() {
@@ -62,6 +63,7 @@ export default function Home() {
       <nav className="nav">
         <Link href="/demo">Placeholder demo</Link>
         <Link href="/directory">Official accounts ({directorySummary.accounts})</Link>
+        <Link href="/methodology">Methodology</Link>
         <a href="data/latest.json">Raw latest JSON</a>
       </nav>
 
@@ -71,6 +73,19 @@ export default function Home() {
         <article><span>Observed account-sum audience</span><strong>{fmt(liveSummary.observedAudience)}</strong></article>
         <article><span>Successful profiles</span><strong>{liveSummary.successful}/{liveSummary.attempted}</strong></article>
         <article><span>Unavailable today</span><strong>{liveSummary.failed}</strong></article>
+      </section>
+
+      <section className="grid2">
+        <article className="panel">
+          <p className="eyebrow">YOUTUBE REACH</p>
+          <h2>{liveSummary.youtubeViews == null ? "次回取得から計測" : fmt(liveSummary.youtubeViews)}</h2>
+          <p className="lead">追跡対象YouTubeチャンネルの公開「総再生回数」合計。登録者数と同じ日次観測で保存します。</p>
+        </article>
+        <article className="panel">
+          <p className="eyebrow">TIKTOK ENGAGEMENT</p>
+          <h2>{optionalFmt(liveSummary.tiktokLikes)}</h2>
+          <p className="lead">追跡対象TikTokプロフィールの公開「総いいね」合計。これは動画単体いいねではなくプロフィール累計値です。</p>
+        </article>
       </section>
 
       <section className="panel">
@@ -128,6 +143,7 @@ export default function Home() {
           <div className="platformGroup" key={group.slug}>
             <strong>{group.name}</strong>
             <div>{Object.entries(group.platforms).map(([platform, value]) => <span key={platform}>{platform}<b>{fmt(value)}</b></span>)}</div>
+            <small>YouTube 総再生 {optionalFmt(group.youtubeViews)} · TikTok 総いいね {optionalFmt(group.tiktokLikes)}</small>
           </div>
         ))}
       </section>
