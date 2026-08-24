@@ -26,7 +26,9 @@ jobs:
         run: npm install
       - name: Validate official account directory
         run: npm run directory:validate
-      - name: Build static demo
+      - name: Check daily collector syntax
+        run: node --check scripts/collect-daily-public.mjs
+      - name: Build static site
         run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
