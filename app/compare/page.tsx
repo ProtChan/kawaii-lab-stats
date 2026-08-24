@@ -1,20 +1,23 @@
-import Link from "next/link";
+import { CompareExplorer } from "@/components/compare-explorer";
 import { SiteNav } from "@/components/site-nav";
-import { liveGroupStats } from "@/lib/live-stats";
-
-const fmt = (value: number | null) => value == null ? "—" : new Intl.NumberFormat("ja-JP").format(value);
+import { buildComparePayload } from "@/lib/compare-data";
 
 export default function ComparePage() {
-  const groups = [...liveGroupStats].sort((a,b)=>b.ecosystemFollowers-a.ecosystemFollowers);
+  const payload = buildComparePayload();
+
   return (
     <main>
       <SiteNav />
-      <header className="pageHero"><div><p className="eyebrow">COMPARE LAB</p><h1>Compare</h1><p className="lead">比較機能の第一版。現在値を横並びにし、履歴が溜まり次第 Indexed=100 / Growth / Momentum の選択比較へ拡張します。</p></div><span className="badge">PHASE 1</span></header>
-      <section className="tablePanel compareTable">
-        <div className="dataTable compareRow headerRow"><span>Group</span><span>Total</span><span>X</span><span>Instagram</span><span>TikTok</span><span>YouTube</span></div>
-        {groups.map((group)=><Link href={`/groups/${group.slug}`} className="dataTable compareRow" key={group.slug}><strong>{group.name}</strong><b>{fmt(group.ecosystemFollowers)}</b><span>{fmt(group.platforms.X)}</span><span>{fmt(group.platforms.Instagram)}</span><span>{fmt(group.platforms.TikTok)}</span><span>{fmt(group.platforms.YouTube)}</span></Link>)}
-      </section>
-      <section className="notice">次フェーズでは2〜5対象を選択し、Absolute / Growth / Growth % / Indexed / Momentum を同じチャート上で切り替えられる比較UIにします。</section>
+      <header className="pageHero">
+        <div>
+          <p className="eyebrow">COMPARE LAB</p>
+          <h1>Compare</h1>
+          <p className="lead">対象・指標・所属グループをURLに保持する比較画面。ランキングやグループ詳細から、選択済み状態へそのまま遷移できます。</p>
+        </div>
+        <span className="badge">SHAREABLE STATE</span>
+      </header>
+      <CompareExplorer groups={payload.groups} members={payload.members} />
+      <footer>比較URLは scope / metric / group / selected をquery parameterとして保持します。欠測値は0に置換せず、時系列では線を接続しません。</footer>
     </main>
   );
 }
