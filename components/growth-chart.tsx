@@ -3,7 +3,7 @@
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { timeline } from "@/lib/demo-data";
 
-const groups = ["FRUITS ZIPPER", "CANDY TUNE", "CUTIE STREET", "SWEET STEADY"] as const;
+const groups = ["FRUITS ZIPPER", "CANDY TUNE", "SWEET STEADY", "CUTIE STREET", "MORE STAR"] as const;
 
 export function GrowthChart() {
   return (
