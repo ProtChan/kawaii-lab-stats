@@ -15,6 +15,8 @@ The directory currently models:
 - 211 canonical official social accounts across project/group/unit/member records
 - current activity state, including `HIATUS` where officially announced
 
+Group/unit/project official accounts are first-class `SocialAccount` records. They are collected by the same scheduled collectors as member accounts; they are not just metadata for the directory page.
+
 PiKi does not duplicate 松本かれん or 桜庭遥花. They remain members of FRUITS ZIPPER / CUTIE STREET and receive an additional `UNIT` membership.
 
 The main KAWAII LAB. directory source is:
@@ -32,40 +34,19 @@ Additional current official sources are stored where needed, including PiKi's of
 - entity activity status (`ACTIVE`, `HIATUS`, `INACTIVE`)
 - collection-run audit trail
 - YouTube Data API collector
-- X API v2 follower collector
+- X API v2 follower/post collector
 - Instagram Business Discovery collector for eligible Professional accounts
-- generic JSON snapshot importer for unsupported/manual/provider observations
+- provider-backed collector for unsupported platforms/accounts
+- permission-gated web fallback collector for explicitly authorized sources
+- generic JSON snapshot importer
+- GitHub Actions collection schedule every 6 hours
 - GitHub Pages static-demo workflow
 
-## View the placeholder dashboard locally
+## Public demo
 
-The demo does **not** require PostgreSQL.
+The repository is public. The Pages workflow builds a static export from `main`.
 
-```bash
-npm install
-npm run demo
-```
-
-Then open:
-
-```text
-http://localhost:3000/
-http://localhost:3000/demo/
-```
-
-Verified account directory:
-
-```text
-http://localhost:3000/directory/
-```
-
-`npm run demo` binds Next.js to `0.0.0.0`, so another device on the same LAN can also open the computer's local IP on port 3000.
-
-## GitHub Pages demo
-
-`.github/workflows/pages.yml` builds a static export from `main` and deploys it with GitHub Pages.
-
-Once Pages is enabled with **GitHub Actions** as the source, the expected URLs are:
+Expected URLs after GitHub Pages is enabled with **GitHub Actions** as the source:
 
 ```text
 https://protchan.github.io/kawaii-lab-stats/
@@ -73,13 +54,30 @@ https://protchan.github.io/kawaii-lab-stats/demo/
 https://protchan.github.io/kawaii-lab-stats/directory/
 ```
 
-Because the repository is currently private, Pages availability depends on the GitHub plan. GitHub Free personal accounts require a public repository for Pages; GitHub Pro supports Pages from private personal repositories. A Pages site from a private repo is not automatically private — private publication itself is an Enterprise Cloud organization feature.
+The dashboard still uses fictional placeholder statistics until the DB-backed query layer is connected.
+
+## Local demo
+
+The placeholder dashboard does **not** require PostgreSQL.
+
+```bash
+npm install
+npm run demo
+```
+
+Open:
+
+```text
+http://localhost:3000/
+http://localhost:3000/demo/
+http://localhost:3000/directory/
+```
 
 ## Important: demo values are fictional
 
 The follower counts and growth figures in `lib/demo-data.ts` are placeholders for interface development. They are intentionally labeled DEMO and **must not be treated as current statistics**.
 
-The account mappings in `data/directory/` are a separate source-attributed dataset.
+The official account mappings in `data/directory/` are a separate source-attributed dataset.
 
 ## Data model
 
@@ -105,8 +103,8 @@ Important audit fields include:
 - entity/member activity state
 - metric capture time
 - collector/source type
-- optional raw API fragment
-- collector success/partial/failure state
+- optional raw API/provider fragment
+- collection success/partial/failure state
 
 ## Database setup
 
@@ -120,77 +118,137 @@ npm run db:seed
 
 The seed reads JSON files in `data/directory/` and upserts project/group/unit/member/account records. Special-unit relations are processed after primary memberships so PiKi cannot overwrite a member's main group.
 
-## YouTube collection
+## Collection precedence
 
-Add to `.env`:
+Use the most stable compliant source available:
 
-```text
-YOUTUBE_API_KEY=...
+1. official platform API;
+2. approved/licensed provider;
+3. explicitly authorized web collection with provenance recorded;
+4. manual/imported observation;
+5. missing observation.
+
+Do not fabricate a value and do not silently replace a failed API call with an unapproved scraper.
+
+## Unified collection
+
+Run every configured collector:
+
+```bash
+npm run collect:all
 ```
 
-Then:
+Collectors automatically query all active `SocialAccount` rows for the relevant platform, including project, group and unit official accounts.
+
+A platform collector may return `PARTIAL` when some accounts are unavailable. Usable snapshots are still persisted; only a full collector failure makes `collect:all` fail.
+
+## Scheduled collection
+
+`.github/workflows/collect-social-stats.yml` runs every 6 hours and can also be started manually. It additionally validates collector changes pushed to `main`.
+
+Repository **Secrets** used when configured:
+
+```text
+DATABASE_URL
+YOUTUBE_API_KEY
+X_BEARER_TOKEN
+META_ACCESS_TOKEN
+META_IG_USER_ID
+SNAPSHOT_PROVIDER_URL
+SNAPSHOT_PROVIDER_TOKEN
+```
+
+Repository **Variables**:
+
+```text
+META_GRAPH_VERSION
+ENABLE_AUTHORIZED_WEB_SCRAPING=false
+ALLOW_DIRECT_PLATFORM_SCRAPING=false
+```
+
+If `DATABASE_URL` is absent, the scheduled workflow skips collection instead of writing anywhere accidentally.
+
+## YouTube
 
 ```bash
 npm run collect:youtube
 ```
 
-Collected metrics:
+Uses YouTube Data API v3 and stores:
 
-- subscribers
-- channel views
-- video count
+- `SUBSCRIBERS`
+- `VIEWS`
+- `VIDEOS`
 
-The YouTube Data API publicly rounds subscriber counts for channels above 1,000 subscribers, so values are stored exactly as returned instead of pretending to have more precision.
+Public subscriber counts returned by the YouTube Data API can be rounded; the project stores the API value as returned.
 
-## X collection
-
-Add to `.env`:
-
-```text
-X_BEARER_TOKEN=...
-```
-
-Then:
+## X
 
 ```bash
 npm run collect:x
 ```
 
-Collected metrics:
+Uses X API v2 user lookup with `public_metrics` and stores:
 
-- followers
-- post count
+- `FOLLOWERS`
+- `POSTS`
 
-The collector also resolves and stores the stable X user ID.
+The stable X user ID is persisted to survive handle changes.
 
-## Instagram collection
-
-For targets that Meta Business Discovery can return, add:
-
-```text
-META_ACCESS_TOKEN=...
-META_IG_USER_ID=...
-META_GRAPH_VERSION=...
-```
-
-Then:
+## Instagram
 
 ```bash
 npm run collect:instagram
 ```
 
-Collected metrics:
+Uses Meta Business Discovery where the target account is eligible and stores:
 
-- followers
-- media/post count
+- `FOLLOWERS`
+- `POSTS`
 
-This collector is deliberately partial: targets that are not eligible/discoverable through Business Discovery are recorded as failures for that run and are **not** silently scraped from HTML.
+Targets that Meta cannot discover are recorded as unavailable for that run rather than silently HTML-scraped.
 
-## TikTok
+## TikTok and other unsupported observations
 
-TikTok Research API can query public usernames and return follower/like/video counts, but Research Tools require a separate eligibility/application/approval process. The normal `user.info.stats` API is tied to an authorized user's own profile, so it is not sufficient for a general cross-account KAWAII LAB. tracker.
+TikTok's general developer APIs do not provide a simple arbitrary-public-account statistics endpoint for this fan tracker, and Research Tools require separate approval. Automated scraping of TikTok without approval is not used as a default collection path.
 
-Until approved research access or another compliant source is available, use the generic snapshot import path. See `docs/collection-strategy.md`.
+For a licensed/approved provider, configure:
+
+```text
+SNAPSHOT_PROVIDER_URL
+SNAPSHOT_PROVIDER_TOKEN
+```
+
+and run:
+
+```bash
+npm run collect:provider
+```
+
+The provider can return X / Instagram / TikTok / YouTube snapshots and they are normalized into the same `MetricSnapshot` table.
+
+## Authorized web fallback
+
+`scripts/collect-authorized-web.mjs` is deliberately permission-gated. It reads `data/collectors/authorized-web.json` and requires each target to declare:
+
+- entity/platform/metric
+- URL and extraction pattern
+- `termsConfirmed: true`
+- a non-empty `permissionBasis`
+
+It checks `robots.txt` before collection. Direct X / Instagram / TikTok / YouTube domains remain disabled by default and require an explicit repository variable plus recorded authorization.
+
+Enable only when the source permits automated collection:
+
+```text
+ENABLE_AUTHORIZED_WEB_SCRAPING=true
+```
+
+Then:
+
+```bash
+npm run collect:web
+```
 
 ## Generic snapshot import
 
@@ -210,31 +268,31 @@ Example `snapshots.json`:
 ]
 ```
 
-Import:
-
 ```bash
 npm run import:snapshots -- ./snapshots.json
 ```
 
 ## Data-quality decisions already handled
 
-- the KAWAII LAB. and MATES listings point to the same `@kawaiilab.mates` TikTok; it has one canonical owner (`KAWAII LAB. MATES`) rather than duplicate ownership
-- KAWAII LAB. Instagram `@kawaii_lab.2022` is included from an official ASOBISYSTEM release
-- PiKi is a concurrent unit, not a duplicate copy of its two members
+- project/group/unit official accounts are tracked independently from member-account totals
+- KAWAII LAB. and MATES listings that point to the same `@kawaiilab.mates` TikTok have one canonical owner
+- KAWAII LAB. Instagram `@kawaii_lab.2022` is included from an official ASOBISYSTEM source
+- PiKi is a concurrent unit, not duplicate copies of its two members
 - MORE STAR's 鈴木花梨 and 山本るしあ remain members but are marked `HIATUS` according to the current official notice
 - the official MATES profile has a malformed/incorrect TikTok link for 嶋﨑結花, so no TikTok handle is guessed
 - unknown data remains unknown; missing values are never fabricated
 
 ## Next milestones
 
-1. verify the static build/deployment in GitHub Actions
-2. connect a PostgreSQL host and run the directory seed
-3. collect the first real X / YouTube / eligible Instagram snapshots
-4. obtain an approved/compliant TikTok collection source
-5. replace the placeholder dashboard query layer with DB-backed statistics
-6. add member/group detail pages and daily/7d/30d growth calculations
-7. schedule collectors and account-directory change detection
-8. publish methodology/source/data-freshness pages before public launch
+1. add `DATABASE_URL` and run the seed against the persistent PostgreSQL database
+2. add API/provider credentials as GitHub Actions secrets
+3. collect the first real scheduled snapshots
+4. replace placeholder dashboard data with DB-backed latest/24h/7d/30d statistics
+5. add member/group detail pages and growth charts
+6. add directory-change detection and stale-account alerts
+7. publish methodology/source/data-freshness pages
+
+See `docs/collection-strategy.md` for collection and aggregation rules.
 
 ## License / trademarks
 
