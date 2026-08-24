@@ -1,14 +1,14 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { officialGroups, type DirectoryGroup, type DirectoryMember } from "@/lib/official-directory";
-import { liveSnapshot, liveSeries, type LiveAccount } from "@/lib/live-stats";
+import { liveSnapshot, liveSeries, trustedAccount, type LiveAccount } from "@/lib/live-stats";
 
 type RawSnapshot = typeof liveSnapshot;
 
 const platformLabel = (platform: LiveAccount["platform"]) =>
   platform === "INSTAGRAM" ? "Instagram" : platform === "TIKTOK" ? "TikTok" : platform === "YOUTUBE" ? "YouTube" : "X";
 
-const goodFollower = (account: LiveAccount) => !account.error && typeof account.followers === "number" && Number.isFinite(account.followers);
+const goodFollower = (account: LiveAccount) => trustedAccount(account) && !account.error && typeof account.followers === "number" && Number.isFinite(account.followers);
 const goodMetric = (value: unknown) => typeof value === "number" && Number.isFinite(value);
 const sum = (values: number[]) => values.reduce((total, value) => total + value, 0);
 
@@ -64,12 +64,13 @@ export const getMember = (slug: string) => memberMap.get(slug) ?? null;
 export const getGroup = (slug: string) => officialGroups.find((group) => group.slug === slug) ?? null;
 
 export function accountStats(accounts: LiveAccount[]) {
-  const observed = accounts.filter(goodFollower);
+  const trusted = accounts.filter(trustedAccount);
+  const observed = trusted.filter(goodFollower);
   const platformFollowers = { X: 0, Instagram: 0, TikTok: 0, YouTube: 0 };
   for (const account of observed) platformFollowers[platformLabel(account.platform)] += account.followers ?? 0;
 
-  const tiktokLikes = sum(accounts.filter((account) => account.platform === "TIKTOK" && goodMetric(account.likes)).map((account) => account.likes as number));
-  const youtubeViews = sum(accounts.filter((account) => account.platform === "YOUTUBE" && goodMetric(account.views)).map((account) => account.views as number));
+  const tiktokLikes = sum(trusted.filter((account) => account.platform === "TIKTOK" && goodMetric(account.likes)).map((account) => account.likes as number));
+  const youtubeViews = sum(trusted.filter((account) => account.platform === "YOUTUBE" && goodMetric(account.views)).map((account) => account.views as number));
 
   return {
     totalFollowers: sum(observed.map((account) => account.followers ?? 0)),
@@ -120,7 +121,7 @@ export function getGroupTimeline(slug: string) {
   const fromSeries = liveSeries
     .filter((point) => point.groups[slug])
     .map((point) => ({ date: point.date.slice(5), Total: point.groups[slug].ecosystem }));
-  if (fromSeries.length) return fromSeries;
+  if (fromSeries.length > 1) return fromSeries;
 
   return historySnapshots.map((snapshot) => ({
     date: snapshot.date?.slice(5) ?? "—",
