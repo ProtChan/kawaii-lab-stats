@@ -3,7 +3,7 @@
   "name": "KAWAII LAB. MATES",
   "type": "GROUP",
   "category": "TRAINEE",
-  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "verifiedAt": "2026-08-24T21:00:00+09:00",
   "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
   "accounts": [
     { "platform": "INSTAGRAM", "handle": "kawaiilab.mates", "url": "https://www.instagram.com/kawaiilab.mates/" },
@@ -56,8 +56,8 @@
     ]},
     { "slug": "keina-hashimoto", "name": "橋本 けいな", "accounts": [
       { "platform": "X", "handle": "keina_klm0109", "url": "https://x.com/keina_klm0109" },
-      { "platform": "INSTAGRAM", "handle": "keina109", "url": "https://www.instagram.com/keina109" },
-      { "platform": "TIKTOK", "handle": "ke_na0109", "url": "https://www.tiktok.com/@ke_na0109" }
+      { "platform": "INSTAGRAM", "handle": "keina_klm0109", "url": "https://www.instagram.com/keina_klm0109", "previousHandle": "keina109", "sourceNote": "Current profile candidate supplied 2026-08-24; verify on next daily observation." },
+      { "platform": "TIKTOK", "handle": "keina_klm0109", "url": "https://www.tiktok.com/@keina_klm0109", "previousHandle": "ke_na0109", "sourceNote": "Current profile candidate supplied 2026-08-24; verify on next daily observation." }
     ]},
     { "slug": "coco-yamashita", "name": "山下 ここ", "accounts": [
       { "platform": "X", "handle": "coco_klm_0218", "url": "https://x.com/coco_klm_0218" },
