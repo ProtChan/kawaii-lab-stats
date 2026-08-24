@@ -1,29 +1,40 @@
 # KAWAII LAB. Stats
 
-Fanmade / unofficial social-media statistics project for KAWAII LAB. groups and members.
+Fanmade / unofficial social-media statistics project for KAWAII LAB. groups, units and members.
 
 > This project is not affiliated with KAWAII LAB. or its management. Published statistics must include source attribution and collection timestamps.
 
+## Current coverage — verified 2026-08-24 JST
+
+The directory currently models:
+
+- 5 primary groups: FRUITS ZIPPER / CANDY TUNE / SWEET STEADY / CUTIE STREET / MORE STAR
+- 1 concurrent special unit: PiKi
+- 2 trainee units: KAWAII LAB. MATES / KAWAII LAB. SOUTH
+- 59 unique member entities
+- 211 canonical official social accounts across project/group/unit/member records
+- current activity state, including `HIATUS` where officially announced
+
+PiKi does not duplicate 松本かれん or 桜庭遥花. They remain members of FRUITS ZIPPER / CUTIE STREET and receive an additional `UNIT` membership.
+
+The main KAWAII LAB. directory source is:
+
+- https://kawaiilab.asobisystem.com/news/2/
+
+Additional current official sources are stored where needed, including PiKi's official site and MORE STAR's hiatus notice.
+
 ## What is implemented
 
-- Next.js demo analytics dashboard
-- verified official-account directory sourced from the KAWAII LAB. official profile
-- 5 debuted groups: FRUITS ZIPPER / CANDY TUNE / SWEET STEADY / CUTIE STREET / MORE STAR
-- trainee units: KAWAII LAB. MATES / KAWAII LAB. SOUTH
-- 59 member entities
-- 206 canonical official social accounts in the source directory
+- Next.js static demo analytics dashboard
+- verified/source-attributed official-account directory
 - PostgreSQL + Prisma historical snapshot model
-- membership history model for future promotions/transfers
+- primary / trainee / concurrent-unit membership history
+- entity activity status (`ACTIVE`, `HIATUS`, `INACTIVE`)
 - collection-run audit trail
 - YouTube Data API collector
 - X API v2 follower collector
-- generic JSON snapshot importer for temporary/manual/provider data
+- generic JSON snapshot importer for Instagram/TikTok/manual/provider observations
 - GitHub Pages static-demo workflow
-
-The account directory is verified against:
-
-- https://kawaiilab.asobisystem.com/news/2/
-- verification date: 2026-08-24 JST
 
 ## View the placeholder dashboard locally
 
@@ -47,37 +58,27 @@ Verified account directory:
 http://localhost:3000/directory/
 ```
 
-`npm run demo` binds Next.js to `0.0.0.0`, so the development server can also be reached from another device on the same LAN using the computer's local IP and port 3000.
+`npm run demo` binds Next.js to `0.0.0.0`, so another device on the same LAN can also open the computer's local IP on port 3000.
 
 ## GitHub Pages demo
 
 `.github/workflows/pages.yml` builds a static export from `main` and deploys it with GitHub Pages.
 
-Expected project URL after Pages is enabled successfully:
+Once Pages is enabled with **GitHub Actions** as the source, the expected URLs are:
 
 ```text
 https://protchan.github.io/kawaii-lab-stats/
-```
-
-Expected explicit demo URL:
-
-```text
 https://protchan.github.io/kawaii-lab-stats/demo/
-```
-
-Expected directory URL:
-
-```text
 https://protchan.github.io/kawaii-lab-stats/directory/
 ```
 
-Repository Settings → Pages should use **GitHub Actions**. GitHub Pages availability for a private repository depends on the GitHub plan; making the repository public later also fits the intended public fanmade-site use case.
+Because the repository is currently private, Pages availability depends on the GitHub plan. The intended public fanmade release can later make the repository/site public if desired.
 
 ## Important: demo values are fictional
 
 The follower counts and growth figures in `lib/demo-data.ts` are placeholders for interface development. They are intentionally labeled DEMO and **must not be treated as current statistics**.
 
-The account mappings in `data/directory/` are a separate verified dataset.
+The account mappings in `data/directory/` are a separate source-attributed dataset.
 
 ## Data model
 
@@ -86,17 +87,21 @@ Entity
   ├─ PROJECT
   ├─ GROUP
   └─ MEMBER
-       ├─ EntityMembership      historical/current affiliation
+       ├─ EntityMembership
+       │    ├─ PRIMARY
+       │    ├─ TRAINEE
+       │    └─ UNIT
        └─ SocialAccount
-            └─ MetricSnapshot   timestamped observations
+            └─ MetricSnapshot
                   └─ CollectionRun
 ```
 
-Important fields retained for auditability include:
+Important audit fields include:
 
 - stable platform ID when available
 - handle and profile URL
 - directory verification URL/time
+- entity/member activity state
 - metric capture time
 - collector/source type
 - optional raw API fragment
@@ -112,7 +117,7 @@ npm run db:push
 npm run db:seed
 ```
 
-The seed reads the JSON files in `data/directory/` and upserts project/group/member/account records.
+The seed reads JSON files in `data/directory/` and upserts project/group/unit/member/account records. Special-unit relations are processed after primary memberships so PiKi cannot overwrite a member's main group.
 
 ## YouTube collection
 
@@ -187,23 +192,22 @@ Import:
 npm run import:snapshots -- ./snapshots.json
 ```
 
-## Data-quality rules
+## Data-quality decisions already handled
 
-- unknown data remains unknown; never invent missing account mappings
-- one platform account has one canonical owner in the database
-- changing handles should retain a stable platform ID when possible
-- source and capture time travel with every published metric
-- group official-account totals and member-account sums are separate concepts
-- cross-platform follower sums are not called unique audience/reach
-- estimates or inferred values must be labeled explicitly
+- the KAWAII LAB. and MATES listings point to the same `@kawaiilab.mates` TikTok; it has one canonical owner (`KAWAII LAB. MATES`) rather than duplicate ownership
+- KAWAII LAB. Instagram `@kawaii_lab.2022` is included from an official ASOBISYSTEM release
+- PiKi is a concurrent unit, not a duplicate copy of its two members
+- MORE STAR's 鈴木花梨 and 山本るしあ remain members but are marked `HIATUS` according to the current official notice
+- the official MATES profile has a malformed/incorrect TikTok link for 嶋﨑結花, so no TikTok handle is guessed
+- unknown data remains unknown; missing values are never fabricated
 
 ## Next milestones
 
-1. verify/build the deployment in CI
-2. connect a PostgreSQL host and run the official-directory seed
+1. verify the static build/deployment in GitHub Actions
+2. connect a PostgreSQL host and run the directory seed
 3. collect the first real X and YouTube snapshots
 4. choose compliant Instagram and TikTok collection sources
-5. replace the demo dashboard query layer with DB-backed statistics
+5. replace the placeholder dashboard query layer with DB-backed statistics
 6. add member/group detail pages and daily/7d/30d growth calculations
 7. schedule collectors and account-directory change detection
 8. publish methodology/source/data-freshness pages before public launch
