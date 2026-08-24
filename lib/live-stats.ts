@@ -18,8 +18,11 @@ export type LiveAccount = {
   following?: number | null;
   posts?: number | null;
   likes?: number | null;
+  views?: number | null;
+  viewsPrecision?: string | null;
   verified?: boolean | null;
   audienceMetric?: "FOLLOWERS" | "SUBSCRIBERS";
+  engagementMetric?: "TOTAL_LIKES" | "TOTAL_CHANNEL_VIEWS" | null;
   precision?: string;
   error?: string;
   detail?: string | null;
@@ -47,6 +50,10 @@ type SeriesPoint = {
       members: number;
       ecosystem: number;
       platforms: Record<"X" | "Instagram" | "TikTok" | "YouTube", number>;
+      youtubeViews?: number | null;
+      youtubeViewAccounts?: number;
+      tiktokLikes?: number | null;
+      tiktokLikeAccounts?: number;
       observedAccounts: number;
       expectedAccounts: number;
     }
@@ -60,15 +67,29 @@ export const hasLiveData = Boolean(liveSnapshot.complete && liveSnapshot.collect
 const goodAccounts = liveSnapshot.accounts.filter(
   (account) => !account.error && typeof account.followers === "number" && Number.isFinite(account.followers),
 );
+const metricAccounts = liveSnapshot.accounts.filter((account) => !account.error);
 
 const previousPoint = liveSeries.length >= 2 ? liveSeries[liveSeries.length - 2] : null;
+
+function sumMetric(items: LiveAccount[], key: "followers" | "likes" | "views"): number | null {
+  const values = items
+    .map((account) => account[key])
+    .filter((value): value is number => typeof value === "number" && Number.isFinite(value));
+  return values.length ? values.reduce((total, value) => total + value, 0) : null;
+}
+
+function sumOptional(values: Array<number | null>): number | null {
+  const finite = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
+  return finite.length ? finite.reduce((total, value) => total + value, 0) : null;
+}
 
 export const liveGroupStats = debutedGroups.map((group) => {
   const all = liveSnapshot.accounts.filter((account) => account.groupSlug === group.slug);
   const good = goodAccounts.filter((account) => account.groupSlug === group.slug);
+  const metrics = metricAccounts.filter((account) => account.groupSlug === group.slug);
   const official = good.filter((account) => account.entityType === "GROUP" && account.entitySlug === group.slug);
   const members = good.filter((account) => account.entityType === "MEMBER");
-  const sum = (items: LiveAccount[]) => items.reduce((total, account) => total + (account.followers ?? 0), 0);
+  const sumFollowers = (items: LiveAccount[]) => items.reduce((total, account) => total + (account.followers ?? 0), 0);
   const platforms = { X: 0, Instagram: 0, TikTok: 0, YouTube: 0 };
 
   for (const account of good) {
@@ -76,17 +97,23 @@ export const liveGroupStats = debutedGroups.map((group) => {
     platforms[platform] += account.followers ?? 0;
   }
 
-  const ecosystem = sum(good);
+  const ecosystem = sumFollowers(good);
   const previous = previousPoint?.groups[group.slug]?.ecosystem ?? null;
   const dailyGain = previous == null ? null : ecosystem - previous;
+  const youtubeRows = metrics.filter((account) => account.platform === "YOUTUBE");
+  const tiktokRows = metrics.filter((account) => account.platform === "TIKTOK");
 
   return {
     slug: group.slug,
     name: group.name,
-    officialFollowers: sum(official),
-    memberFollowers: sum(members),
+    officialFollowers: sumFollowers(official),
+    memberFollowers: sumFollowers(members),
     ecosystemFollowers: ecosystem,
     platforms,
+    youtubeViews: sumMetric(youtubeRows, "views"),
+    youtubeViewAccounts: youtubeRows.filter((account) => typeof account.views === "number" && Number.isFinite(account.views)).length,
+    tiktokLikes: sumMetric(tiktokRows, "likes"),
+    tiktokLikeAccounts: tiktokRows.filter((account) => typeof account.likes === "number" && Number.isFinite(account.likes)).length,
     observedAccounts: good.length,
     expectedAccounts: all.length,
     dailyGain,
@@ -107,4 +134,6 @@ export const liveSummary = {
   successful: liveSnapshot.successful ?? goodAccounts.length,
   failed: liveSnapshot.failed ?? liveSnapshot.accounts.filter((account) => account.error).length,
   observedAudience: liveGroupStats.reduce((sum, group) => sum + group.ecosystemFollowers, 0),
+  youtubeViews: sumOptional(liveGroupStats.map((group) => group.youtubeViews)),
+  tiktokLikes: sumOptional(liveGroupStats.map((group) => group.tiktokLikes)),
 };
