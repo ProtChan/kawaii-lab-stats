@@ -1,0 +1,12 @@
+{
+  "date": null,
+  "collectedAt": null,
+  "complete": false,
+  "source": {
+    "name": "Pulse",
+    "url": "https://pulse.walls.sh/docs",
+    "method": "public-profile-read"
+  },
+  "accounts": [],
+  "errors": []
+}
