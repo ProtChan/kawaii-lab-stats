@@ -19,6 +19,12 @@ enum EntityStatus {
   INACTIVE
 }
 
+enum MembershipKind {
+  PRIMARY
+  TRAINEE
+  UNIT
+}
+
 enum SocialPlatform {
   X
   INSTAGRAM
@@ -63,18 +69,19 @@ model Entity {
 }
 
 model EntityMembership {
-  id        String   @id @default(cuid())
+  id        String         @id @default(cuid())
   memberId  String
   parentId  String
-  member    Entity   @relation("MemberMemberships", fields: [memberId], references: [id], onDelete: Cascade)
-  parent    Entity   @relation("ParentMemberships", fields: [parentId], references: [id], onDelete: Cascade)
+  kind      MembershipKind @default(PRIMARY)
+  member    Entity         @relation("MemberMemberships", fields: [memberId], references: [id], onDelete: Cascade)
+  parent    Entity         @relation("ParentMemberships", fields: [parentId], references: [id], onDelete: Cascade)
   validFrom DateTime?
   validTo   DateTime?
   sourceUrl String?
-  createdAt DateTime @default(now())
+  createdAt DateTime       @default(now())
 
-  @@index([memberId, validTo])
-  @@index([parentId, validTo])
+  @@index([memberId, kind, validTo])
+  @@index([parentId, kind, validTo])
 }
 
 model SocialAccount {
