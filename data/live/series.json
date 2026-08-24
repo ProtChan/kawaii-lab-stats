@@ -1,1 +1,78 @@
-[]
+[
+  {
+    "date": "2026-08-24",
+    "collectedAt": "2026-08-24T10:53:31.432Z",
+    "groups": {
+      "candy-tune": {
+        "name": "CANDY TUNE",
+        "official": 1305151,
+        "members": 4101373,
+        "ecosystem": 5406524,
+        "platforms": {
+          "X": 1139619,
+          "Instagram": 2339000,
+          "TikTok": 1426905,
+          "YouTube": 501000
+        },
+        "observedAccounts": 25,
+        "expectedAccounts": 26
+      },
+      "cutie-street": {
+        "name": "CUTIE STREET",
+        "official": 2765151,
+        "members": 8615364,
+        "ecosystem": 11380515,
+        "platforms": {
+          "X": 1650644,
+          "Instagram": 4240000,
+          "TikTok": 4711871,
+          "YouTube": 778000
+        },
+        "observedAccounts": 28,
+        "expectedAccounts": 28
+      },
+      "fruits-zipper": {
+        "name": "FRUITS ZIPPER",
+        "official": 2870782,
+        "members": 8712904,
+        "ecosystem": 11583686,
+        "platforms": {
+          "X": 2351171,
+          "Instagram": 4449000,
+          "TikTok": 3911115,
+          "YouTube": 872400
+        },
+        "observedAccounts": 27,
+        "expectedAccounts": 28
+      },
+      "more-star": {
+        "name": "MORE STAR",
+        "official": 210475,
+        "members": 852522,
+        "ecosystem": 1062997,
+        "platforms": {
+          "X": 222025,
+          "Instagram": 363000,
+          "TikTok": 440672,
+          "YouTube": 37300
+        },
+        "observedAccounts": 31,
+        "expectedAccounts": 31
+      },
+      "sweet-steady": {
+        "name": "SWEET STEADY",
+        "official": 544238,
+        "members": 2679516,
+        "ecosystem": 3223754,
+        "platforms": {
+          "X": 490658,
+          "Instagram": 1343000,
+          "TikTok": 1218096,
+          "YouTube": 172000
+        },
+        "observedAccounts": 25,
+        "expectedAccounts": 25
+      }
+    }
+  }
+]
