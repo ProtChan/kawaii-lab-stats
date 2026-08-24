@@ -47,7 +47,7 @@ export const officialGroups = [
   piki,
   mates,
   south,
-] as DirectoryGroup[];
+] as unknown as DirectoryGroup[];
 
 export const debutedGroups = officialGroups.filter((group) => group.category === "DEBUTED");
 export const specialUnits = officialGroups.filter((group) => group.category === "SPECIAL_UNIT");
