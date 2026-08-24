@@ -3,11 +3,12 @@
   "name": "KAWAII LAB.",
   "type": "PROJECT",
   "category": "PROJECT",
-  "verifiedAt": "2026-08-24T00:00:00+09:00",
+  "verifiedAt": "2026-08-24T18:15:00+09:00",
   "sourceUrl": "https://kawaiilab.asobisystem.com/news/2/",
   "notes": "The official KAWAII LAB. profile labels @kawaiilab.mates as the project TikTok. It is canonically owned by KAWAII LAB. MATES in this dataset to avoid duplicate ownership of the same platform account.",
   "accounts": [
     { "platform": "X", "handle": "KAWAII__LAB", "url": "https://x.com/KAWAII__LAB" },
-    { "platform": "YOUTUBE", "handle": "@KAWAII_LAB.", "url": "https://www.youtube.com/@KAWAII_LAB." }
+    { "platform": "INSTAGRAM", "handle": "kawaii_lab.2022", "url": "https://www.instagram.com/kawaii_lab.2022/", "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000646.000017258.html" },
+    { "platform": "YOUTUBE", "handle": "@KAWAII_LAB.", "platformId": "UCW8Q9LBGGBgK6a-u0C0h95A", "url": "https://www.youtube.com/@KAWAII_LAB./", "sourceUrl": "https://prtimes.jp/main/html/rd/p/000000646.000017258.html" }
   ]
 }
