@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: daily-public-social-snapshot
@@ -54,3 +56,46 @@ jobs:
           echo "Cadence: once per JST day at 00:00 JST (15:00 UTC)."
           echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
           echo "Raw public output: public/data/latest.json and public/data/history/YYYY-MM-DD.json"
+
+  deploy:
+    name: Build and deploy latest snapshot
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout latest main after snapshot commit
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate official account directory
+        run: npm run directory:validate
+
+      - name: Check daily collector syntax
+        run: node --check scripts/collect-daily-public.mjs
+
+      - name: Build static site with latest snapshot
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
