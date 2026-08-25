@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
+<meta name="referrer" content="no-referrer" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+<title>FX Portfolio Vault</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="lock"><div class="lock-card"><div class="lock-mark">FX</div><h1>Portfolio Vault</h1><p>資産・損益データは暗号化されています。パスワードはこの端末から送信されず、ブラウザ内だけで復号します。</p><div class="field"><input id="pw" type="password" autocomplete="current-password" placeholder="Password" /><button id="unlock">Unlock</button></div><div id="err" class="err"></div><div class="tiny">AES-256-GCM · PBKDF2-SHA256 · no external data connection</div></div></div>
+<div id="app" class="hidden">
+<div class="shell">
+<aside class="sidebar"><div class="brand"><small>PRIVATE CONSOLE</small>FX Vault</div><div class="nav" id="nav"></div><div class="side-foot"><div><span class="status-dot"></span>Encrypted dataset unlocked</div><div id="sideDate"></div></div></aside>
+<main><div class="topbar"><div><div class="eyebrow">Portfolio analytics</div><h1 id="pageTitle">Overview</h1><div class="subtitle" id="subtitle"></div></div><div class="top-actions"><button class="ghost" id="lockBtn">Lock</button></div></div>
+<section id="overview" class="section active"><div id="kpis" class="kpis"></div><div class="grid2"><div class="card chart-card"><div class="chart-head"><div><div class="chart-title">Portfolio curve</div><div class="chart-sub">純資産と累積損益</div></div><div class="seg" id="rangeSeg"></div></div><canvas id="equityChart"></canvas></div><div class="card chart-card"><div class="chart-head"><div><div class="chart-title">Trading pulse</div><div class="chart-sub">日次パフォーマンス統計</div></div></div><div id="pulse" class="stat-list"></div></div></div><div class="card chart-card" style="margin-top:13px"><div class="chart-head"><div><div class="chart-title">Daily P/L</div><div class="chart-sub">日次損益の推移</div></div></div><canvas id="dailyChart"></canvas></div></section>
+<section id="strategies" class="section"><div id="strategyGrid" class="strategy-grid"></div><div class="card chart-card" style="margin-top:13px"><div class="chart-head"><div><div class="chart-title">Strategy performance</div><div class="chart-sub">戦略別の累積損益</div></div></div><canvas id="strategyChart"></canvas></div></section>
+<section id="accounts" class="section"><div id="accountGrid" class="account-grid"></div><div class="note">口座ラベルは元Excelの G / T / ex / H プレフィックスをそのまま採用。評価損益・スワップ・確定損益・入出金の累積値から構成しています。</div></section>
+<section id="ledger" class="section"><div class="card table-card"><div class="table-head"><div><div class="chart-title">Daily ledger</div><div class="chart-sub">新しい日付を上に表示</div></div></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Daily P/L</th><th>Total P/L</th><th>Capital</th><th>Equity</th><th>Multi swap</th><th>Peso</th><th>Synthetic</th><th>Auto</th><th>USD/TRY</th></tr></thead><tbody id="ledgerBody"></tbody></table></div></div></section>
+</main></div><div class="mobile-nav" id="mobileNav"></div></div>
+<script src="data-meta.js"></script>
+<script src="data-0.js"></script>
+<script src="data-1.js"></script>
+<script src="data-2.js"></script>
+<script src="data-3.js"></script>
+<script src="data-4.js"></script>
+<script src="data-5.js"></script>
+<script src="data-6.js"></script>
+<script src="app.js"></script>
+</body></html>
