@@ -1,4 +1,4 @@
-const ENC={...window.__ENC_META,data:window.__ENC_DATA};
+const ENC={...window.__ENC_META,...window.__ENC_PACK};
 let DATA=null, rangeDays=0, active='overview';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const fmt=new Intl.NumberFormat('ja-JP');
@@ -8,7 +8,7 @@ const pct=n=>Number.isFinite(n)?(n>=0?'+':'')+n.toFixed(1)+'%':'—';
 const cls=n=>n>0?'pos':n<0?'neg':'';
 function b64(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0))}
 async function keyFromPassword(p){const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(p),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(ENC.salt),iterations:ENC.iterations,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt'])}
-async function unlock(){const p=$('#pw').value;$('#err').textContent='';if(!p)return;try{const key=await keyFromPassword(p);const raw=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(ENC.iv)},key,b64(ENC.data));DATA=JSON.parse(new TextDecoder().decode(raw));$('#lock').classList.add('hidden');$('#app').classList.remove('hidden');renderAll()}catch(e){$('#err').textContent='パスワードが違います。';$('#pw').select()}}
+async function unlock(){const p=$('#pw').value;$('#err').textContent='';if(!p)return;try{const key=await keyFromPassword(p);const raw=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(ENC.iv)},key,b64(ENC.data));let payload=raw;if(ENC.compression==='gzip'){if(!('DecompressionStream' in window))throw new Error('unsupported');payload=await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()}DATA=JSON.parse(new TextDecoder().decode(payload));$('#lock').classList.add('hidden');$('#app').classList.remove('hidden');renderAll()}catch(e){$('#err').textContent=e.message==='unsupported'?'このブラウザは暗号化データの展開に未対応です。最新版のChrome/Edge/Safariを使用してください。':'パスワードが違います。';$('#pw').select()}}
 $('#unlock').onclick=unlock;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});$('#lockBtn').onclick=()=>location.reload();
 const pages=[['overview','Overview'],['strategies','Strategies'],['accounts','Accounts'],['ledger','Ledger']];
 function makeNav(){for(const target of ['#nav','#mobileNav']){const el=$(target);el.innerHTML=pages.map(([id,n])=>`<button data-page="${id}" class="${id===active?'active':''}">${n}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.page))}}
