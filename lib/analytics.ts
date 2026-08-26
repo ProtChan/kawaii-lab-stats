@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { officialGroups, type DirectoryGroup, type DirectoryMember } from "@/lib/official-directory";
 import { liveSnapshot, type LiveAccount, type Snapshot } from "@/lib/live-stats";
-import { aggregateAccounts, completeDelta, platformLabels, type PlatformLabel } from "@/lib/metrics";
+import { accountSetKey, aggregateAccounts, completeDelta, platformLabels, type PlatformLabel } from "@/lib/metrics";
 
 type RawSnapshot = Snapshot;
 
@@ -101,6 +101,7 @@ export type MemberTimelinePoint = {
   Instagram: number | null;
   TikTok: number | null;
   YouTube: number | null;
+  accountSet: Record<"Total" | PlatformLabel, string>;
 };
 
 function timelinePoint(snapshot: RawSnapshot, rows: LiveAccount[]): MemberTimelinePoint {
@@ -112,6 +113,13 @@ function timelinePoint(snapshot: RawSnapshot, rows: LiveAccount[]): MemberTimeli
     Instagram: aggregate.platforms.Instagram.complete ? aggregate.platforms.Instagram.value : null,
     TikTok: aggregate.platforms.TikTok.complete ? aggregate.platforms.TikTok.value : null,
     YouTube: aggregate.platforms.YouTube.complete ? aggregate.platforms.YouTube.value : null,
+    accountSet: {
+      Total: accountSetKey(rows),
+      X: accountSetKey(rows, "X"),
+      Instagram: accountSetKey(rows, "Instagram"),
+      TikTok: accountSetKey(rows, "TikTok"),
+      YouTube: accountSetKey(rows, "YouTube"),
+    },
   };
 }
 
@@ -123,30 +131,29 @@ export function getGroupTimeline(slug: string): MemberTimelinePoint[] {
   return historySnapshots.map((snapshot) => timelinePoint(snapshot, snapshotRows(snapshot, (account) => account.groupSlug === slug)));
 }
 
-export function memberGrowth(slug: string) {
-  const observations = historySnapshots.map((snapshot) => aggregateAccounts(snapshotRows(snapshot, (account) => account.entitySlug === slug)).audience);
-  const latest = observations.at(-1) ?? null;
-  const previous = observations.at(-2) ?? null;
-  const first7 = observations.length >= 8 ? observations.at(-8) ?? null : null;
-  const first30 = observations.length >= 31 ? observations.at(-31) ?? null : null;
+function growthForRows(predicate: (account: LiveAccount) => boolean) {
+  const points = historySnapshots.map((snapshot) => {
+    const rows = snapshotRows(snapshot, predicate);
+    return { observation: aggregateAccounts(rows).audience, accountSet: accountSetKey(rows) };
+  });
+  const comparableDelta = (from: typeof points[number] | null | undefined, to: typeof points[number] | null | undefined) => {
+    if (!from || !to || from.accountSet !== to.accountSet) return null;
+    return completeDelta(from.observation, to.observation);
+  };
+  const latest = points.at(-1) ?? null;
   return {
-    day: completeDelta(previous, latest),
-    week: completeDelta(first7, latest),
-    month: completeDelta(first30, latest),
+    day: comparableDelta(points.at(-2), latest),
+    week: points.length >= 8 ? comparableDelta(points.at(-8), latest) : null,
+    month: points.length >= 31 ? comparableDelta(points.at(-31), latest) : null,
   };
 }
 
+export function memberGrowth(slug: string) {
+  return growthForRows((account) => account.entitySlug === slug);
+}
+
 export function groupGrowth(slug: string) {
-  const observations = historySnapshots.map((snapshot) => aggregateAccounts(snapshotRows(snapshot, (account) => account.groupSlug === slug)).audience);
-  const latest = observations.at(-1) ?? null;
-  const previous = observations.at(-2) ?? null;
-  const first7 = observations.length >= 8 ? observations.at(-8) ?? null : null;
-  const first30 = observations.length >= 31 ? observations.at(-31) ?? null : null;
-  return {
-    day: completeDelta(previous, latest),
-    week: completeDelta(first7, latest),
-    month: completeDelta(first30, latest),
-  };
+  return growthForRows((account) => account.groupSlug === slug);
 }
 
 export function groupMembers(group: DirectoryGroup) {
