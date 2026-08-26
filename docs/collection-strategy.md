@@ -1,224 +1,143 @@
-# Collection strategy
+# Collection and data architecture
 
-## Principles
+## Current production path
 
-1. Official account identity and changing metric values are separate datasets.
-2. Every metric snapshot has a capture timestamp and source type.
-3. Prefer official APIs, then approved/licensed providers, then explicitly authorized web collection.
-4. Never silently fall back to unapproved scraping.
-5. Never fabricate a missing account or metric. Unknown stays unknown.
-6. Preserve platform IDs once resolved so handle changes do not break history.
-7. Keep collection runs auditable: success/partial/failure and errors are stored.
-8. Primary-group, trainee and concurrent-unit memberships remain distinguishable.
-9. Project/group/unit official accounts are first-class collection targets, not just directory metadata.
-
-## Current directory coverage
-
-Verified 2026-08-24 JST.
-
-Primary groups:
-
-- FRUITS ZIPPER
-- CANDY TUNE
-- SWEET STEADY
-- CUTIE STREET
-- MORE STAR
-
-Concurrent unit:
-
-- PiKi — 松本かれん + 桜庭遥花, represented as `UNIT` memberships rather than duplicate member entities
-
-Trainee units:
-
-- KAWAII LAB. MATES
-- KAWAII LAB. SOUTH
-
-The KAWAII LAB. project account itself is also tracked. Source URLs are stored in `data/directory/`.
-
-## Collection precedence
-
-For each account/metric, choose the first usable source:
-
-1. official platform API;
-2. approved/licensed provider;
-3. explicitly authorized web source whose automated collection terms have been checked;
-4. timestamped manual/imported observation;
-5. missing observation.
-
-A failure in one source does not justify inventing a value or automatically changing to a prohibited source.
-
-## Scheduled execution
-
-`.github/workflows/collect-social-stats.yml` runs every 6 hours and also supports `workflow_dispatch`.
-
-The runner executes only collectors whose credentials/configuration are present. A `PARTIAL` platform run keeps all successful observations and does not fail the entire schedule. A full collector failure does fail the unified run.
-
-Before collecting, CI runs `npm run directory:validate` so project/group/unit official accounts cannot silently disappear from the canonical directory.
-
-## Unified runner
-
-`scripts/collect-all.mjs` orchestrates:
-
-- YouTube API
-- X API
-- Instagram Business Discovery
-- licensed/approved snapshot provider
-- permission-gated authorized web fallback
-
-All platform-specific collectors query every active `SocialAccount` of that platform. That includes member accounts and project/group/unit official accounts.
-
-## YouTube
-
-`scripts/collect-youtube.mjs`
-
-Uses YouTube Data API v3 and records:
-
-- `SUBSCRIBERS`
-- `VIEWS`
-- `VIDEOS`
-
-Required:
+The production site uses a file-backed, once-per-JST-day public snapshot pipeline.
 
 ```text
-YOUTUBE_API_KEY
+data/directory/*.json
+        ↓ canonical identities
+scripts/collect-daily-public.mjs
+        ↓ one observation/account/JST day
+data/live/history/YYYY-MM-DD.json
+        ↓
+latest.json + series.json
+        ↓
+lib/metrics.ts
+        ↓ canonical aggregation/completeness rules
+lib/live-stats.ts + lib/analytics.ts + lib/compare-data.ts
+        ↓
+Next.js static export → GitHub Pages
 ```
 
-Public subscriber counts can be rounded by YouTube. Store the API value as returned.
+`.github/workflows/collect-daily-public.yml` is the only automatic social-profile collection workflow.
 
-## X
+## Cadence and duplicate prevention
 
-`scripts/collect-x.mjs`
+- primary cron: 00:00 JST (`15:00 UTC`)
+- fallback cron: 00:30 JST (`15:30 UTC`)
+- manual dispatch is allowed
+- before making any profile request, the collector checks `data/live/history/YYYY-MM-DD.json`
+- if that JST day's snapshot already exists with `complete: true`, the collector exits
 
-Uses X API v2 user lookup with `user.fields=public_metrics` and records:
+The fallback exists to survive delayed/missed GitHub cron starts; it is not a second daily observation.
 
-- `FOLLOWERS`
-- `POSTS`
+## Canonical identity layer
 
-Required:
+`data/directory/` is the source of truth for:
+
+- project/group/unit/member identity
+- group category
+- membership/relation links
+- canonical social accounts
+- profile URLs and stable platform IDs when known
+- status such as `HIATUS`
+- source attribution and verification dates
+
+Identity changes must not be inferred from follower data.
+
+## Observation layer
+
+Every daily account row preserves:
+
+- entity/group identity at capture time
+- platform + handle + profile URL
+- `capturedAt`
+- source type
+- parser version where relevant
+- followers/subscribers
+- following/posts where available
+- TikTok profile total likes
+- YouTube lifetime channel views
+- explicit error/detail fields
+
+Unknown values remain unknown.
+
+## Sources
+
+### X / Instagram / TikTok
+
+The daily public path uses the configured public-profile provider in batches. Provider errors are stored as missing observations rather than retried on the same JST day.
+
+### YouTube
+
+YouTube uses one public channel About-page read per channel/day. The production parser reads `aboutChannelViewModel` only and is versioned as:
 
 ```text
-X_BEARER_TOKEN
+ABOUT_CHANNEL_VIEW_MODEL_V1
 ```
 
-The stable X user ID is saved to `SocialAccount.platformId`.
+Successful YouTube observations from other parser versions are not trusted by the analytics layer.
 
-Direct automated scraping of X is not a default fallback; use the API or another explicitly authorized source.
+## Metric semantics
 
-## Instagram
+`lib/metrics.ts` is the canonical implementation of:
 
-`scripts/collect-instagram.mjs`
+- trusted-account rules
+- platform normalization
+- observed vs expected counts
+- audience aggregation
+- TikTok total-like aggregation
+- YouTube total-view aggregation
+- completeness
+- canonical account-set identity
 
-Uses Meta Business Discovery where the target account is eligible and records:
+Pages should not reimplement these rules independently.
 
-- `FOLLOWERS`
-- `POSTS`
+## Missing data
 
-Required:
+A missing observation is never converted to zero.
+
+Current-value screens may show an observed partial sum with coverage when appropriate, while historical lines and Growth calculations require complete observations. Platform values distinguish:
+
+- no canonical account for that platform: structurally zero / not applicable
+- canonical account exists but observation is missing: unknown
+
+## Growth comparability
+
+A Growth value is valid only when:
+
+1. both endpoints are complete for the requested metric; and
+2. the canonical account set is identical at both endpoints.
+
+This prevents a newly added social account, handle migration, or directory correction from being misreported as organic growth.
+
+## Group semantics
+
+Primary-group ecosystem totals are:
 
 ```text
-META_ACCESS_TOKEN
-META_IG_USER_ID
-META_GRAPH_VERSION
+group official accounts + canonical member accounts
 ```
 
-Business Discovery is intentionally partial. Ineligible targets remain unavailable for that run instead of silently switching to HTML scraping.
+Concurrent units such as PiKi keep member relations without duplicating ownership of the same personal accounts. Therefore special units and trainee units are displayed separately from directly comparable primary-group ecosystem rankings.
 
-## TikTok
+## Integrity checks
 
-The normal TikTok developer flow is user-authorization oriented and does not provide a simple arbitrary-public-profile tracker for this use case. Research Tools can expose public account statistics but require separate approval and eligibility.
+`scripts/validate-snapshots.mjs` verifies before publication:
 
-Automated TikTok scraping without approval is not used as the default fallback. Until approved Research access is available, use an approved/licensed provider or an imported observation.
+- history filenames and snapshot dates agree
+- latest points to the newest history date
+- no duplicate platform/handle rows
+- latest canonical account set matches the directory
+- trusted YouTube parser use on current-era observations
+- `series.json` dates match history files
+- public and internal latest files are synchronized
 
-If approved Research access is later added, normalize:
+CI additionally typechecks and builds the static export.
 
-- `FOLLOWERS` ← follower count
-- `LIKES` ← likes count
-- `VIDEOS` ← video count
+## Legacy DB/API path
 
-and preserve the raw API fragment and source type.
+The Prisma/PostgreSQL schema and platform API collectors remain a **manual-only legacy/future path** through `.github/workflows/collect-social-stats.yml`. They are not part of the production daily schedule.
 
-## Approved/licensed provider
-
-`scripts/collect-provider.mjs`
-
-Configure:
-
-```text
-SNAPSHOT_PROVIDER_URL
-SNAPSHOT_PROVIDER_TOKEN
-```
-
-The endpoint returns an array (or `{ "snapshots": [] }`) containing normalized observations such as:
-
-```json
-{
-  "entitySlug": "fruits-zipper",
-  "platform": "TIKTOK",
-  "metric": "FOLLOWERS",
-  "value": 1234567,
-  "capturedAt": "2026-08-24T18:00:00+09:00",
-  "sourceUrl": "provider-or-source-url",
-  "sourceType": "LICENSED_PROVIDER"
-}
-```
-
-The collector maps those observations back to canonical `SocialAccount` rows and writes ordinary `MetricSnapshot` records.
-
-## Authorized web fallback
-
-`scripts/collect-authorized-web.mjs` reads `data/collectors/authorized-web.json`.
-
-It is disabled unless:
-
-```text
-ENABLE_AUTHORIZED_WEB_SCRAPING=true
-```
-
-Every enabled target must explicitly contain:
-
-- entity slug
-- platform
-- metric
-- target URL
-- extraction regex/pattern
-- `termsConfirmed: true`
-- a non-empty `permissionBasis`
-
-The collector checks `robots.txt` before requesting the target. Direct X / Instagram / TikTok / YouTube domains are separately disabled by default. Only turn on `ALLOW_DIRECT_PLATFORM_SCRAPING=true` when explicit permission for that automated collection actually exists and is documented in `permissionBasis`.
-
-## Manual/import fallback
-
-`scripts/import-snapshots.mjs` remains available for one-off or manually verified observations.
-
-```bash
-npm run import:snapshots -- ./snapshots.json
-```
-
-Manual values must still include provenance and capture time.
-
-## Cadence
-
-Initial schedule: every 6 hours for the unified collector.
-
-This gives four observations/day when a source is available. Later, cadence can be platform-specific:
-
-- stable follower counts: 6–24 hours;
-- high-momentum periods: hourly only when API/provider quotas and terms allow it;
-- official account directory verification: at least weekly, ideally automated daily diff;
-- never increase polling frequency merely to bypass rate limits.
-
-## Aggregation rules
-
-A person's total social following is the sum of the latest comparable follower/subscriber snapshot for each selected platform. The UI must expose which platforms are included.
-
-Group-related totals are distinct:
-
-- `group official`: official group account(s) only;
-- `members sum`: member accounts only;
-- `ecosystem total`: group official + member accounts.
-
-Do not present those three as interchangeable.
-
-For PiKi, member accounts must not be double-counted into a KAWAII LAB.-wide unique entity rollup merely because the same people also hold `UNIT` memberships.
-
-When comparing growth, show absolute growth, percentage growth and normalized momentum side-by-side rather than collapsing everything into one opaque score.
+If a higher-fidelity API/provider architecture replaces the file-backed path later, it should preserve the same identity/observation/metric semantics rather than creating a second definition of the data.
