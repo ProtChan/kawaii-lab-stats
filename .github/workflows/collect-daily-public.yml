@@ -5,10 +5,6 @@ on:
     - cron: "0 15 * * *"
     - cron: "30 15 * * *"
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/collect-daily-public.yml"
 
 permissions:
   contents: write
