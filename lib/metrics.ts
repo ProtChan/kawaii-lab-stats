@@ -5,6 +5,7 @@ export type PlatformLabel = (typeof platformLabels)[number];
 
 export type MetricAccount = {
   platform: "X" | "INSTAGRAM" | "TIKTOK" | "YOUTUBE";
+  handle?: string;
   parserVersion?: string | null;
   followers?: number | null;
   likes?: number | null;
@@ -34,6 +35,14 @@ export const trustedMetricAccount = (account: MetricAccount) =>
 
 export const platformLabel = (platform: MetricAccount["platform"]): PlatformLabel =>
   platform === "INSTAGRAM" ? "Instagram" : platform === "TIKTOK" ? "TikTok" : platform === "YOUTUBE" ? "YouTube" : "X";
+
+export function accountSetKey(accounts: MetricAccount[], platform?: PlatformLabel) {
+  return accounts
+    .filter((account) => !platform || platformLabel(account.platform) === platform)
+    .map((account) => `${account.platform}:${String(account.handle ?? "").toLowerCase()}`)
+    .sort()
+    .join("|");
+}
 
 function observation(accounts: MetricAccount[], read: (account: MetricAccount) => number | null | undefined): Observation {
   const values = accounts
