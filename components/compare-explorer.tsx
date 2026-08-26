@@ -12,22 +12,27 @@ const metricLabels: Record<CompareMetricKey, string> = {
 };
 
 const platformKeys = ["X", "Instagram", "TikTok", "YouTube"] as const;
-type ViewMode = "level" | "daily";
+type ViewMode = "level" | "daily" | "7d" | "30d" | "indexed";
 
 const fmt = (value: number | null) => value == null ? "—" : new Intl.NumberFormat("ja-JP").format(value);
 const fmtSigned = (value: number | null) => value == null ? "—" : `${value > 0 ? "+" : ""}${new Intl.NumberFormat("ja-JP").format(value)}`;
+const fmtIndexed = (value: number | null) => value == null ? "—" : value.toFixed(1);
 
 function validMetric(value: string | null): CompareMetricKey {
   return value === "tiktokLikes" || value === "youtubeViews" ? value : "audience";
 }
 
 function validView(value: string | null): ViewMode {
-  return value === "daily" ? "daily" : "level";
+  return value === "daily" || value === "7d" || value === "30d" || value === "indexed" ? value : "level";
 }
 
-function dailyDelta(history: ComparePoint[], index: number, metric: CompareMetricKey) {
-  if (index <= 0) return null;
-  const previous = history[index - 1];
+function periodLag(view: ViewMode) {
+  return view === "daily" ? 1 : view === "7d" ? 7 : view === "30d" ? 30 : null;
+}
+
+function periodDelta(history: ComparePoint[], index: number, metric: CompareMetricKey, lag: number) {
+  if (index < lag) return null;
+  const previous = history[index - lag];
   const current = history[index];
   if (!previous?.complete[metric] || !current?.complete[metric]) return null;
   if (previous.accountSet[metric] !== current.accountSet[metric]) return null;
@@ -36,8 +41,30 @@ function dailyDelta(history: ComparePoint[], index: number, metric: CompareMetri
   return typeof before === "number" && typeof after === "number" ? after - before : null;
 }
 
-function latestDailyDelta(entity: CompareEntity, metric: CompareMetricKey) {
-  return dailyDelta(entity.history, entity.history.length - 1, metric);
+function indexedValue(history: ComparePoint[], index: number, metric: CompareMetricKey) {
+  const current = history[index];
+  if (!current?.complete[metric] || typeof current[metric] !== "number") return null;
+  const setKey = current.accountSet[metric];
+  const base = history.find((point) => point.complete[metric] && point.accountSet[metric] === setKey && typeof point[metric] === "number" && (point[metric] as number) > 0);
+  if (!base || typeof base[metric] !== "number" || base[metric] <= 0) return null;
+  return ((current[metric] as number) / (base[metric] as number)) * 100;
+}
+
+function pointValue(entity: CompareEntity, index: number, metric: CompareMetricKey, view: ViewMode) {
+  if (index < 0) return null;
+  if (view === "level") return entity.history[index]?.[metric] ?? null;
+  if (view === "indexed") return indexedValue(entity.history, index, metric);
+  const lag = periodLag(view);
+  return lag ? periodDelta(entity.history, index, metric, lag) : null;
+}
+
+function latestValue(entity: CompareEntity, metric: CompareMetricKey, view: ViewMode) {
+  if (view === "level") return entity.current[metric];
+  return pointValue(entity, entity.history.length - 1, metric, view);
+}
+
+function viewLabel(view: ViewMode) {
+  return view === "level" ? "Total" : view === "daily" ? "1-day Δ" : view === "7d" ? "7-day Δ" : view === "30d" ? "30-day Δ" : "Indexed = 100";
 }
 
 export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; members: CompareEntity[] }) {
@@ -68,7 +95,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
     return groupSlug ? members.filter((member) => member.groupSlugs.includes(groupSlug)) : members;
   }, [scope, groupSlug, groups, members]);
 
-  const valueFor = (entity: CompareEntity) => view === "daily" ? latestDailyDelta(entity, metric) : entity.current[metric];
+  const valueFor = (entity: CompareEntity) => latestValue(entity, metric, view);
 
   const orderedCandidates = useMemo(
     () => [...candidates].sort((a, b) => (valueFor(b) ?? Number.NEGATIVE_INFINITY) - (valueFor(a) ?? Number.NEGATIVE_INFINITY)),
@@ -91,15 +118,11 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       const row: Record<string, string | number | null> = { date: date.slice(5) };
       for (const entity of selectedEntities) {
         const index = entity.history.findIndex((point) => point.date === date);
-        row[entity.name] = view === "daily"
-          ? dailyDelta(entity.history, index, metric)
-          : entity.history[index]?.[metric] ?? null;
+        row[entity.name] = pointValue(entity, index, metric, view);
       }
       return row;
     });
-    return view === "daily"
-      ? rows.filter((row) => selectedEntities.some((entity) => typeof row[entity.name] === "number"))
-      : rows;
+    return view === "level" ? rows : rows.filter((row) => selectedEntities.some((entity) => typeof row[entity.name] === "number"));
   }, [selectedEntities, metric, view]);
 
   function writeUrl(next: { scope?: "groups" | "members"; metric?: CompareMetricKey; view?: ViewMode; groupSlug?: string; selected?: string[] }) {
@@ -111,7 +134,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
     const params = new URLSearchParams();
     params.set("scope", nextScope);
     params.set("metric", nextMetric);
-    if (nextView === "daily") params.set("view", "daily");
+    if (nextView !== "level") params.set("view", nextView);
     if (nextScope === "members" && nextGroup) params.set("group", nextGroup);
     if (nextSelected.length) params.set("selected", nextSelected.join(","));
     window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
@@ -127,14 +150,12 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
 
   function changeMetric(nextMetric: CompareMetricKey) {
     setMetric(nextMetric);
-    setSelected([]);
-    writeUrl({ metric: nextMetric, selected: [] });
+    writeUrl({ metric: nextMetric });
   }
 
   function changeView(nextView: ViewMode) {
     setView(nextView);
-    setSelected([]);
-    writeUrl({ view: nextView, selected: [] });
+    writeUrl({ view: nextView });
   }
 
   function changeGroup(nextGroup: string) {
@@ -156,10 +177,12 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
   const max = Math.max(0, ...currentValues);
   const maxAbs = Math.max(0, ...currentValues.map((value) => Math.abs(value)));
   const latestDate = selectedEntities.flatMap((entity) => entity.history.map((point) => point.date)).sort().at(-1)?.slice(5) ?? "—";
+  const isDelta = view === "daily" || view === "7d" || view === "30d";
+  const valueFormatter = (value: number | null) => view === "indexed" ? fmtIndexed(value) : isDelta ? fmtSigned(value) : fmt(value);
 
   return (
     <>
-      <section className="panel compareControls">
+      <section className="panel compareControls compareControlsWide">
         <div className="controlBlock">
           <span className="controlLabel">Scope</span>
           <div className="segmented"><button className={scope === "groups" ? "active" : ""} onClick={() => changeScope("groups")}>Groups</button><button className={scope === "members" ? "active" : ""} onClick={() => changeScope("members")}>Members</button></div>
@@ -170,15 +193,16 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
         </div>
         <div className="controlBlock">
           <span className="controlLabel">View</span>
-          <div className="segmented"><button className={view === "level" ? "active" : ""} onClick={() => changeView("level")}>Total</button><button className={view === "daily" ? "active" : ""} onClick={() => changeView("daily")}>1-day Δ</button></div>
+          <div className="segmented compareViewSegments"><button className={view === "level" ? "active" : ""} onClick={() => changeView("level")}>Total</button><button className={view === "daily" ? "active" : ""} onClick={() => changeView("daily")}>1D</button><button className={view === "7d" ? "active" : ""} onClick={() => changeView("7d")}>7D</button><button className={view === "30d" ? "active" : ""} onClick={() => changeView("30d")}>30D</button><button className={view === "indexed" ? "active" : ""} onClick={() => changeView("indexed")}>Index</button></div>
         </div>
         {scope === "members" ? <label className="controlBlock"><span className="controlLabel">Group filter</span><select value={groupSlug} onChange={(event) => changeGroup(event.target.value)}><option value="">All members</option>{groups.map((group) => <option value={group.slug} key={group.slug}>{group.name}</option>)}</select></label> : null}
       </section>
 
       <section className="panel">
-        <div className="sectionHead"><div><p className="eyebrow">{view === "daily" ? "DAILY CHANGE" : "CURRENT RANKING"}</p><h2>{metricLabels[metric]}{view === "daily" ? " 1日増減" : ""}</h2></div><span>{view === "daily" ? `${latestDate} 前日比` : `${orderedCandidates.length} candidates`}</span></div>
+        <div className="sectionHead"><div><p className="eyebrow">{isDelta ? "GROWTH RANKING" : view === "indexed" ? "NORMALIZED SCALE" : "CURRENT RANKING"}</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{isDelta ? `${latestDate} endpoint` : `${orderedCandidates.length} candidates`}</span></div>
         {metric === "audience" && view === "level" ? <div className="platformLegend">{platformKeys.map((platform) => <span key={platform}><i className={`platformDot platform${platform}`} />{platform}</span>)}</div> : null}
-        {view === "daily" ? <p className="deltaNote">前日・当日とも完全観測で、かつcanonical account集合が同じ区間だけ算出します。欠測やアカウント構成変更を成長として扱いません。</p> : null}
+        {isDelta ? <p className="deltaNote">両端が完全観測で、canonical account集合が同一の区間だけ算出します。必要日数が足りない場合は—です。</p> : null}
+        {view === "indexed" ? <p className="deltaNote">各entityの現在のcanonical account集合で最初に得られた完全観測を100として正規化します。</p> : null}
         <div className="compareBarList">
           {orderedCandidates.map((entity, index) => {
             const value = valueFor(entity);
@@ -190,7 +214,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
               <div className={`compareBarRow ${isSelected ? "selected" : ""}`} key={entity.slug}>
                 <button className="comparePick" onClick={() => toggleEntity(entity.slug)} aria-label={`${entity.name}を比較${isSelected ? "から外す" : "に追加"}`}><span>{isSelected ? "●" : "○"}</span></button>
                 <div className="compareBarMain">
-                  <div className="barRankTop"><b>{String(index + 1).padStart(2, "0")}</b><div><strong>{entity.name}</strong><small>{entity.primaryGroupName ?? (entity.type === "GROUP" ? "GROUP / UNIT" : "MEMBER")}</small></div><em className={view === "daily" ? value != null && value < 0 ? "deltaNegative" : "deltaPositive" : ""}>{view === "daily" ? fmtSigned(value) : fmt(value)}</em></div>
+                  <div className="barRankTop"><b>{String(index + 1).padStart(2, "0")}</b><div><strong>{entity.name}</strong><small>{entity.primaryGroupName ?? (entity.type === "GROUP" ? "GROUP / UNIT" : "MEMBER")}</small></div><em className={isDelta ? value != null && value < 0 ? "deltaNegative" : "deltaPositive" : ""}>{valueFormatter(value)}</em></div>
                   {metric === "audience" && view === "level" ? (
                     <div className="barTrack stackedAudience" aria-label={`${entity.name} SNS platform mix`}>
                       {platformKeys.map((platform) => {
@@ -199,8 +223,8 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
                         return width > 0 ? <i key={platform} className={`platformSegment platform${platform}`} style={{ width: `${width}%` }} title={`${platform}: ${fmt(platformValue)}`} /> : null;
                       })}
                     </div>
-                  ) : view === "daily" ? (
-                    <div className="deltaTrack" aria-label={`${entity.name} 前日比 ${fmtSigned(value)}`}>
+                  ) : isDelta ? (
+                    <div className="deltaTrack" aria-label={`${entity.name} ${viewLabel(view)} ${valueFormatter(value)}`}>
                       {value != null ? <i className={value < 0 ? "negative" : "positive"} style={{ width: `${deltaWidth}%`, left: `${deltaLeft}%` }} /> : null}
                     </div>
                   ) : <div className="barTrack"><i style={{ width: `${ratio}%` }} /></div>}
@@ -213,9 +237,9 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       </section>
 
       <section className="panel">
-        <div className="sectionHead"><div><p className="eyebrow">{view === "daily" ? "DAILY DELTA HISTORY" : "HISTORY COMPARE"}</p><h2>{metricLabels[metric]} {view === "daily" ? "1日増減推移" : "推移"}</h2></div><span>{selectedEntities.length} selected</span></div>
+        <div className="sectionHead"><div><p className="eyebrow">TIME SERIES</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{selectedEntities.length} selected</span></div>
         <div className="selectionLegend">{selectedEntities.map((entity) => <button key={entity.slug} onClick={() => toggleEntity(entity.slug)}>{entity.name} ×</button>)}</div>
-        {chartData.length >= (view === "daily" ? 1 : 2) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} /> : <p className="lead">{view === "daily" ? "比較可能な連続2日分のデータが揃うと、ここに1日増減を表示します。" : "この指標は履歴が2点以上になると比較推移を表示します。現在値ランキングは上で利用できます。"}</p>}
+        {chartData.length >= (view === "level" ? 2 : 1) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} zeroLine={isDelta} /> : <p className="lead">{isDelta ? `${viewLabel(view)}に必要な比較可能履歴がまだ足りません。` : "この指標は履歴が2点以上になると比較推移を表示します。"}</p>}
       </section>
     </>
   );
