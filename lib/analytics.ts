@@ -103,16 +103,32 @@ function snapshotMemberTotal(snapshot: RawSnapshot, slug: string) {
   return accountStats(snapshot.accounts.filter((account) => account.entitySlug === slug));
 }
 
-export function getMemberTimeline(slug: string) {
+export type MemberTimelinePoint = {
+  date: string;
+  Total: number | null;
+  X: number | null;
+  Instagram: number | null;
+  TikTok: number | null;
+  YouTube: number | null;
+};
+
+export function getMemberTimeline(slug: string): MemberTimelinePoint[] {
   return historySnapshots.map((snapshot) => {
-    const stats = snapshotMemberTotal(snapshot, slug);
+    const rows = snapshot.accounts.filter((account) => account.entitySlug === slug);
+    const stats = accountStats(rows);
+    const platformValue = (label: "X" | "Instagram" | "TikTok" | "YouTube") => {
+      const platformRows = rows.filter((account) => platformLabel(account.platform) === label);
+      if (!platformRows.length) return null;
+      const observed = platformRows.filter(goodFollower);
+      return observed.length === platformRows.length ? sum(observed.map((account) => account.followers ?? 0)) : null;
+    };
     return {
       date: snapshot.date?.slice(5) ?? "—",
-      Total: stats.totalFollowers,
-      X: stats.platformFollowers.X,
-      Instagram: stats.platformFollowers.Instagram,
-      TikTok: stats.platformFollowers.TikTok,
-      YouTube: stats.platformFollowers.YouTube,
+      Total: stats.expected > 0 && stats.observed === stats.expected ? stats.totalFollowers : null,
+      X: platformValue("X"),
+      Instagram: platformValue("Instagram"),
+      TikTok: platformValue("TikTok"),
+      YouTube: platformValue("YouTube"),
     };
   });
 }
