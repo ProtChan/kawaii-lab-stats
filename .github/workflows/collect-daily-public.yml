@@ -38,6 +38,9 @@ jobs:
       - name: Collect each canonical public profile once for the JST day
         run: node scripts/collect-daily-public.mjs
 
+      - name: Validate snapshot integrity before commit
+        run: node scripts/validate-snapshots.mjs
+
       - name: Commit the daily snapshot
         shell: bash
         run: |
@@ -57,7 +60,7 @@ jobs:
           echo "Primary cadence: 00:00 JST (15:00 UTC); fallback: 00:30 JST (15:30 UTC)."
           echo "Collection uses only Node built-ins and does not depend on app npm packages."
           echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
-          echo "Raw public output: public/data/latest.json and public/data/history/YYYY-MM-DD.json"
+          echo "Snapshot integrity is validated before a data commit is allowed."
 
   deploy:
     name: Build and deploy latest snapshot
@@ -81,17 +84,26 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install pinned direct dependencies
+        run: npm install --no-audit --no-fund
 
-      - name: Validate official account directory
-        run: node scripts/validate-directory.mjs
+      - name: Validate canonical directory
+        run: npm run directory:validate
+
+      - name: Validate snapshot integrity
+        run: npm run data:validate
 
       - name: Check daily collector syntax
         run: node --check scripts/collect-daily-public.mjs
 
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Build static site with latest snapshot
         run: npm run build
+
+      - name: Exclude unrelated public artifacts from this site deployment
+        run: rm -rf out/fx-dashboard
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
