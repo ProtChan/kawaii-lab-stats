@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AudienceBarList } from "@/components/audience-bar-list";
-import { GrowthChart } from "@/components/growth-chart";
+import { MemberHistoryExplorer } from "@/components/member-history-explorer";
 import { SiteNav } from "@/components/site-nav";
 import { allMembers, getMember, getMemberStats, getMemberTimeline, memberGrowth } from "@/lib/analytics";
 import { trustedAccount } from "@/lib/live-stats";
@@ -40,7 +40,7 @@ export default async function MemberPage({ params }: { params: Promise<{ slug: s
 
       <section className="metricGrid metricGrid4">
         <article className="metricHero"><span>SNS total</span><strong>{fmt(stats.totalFollowers)}</strong><small>trusted account audience sum</small></article>
-        <article><span>24h growth</span><strong>{signed(growth.day)}</strong><small>available from 2nd snapshot</small></article>
+        <article><span>24h growth</span><strong>{signed(growth.day)}</strong><small>latest complete daily interval</small></article>
         <article><span>TikTok total likes</span><strong>{fmt(stats.tiktokLikes)}</strong><small>profile total likes</small></article>
         <article><span>YouTube total views</span><strong>{fmt(stats.youtubeViews)}</strong><small>trusted channel lifetime views</small></article>
       </section>
@@ -50,10 +50,7 @@ export default async function MemberPage({ params }: { params: Promise<{ slug: s
         <AudienceBarList items={[{href:`/compare/?scope=members&metric=audience&selected=${member.slug}`,label:member.name,sub:`${member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER"} · coverage ${stats.observed}/${stats.expected}`,value:stats.totalFollowers,mix:stats.platformFollowers}]} />
       </section>
 
-      <section className="panel">
-        <div className="sectionHead"><div><p className="eyebrow">AUDIENCE HISTORY</p><h2>SNS別フォロワー推移</h2></div><span>{timeline.length} snapshots</span></div>
-        {timeline.length >= 2 ? <GrowthChart data={timeline} groups={["Total", "X", "Instagram", "TikTok", "YouTube"]} xKey="date" /> : <p className="lead">2日目以降、Totalと各SNSの時系列がここに表示されます。</p>}
-      </section>
+      <MemberHistoryExplorer data={timeline} />
 
       <section className="grid2">
         <div className="panel">
