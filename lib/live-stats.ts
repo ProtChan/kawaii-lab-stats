@@ -1,8 +1,9 @@
 import latestJson from "@/data/live/latest.json";
 import seriesJson from "@/data/live/series.json";
 import { debutedGroups } from "@/lib/official-directory";
+import { aggregateAccounts, TRUSTED_YOUTUBE_PARSER, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
 
-export const TRUSTED_YOUTUBE_PARSER = "ABOUT_CHANNEL_VIEW_MODEL_V1";
+export { TRUSTED_YOUTUBE_PARSER };
 
 export type LiveAccount = {
   entitySlug: string;
@@ -31,7 +32,7 @@ export type LiveAccount = {
   detail?: string | null;
 };
 
-type Snapshot = {
+export type Snapshot = {
   date: string | null;
   collectedAt: string | null;
   complete: boolean;
@@ -42,105 +43,93 @@ type Snapshot = {
   errors: string[];
 };
 
+type SeriesGroup = {
+  name: string;
+  official: number;
+  members: number;
+  ecosystem: number;
+  platforms: Record<PlatformLabel, number>;
+  youtubeViews?: number | null;
+  youtubeViewAccounts?: number;
+  tiktokLikes?: number | null;
+  tiktokLikeAccounts?: number;
+  observedAccounts: number;
+  expectedAccounts: number;
+};
+
 type SeriesPoint = {
   date: string;
   collectedAt: string;
-  groups: Record<
-    string,
-    {
-      name: string;
-      official: number;
-      members: number;
-      ecosystem: number;
-      platforms: Record<"X" | "Instagram" | "TikTok" | "YouTube", number>;
-      youtubeViews?: number | null;
-      youtubeViewAccounts?: number;
-      tiktokLikes?: number | null;
-      tiktokLikeAccounts?: number;
-      observedAccounts: number;
-      expectedAccounts: number;
-    }
-  >;
+  groups: Record<string, SeriesGroup>;
 };
 
 export const liveSnapshot = latestJson as Snapshot;
 export const liveSeries = seriesJson as SeriesPoint[];
 export const hasLiveData = Boolean(liveSnapshot.complete && liveSnapshot.collectedAt && liveSnapshot.accounts.length);
+export const trustedAccount = (account: LiveAccount) => trustedMetricAccount(account);
 
-export const trustedAccount = (account: LiveAccount) =>
-  account.platform !== "YOUTUBE" || account.parserVersion === TRUSTED_YOUTUBE_PARSER;
-
-const goodAccounts = liveSnapshot.accounts.filter(
-  (account) => !account.error && trustedAccount(account) && typeof account.followers === "number" && Number.isFinite(account.followers),
-);
-const metricAccounts = liveSnapshot.accounts.filter((account) => !account.error && trustedAccount(account));
 const attemptedAccounts = liveSnapshot.attempted ?? liveSnapshot.accounts.length;
-
+const trustedObservedAccounts = liveSnapshot.accounts.filter(
+  (account) => trustedAccount(account) && !account.error && typeof account.followers === "number" && Number.isFinite(account.followers),
+);
 const previousPoint = liveSeries.length >= 2 ? liveSeries[liveSeries.length - 2] : null;
-
-function sumMetric(items: LiveAccount[], key: "followers" | "likes" | "views"): number | null {
-  const values = items
-    .map((account) => account[key])
-    .filter((value): value is number => typeof value === "number" && Number.isFinite(value));
-  return values.length ? values.reduce((total, value) => total + value, 0) : null;
-}
-
-function sumOptional(values: Array<number | null>): number | null {
-  const finite = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
-  return finite.length ? finite.reduce((total, value) => total + value, 0) : null;
-}
 
 export const liveGroupStats = debutedGroups.map((group) => {
   const all = liveSnapshot.accounts.filter((account) => account.groupSlug === group.slug);
-  const good = goodAccounts.filter((account) => account.groupSlug === group.slug);
-  const metrics = metricAccounts.filter((account) => account.groupSlug === group.slug);
-  const official = good.filter((account) => account.entityType === "GROUP" && account.entitySlug === group.slug);
-  const members = good.filter((account) => account.entityType === "MEMBER");
-  const sumFollowers = (items: LiveAccount[]) => items.reduce((total, account) => total + (account.followers ?? 0), 0);
-  const platforms = { X: 0, Instagram: 0, TikTok: 0, YouTube: 0 };
-
-  for (const account of good) {
-    const platform = account.platform === "INSTAGRAM" ? "Instagram" : account.platform === "TIKTOK" ? "TikTok" : account.platform === "YOUTUBE" ? "YouTube" : "X";
-    platforms[platform] += account.followers ?? 0;
-  }
-
-  const ecosystem = sumFollowers(good);
-  const previous = previousPoint?.groups[group.slug]?.ecosystem ?? null;
-  const dailyGain = previous == null ? null : ecosystem - previous;
-  const youtubeRows = metrics.filter((account) => account.platform === "YOUTUBE");
-  const tiktokRows = metrics.filter((account) => account.platform === "TIKTOK");
+  const officialRows = all.filter((account) => account.entityType === "GROUP" && account.entitySlug === group.slug);
+  const memberRows = all.filter((account) => account.entityType === "MEMBER");
+  const aggregate = aggregateAccounts(all);
+  const official = aggregateAccounts(officialRows);
+  const members = aggregateAccounts(memberRows);
+  const previous = previousPoint?.groups[group.slug] ?? null;
+  const previousComplete = Boolean(previous && previous.observedAccounts === previous.expectedAccounts);
+  const ecosystem = aggregate.audience.value;
+  const dailyGain = aggregate.audience.complete && previousComplete && ecosystem != null ? ecosystem - previous!.ecosystem : null;
 
   return {
     slug: group.slug,
     name: group.name,
-    officialFollowers: sumFollowers(official),
-    memberFollowers: sumFollowers(members),
+    officialFollowers: official.audience.value,
+    memberFollowers: members.audience.value,
     ecosystemFollowers: ecosystem,
-    platforms,
-    youtubeViews: sumMetric(youtubeRows, "views"),
-    youtubeViewAccounts: youtubeRows.filter((account) => typeof account.views === "number" && Number.isFinite(account.views)).length,
-    tiktokLikes: sumMetric(tiktokRows, "likes"),
-    tiktokLikeAccounts: tiktokRows.filter((account) => typeof account.likes === "number" && Number.isFinite(account.likes)).length,
-    observedAccounts: good.length,
-    expectedAccounts: all.length,
+    platforms: Object.fromEntries(
+      Object.entries(aggregate.platforms).map(([label, observation]) => [label, observation.value]),
+    ) as Record<PlatformLabel, number | null>,
+    platformCoverage: aggregate.platforms,
+    youtubeViews: aggregate.youtubeViews.value,
+    youtubeViewAccounts: aggregate.youtubeViews.observed,
+    youtubeViewExpected: aggregate.youtubeViews.expected,
+    tiktokLikes: aggregate.tiktokLikes.value,
+    tiktokLikeAccounts: aggregate.tiktokLikes.observed,
+    tiktokLikeExpected: aggregate.tiktokLikes.expected,
+    observedAccounts: aggregate.audience.observed,
+    expectedAccounts: aggregate.audience.expected,
+    complete: aggregate.audience.complete,
     dailyGain,
-    dailyGrowthRate: previous && previous > 0 && dailyGain != null ? (dailyGain / previous) * 100 : null,
+    dailyGrowthRate: previousComplete && previous!.ecosystem > 0 && dailyGain != null ? (dailyGain / previous!.ecosystem) * 100 : null,
   };
 });
 
 export const liveTimeline = liveSeries.map((point) => {
-  const row: Record<string, string | number> = { date: point.date.slice(5) };
-  for (const group of debutedGroups) row[group.name] = point.groups[group.slug]?.ecosystem ?? 0;
+  const row: Record<string, string | number | null> = { date: point.date.slice(5) };
+  for (const group of debutedGroups) {
+    const item = point.groups[group.slug];
+    row[group.name] = item && item.observedAccounts === item.expectedAccounts ? item.ecosystem : null;
+  }
   return row;
 });
+
+const groupAudienceValues = liveGroupStats.map((group) => group.ecosystemFollowers).filter((value): value is number => value != null);
+const youtubeValues = liveGroupStats.map((group) => group.youtubeViews).filter((value): value is number => value != null);
+const tiktokValues = liveGroupStats.map((group) => group.tiktokLikes).filter((value): value is number => value != null);
 
 export const liveSummary = {
   date: liveSnapshot.date,
   collectedAt: liveSnapshot.collectedAt,
   attempted: attemptedAccounts,
-  successful: goodAccounts.length,
-  failed: Math.max(0, attemptedAccounts - goodAccounts.length),
-  observedAudience: liveGroupStats.reduce((sum, group) => sum + group.ecosystemFollowers, 0),
-  youtubeViews: sumOptional(liveGroupStats.map((group) => group.youtubeViews)),
-  tiktokLikes: sumOptional(liveGroupStats.map((group) => group.tiktokLikes)),
+  successful: trustedObservedAccounts.length,
+  failed: Math.max(0, attemptedAccounts - trustedObservedAccounts.length),
+  observedAudience: groupAudienceValues.length ? groupAudienceValues.reduce((sum, value) => sum + value, 0) : null,
+  youtubeViews: youtubeValues.length ? youtubeValues.reduce((sum, value) => sum + value, 0) : null,
+  tiktokLikes: tiktokValues.length ? tiktokValues.reduce((sum, value) => sum + value, 0) : null,
 };
