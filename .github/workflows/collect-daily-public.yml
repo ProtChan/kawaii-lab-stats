@@ -3,7 +3,12 @@ name: Daily public social snapshot
 on:
   schedule:
     - cron: "0 15 * * *"
+    - cron: "30 15 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/collect-daily-public.yml"
 
 permissions:
   contents: write
@@ -28,14 +33,14 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Validate canonical official-account directory
-        run: npm run directory:validate
+        run: node scripts/validate-directory.mjs
+
+      - name: Check daily collector syntax
+        run: node --check scripts/collect-daily-public.mjs
 
       - name: Collect each canonical public profile once for the JST day
-        run: npm run collect:daily-public
+        run: node scripts/collect-daily-public.mjs
 
       - name: Commit the daily snapshot
         shell: bash
@@ -53,7 +58,8 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Cadence: once per JST day at 00:00 JST (15:00 UTC)."
+          echo "Primary cadence: 00:00 JST (15:00 UTC); fallback: 00:30 JST (15:30 UTC)."
+          echo "Collection uses only Node built-ins and does not depend on app npm packages."
           echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
           echo "Raw public output: public/data/latest.json and public/data/history/YYYY-MM-DD.json"
 
@@ -83,7 +89,7 @@ jobs:
         run: npm install
 
       - name: Validate official account directory
-        run: npm run directory:validate
+        run: node scripts/validate-directory.mjs
 
       - name: Check daily collector syntax
         run: node --check scripts/collect-daily-public.mjs
