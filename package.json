@@ -1,19 +1,19 @@
 {
   "name": "kawaii-lab-stats",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "dev:host": "next dev -H 0.0.0.0",
-    "demo": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:seed": "node prisma/seed.mjs",
     "directory:validate": "node scripts/validate-directory.mjs",
+    "data:validate": "node scripts/validate-snapshots.mjs",
     "collect:daily-public": "node scripts/collect-daily-public.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "collect:x": "node scripts/collect-x.mjs",
@@ -27,19 +27,19 @@
     "seed": "node prisma/seed.mjs"
   },
   "dependencies": {
-    "@prisma/client": "^6.14.0",
-    "next": "^15.5.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "recharts": "^3.1.2"
+    "@prisma/client": "6.14.0",
+    "next": "15.5.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "recharts": "3.1.2"
   },
   "devDependencies": {
-    "@types/node": "^22.17.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "eslint": "^9.33.0",
-    "eslint-config-next": "^15.5.0",
-    "prisma": "^6.14.0",
-    "typescript": "^5.9.2"
+    "@types/node": "22.17.0",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "eslint": "9.33.0",
+    "eslint-config-next": "15.5.0",
+    "prisma": "6.14.0",
+    "typescript": "5.9.2"
   }
 }
