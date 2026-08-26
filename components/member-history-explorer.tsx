@@ -75,7 +75,7 @@ export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] })
       {view === "daily" ? <p className={styles.note}>前日・当日が完全観測で、かつそのSNSのcanonical account集合が同じ区間だけ差分を表示します。欠測やアカウント変更は0/増減として扱いません。</p> : null}
 
       {chartData.length >= (view === "daily" ? 1 : 2)
-        ? <GrowthChart data={chartData} groups={[...series]} xKey="date" connectNulls={false} />
+        ? <GrowthChart data={chartData} groups={[...series]} xKey="date" connectNulls={false} zeroLine={view === "daily"} />
         : <p className="lead">{view === "daily" ? "比較可能な連続2日分のデータが揃うと、SNSごとの前日比を表示します。" : "2日目以降、Totalと各SNSの時系列がここに表示されます。"}</p>}
     </section>
   );
