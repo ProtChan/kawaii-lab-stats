@@ -1,32 +1,36 @@
-import { AudienceBarList } from "@/components/audience-bar-list";
+import { MemberDirectory } from "@/components/member-directory";
 import { SiteNav } from "@/components/site-nav";
 import { currentMemberRanking } from "@/lib/analytics";
+import { officialGroups } from "@/lib/official-directory";
 
 export default function MembersPage() {
   const ranking = currentMemberRanking();
+  const rows = ranking.map(({ member, stats, growth }) => ({
+    slug: member.slug,
+    name: member.name,
+    groupName: member.primaryGroup?.name ?? member.relations[0]?.name ?? "—",
+    groupSlugs: member.relations.map((group) => group.slug),
+    status: member.status ?? "ACTIVE",
+    total: stats.totalFollowers,
+    mix: stats.platformFollowers,
+    growthDay: growth.day,
+    observed: stats.observed,
+    expected: stats.expected,
+  }));
 
   return (
     <main>
       <SiteNav />
       <header className="pageHero pageHeroTight">
         <div>
-          <p className="eyebrow">MEMBER DATABASE</p>
+          <p className="eyebrow">MEMBER EXPLORER</p>
           <h1>Members</h1>
-          <p className="lead">個人SNS規模を4媒体の積み上げで一覧化。総量だけでなく「どのSNSが強いか」まで一目で比較できます。</p>
+          <p className="lead">名前・所属で絞り込み、現在規模と前日増加を切替。個人ページでは媒体別推移と日次差分まで掘れます。</p>
         </div>
         <span className="badge">{ranking.length} UNIQUE MEMBERS</span>
       </header>
 
-      <section className="panel panelFeature">
-        <div className="sectionHead"><div><p className="eyebrow">CURRENT SCALE</p><h2>個人SNS総規模</h2></div><span>absolute scale · stacked by platform</span></div>
-        <AudienceBarList items={ranking.map(({ member, stats }) => ({
-          href: `/members/${member.slug}`,
-          label: member.name,
-          sub: `${member.primaryGroup?.name ?? member.relations[0]?.name ?? "—"}${member.status === "HIATUS" ? " · HIATUS" : ""} · coverage ${stats.observed}/${stats.expected}`,
-          value: stats.totalFollowers,
-          mix: stats.platformFollowers,
-        }))} />
-      </section>
+      <MemberDirectory rows={rows} groups={officialGroups.map((group) => ({ slug: group.slug, name: group.name }))} />
     </main>
   );
 }
