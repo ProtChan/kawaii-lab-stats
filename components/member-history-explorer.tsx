@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import { GrowthChart } from "@/components/growth-chart";
 import type { MemberTimelinePoint } from "@/lib/analytics";
+import styles from "@/components/member-history-explorer.module.css";
 
 const series = ["Total", "X", "Instagram", "TikTok", "YouTube"] as const;
-type SeriesKey = (typeof series)[number];
 type ViewMode = "level" | "daily";
 
 const signed = (value: number | null) => value == null ? "—" : `${value > 0 ? "+" : ""}${new Intl.NumberFormat("ja-JP").format(value)}`;
@@ -31,12 +31,12 @@ export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] })
 
   return (
     <section className="panel">
-      <div className="sectionHead memberHistoryHead">
+      <div className={`sectionHead ${styles.head}`}>
         <div>
           <p className="eyebrow">{view === "daily" ? "DAILY AUDIENCE CHANGE" : "AUDIENCE HISTORY"}</p>
           <h2>{view === "daily" ? "SNS別フォロワー前日比" : "SNS別フォロワー推移"}</h2>
         </div>
-        <div className="memberHistoryActions">
+        <div className={styles.actions}>
           <div className="segmented" aria-label="個人履歴の表示モード">
             <button type="button" className={view === "level" ? "active" : ""} onClick={() => setView("level")}>Total</button>
             <button type="button" className={view === "daily" ? "active" : ""} onClick={() => setView("daily")}>1-day Δ</button>
@@ -46,20 +46,21 @@ export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] })
       </div>
 
       {view === "daily" && latestDaily ? (
-        <div className="memberDeltaStrip">
+        <div className={styles.strip}>
           {series.map((key) => {
             const value = latestDaily[key];
+            const numeric = typeof value === "number" ? value : null;
             return (
               <div key={key}>
                 <span>{key}</span>
-                <strong className={typeof value === "number" && value < 0 ? "deltaNegative" : "deltaPositive"}>{signed(typeof value === "number" ? value : null)}</strong>
+                <strong className={numeric != null && numeric < 0 ? styles.negative : styles.positive}>{signed(numeric)}</strong>
               </div>
             );
           })}
         </div>
       ) : null}
 
-      {view === "daily" ? <p className="deltaNote">前日・当日の両方でそのSNSの観測値が揃った区間だけ差分を表示します。欠測は0として扱いません。</p> : null}
+      {view === "daily" ? <p className={styles.note}>前日・当日の両方でそのSNSの観測値が揃った区間だけ差分を表示します。欠測は0として扱いません。</p> : null}
 
       {chartData.length >= (view === "daily" ? 1 : 2)
         ? <GrowthChart data={chartData} groups={[...series]} xKey="date" connectNulls={false} />
