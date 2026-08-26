@@ -1,4 +1,4 @@
-name: Deploy demo to GitHub Pages
+name: Deploy site to GitHub Pages
 
 on:
   push:
@@ -22,14 +22,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
-        run: npm install
-      - name: Validate official account directory
+      - name: Install pinned direct dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate canonical directory
         run: npm run directory:validate
+      - name: Validate snapshot integrity
+        run: npm run data:validate
       - name: Check daily collector syntax
         run: node --check scripts/collect-daily-public.mjs
+      - name: Typecheck
+        run: npm run typecheck
       - name: Build static site
         run: npm run build
+      - name: Exclude unrelated public artifacts from this site deployment
+        run: rm -rf out/fx-dashboard
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
