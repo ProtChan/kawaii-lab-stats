@@ -4,20 +4,22 @@ export default function MethodologyPage() {
   return (
     <main>
       <SiteNav />
-      <header className="pageHero"><div><p className="eyebrow">METHODOLOGY</p><h1>How we measure</h1><p className="lead">KAWAII LAB. Stats の日次SNS観測・集計・欠測処理・派生指標のルール。</p></div><span className="badge">UNOFFICIAL</span></header>
+      <header className="pageHero"><div><p className="eyebrow">METHODOLOGY</p><h1>How we measure</h1><p className="lead">KAWAII LAB. Stats のcanonical account、日次観測、欠測、比較可能性、集計指標のルール。</p></div><span className="badge">UNOFFICIAL · AUDITABLE</span></header>
 
-      <section className="panel"><p className="eyebrow">CADENCE</p><h2>1アカウントにつき1日1回</h2><p className="lead">JST日付ごとに各canonical SNSアカウントを1回だけ観測します。同日の完了済みsnapshotが存在する場合、再実行してもプロフィール取得前に終了します。取得不能だったアカウントも同日には再試行せず、その日は欠測として残します。</p></section>
+      <section className="panel"><p className="eyebrow">DATA MODEL</p><h2>Identity → Observation → Derived metrics</h2><p className="lead">誰のどのSNSを追うかというcanonical directoryと、日々変化する観測値を分離します。表示用のScale / Growth / Activityはraw snapshotから再計算できる派生値です。</p></section>
 
-      <section className="grid2"><article className="panel"><p className="eyebrow">SOURCE</p><h2>公開プロフィール値</h2><p className="lead">X / Instagram / TikTok は公開プロフィールを1日1回読み取り、followers、following、posts、TikTok total likesなどを保存します。YouTubeは公開チャンネルのAboutページを1日1回読み取り、subscribers、videos、total channel viewsを同時に保存します。</p></article><article className="panel"><p className="eyebrow">MISSING DATA</p><h2>欠測 ≠ 0</h2><p className="lead">ログイン壁、非公開、削除、取得エラーなどは0として集計しません。coverageを併記し、観測できたアカウントだけの合計であることが分かるようにします。</p></article></section>
+      <section className="grid2"><article className="panel"><p className="eyebrow">CADENCE</p><h2>JST日付ごとに最大1回</h2><p className="lead">名目00:00 JST、保険として00:30 JSTにもworkflowを起動します。ただし完了済みsnapshotがある場合はプロフィール取得前に終了するため、同じJST日付で2回観測しません。</p></article><article className="panel"><p className="eyebrow">SOURCE</p><h2>公開プロフィール値</h2><p className="lead">X / Instagram / TikTokは公開プロフィール由来のprovider値、YouTubeは公開Aboutページの信頼済みparserからsubscribers / videos / total channel viewsを取得します。source type・capture time・parser versionを保存します。</p></article></section>
 
-      <section className="grid2"><article className="panel"><p className="eyebrow">SCALE / GROWTH</p><h2>規模と伸びを分離</h2><p className="lead">Scaleはその日の公開audience合計。Growthは1D / 7D / 30Dの差分と成長率として履歴から計算します。現在値が大きいことと、今伸びていることを同じ指標にしません。</p></article><article className="panel"><p className="eyebrow">ACTIVITY</p><h2>YouTube総再生 / TikTok総いいね</h2><p className="lead">YouTube total views と TikTok profile total likes はフォロワーとは別系列で保存します。履歴が溜まれば日次増加をContent Activityとして扱います。</p></article></section>
+      <section className="grid2"><article className="panel"><p className="eyebrow">MISSING DATA</p><h2>欠測 ≠ 0</h2><p className="lead">取得失敗・login wall・parser除外は0に置換しません。現在値が部分観測の場合はcoverageを併記し、完全な時系列では欠測点をnullとして線を接続しません。</p></article><article className="panel"><p className="eyebrow">COMPARABILITY</p><h2>アカウント集合が変わった日は差分にしない</h2><p className="lead">1-day / 7-day / 30-day Growthは両端が完全観測で、かつ同じcanonical account集合である場合だけ計算します。SNS新設・handle移行・directory変更による段差を「成長」と誤認しないためです。</p></article></section>
 
-      <section className="panel"><p className="eyebrow">MOMENTUM · PLANNED</p><h2>勢いは再現可能なモデルとして追加</h2><p className="lead">7日増加速度、成長率、加速度、コンテンツ消費の変化を正規化して統合する予定です。数式とversionを公開し、過去データを同じ式で再計算できる形にします。</p></section>
+      <section className="grid2"><article className="panel"><p className="eyebrow">SCALE</p><h2>Audienceは単純合計</h2><p className="lead">X / Instagram / TikTok followersとYouTube subscribersのアカウント値を合計します。SNS横断で同じ実人数をdeduplicateした値ではありません。媒体構成は同じ合計を4SNSに分解したものです。</p></article><article className="panel"><p className="eyebrow">ACTIVITY</p><h2>TikTok likes / YouTube views</h2><p className="lead">TikTok profile total likesとYouTube lifetime channel viewsはAudienceとは別系列です。現在の累積規模に加え、比較可能な連続観測から日次増加を計算できます。</p></article></section>
 
-      <section className="panel"><p className="eyebrow">AGGREGATION</p><h2>公式・メンバー・ecosystem</h2><p className="lead">group official はグループ公式SNSだけ、members は所属メンバーSNSの合計、ecosystem はその2つの合計です。PiKiなどの兼任関係は全体比較で同じ個人SNSを二重加算しません。</p></section>
+      <section className="panel"><p className="eyebrow">AGGREGATION</p><h2>Primary groupとunitを混同しない</h2><p className="lead">primary groupはgroup official + canonical membersをecosystemとして比較します。PiKiなどの兼任unitでは同じ個人SNSを二重所有させずrelationとして保持するため、primary groupのecosystem rankingとは別カテゴリで表示します。trainee unitも同様に別カテゴリです。</p></section>
 
-      <section className="notice">SNS横断のfollowers合計は「ユニークな人数」ではありません。同じ人が複数SNS・複数メンバーをフォローできるため、あくまでアカウントaudienceの単純合計です。</section>
-      <footer>Methodology may evolve, but historical source / capture metadata and formula versions should remain auditable.</footer>
+      <section className="panel"><p className="eyebrow">MOMENTUM · PLANNED</p><h2>勢いはversioned modelとして追加</h2><p className="lead">十分な履歴が蓄積した後、7日速度・成長率・加速度・Activity変化をロバストに正規化して統合します。式・必要履歴・versionを公開し、過去値を同じ式で再計算できる形にします。</p></section>
+
+      <section className="notice">SNS横断のfollowers/subscribers合計は「ユニークなファン人数」ではありません。ランキングやGrowthは、定義・coverage・canonical account集合が比較可能な範囲で読む必要があります。</section>
+      <footer>Methodology can evolve, but raw source metadata, capture timestamps, parser versions and formula versions should remain auditable.</footer>
     </main>
   );
 }
