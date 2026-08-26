@@ -1,0 +1,10 @@
+.snapshotStrip{margin-top:-12px;margin-bottom:14px}
+.directoryControls{display:grid;grid-template-columns:minmax(220px,1.4fr) minmax(180px,.8fr) auto auto;gap:14px;align-items:end}
+.directoryControls input,.directoryControls select{height:39px;border:1px solid var(--line);border-radius:10px;background:#0b0d12;color:var(--text);padding:0 11px;font:inherit;font-size:11px;outline:none}
+.directoryControls input:focus,.directoryControls select:focus{border-color:#5d6477;box-shadow:0 0 0 3px rgba(255,114,184,.06)}
+.directoryCount{min-width:72px;height:39px;display:flex;align-items:center;justify-content:center;gap:7px;border-left:1px solid var(--line);padding-left:14px}
+.directoryCount span{font-size:8px;letter-spacing:.12em;color:var(--muted);font-weight:850}.directoryCount strong{font-size:18px}
+.groupDirectorySection{padding:22px;margin-bottom:18px}.groupDirectorySection .groupCardGrid{margin-top:2px}.groupDirectorySection .entityCard{background:#0d0f15}
+.audienceBarRow.isMissing{opacity:.55}.audienceBarRow.isMissing .audienceTrack{background:repeating-linear-gradient(135deg,#0a0c11,#0a0c11 6px,#11141b 6px,#11141b 12px)}
+@media(max-width:900px){.directoryControls{grid-template-columns:1fr 1fr}.directoryCount{border-left:0;justify-content:flex-start;padding-left:0}}
+@media(max-width:600px){.directoryControls{grid-template-columns:1fr}.directoryCount{height:auto;padding-top:2px}.snapshotStrip{margin-top:0}}
