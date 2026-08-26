@@ -1,70 +1,128 @@
 # KAWAII LAB. Stats
 
-Fanmade / unofficial social-media statistics site for KAWAII LAB. groups, units and members.
+Fanmade / unofficial social-media analytics for KAWAII LAB. groups, units and members.
 
 > Not affiliated with KAWAII LAB. or its management. Statistics are public-profile observations with source and capture timestamps.
 
-## Current coverage — verified 2026-08-24 JST
+## What the site is for
+
+The product separates four questions:
+
+- **Scale** — how large is the current observed SNS footprint?
+- **Growth** — how much did it change over a comparable period?
+- **Activity** — how are cumulative TikTok likes / YouTube views changing?
+- **Data quality** — was the metric completely and comparably observed?
+
+Rankings are for discovery, Compare is for selected time-series analysis, Groups/Members are entity detail views, and the Data menu contains Coverage / Directory / Methodology.
+
+## Current directory
+
+Verified from official sources starting 2026-08-24 JST:
 
 - 5 primary groups: FRUITS ZIPPER / CANDY TUNE / SWEET STEADY / CUTIE STREET / MORE STAR
-- 1 concurrent unit: PiKi
-- 2 trainee units: KAWAII LAB. MATES / KAWAII LAB. SOUTH
+- concurrent unit: PiKi
+- trainee units: KAWAII LAB. MATES / KAWAII LAB. SOUTH
 - 59 unique member entities
-- 211 canonical project/group/unit/member social accounts
-- member activity state including officially announced `HIATUS`
+- 211 canonical project/group/unit/member social accounts at the initial directory revision
 
-Project, group and unit official accounts are first-class tracked accounts, not metadata-only links.
+Concurrent-unit membership is represented as a relation; personal accounts are not duplicated simply because a member belongs to multiple structures.
 
-## Public site
-
-GitHub Pages static export:
+## Main routes
 
 ```text
-https://protchan.github.io/kawaii-lab-stats/
-https://protchan.github.io/kawaii-lab-stats/groups/
-https://protchan.github.io/kawaii-lab-stats/members/
-https://protchan.github.io/kawaii-lab-stats/rankings/
-https://protchan.github.io/kawaii-lab-stats/compare/
-https://protchan.github.io/kawaii-lab-stats/coverage/
-https://protchan.github.io/kawaii-lab-stats/directory/
-https://protchan.github.io/kawaii-lab-stats/methodology/
-https://protchan.github.io/kawaii-lab-stats/data/latest.json
+/                     overview + latest movers
+/rankings/             discovery: scale + daily movers + content scale
+/compare/              selected entities + metrics + total/daily history
+/groups/               category-aware group/unit directory
+/groups/[slug]/        group analytics
+/members/              searchable/filterable member explorer
+/members/[slug]/       member analytics
+/coverage/             data-quality dashboard
+/directory/            canonical official-account directory
+/methodology/          public metric definitions
+/data/latest.json      latest raw public snapshot
+/data/series.json      public group series
 ```
 
-The compare page stores state in query parameters. Example:
+Compare state is shareable through query parameters such as:
 
 ```text
 /compare/?scope=members&metric=tiktokLikes&group=cutie-street
+/compare/?scope=members&metric=audience&view=daily&selected=haruka-sakuraba
 ```
 
-This opens CUTIE STREET-related members with TikTok total likes selected.
-
-## Daily collection
+## Production collection
 
 `.github/workflows/collect-daily-public.yml` is the only automatic social-profile collection workflow.
 
-It is scheduled once per day at `15:00 UTC` (`00:00 JST`). The collector first checks `data/live/history/YYYY-MM-DD.json`; if that JST day's completed snapshot already exists, it exits before making any profile request.
+Nominal schedule:
 
-The workflow can also be dispatched manually, but the same completed-day guard prevents a second set of profile reads for that JST day.
-
-Run locally:
-
-```bash
-npm install
-npm run directory:validate
-npm run collect:daily-public
+```text
+00:00 JST  primary
+00:30 JST  fallback
 ```
 
-No PostgreSQL or social-platform API secret is required for this public snapshot path.
+The fallback is only a scheduling safety net. Before any public-profile request, the collector checks the current JST history file; a completed daily snapshot causes an immediate exit, so the second cron does not produce a second observation.
 
-## Per-platform daily metrics
+The collection job intentionally uses Node built-ins and does not depend on the web app's npm dependency installation.
+
+## Publication flow
+
+```text
+data/directory validation
+        ↓
+one public observation / canonical account / JST day
+        ↓
+data/live/history/YYYY-MM-DD.json
+public/data/history/YYYY-MM-DD.json
+        ↓
+latest.json + series.json
+        ↓
+snapshot integrity validation
+        ↓
+commit to main
+        ↓
+typecheck + static Next.js build
+        ↓
+GitHub Pages deploy in the same daily workflow
+```
+
+A separate Pages workflow also deploys normal code changes on `main`.
+
+## Canonical metric engine
+
+`lib/metrics.ts` is the single source of truth for:
+
+- trusted YouTube parser rules
+- platform normalization
+- observed vs expected counts
+- followers/subscribers aggregation
+- TikTok total likes
+- YouTube total channel views
+- completeness
+- canonical account-set identity used for Growth comparability
+
+`lib/live-stats.ts`, `lib/analytics.ts`, and `lib/compare-data.ts` consume that layer rather than defining independent metric semantics.
+
+## Missing data and Growth
+
+Missing is not zero.
+
+A Growth interval is published only if:
+
+1. both endpoints are complete for the requested metric; and
+2. the canonical account set is identical at both endpoints.
+
+This prevents a new SNS account, account migration, directory correction, or missing observation from appearing as fake organic growth.
+
+## Per-platform metrics
 
 ### X
 
 - followers
 - following
 - posts
-- verification state
+- verification state when exposed
 
 ### Instagram
 
@@ -72,106 +130,60 @@ No PostgreSQL or social-platform API secret is required for this public snapshot
 - following
 - posts
 
-A login wall is recorded as a missing observation, never as zero.
-
 ### TikTok
 
 - followers
 - following
 - videos/posts
-- **profile total likes/hearts**
-
-`likes` is the cumulative profile-level TikTok likes value, not the likes on one video.
+- cumulative profile total likes
 
 ### YouTube
 
-YouTube uses one public channel About-page read per channel per JST day. The same page is used to capture:
+One public About-page read per channel/JST day captures:
 
 - subscribers
 - video count
-- **total channel views**
+- lifetime total channel views
 
-The collector does not make a second YouTube channel read just for total views. Publicly abbreviated values remain marked as abbreviated rather than being reverse-engineered.
+Production analytics trust the versioned `ABOUT_CHANNEL_VIEW_MODEL_V1` parser. Publicly abbreviated values remain marked with their precision rather than being fabricated into exact counts.
 
-## Public-profile readers
+## Group semantics
 
-X / Instagram / TikTok use Pulse's profile endpoint:
+For directly comparable primary groups:
 
-```text
-https://pulse.walls.sh/profile/batch
-```
+- `official` = group official SNS audience
+- `members` = canonical member SNS audience
+- `ecosystem` = official + members
 
-The project uses batches of 40 with a 25-second gap so the provider's free rate limit is not exceeded.
+Special/concurrent units and trainee units are displayed separately from primary-group rankings because membership/account ownership semantics differ.
 
-YouTube is routed separately to the channel's public About page so total channel views can be captured in the same single daily channel read.
+SNS audience sums are **not deduplicated unique people**.
 
-Stored fields include source URL/type, capture time, raw public metrics and extraction errors instead of fabricated zeros.
+## Integrity validation
 
-## Once-per-day guarantee
-
-The collector intentionally does **not retry individual profiles on the same JST day**. A failed or login-walled profile is recorded as a missing observation for that day.
-
-## Automatic publication flow
-
-```text
-00:00 JST daily
-   ↓
-validate data/directory
-   ↓
-read each canonical account once
-   ↓
-data/live/history/YYYY-MM-DD.json
-public/data/history/YYYY-MM-DD.json
-   ↓
-update latest.json + series.json
-   ↓
-GitHub Actions commits data
-   ↓
-Pages workflow rebuilds
-   ↓
-/ displays the new observation
-```
-
-GitHub Actions cron is scheduled for midnight JST; GitHub may start a scheduled run slightly later than the nominal cron time.
-
-## Aggregation rules
-
-For each primary group the site exposes:
-
-- `official` — sum of the group's official SNS account audiences
-- `members` — sum of that group's member SNS account audiences
-- `ecosystem` — official + members
-- platform mix — X / Instagram / TikTok / YouTube audience sums
-- `youtubeViews` — total channel-view sum for observed YouTube accounts
-- `tiktokLikes` — total profile-like sum for observed TikTok accounts
-- coverage — successfully observed accounts / expected canonical accounts
-- daily gain — today's ecosystem sum minus the previous daily snapshot
-
-These are sums of account audiences, **not deduplicated unique people**.
-
-PiKi membership does not duplicate 松本かれん or 桜庭遥花 into the main group rollups; their PiKi relation is stored as a concurrent `UNIT` membership.
-
-## Data-quality decisions
-
-- KAWAII LAB. and MATES references to the same `@kawaiilab.mates` TikTok have one canonical owner
-- KAWAII LAB. Instagram `@kawaii_lab.2022` is included from an official ASOBISYSTEM source
-- KAWAII LAB. and 鎮西寿々歌 YouTube entries use stable channel-ID URLs
-- 澤村いろは Instagram/TikTok use `@iroha_sawamura`
-- 有村心晴 TikTok uses `@koha_ru411`
-- MORE STAR's 鈴木花梨 and 山本るしあ remain members and are marked `HIATUS`
-- unknown values remain unknown
-- source and capture time are preserved in the public JSON
-
-## Legacy DB/API path
-
-The PostgreSQL + Prisma models and official X / YouTube / Meta collectors remain in the repository for later higher-fidelity use. `.github/workflows/collect-social-stats.yml` is manual-only.
-
-## Local site
+Run locally:
 
 ```bash
 npm install
-npm run demo
+npm run directory:validate
+npm run data:validate
+npm run typecheck
+npm run build
 ```
+
+`scripts/validate-snapshots.mjs` checks latest/history/series synchronization, duplicate accounts, canonical-account coverage, capture timestamps and current YouTube parser trust before publication.
+
+Direct dependencies are pinned to exact versions. A committed full npm lockfile is the next reproducibility step; until then transitive resolution is still controlled less strictly than ideal.
+
+## Legacy DB/API path
+
+The Prisma/PostgreSQL schema and official API/provider collectors remain in the repository as a manual-only legacy/future path. `.github/workflows/collect-social-stats.yml` has no schedule and is not part of the production daily collection.
+
+The goal of any future migration is to preserve the current canonical identity / observation / metric semantics, not create a second competing definition.
+
+## Architecture notes
+
+See `docs/collection-strategy.md` for the current production data architecture.
 
 ## License / trademarks
 
