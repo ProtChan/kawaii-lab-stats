@@ -6,18 +6,29 @@ import type { MemberTimelinePoint } from "@/lib/analytics";
 import styles from "@/components/member-history-explorer.module.css";
 
 const series = ["Total", "X", "Instagram", "TikTok", "YouTube"] as const;
+type SeriesKey = (typeof series)[number];
 type ViewMode = "level" | "daily";
+type ChartRow = Record<string, string | number | null>;
 
 const signed = (value: number | null) => value == null ? "—" : `${value > 0 ? "+" : ""}${new Intl.NumberFormat("ja-JP").format(value)}`;
 
-function deltaRows(data: MemberTimelinePoint[]) {
+function levelRows(data: MemberTimelinePoint[]): ChartRow[] {
+  return data.map((point) => {
+    const row: ChartRow = { date: point.date };
+    for (const key of series) row[key] = point[key];
+    return row;
+  });
+}
+
+function deltaRows(data: MemberTimelinePoint[]): ChartRow[] {
   return data.slice(1).map((point, index) => {
     const previous = data[index];
-    const row: Record<string, string | number | null> = { date: point.date };
+    const row: ChartRow = { date: point.date };
     for (const key of series) {
       const before = previous[key];
       const after = point[key];
-      row[key] = typeof before === "number" && typeof after === "number" ? after - before : null;
+      const sameAccounts = previous.accountSet[key as SeriesKey] === point.accountSet[key as SeriesKey];
+      row[key] = sameAccounts && typeof before === "number" && typeof after === "number" ? after - before : null;
     }
     return row;
   });
@@ -25,8 +36,9 @@ function deltaRows(data: MemberTimelinePoint[]) {
 
 export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] }) {
   const [view, setView] = useState<ViewMode>("level");
+  const levels = useMemo(() => levelRows(data), [data]);
   const daily = useMemo(() => deltaRows(data), [data]);
-  const chartData = view === "daily" ? daily : data;
+  const chartData = view === "daily" ? daily : levels;
   const latestDaily = daily.at(-1) ?? null;
 
   return (
@@ -60,11 +72,11 @@ export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] })
         </div>
       ) : null}
 
-      {view === "daily" ? <p className={styles.note}>前日・当日の両方でそのSNSの観測値が揃った区間だけ差分を表示します。欠測は0として扱いません。</p> : null}
+      {view === "daily" ? <p className={styles.note}>前日・当日が完全観測で、かつそのSNSのcanonical account集合が同じ区間だけ差分を表示します。欠測やアカウント変更は0/増減として扱いません。</p> : null}
 
       {chartData.length >= (view === "daily" ? 1 : 2)
         ? <GrowthChart data={chartData} groups={[...series]} xKey="date" connectNulls={false} />
-        : <p className="lead">{view === "daily" ? "完全な連続2日分のデータが揃うと、SNSごとの前日比を表示します。" : "2日目以降、Totalと各SNSの時系列がここに表示されます。"}</p>}
+        : <p className="lead">{view === "daily" ? "比較可能な連続2日分のデータが揃うと、SNSごとの前日比を表示します。" : "2日目以降、Totalと各SNSの時系列がここに表示されます。"}</p>}
     </section>
   );
 }
