@@ -12,12 +12,12 @@ export default function ComparePage() {
         <div>
           <p className="eyebrow">COMPARE LAB</p>
           <h1>Compare</h1>
-          <p className="lead">対象・指標・所属グループをURLに保持する比較画面。ランキングやグループ詳細から、選択済み状態へそのまま遷移できます。</p>
+          <p className="lead">現在値と1日増減を切り替えながら、グループ・メンバー・指標を横断比較。グラフ系列はその場で表示 / 非表示を切り替えられます。</p>
         </div>
         <span className="badge">SHAREABLE STATE</span>
       </header>
       <CompareExplorer groups={payload.groups} members={payload.members} />
-      <footer>比較URLは scope / metric / group / selected をquery parameterとして保持します。欠測値は0に置換せず、時系列では線を接続しません。</footer>
+      <footer>比較URLは scope / metric / view / group / selected をquery parameterとして保持します。日次増減は前日・当日の両方で必要な観測が揃った場合だけ算出し、欠測値は0に置換しません。</footer>
     </main>
   );
 }
