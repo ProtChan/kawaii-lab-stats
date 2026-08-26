@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { timeline as demoTimeline } from "@/lib/demo-data";
+import { Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-const demoGroups = ["FRUITS ZIPPER", "CANDY TUNE", "SWEET STEADY", "CUTIE STREET", "MORE STAR"];
 type ChartRow = Record<string, string | number | null>;
 const compact = new Intl.NumberFormat("ja-JP", { notation: "compact", maximumFractionDigits: 1 });
 
 export function GrowthChart({
-  data = demoTimeline as ChartRow[],
-  groups = demoGroups,
-  xKey = "month",
+  data,
+  groups,
+  xKey = "date",
   connectNulls = true,
+  zeroLine = false,
 }: {
-  data?: ChartRow[];
-  groups?: string[];
+  data: ChartRow[];
+  groups: string[];
   xKey?: string;
   connectNulls?: boolean;
+  zeroLine?: boolean;
 }) {
   const [hiddenGroups, setHiddenGroups] = useState<Set<string>>(() => new Set());
 
@@ -65,6 +65,7 @@ export function GrowthChart({
           <LineChart data={data} margin={{ top: 12, right: 18, left: 8, bottom: 0 }}>
             <XAxis dataKey={xKey} tickLine={false} axisLine={false} minTickGap={24} />
             <YAxis width={66} tickFormatter={(v) => compact.format(Number(v))} tickLine={false} axisLine={false} />
+            {zeroLine ? <ReferenceLine y={0} stroke="var(--line2)" /> : null}
             <Tooltip formatter={(v) => v == null ? "—" : Number(v).toLocaleString("ja-JP")} contentStyle={{ background: "#11131a", border: "1px solid #2a2f3d", borderRadius: 12 }} />
             {groups.map((group, index) => <Line key={group} type="monotone" dataKey={group} hide={hiddenGroups.has(group)} stroke={`var(--chart-${(index % 5) + 1})`} strokeWidth={3} dot={data.length < 10} connectNulls={connectNulls} />)}
           </LineChart>
