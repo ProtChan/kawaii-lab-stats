@@ -30,6 +30,7 @@ function dailyDelta(history: ComparePoint[], index: number, metric: CompareMetri
   const previous = history[index - 1];
   const current = history[index];
   if (!previous?.complete[metric] || !current?.complete[metric]) return null;
+  if (previous.accountSet[metric] !== current.accountSet[metric]) return null;
   const before = previous[metric];
   const after = current[metric];
   return typeof before === "number" && typeof after === "number" ? after - before : null;
@@ -177,7 +178,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">{view === "daily" ? "DAILY CHANGE" : "CURRENT RANKING"}</p><h2>{metricLabels[metric]}{view === "daily" ? " 1日増減" : ""}</h2></div><span>{view === "daily" ? `${latestDate} 前日比` : `${orderedCandidates.length} candidates`}</span></div>
         {metric === "audience" && view === "level" ? <div className="platformLegend">{platformKeys.map((platform) => <span key={platform}><i className={`platformDot platform${platform}`} />{platform}</span>)}</div> : null}
-        {view === "daily" ? <p className="deltaNote">前日・当日の両方で必要なアカウントが揃った指標だけを算出。欠測日の部分合計は増減に使いません。</p> : null}
+        {view === "daily" ? <p className="deltaNote">前日・当日とも完全観測で、かつcanonical account集合が同じ区間だけ算出します。欠測やアカウント構成変更を成長として扱いません。</p> : null}
         <div className="compareBarList">
           {orderedCandidates.map((entity, index) => {
             const value = valueFor(entity);
@@ -193,7 +194,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
                   {metric === "audience" && view === "level" ? (
                     <div className="barTrack stackedAudience" aria-label={`${entity.name} SNS platform mix`}>
                       {platformKeys.map((platform) => {
-                        const platformValue = entity.platforms[platform];
+                        const platformValue = entity.platforms[platform] ?? 0;
                         const width = max > 0 ? (platformValue / max) * 100 : 0;
                         return width > 0 ? <i key={platform} className={`platformSegment platform${platform}`} style={{ width: `${width}%` }} title={`${platform}: ${fmt(platformValue)}`} /> : null;
                       })}
@@ -214,7 +215,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">{view === "daily" ? "DAILY DELTA HISTORY" : "HISTORY COMPARE"}</p><h2>{metricLabels[metric]} {view === "daily" ? "1日増減推移" : "推移"}</h2></div><span>{selectedEntities.length} selected</span></div>
         <div className="selectionLegend">{selectedEntities.map((entity) => <button key={entity.slug} onClick={() => toggleEntity(entity.slug)}>{entity.name} ×</button>)}</div>
-        {chartData.length >= (view === "daily" ? 1 : 2) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} /> : <p className="lead">{view === "daily" ? "完全な連続2日分のデータが揃うと、ここに1日増減を表示します。" : "この指標は履歴が2点以上になると比較推移を表示します。現在値ランキングは上で利用できます。"}</p>}
+        {chartData.length >= (view === "daily" ? 1 : 2) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} /> : <p className="lead">{view === "daily" ? "比較可能な連続2日分のデータが揃うと、ここに1日増減を表示します。" : "この指標は履歴が2点以上になると比較推移を表示します。現在値ランキングは上で利用できます。"}</p>}
       </section>
     </>
   );
