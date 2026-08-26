@@ -15,11 +15,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
-        run: npm install
+      - name: Install pinned direct dependencies
+        run: npm install --no-audit --no-fund
       - name: Validate canonical directory
         run: npm run directory:validate
+      - name: Validate snapshot integrity
+        run: npm run data:validate
       - name: Check daily collector syntax
         run: node --check scripts/collect-daily-public.mjs
+      - name: Typecheck
+        run: npm run typecheck
       - name: Build static site
         run: npm run build
