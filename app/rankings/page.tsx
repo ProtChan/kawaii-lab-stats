@@ -42,7 +42,7 @@ export default function RankingsPage() {
         </div>
         <div className="panel panelFeature">
           <div className="sectionHead"><div><p className="eyebrow">DAILY MOVERS</p><h2>メンバー 1-day Δ Top 20</h2></div><span>same canonical accounts only</span></div>
-          <DeltaBarList items={memberDaily.map(({ member, growth }) => ({ href: `/compare/?scope=members&metric=audience&view=daily&selected=${member.slug}`, label: member.name, sub: member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER", value: growth.day }))} />
+          <DeltaBarList items={memberDaily.map(({ member, growth }) => ({ href: `/compare/?scope=members&metric=audience&view=daily&selected=${member.slug}`, labelHref: `/members/${member.slug}`, label: member.name, sub: member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER", value: growth.day }))} />
         </div>
       </section>
 
