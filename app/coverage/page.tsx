@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GrowthChart } from "@/components/growth-chart";
 import { SiteNav } from "@/components/site-nav";
 import { historySnapshots } from "@/lib/analytics";
@@ -43,7 +44,7 @@ export default function CoveragePage() {
 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">UNAVAILABLE</p><h2>最新snapshotの欠測・除外値</h2></div><span>{failures.length} accounts</span></div>
-        {failures.length ? <div className="failureList">{failures.map((account)=><a href={account.profileUrl} target="_blank" rel="noreferrer" key={`${account.platform}-${account.handle}`}><div><strong>{account.entityName}</strong><span>{labels[account.platform]} · @{account.handle.replace(/^@/,"")}</span></div><b>{account.error ?? "parser excluded"}</b></a>)}</div> : <p className="lead">現在のsnapshotに欠測はありません。</p>}
+        {failures.length ? <div className="failureList">{failures.map((account)=><div className="failureItem" key={`${account.platform}-${account.handle}`}><div><strong>{account.entityType === "MEMBER" ? <Link className="entityNameLink" href={`/members/${account.entitySlug}`}>{account.entityName}</Link> : account.entityName}</strong><span>{labels[account.platform]} · @{account.handle.replace(/^@/,"")} · <a className="failureProfileLink" href={account.profileUrl} target="_blank" rel="noreferrer">profile ↗</a></span></div><b>{account.error ?? "parser excluded"}</b></div>)}</div> : <p className="lead">現在のsnapshotに欠測はありません。</p>}
       </section>
     </main>
   );
