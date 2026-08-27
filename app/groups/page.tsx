@@ -17,7 +17,7 @@ function GroupSection({ title, eyebrow, groups, note }: { title: string; eyebrow
       <div className="sectionHead"><div><p className="eyebrow">{eyebrow}</p><h2>{title}</h2></div><span>{note}</span></div>
       <div className="cardGrid groupCardGrid">
         {rows.map(({ group, stats, growth }) => {
-          const knownTotal = Object.values(stats.platformFollowers).reduce((sum, value) => sum + (value ?? 0), 0);
+          const knownTotal = Object.values(stats.platformFollowers).reduce<number>((sum, value) => sum + (value ?? 0), 0);
           return (
             <Link className="entityCard groupEntityCard" href={`/groups/${group.slug}`} key={group.slug}>
               <div className="entityCardTop"><span className="entityType">{group.category.replaceAll("_", " ")}</span><span>{stats.observed}/{stats.expected}</span></div>
