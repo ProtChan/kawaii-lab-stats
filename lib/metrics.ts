@@ -36,6 +36,17 @@ export const trustedMetricAccount = (account: MetricAccount) =>
 export const platformLabel = (platform: MetricAccount["platform"]): PlatformLabel =>
   platform === "INSTAGRAM" ? "Instagram" : platform === "TIKTOK" ? "TikTok" : platform === "YOUTUBE" ? "YouTube" : "X";
 
+export function dayDistance(from: string, to: string) {
+  const fromTime = Date.parse(`${from.slice(0, 10)}T00:00:00Z`);
+  const toTime = Date.parse(`${to.slice(0, 10)}T00:00:00Z`);
+  if (!Number.isFinite(fromTime) || !Number.isFinite(toTime)) return null;
+  return Math.round((toTime - fromTime) / 86_400_000);
+}
+
+export function exactDayInterval(from: string, to: string, days: number) {
+  return dayDistance(from, to) === days;
+}
+
 export function accountSetKey(accounts: MetricAccount[], platform?: PlatformLabel) {
   return accounts
     .filter((account) => !platform || platformLabel(account.platform) === platform)
