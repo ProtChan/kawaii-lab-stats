@@ -1,0 +1,121 @@
+.entityNameLink{
+  color:inherit;
+  text-decoration:none;
+  text-underline-offset:3px;
+  transition:color .15s ease;
+}
+.entityNameLink:hover{
+  color:var(--accent);
+  text-decoration:underline;
+}
+.entityNameLink:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.audienceValueLink,.barValueLink{
+  color:inherit;
+  text-decoration:none;
+}
+.audienceValueLink:hover,.barValueLink:hover{color:var(--accent)}
+.audienceTrack,.deltaTrack{display:block;text-decoration:none}
+
+.chartSeriesChip{
+  display:inline-flex;
+  align-items:center;
+  max-width:240px;
+  border:1px solid var(--line);
+  background:#0b0d12;
+  border-radius:999px;
+  color:#5f6678;
+  opacity:.58;
+  transition:opacity .15s ease,border-color .15s ease,color .15s ease;
+  overflow:hidden;
+}
+.chartSeriesChip.active{color:var(--text);opacity:1}
+.chartSeriesChip:hover{border-color:var(--line2);opacity:1}
+.chartSeriesControls .chartSeriesChip .chartSeriesToggle{
+  border:0;
+  background:transparent;
+  border-radius:0;
+  padding:6px 4px 6px 8px;
+  opacity:1;
+  max-width:none;
+}
+.chartSeriesControls .chartSeriesChip .chartSeriesToggle:hover{border:0;background:rgba(255,255,255,.025)}
+.chartSeriesControls .chartSeriesChip .chartSeriesToggle i{filter:grayscale(1)}
+.chartSeriesControls .chartSeriesChip.active .chartSeriesToggle i{filter:none}
+.chartSeriesChip>a{
+  color:inherit;
+  text-decoration:none;
+  padding:6px 9px 6px 2px;
+  font-size:9px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.chartSeriesChip>a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.chartSeriesControls .chartSeriesChip .chartSeriesToggle:focus-visible,.chartSeriesChip>a:focus-visible{outline:2px solid var(--accent);outline-offset:-1px}
+
+.selectionLegend .selectionPill{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  border:1px solid var(--line);
+  background:#0c0e13;
+  border-radius:999px;
+  padding:0 4px 0 9px;
+  font-size:9px;
+}
+.selectionLegend .selectionPill>a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:6px 0;
+}
+.selectionLegend .selectionPill>a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.selectionLegend .selectionPill button{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  border-radius:50%;
+  padding:4px 6px;
+  font:inherit;
+  cursor:pointer;
+}
+.selectionLegend .selectionPill button:hover{color:var(--text);background:rgba(255,255,255,.06)}
+
+.failureList .failureItem{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:13px 0;
+  border-top:1px solid var(--line);
+}
+.failureList .failureItem:first-child{border-top:0}
+.failureList .failureItem a{
+  display:inline;
+  padding:0;
+  border:0;
+  text-decoration:none;
+}
+.failureList .failureItem .failureProfileLink{color:var(--accent)}
+.failureList .failureItem .failureProfileLink:hover{text-decoration:underline}
+
+.srOnly{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+
+@media(max-width:600px){
+  .chartSeriesChip{max-width:170px}
+  .failureList .failureItem{align-items:flex-start}
+}
