@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
@@ -12,12 +13,14 @@ export function GrowthChart({
   xKey = "date",
   connectNulls = true,
   zeroLine = false,
+  seriesLinks = {},
 }: {
   data: ChartRow[];
   groups: string[];
   xKey?: string;
   connectNulls?: boolean;
   zeroLine?: boolean;
+  seriesLinks?: Record<string, string | undefined>;
 }) {
   const [hiddenGroups, setHiddenGroups] = useState<Set<string>>(() => new Set());
 
@@ -44,6 +47,24 @@ export function GrowthChart({
         <span>系列</span>
         {groups.map((group, index) => {
           const visible = !hiddenGroups.has(group);
+          const href = seriesLinks[group];
+          if (href) {
+            return (
+              <div className={`chartSeriesChip ${visible ? "active" : ""}`} key={group}>
+                <button
+                  type="button"
+                  className="chartSeriesToggle"
+                  aria-pressed={visible}
+                  onClick={() => toggleGroup(group)}
+                  title={`${group}を${visible ? "非表示" : "表示"}`}
+                >
+                  <i style={{ background: `var(--chart-${(index % 5) + 1})` }} />
+                  <span className="srOnly">{group}を{visible ? "非表示" : "表示"}</span>
+                </button>
+                <Link href={href}>{group}</Link>
+              </div>
+            );
+          }
           return (
             <button
               key={group}
