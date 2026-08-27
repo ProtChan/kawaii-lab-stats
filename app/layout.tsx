@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./visuals.css";
 import "./explorer.css";
+import "./entity-links.css";
 
 export const metadata: Metadata = {
   title: {
