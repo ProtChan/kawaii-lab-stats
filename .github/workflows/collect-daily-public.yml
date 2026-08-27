@@ -2,8 +2,9 @@ name: Daily public social snapshot
 
 on:
   schedule:
-    - cron: "0 15 * * *"
-    - cron: "30 15 * * *"
+    - cron: "7 15 * * *"
+    - cron: "27 15 * * *"
+    - cron: "47 15 * * *"
   workflow_dispatch:
 
 permissions:
@@ -32,6 +33,9 @@ jobs:
       - name: Validate canonical official-account directory
         run: node scripts/validate-directory.mjs
 
+      - name: Enforce midnight observation window
+        run: node scripts/check-collection-window.mjs
+
       - name: Check daily collector syntax
         run: node --check scripts/collect-daily-public.mjs
 
@@ -57,7 +61,8 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Primary cadence: 00:00 JST (15:00 UTC); fallback: 00:30 JST (15:30 UTC)."
+          echo "Primary cadence: 00:07 JST; fallbacks: 00:27 / 00:47 JST."
+          echo "Accepted observation window: 00:00-01:30 JST. Runs later than that fail before public-profile requests."
           echo "Collection uses only Node built-ins and does not depend on app npm packages."
           echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
           echo "Snapshot integrity is validated before a data commit is allowed."
