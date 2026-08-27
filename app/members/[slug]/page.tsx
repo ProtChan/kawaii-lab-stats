@@ -54,7 +54,7 @@ export default async function MemberPage({ params }: { params: Promise<{ slug: s
 
       <section className="panel panelFeature">
         <div className="sectionHead"><div><p className="eyebrow">PLATFORM MIX</p><h2>現在のSNS構成</h2></div><Link href={`/compare/?scope=members&metric=audience&selected=${member.slug}`}>Open in Compare →</Link></div>
-        <AudienceBarList items={[{href:`/compare/?scope=members&metric=audience&selected=${member.slug}`,label:member.name,sub:`${member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER"} · coverage ${stats.observed}/${stats.expected}`,value:stats.totalFollowers,mix:stats.platformFollowers}]} />
+        <AudienceBarList items={[{href:`/compare/?scope=members&metric=audience&selected=${member.slug}`,labelHref:`/members/${member.slug}`,label:member.name,sub:`${member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER"} · coverage ${stats.observed}/${stats.expected}`,value:stats.totalFollowers,mix:stats.platformFollowers}]} />
       </section>
 
       <MemberHistoryExplorer data={timeline} />
