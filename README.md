@@ -32,7 +32,7 @@ Concurrent-unit membership is represented as a relation; personal accounts are n
 ```text
 /                     overview + latest movers
 /rankings/             discovery: scale + daily movers + content scale
-/compare/              selected entities + metrics + total/daily history
+/compare/              selected entities + Total / 1D / 7D / 30D / Index
 /groups/               category-aware group/unit directory
 /groups/[slug]/        group analytics
 /members/              searchable/filterable member explorer
@@ -82,7 +82,7 @@ snapshot integrity validation
         ↓
 commit to main
         ↓
-typecheck + static Next.js build
+npm ci + typecheck + static Next.js build
         ↓
 GitHub Pages deploy in the same daily workflow
 ```
@@ -164,7 +164,7 @@ SNS audience sums are **not deduplicated unique people**.
 Run locally:
 
 ```bash
-npm install
+npm ci
 npm run directory:validate
 npm run data:validate
 npm run typecheck
@@ -173,7 +173,7 @@ npm run build
 
 `scripts/validate-snapshots.mjs` checks latest/history/series synchronization, duplicate accounts, canonical-account coverage, capture timestamps and current YouTube parser trust before publication.
 
-Direct dependencies are pinned to exact versions. A committed full npm lockfile is the next reproducibility step; until then transitive resolution is still controlled less strictly than ideal.
+Direct dependencies are pinned to exact versions and `package-lock.json` is committed. CI, Pages, daily deployment and the manual legacy collector all use `npm ci`, so the same commit resolves the same dependency graph.
 
 ## Legacy DB/API path
 
