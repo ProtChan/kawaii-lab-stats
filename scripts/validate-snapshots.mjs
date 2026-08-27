@@ -7,11 +7,42 @@ const HISTORY = path.join(LIVE, "history");
 const DIRECTORY = path.join(ROOT, "data", "directory");
 const PUBLIC_DATA = path.join(ROOT, "public", "data");
 const TRUSTED_YOUTUBE_PARSER = "ABOUT_CHANNEL_VIEW_MODEL_V1";
+const COLLECTION_WINDOW_START_MINUTE = 0;
+const COLLECTION_WINDOW_END_MINUTE = 120;
 
 const errors = [];
 const warn = [];
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"));
 const accountKey = (row) => `${row.platform}:${String(row.handle).toLowerCase()}`;
+
+function jstParts(date) {
+  return Object.fromEntries(
+    new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Tokyo",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+    })
+      .formatToParts(date)
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value]),
+  );
+}
+
+function collectionWindowInfo(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  const parts = jstParts(date);
+  const minute = Number(parts.hour) * 60 + Number(parts.minute);
+  return {
+    date: `${parts.year}-${parts.month}-${parts.day}`,
+    time: `${parts.hour}:${parts.minute}`,
+    valid: minute >= COLLECTION_WINDOW_START_MINUTE && minute <= COLLECTION_WINDOW_END_MINUTE,
+  };
+}
 
 async function canonicalKeys() {
   const files = (await readdir(DIRECTORY)).filter((file) => file.endsWith(".json")).sort();
@@ -39,6 +70,14 @@ for (const file of historyFiles) {
   snapshots.push(snapshot);
   const expectedDate = file.slice(0, 10);
   if (snapshot.date !== expectedDate) errors.push(`${file}: snapshot.date=${snapshot.date} does not match filename.`);
+
+  const collection = collectionWindowInfo(snapshot.collectedAt);
+  if (!collection) errors.push(`${file}: invalid collectedAt.`);
+  else {
+    if (collection.date !== expectedDate) errors.push(`${file}: collectedAt belongs to JST date ${collection.date}.`);
+    if (!collection.valid) errors.push(`${file}: collectedAt ${collection.time} JST is outside production window 00:00-02:00 JST.`);
+  }
+
   if (!Array.isArray(snapshot.accounts)) {
     errors.push(`${file}: accounts is not an array.`);
     continue;
@@ -90,7 +129,7 @@ for (let index = 1; index < snapshots.length; index += 1) {
   }
 }
 
-console.log(`Validated ${historyFiles.length} daily snapshots; latest=${latest.date}; accounts=${latest.accounts?.length ?? 0}.`);
+console.log(`Validated ${historyFiles.length} daily snapshots; latest=${latest.date}; accounts=${latest.accounts?.length ?? 0}; accepted window=00:00-02:00 JST.`);
 for (const message of warn) console.warn(`WARN: ${message}`);
 for (const message of errors) console.error(`ERROR: ${message}`);
 if (errors.length) process.exitCode = 1;
