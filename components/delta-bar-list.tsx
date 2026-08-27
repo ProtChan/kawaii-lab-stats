@@ -2,6 +2,7 @@ import Link from "next/link";
 
 export type DeltaBarItem = {
   href: string;
+  labelHref?: string;
   label: string;
   sub?: string;
   value: number | null;
@@ -18,16 +19,16 @@ export function DeltaBarList({ items }: { items: DeltaBarItem[] }) {
         const width = item.value != null && maxAbs > 0 ? (Math.abs(item.value) / maxAbs) * 50 : 0;
         const left = item.value != null && item.value < 0 ? 50 - width : 50;
         return (
-          <Link href={item.href} className="barRankRow" key={`${item.href}-${item.label}`}>
+          <div className="barRankRow" key={`${item.href}-${item.label}`}>
             <div className="barRankTop">
               <b>{String(index + 1).padStart(2, "0")}</b>
-              <div><strong>{item.label}</strong>{item.sub ? <small>{item.sub}</small> : null}</div>
-              <em className={item.value != null && item.value < 0 ? "deltaNegative" : "deltaPositive"}>{fmt(item.value)}</em>
+              <div><strong><Link className="entityNameLink" href={item.labelHref ?? item.href}>{item.label}</Link></strong>{item.sub ? <small>{item.sub}</small> : null}</div>
+              <Link className="barValueLink" href={item.href} aria-label={`${item.label}の分析を開く`}><em className={item.value != null && item.value < 0 ? "deltaNegative" : "deltaPositive"}>{fmt(item.value)}</em></Link>
             </div>
-            <div className="deltaTrack" aria-label={`${item.label} 前日比 ${fmt(item.value)}`}>
+            <Link className="deltaTrack" href={item.href} aria-label={`${item.label} 前日比 ${fmt(item.value)}`}>
               {item.value != null ? <i className={item.value < 0 ? "negative" : "positive"} style={{ width: `${width}%`, left: `${left}%` }} /> : null}
-            </div>
-          </Link>
+            </Link>
+          </div>
         );
       })}
     </div>
