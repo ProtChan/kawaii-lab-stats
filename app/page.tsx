@@ -35,7 +35,7 @@ export default function Home() {
         <div><span>Snapshot</span><strong>{liveSummary.date}</strong></div>
         <div><span>Trusted coverage</span><strong>{coverage.toFixed(1)}% · {liveSummary.successful}/{liveSummary.attempted}</strong></div>
         <div><span>History</span><strong>{historySnapshots.length} daily snapshots</strong></div>
-        <div><span>Cadence</span><strong>00:00 JST · 00:30 fallback</strong></div>
+        <div><span>Cadence</span><strong>00:07 JST · 00:27/00:47 fallback</strong></div>
       </section>
 
       <section className="metricGrid metricGrid4 overviewKpis">
@@ -52,7 +52,7 @@ export default function Home() {
         </div>
         <div className="panel panelFeature">
           <div className="sectionHead"><div><p className="eyebrow">TODAY · MEMBERS</p><h2>個人前日増加 Top 8</h2></div><Link href="/rankings">Full rankings →</Link></div>
-          <DeltaBarList items={memberMovers.map(({member,growth})=>({href:`/compare/?scope=members&metric=audience&view=daily&selected=${member.slug}`,label:member.name,sub:member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER",value:growth.day}))}/>
+          <DeltaBarList items={memberMovers.map(({member,growth})=>({href:`/compare/?scope=members&metric=audience&view=daily&selected=${member.slug}`,labelHref:`/members/${member.slug}`,label:member.name,sub:member.primaryGroup?.name ?? member.relations[0]?.name ?? "MEMBER",value:growth.day}))}/>
         </div>
       </section>
 
