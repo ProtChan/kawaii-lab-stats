@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { officialGroups, type DirectoryGroup, type DirectoryMember } from "@/lib/official-directory";
 import { liveSnapshot, type LiveAccount, type Snapshot } from "@/lib/live-stats";
-import { accountSetKey, aggregateAccounts, completeDelta, platformLabels, type PlatformLabel } from "@/lib/metrics";
+import { accountSetKey, aggregateAccounts, completeDelta, exactDayInterval, platformLabels, type PlatformLabel } from "@/lib/metrics";
 
 type RawSnapshot = Snapshot;
 
@@ -96,6 +96,7 @@ function snapshotRows(snapshot: RawSnapshot, predicate: (account: LiveAccount) =
 
 export type MemberTimelinePoint = {
   date: string;
+  isoDate: string;
   Total: number | null;
   X: number | null;
   Instagram: number | null;
@@ -106,8 +107,10 @@ export type MemberTimelinePoint = {
 
 function timelinePoint(snapshot: RawSnapshot, rows: LiveAccount[]): MemberTimelinePoint {
   const aggregate = aggregateAccounts(rows);
+  const isoDate = snapshot.date ?? "—";
   return {
-    date: snapshot.date?.slice(5) ?? "—",
+    date: isoDate.slice(5),
+    isoDate,
     Total: aggregate.audience.complete ? aggregate.audience.value : null,
     X: aggregate.platforms.X.complete ? aggregate.platforms.X.value : null,
     Instagram: aggregate.platforms.Instagram.complete ? aggregate.platforms.Instagram.value : null,
@@ -134,17 +137,19 @@ export function getGroupTimeline(slug: string): MemberTimelinePoint[] {
 function growthForRows(predicate: (account: LiveAccount) => boolean) {
   const points = historySnapshots.map((snapshot) => {
     const rows = snapshotRows(snapshot, predicate);
-    return { observation: aggregateAccounts(rows).audience, accountSet: accountSetKey(rows) };
+    return { date: snapshot.date ?? "", observation: aggregateAccounts(rows).audience, accountSet: accountSetKey(rows) };
   });
-  const comparableDelta = (from: typeof points[number] | null | undefined, to: typeof points[number] | null | undefined) => {
-    if (!from || !to || from.accountSet !== to.accountSet) return null;
-    return completeDelta(from.observation, to.observation);
-  };
   const latest = points.at(-1) ?? null;
+  const deltaAtDays = (days: number) => {
+    if (!latest) return null;
+    const from = [...points].reverse().find((point) => exactDayInterval(point.date, latest.date, days));
+    if (!from || from.accountSet !== latest.accountSet) return null;
+    return completeDelta(from.observation, latest.observation);
+  };
   return {
-    day: comparableDelta(points.at(-2), latest),
-    week: points.length >= 8 ? comparableDelta(points.at(-8), latest) : null,
-    month: points.length >= 31 ? comparableDelta(points.at(-31), latest) : null,
+    day: deltaAtDays(1),
+    week: deltaAtDays(7),
+    month: deltaAtDays(30),
   };
 }
 
