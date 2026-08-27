@@ -68,6 +68,10 @@ function viewLabel(view: ViewMode) {
   return view === "level" ? "Total" : view === "daily" ? "1-day Δ" : view === "7d" ? "7-day Δ" : view === "30d" ? "30-day Δ" : "Indexed = 100";
 }
 
+function entityHref(entity: CompareEntity) {
+  return entity.type === "GROUP" ? `/groups/${entity.slug}` : `/members/${entity.slug}`;
+}
+
 export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; members: CompareEntity[] }) {
   const [scope, setScope] = useState<"groups" | "members">("groups");
   const [metric, setMetric] = useState<CompareMetricKey>("audience");
@@ -180,6 +184,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
   const latestDate = selectedEntities.flatMap((entity) => entity.history.map((point) => point.date)).sort().at(-1)?.slice(5) ?? "—";
   const isDelta = view === "daily" || view === "7d" || view === "30d";
   const valueFormatter = (value: number | null) => view === "indexed" ? fmtIndexed(value) : isDelta ? fmtSigned(value) : fmt(value);
+  const seriesLinks = Object.fromEntries(selectedEntities.map((entity) => [entity.name, entityHref(entity)]));
 
   return (
     <>
@@ -211,11 +216,12 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
             const deltaWidth = value != null && maxAbs > 0 ? (Math.abs(value) / maxAbs) * 50 : 0;
             const deltaLeft = value != null && value < 0 ? 50 - deltaWidth : 50;
             const isSelected = effectiveSelected.includes(entity.slug);
+            const detailHref = entityHref(entity);
             return (
               <div className={`compareBarRow ${isSelected ? "selected" : ""}`} key={entity.slug}>
                 <button className="comparePick" onClick={() => toggleEntity(entity.slug)} aria-label={`${entity.name}を比較${isSelected ? "から外す" : "に追加"}`}><span>{isSelected ? "●" : "○"}</span></button>
                 <div className="compareBarMain">
-                  <div className="barRankTop"><b>{String(index + 1).padStart(2, "0")}</b><div><strong>{entity.name}</strong><small>{entity.primaryGroupName ?? (entity.type === "GROUP" ? "GROUP / UNIT" : "MEMBER")}</small></div><em className={isDelta ? value != null && value < 0 ? "deltaNegative" : "deltaPositive" : ""}>{valueFormatter(value)}</em></div>
+                  <div className="barRankTop"><b>{String(index + 1).padStart(2, "0")}</b><div><strong><Link className="entityNameLink" href={detailHref}>{entity.name}</Link></strong><small>{entity.primaryGroupName ?? (entity.type === "GROUP" ? "GROUP / UNIT" : "MEMBER")}</small></div><em className={isDelta ? value != null && value < 0 ? "deltaNegative" : "deltaPositive" : ""}>{valueFormatter(value)}</em></div>
                   {metric === "audience" && view === "level" ? (
                     <div className="barTrack stackedAudience" aria-label={`${entity.name} SNS platform mix`}>
                       {platformKeys.map((platform) => {
@@ -230,7 +236,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
                     </div>
                   ) : <div className="barTrack"><i style={{ width: `${ratio}%` }} /></div>}
                 </div>
-                <Link className="detailArrow" href={entity.type === "GROUP" ? `/groups/${entity.slug}` : `/members/${entity.slug}`}>↗</Link>
+                <Link className="detailArrow" href={detailHref}>↗</Link>
               </div>
             );
           })}
@@ -239,8 +245,8 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">TIME SERIES</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{selectedEntities.length} selected</span></div>
-        <div className="selectionLegend">{selectedEntities.map((entity) => <button key={entity.slug} onClick={() => toggleEntity(entity.slug)}>{entity.name} ×</button>)}</div>
-        {chartData.length >= (view === "level" ? 2 : 1) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} zeroLine={isDelta} /> : <p className="lead">{isDelta ? `${viewLabel(view)}に必要な比較可能履歴がまだ足りません。` : "この指標は履歴が2点以上になると比較推移を表示します。"}</p>}
+        <div className="selectionLegend">{selectedEntities.map((entity) => <span className="selectionPill" key={entity.slug}><Link href={entityHref(entity)}>{entity.name}</Link><button type="button" onClick={() => toggleEntity(entity.slug)} aria-label={`${entity.name}を比較から外す`}>×</button></span>)}</div>
+        {chartData.length >= (view === "level" ? 2 : 1) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} zeroLine={isDelta} seriesLinks={seriesLinks} /> : <p className="lead">{isDelta ? `${viewLabel(view)}に必要な比較可能履歴がまだ足りません。` : "この指標は履歴が2点以上になると比較推移を表示します。"}</p>}
       </section>
     </>
   );
