@@ -11,22 +11,41 @@ const BATCH_SIZE = 40;
 const BATCH_DELAY_MS = 25_000;
 const YOUTUBE_DELAY_MS = 750;
 const YOUTUBE_PARSER_VERSION = "ABOUT_CHANNEL_VIEW_MODEL_V1";
+const COLLECTION_WINDOW_START_MINUTE = 0;
+const COLLECTION_WINDOW_END_MINUTE = 120;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-function jstDateKey(date = new Date()) {
-  const parts = Object.fromEntries(
+function jstParts(date = new Date()) {
+  return Object.fromEntries(
     new Intl.DateTimeFormat("en-CA", {
       timeZone: "Asia/Tokyo",
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
     })
       .formatToParts(date)
       .filter((part) => part.type !== "literal")
       .map((part) => [part.type, part.value]),
   );
+}
+
+function jstDateKey(date = new Date()) {
+  const parts = jstParts(date);
   return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+function jstMinuteOfDay(date = new Date()) {
+  const parts = jstParts(date);
+  return Number(parts.hour) * 60 + Number(parts.minute);
+}
+
+function withinCollectionWindow(date = new Date()) {
+  const minute = jstMinuteOfDay(date);
+  return minute >= COLLECTION_WINDOW_START_MINUTE && minute <= COLLECTION_WINDOW_END_MINUTE;
 }
 
 async function exists(file) {
@@ -328,7 +347,8 @@ async function rebuildSeries(primaryGroups) {
 async function main() {
   await mkdir(HISTORY_DIR, { recursive: true });
   await mkdir(PUBLIC_DATA_DIR, { recursive: true });
-  const date = jstDateKey();
+  const now = new Date();
+  const date = jstDateKey(now);
   const historyPath = path.join(HISTORY_DIR, `${date}.json`);
   const publicHistoryPath = path.join(PUBLIC_DATA_DIR, "history", `${date}.json`);
   await mkdir(path.dirname(publicHistoryPath), { recursive: true });
@@ -341,8 +361,13 @@ async function main() {
     }
   }
 
+  if (!withinCollectionWindow(now)) {
+    const parts = jstParts(now);
+    throw new Error(`Refusing public profile collection at ${parts.hour}:${parts.minute} JST. Production window is 00:00-02:00 JST.`);
+  }
+
   const { accounts, primaryGroups } = await loadDirectory();
-  const capturedAt = new Date().toISOString();
+  const capturedAt = now.toISOString();
   const results = [];
   const errors = [];
 
@@ -429,7 +454,7 @@ async function main() {
     failed: results.filter((row) => row.error).length,
     source: {
       method: "one-public-profile-read-per-account-per-jst-day",
-      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses aboutChannelViewModel from one public channel About-page read.",
+      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses aboutChannelViewModel from one public channel About-page read. Production observations are accepted only from 00:00-02:00 JST.",
     },
     sources: [
       { name: "Pulse", url: "https://pulse.walls.sh/docs", platforms: ["X", "INSTAGRAM", "TIKTOK"] },
