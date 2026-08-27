@@ -8,7 +8,7 @@ const DIRECTORY = path.join(ROOT, "data", "directory");
 const PUBLIC_DATA = path.join(ROOT, "public", "data");
 const TRUSTED_YOUTUBE_PARSER = "ABOUT_CHANNEL_VIEW_MODEL_V1";
 const COLLECTION_WINDOW_START_MINUTE = 0;
-const COLLECTION_WINDOW_END_MINUTE = 120;
+const COLLECTION_WINDOW_END_MINUTE = 90;
 
 const errors = [];
 const warn = [];
@@ -75,7 +75,7 @@ for (const file of historyFiles) {
   if (!collection) errors.push(`${file}: invalid collectedAt.`);
   else {
     if (collection.date !== expectedDate) errors.push(`${file}: collectedAt belongs to JST date ${collection.date}.`);
-    if (!collection.valid) errors.push(`${file}: collectedAt ${collection.time} JST is outside production window 00:00-02:00 JST.`);
+    if (!collection.valid) errors.push(`${file}: collectedAt ${collection.time} JST is outside accepted observation window 00:00-01:30 JST.`);
   }
 
   if (!Array.isArray(snapshot.accounts)) {
@@ -129,7 +129,7 @@ for (let index = 1; index < snapshots.length; index += 1) {
   }
 }
 
-console.log(`Validated ${historyFiles.length} daily snapshots; latest=${latest.date}; accounts=${latest.accounts?.length ?? 0}; accepted window=00:00-02:00 JST.`);
+console.log(`Validated ${historyFiles.length} daily snapshots; latest=${latest.date}; accounts=${latest.accounts?.length ?? 0}; accepted window=00:00-01:30 JST.`);
 for (const message of warn) console.warn(`WARN: ${message}`);
 for (const message of errors) console.error(`ERROR: ${message}`);
 if (errors.length) process.exitCode = 1;
