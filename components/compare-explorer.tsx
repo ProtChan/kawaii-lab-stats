@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { GrowthChart } from "@/components/growth-chart";
 import type { CompareEntity, CompareMetricKey, ComparePoint } from "@/lib/compare-data";
+import { exactDayInterval } from "@/lib/metrics";
 
 const metricLabels: Record<CompareMetricKey, string> = {
   audience: "SNS total audience",
@@ -30,11 +31,11 @@ function periodLag(view: ViewMode) {
   return view === "daily" ? 1 : view === "7d" ? 7 : view === "30d" ? 30 : null;
 }
 
-function periodDelta(history: ComparePoint[], index: number, metric: CompareMetricKey, lag: number) {
-  if (index < lag) return null;
-  const previous = history[index - lag];
+function periodDelta(history: ComparePoint[], index: number, metric: CompareMetricKey, days: number) {
   const current = history[index];
-  if (!previous?.complete[metric] || !current?.complete[metric]) return null;
+  if (!current) return null;
+  const previous = history.slice(0, index).reverse().find((point) => exactDayInterval(point.date, current.date, days));
+  if (!previous?.complete[metric] || !current.complete[metric]) return null;
   if (previous.accountSet[metric] !== current.accountSet[metric]) return null;
   const before = previous[metric];
   const after = current[metric];
@@ -201,7 +202,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">{isDelta ? "GROWTH RANKING" : view === "indexed" ? "NORMALIZED SCALE" : "CURRENT RANKING"}</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{isDelta ? `${latestDate} endpoint` : `${orderedCandidates.length} candidates`}</span></div>
         {metric === "audience" && view === "level" ? <div className="platformLegend">{platformKeys.map((platform) => <span key={platform}><i className={`platformDot platform${platform}`} />{platform}</span>)}</div> : null}
-        {isDelta ? <p className="deltaNote">両端が完全観測で、canonical account集合が同一の区間だけ算出します。必要日数が足りない場合は—です。</p> : null}
+        {isDelta ? <p className="deltaNote">両端が完全観測で、canonical account集合が同一、かつ実際の日付差が1/7/30日ちょうどの区間だけ算出します。欠測日をまたいだ差分は短い期間として扱いません。</p> : null}
         {view === "indexed" ? <p className="deltaNote">各entityの現在のcanonical account集合で最初に得られた完全観測を100として正規化します。</p> : null}
         <div className="compareBarList">
           {orderedCandidates.map((entity, index) => {
