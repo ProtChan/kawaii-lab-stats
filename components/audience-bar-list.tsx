@@ -9,6 +9,7 @@ export type AudienceMix = {
 
 export type AudienceBarItem = {
   href: string;
+  labelHref?: string;
   label: string;
   sub?: string;
   value: number | null;
@@ -40,13 +41,13 @@ export function AudienceBarList({ items, showLegend = true }: { items: AudienceB
           const totalWidth = item.value != null && max > 0 ? (item.value / max) * 100 : 0;
           const knownMix = platforms.reduce((sum, platform) => sum + (item.mix[platform] ?? 0), 0);
           return (
-            <Link className={`audienceBarRow ${item.value == null ? "isMissing" : ""}`} href={item.href} key={item.href}>
+            <div className={`audienceBarRow ${item.value == null ? "isMissing" : ""}`} key={`${item.href}-${item.label}`}>
               <div className="audienceBarTop">
                 <b>{String(index + 1).padStart(2, "0")}</b>
-                <div><strong>{item.label}</strong>{item.sub ? <small>{item.sub}</small> : null}</div>
-                <em>{fmt(item.value)}</em>
+                <div><strong><Link className="entityNameLink" href={item.labelHref ?? item.href}>{item.label}</Link></strong>{item.sub ? <small>{item.sub}</small> : null}</div>
+                <Link className="audienceValueLink" href={item.href} aria-label={`${item.label}の分析を開く`}><em>{fmt(item.value)}</em></Link>
               </div>
-              <div className="audienceTrack">
+              <Link className="audienceTrack" href={item.href} aria-label={`${item.label}の分析を開く`}>
                 <div className="audienceTotal" style={{ width: `${totalWidth}%` }}>
                   {platforms.map((platform) => {
                     const value = item.mix[platform];
@@ -54,8 +55,8 @@ export function AudienceBarList({ items, showLegend = true }: { items: AudienceB
                     return width > 0 ? <i className={classNames[platform]} style={{ width: `${width}%` }} title={`${platform}: ${fmt(value)}`} key={platform} /> : null;
                   })}
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           );
         })}
       </div>
