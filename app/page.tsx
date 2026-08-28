@@ -35,7 +35,7 @@ export default function Home() {
         <div><span>Snapshot</span><strong>{liveSummary.date}</strong></div>
         <div><span>Trusted coverage</span><strong>{coverage.toFixed(1)}% · {liveSummary.successful}/{liveSummary.attempted}</strong></div>
         <div><span>History</span><strong>{historySnapshots.length} daily snapshots</strong></div>
-        <div><span>Cadence</span><strong>00:07 JST · 00:27/00:47 fallback</strong></div>
+        <div><span>Accepted window</span><strong>00:00–01:30 JST</strong></div>
       </section>
 
       <section className="metricGrid metricGrid4 overviewKpis">
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="dataStrip"><div><span>Coverage policy</span><strong>欠測 ≠ 0</strong></div><div><span>Growth policy</span><strong>same account set only</strong></div><div><span>Public raw data</span><strong><Link href="/data/latest.json">latest.json ↗</Link></strong></div><div><span>Method</span><strong><Link href="/methodology">Read methodology →</Link></strong></div></section>
+      <section className="dataStrip"><div><span>Coverage policy</span><strong>欠測 ≠ 0</strong></div><div><span>Growth policy</span><strong>exact day gap + same account set</strong></div><div><span>Public raw data</span><strong><Link href="/data/latest.json">latest.json ↗</Link></strong></div><div><span>Method</span><strong><Link href="/methodology">Read methodology →</Link></strong></div></section>
 
       <footer>Unofficial fanmade analytics. SNS横断合計はユニーク人数ではありません。Source / capture time / missing observations are preserved in public JSON.</footer>
     </main>
