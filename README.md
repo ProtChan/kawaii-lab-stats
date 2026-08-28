@@ -55,20 +55,25 @@ Compare state is shareable through query parameters such as:
 
 `.github/workflows/collect-daily-public.yml` is the only automatic social-profile collection workflow.
 
-Nominal schedule:
+GitHub scheduled workflows are best-effort and can start hours after their nominal cron time. To keep observations near midnight without accepting late data, the workflow uses a lightweight resilience gate:
 
 ```text
-00:00 JST  primary
-00:30 JST  fallback
+cron gate:        minute 07 / 27 / 47 of every UTC hour
+accepted capture: actual workflow start between 00:00 and 01:30 JST only
+outside window:  successful no-op; no public-profile request
 ```
 
-The fallback is only a scheduling safety net. Before any public-profile request, the collector checks the current JST history file; a completed daily snapshot causes an immediate exit, so the second cron does not produce a second observation.
+The extra cron starts are **not** extra observations. They only increase the chance that, even when GitHub shifts scheduled runs by several hours, one actual start lands inside the accepted JST window. Before any public-profile request, the collector also checks the current JST history file; a completed daily snapshot causes an immediate exit, so the same JST date is never intentionally observed twice.
+
+If no workflow actually starts inside the accepted window, that date remains missing. The site exposes a stale-snapshot warning instead of backfilling a late observation into the 24-hour series.
 
 The collection job intentionally uses Node built-ins and does not depend on the web app's npm dependency installation.
 
 ## Publication flow
 
 ```text
+actual workflow start inside 00:00-01:30 JST
+        ↓
 data/directory validation
         ↓
 one public observation / canonical account / JST day
@@ -110,10 +115,11 @@ Missing is not zero.
 
 A Growth interval is published only if:
 
-1. both endpoints are complete for the requested metric; and
-2. the canonical account set is identical at both endpoints.
+1. the actual snapshot-date difference is exactly the requested 1 / 7 / 30 days;
+2. both endpoints are complete for the requested metric; and
+3. the canonical account set is identical at both endpoints.
 
-This prevents a new SNS account, account migration, directory correction, or missing observation from appearing as fake organic growth.
+This prevents a missing day, new SNS account, account migration, directory correction, or missing observation from appearing as fake organic growth.
 
 ## Per-platform metrics
 
