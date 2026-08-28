@@ -28,7 +28,7 @@ GitHub scheduled workflows can start substantially later than their nominal cron
 
 Current resilience strategy:
 
-- schedule a cheap gate at minute 07 / 27 / 47 of every UTC hour
+- schedule a cheap gate every 5 minutes
 - inspect the **actual** workflow start time in JST before checkout/profile access
 - allow collection only when actual start is between 00:00 and 01:30 JST
 - outside that window the run succeeds as a no-op
@@ -37,7 +37,7 @@ Current resilience strategy:
 - if that JST day's snapshot already exists with `complete: true`, the collector exits before public-profile requests
 - if no run actually starts in the accepted window, that date remains missing rather than being backfilled later
 
-The frequent cron is therefore a scheduler-delay resilience mechanism, not a high-frequency data collection schedule.
+The five-minute cron is therefore a scheduler-delay resilience mechanism, not a high-frequency data collection schedule. At most one complete snapshot per JST date is intentionally collected.
 
 ## Canonical identity layer
 
