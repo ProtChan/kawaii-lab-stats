@@ -2,9 +2,10 @@ name: Daily public social snapshot
 
 on:
   schedule:
-    - cron: "7 15 * * *"
-    - cron: "27 15 * * *"
-    - cron: "47 15 * * *"
+    # GitHub scheduled workflows are best-effort and may be delayed by hours.
+    # Run a cheap gate three times per hour; only runs that actually start
+    # between 00:00 and 01:30 JST are allowed to touch public profiles.
+    - cron: "7,27,47 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,38 +21,70 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      snapshot_changed: ${{ steps.changes.outputs.changed }}
+      eligible: ${{ steps.window.outputs.eligible }}
 
     steps:
+      - name: Check actual JST observation window
+        id: window
+        shell: bash
+        run: |
+          hour=$(TZ=Asia/Tokyo date +%H)
+          minute=$(TZ=Asia/Tokyo date +%M)
+          total=$((10#$hour * 60 + 10#$minute))
+          echo "actual_jst=$(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')" >> "$GITHUB_OUTPUT"
+          if [ "$total" -ge 0 ] && [ "$total" -le 90 ]; then
+            echo "eligible=true" >> "$GITHUB_OUTPUT"
+            echo "Actual start is inside 00:00-01:30 JST; collection is eligible."
+          else
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            echo "Actual start is outside 00:00-01:30 JST; clean no-op."
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.window.outputs.eligible == 'true'
         with:
           fetch-depth: 0
 
       - uses: actions/setup-node@v4
+        if: steps.window.outputs.eligible == 'true'
         with:
           node-version: 22
 
       - name: Validate canonical official-account directory
+        if: steps.window.outputs.eligible == 'true'
         run: node scripts/validate-directory.mjs
 
-      - name: Enforce midnight observation window
-        run: node scripts/check-collection-window.mjs
-
       - name: Check daily collector syntax
+        if: steps.window.outputs.eligible == 'true'
         run: node --check scripts/collect-daily-public.mjs
 
       - name: Collect each canonical public profile once for the JST day
+        if: steps.window.outputs.eligible == 'true'
         run: node scripts/collect-daily-public.mjs
 
-      - name: Validate snapshot integrity before commit
-        run: node scripts/validate-snapshots.mjs
-
-      - name: Commit the daily snapshot
+      - name: Detect whether a new snapshot was produced
+        if: steps.window.outputs.eligible == 'true'
+        id: changes
         shell: bash
         run: |
           if git diff --quiet -- data/live public/data && [ -z "$(git status --porcelain -- data/live public/data)" ]; then
-            echo "No new daily snapshot to commit."
-            exit 0
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new snapshot; this JST date was already complete."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "New snapshot files detected."
           fi
+
+      - name: Validate snapshot integrity before commit
+        if: steps.changes.outputs.changed == 'true'
+        run: node scripts/validate-snapshots.mjs
+
+      - name: Commit the daily snapshot
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/live public/data
@@ -61,15 +94,17 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Primary cadence: 00:07 JST; fallbacks: 00:27 / 00:47 JST."
-          echo "Accepted observation window: 00:00-01:30 JST. Runs later than that fail before public-profile requests."
-          echo "Collection uses only Node built-ins and does not depend on app npm packages."
-          echo "The collector refuses a second run when data/live/history/YYYY-MM-DD.json is already complete."
-          echo "Snapshot integrity is validated before a data commit is allowed."
+          echo "Actual start: ${{ steps.window.outputs.actual_jst }}"
+          echo "Eligible: ${{ steps.window.outputs.eligible }}"
+          echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
+          echo "Only actual starts in 00:00-01:30 JST can access public profiles."
+          echo "The frequent cron is only a resilience gate for GitHub scheduler delays."
+          echo "The collector still refuses a second profile read when the JST date is already complete."
 
   deploy:
     name: Build and deploy latest snapshot
     needs: collect
+    if: needs.collect.outputs.snapshot_changed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     concurrency:
