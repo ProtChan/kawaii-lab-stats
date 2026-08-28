@@ -3,9 +3,9 @@ name: Daily public social snapshot
 on:
   schedule:
     # GitHub scheduled workflows are best-effort and may be delayed by hours.
-    # Run a cheap gate three times per hour; only runs that actually start
+    # Run a cheap gate every 5 minutes; only runs that actually start
     # between 00:00 and 01:30 JST are allowed to touch public profiles.
-    - cron: "7,27,47 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -97,6 +97,7 @@ jobs:
           echo "Actual start: ${{ steps.window.outputs.actual_jst }}"
           echo "Eligible: ${{ steps.window.outputs.eligible }}"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
+          echo "Scheduler gate cadence: every 5 minutes."
           echo "Only actual starts in 00:00-01:30 JST can access public profiles."
           echo "The frequent cron is only a resilience gate for GitHub scheduler delays."
           echo "The collector still refuses a second profile read when the JST date is already complete."
