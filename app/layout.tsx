@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SnapshotFreshness } from "@/components/snapshot-freshness";
+import { liveSummary } from "@/lib/live-stats";
 import "./globals.css";
 import "./visuals.css";
 import "./explorer.css";
@@ -23,7 +25,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <SnapshotFreshness snapshotDate={liveSummary.date} />
+        {children}
+      </body>
     </html>
   );
 }
