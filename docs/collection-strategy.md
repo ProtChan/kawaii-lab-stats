@@ -24,13 +24,20 @@ Next.js static export → GitHub Pages
 
 ## Cadence and duplicate prevention
 
-- primary cron: 00:00 JST (`15:00 UTC`)
-- fallback cron: 00:30 JST (`15:30 UTC`)
-- manual dispatch is allowed
-- before making any profile request, the collector checks `data/live/history/YYYY-MM-DD.json`
-- if that JST day's snapshot already exists with `complete: true`, the collector exits
+GitHub scheduled workflows can start substantially later than their nominal cron time, so cron time itself is not treated as the observation timestamp.
 
-The fallback exists to survive delayed/missed GitHub cron starts; it is not a second daily observation.
+Current resilience strategy:
+
+- schedule a cheap gate at minute 07 / 27 / 47 of every UTC hour
+- inspect the **actual** workflow start time in JST before checkout/profile access
+- allow collection only when actual start is between 00:00 and 01:30 JST
+- outside that window the run succeeds as a no-op
+- manual dispatch obeys the same window rule
+- before making any profile request, the collector checks `data/live/history/YYYY-MM-DD.json`
+- if that JST day's snapshot already exists with `complete: true`, the collector exits before public-profile requests
+- if no run actually starts in the accepted window, that date remains missing rather than being backfilled later
+
+The frequent cron is therefore a scheduler-delay resilience mechanism, not a high-frequency data collection schedule.
 
 ## Canonical identity layer
 
@@ -91,6 +98,7 @@ Successful YouTube observations from other parser versions are not trusted by th
 - YouTube total-view aggregation
 - completeness
 - canonical account-set identity
+- exact calendar-day interval checks for Growth
 
 Pages should not reimplement these rules independently.
 
@@ -103,14 +111,17 @@ Current-value screens may show an observed partial sum with coverage when approp
 - no canonical account for that platform: structurally zero / not applicable
 - canonical account exists but observation is missing: unknown
 
+A date that missed the accepted 00:00-01:30 JST observation window is also left missing. The UI exposes stale snapshot status rather than silently presenting an old snapshot as today's data.
+
 ## Growth comparability
 
 A Growth value is valid only when:
 
-1. both endpoints are complete for the requested metric; and
-2. the canonical account set is identical at both endpoints.
+1. the two snapshot dates are exactly the requested 1 / 7 / 30 calendar days apart;
+2. both endpoints are complete for the requested metric; and
+3. the canonical account set is identical at both endpoints.
 
-This prevents a newly added social account, handle migration, or directory correction from being misreported as organic growth.
+This prevents a missing day, newly added social account, handle migration, or directory correction from being misreported as organic growth.
 
 ## Group semantics
 
