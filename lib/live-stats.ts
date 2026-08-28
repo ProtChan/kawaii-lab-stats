@@ -1,7 +1,7 @@
 import latestJson from "@/data/live/latest.json";
 import seriesJson from "@/data/live/series.json";
 import { debutedGroups } from "@/lib/official-directory";
-import { aggregateAccounts, TRUSTED_YOUTUBE_PARSER, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
+import { aggregateAccounts, exactDayInterval, TRUSTED_YOUTUBE_PARSER, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
 
 export { TRUSTED_YOUTUBE_PARSER };
 
@@ -72,7 +72,10 @@ const attemptedAccounts = liveSnapshot.attempted ?? liveSnapshot.accounts.length
 const trustedObservedAccounts = liveSnapshot.accounts.filter(
   (account) => trustedAccount(account) && !account.error && typeof account.followers === "number" && Number.isFinite(account.followers),
 );
-const previousPoint = liveSeries.length >= 2 ? liveSeries[liveSeries.length - 2] : null;
+const latestSeriesDate = liveSeries.at(-1)?.date ?? liveSnapshot.date;
+const previousPoint = latestSeriesDate
+  ? [...liveSeries].reverse().find((point) => point.date !== latestSeriesDate && exactDayInterval(point.date, latestSeriesDate, 1)) ?? null
+  : null;
 
 export const liveGroupStats = debutedGroups.map((group) => {
   const all = liveSnapshot.accounts.filter((account) => account.groupSlug === group.slug);
