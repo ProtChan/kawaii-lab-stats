@@ -21,6 +21,27 @@
 .audienceValueLink:hover,.barValueLink:hover{color:var(--accent)}
 .audienceTrack,.deltaTrack{display:block;text-decoration:none}
 
+.snapshotFreshness{
+  width:min(1220px,calc(100% - 40px));
+  margin:12px auto -8px;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid #6d4a2b;
+  border-radius:12px;
+  background:rgba(83,52,25,.22);
+  color:#f0cb8b;
+  font-size:10px;
+  line-height:1.5;
+}
+.snapshotFreshness strong{
+  flex:0 0 auto;
+  letter-spacing:.08em;
+  font-size:9px;
+}
+.snapshotFreshness span{color:#cdb58f}
+
 .chartSeriesChip{
   display:inline-flex;
   align-items:center;
@@ -118,4 +139,6 @@
 @media(max-width:600px){
   .chartSeriesChip{max-width:170px}
   .failureList .failureItem{align-items:flex-start}
+  .snapshotFreshness{width:min(100% - 24px,1220px);display:block;margin-top:8px}
+  .snapshotFreshness strong{display:block;margin-bottom:3px}
 }
