@@ -58,7 +58,7 @@ Compare state is shareable through query parameters such as:
 GitHub scheduled workflows are best-effort and can start hours after their nominal cron time. To keep observations near midnight without accepting late data, the workflow uses a lightweight resilience gate:
 
 ```text
-cron gate:        minute 07 / 27 / 47 of every UTC hour
+cron gate:        every 5 minutes
 accepted capture: actual workflow start between 00:00 and 01:30 JST only
 outside window:  successful no-op; no public-profile request
 ```
