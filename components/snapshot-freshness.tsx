@@ -25,8 +25,8 @@ export function SnapshotFreshness({ snapshotDate }: { snapshotDate: string | nul
 
   return (
     <div className="snapshotFreshness" role="status">
-      <strong>TODAY&apos;S SNAPSHOT MISSING</strong>
-      <span>JST {today} · latest valid snapshot {snapshotDate ?? "none"}. Late observations are not backfilled into the 24-hour series.</span>
+      <strong>TODAY&apos;S SNAPSHOT PENDING</strong>
+      <span>JST {today} · latest valid snapshot {snapshotDate ?? "none"}. The first successful scheduled run will capture today regardless of clock time.</span>
     </div>
   );
 }
