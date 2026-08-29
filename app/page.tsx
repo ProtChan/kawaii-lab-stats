@@ -35,7 +35,7 @@ export default function Home() {
         <div><span>Snapshot</span><strong>{liveSummary.date}</strong></div>
         <div><span>Trusted coverage</span><strong>{coverage.toFixed(1)}% · {liveSummary.successful}/{liveSummary.attempted}</strong></div>
         <div><span>History</span><strong>{historySnapshots.length} daily snapshots</strong></div>
-        <div><span>Accepted window</span><strong>00:00–01:30 JST</strong></div>
+        <div><span>Collection policy</span><strong>first successful run / JST day</strong></div>
       </section>
 
       <section className="metricGrid metricGrid4 overviewKpis">
