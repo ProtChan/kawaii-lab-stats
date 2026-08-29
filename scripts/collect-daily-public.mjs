@@ -11,8 +11,6 @@ const BATCH_SIZE = 40;
 const BATCH_DELAY_MS = 25_000;
 const YOUTUBE_DELAY_MS = 750;
 const YOUTUBE_PARSER_VERSION = "ABOUT_CHANNEL_VIEW_MODEL_V1";
-const COLLECTION_WINDOW_START_MINUTE = 0;
-const COLLECTION_WINDOW_END_MINUTE = 120;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -36,16 +34,6 @@ function jstParts(date = new Date()) {
 function jstDateKey(date = new Date()) {
   const parts = jstParts(date);
   return `${parts.year}-${parts.month}-${parts.day}`;
-}
-
-function jstMinuteOfDay(date = new Date()) {
-  const parts = jstParts(date);
-  return Number(parts.hour) * 60 + Number(parts.minute);
-}
-
-function withinCollectionWindow(date = new Date()) {
-  const minute = jstMinuteOfDay(date);
-  return minute >= COLLECTION_WINDOW_START_MINUTE && minute <= COLLECTION_WINDOW_END_MINUTE;
 }
 
 async function exists(file) {
@@ -361,11 +349,6 @@ async function main() {
     }
   }
 
-  if (!withinCollectionWindow(now)) {
-    const parts = jstParts(now);
-    throw new Error(`Refusing public profile collection at ${parts.hour}:${parts.minute} JST. Production window is 00:00-02:00 JST.`);
-  }
-
   const { accounts, primaryGroups } = await loadDirectory();
   const capturedAt = now.toISOString();
   const results = [];
@@ -454,7 +437,7 @@ async function main() {
     failed: results.filter((row) => row.error).length,
     source: {
       method: "one-public-profile-read-per-account-per-jst-day",
-      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses aboutChannelViewModel from one public channel About-page read. Production observations are accepted only from 00:00-02:00 JST.",
+      note: "X/Instagram/TikTok use Pulse profile reads; YouTube uses aboutChannelViewModel from one public channel About-page read. The first successful run for each JST date is retained regardless of start time.",
     },
     sources: [
       { name: "Pulse", url: "https://pulse.walls.sh/docs", platforms: ["X", "INSTAGRAM", "TIKTOK"] },
