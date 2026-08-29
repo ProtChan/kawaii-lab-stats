@@ -2,11 +2,16 @@ name: Daily public social snapshot
 
 on:
   schedule:
-    # GitHub scheduled workflows are best-effort and may be delayed by hours.
-    # Run a cheap gate every 5 minutes; only runs that actually start
-    # between 00:00 and 01:30 JST are allowed to touch public profiles.
+    # GitHub scheduled workflows are best-effort and may be delayed.
+    # Run every five minutes; the first run that finds no completed JST-day
+    # snapshot performs the one daily public-profile observation.
     - cron: "*/5 * * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/collect-daily-public.yml"
 
 permissions:
   contents: write
@@ -23,49 +28,26 @@ jobs:
     timeout-minutes: 20
     outputs:
       snapshot_changed: ${{ steps.changes.outputs.changed }}
-      eligible: ${{ steps.window.outputs.eligible }}
 
     steps:
-      - name: Check actual JST observation window
-        id: window
-        shell: bash
-        run: |
-          hour=$(TZ=Asia/Tokyo date +%H)
-          minute=$(TZ=Asia/Tokyo date +%M)
-          total=$((10#$hour * 60 + 10#$minute))
-          echo "actual_jst=$(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')" >> "$GITHUB_OUTPUT"
-          if [ "$total" -ge 0 ] && [ "$total" -le 90 ]; then
-            echo "eligible=true" >> "$GITHUB_OUTPUT"
-            echo "Actual start is inside 00:00-01:30 JST; collection is eligible."
-          else
-            echo "eligible=false" >> "$GITHUB_OUTPUT"
-            echo "Actual start is outside 00:00-01:30 JST; clean no-op."
-          fi
-
       - uses: actions/checkout@v4
-        if: steps.window.outputs.eligible == 'true'
         with:
           fetch-depth: 0
 
       - uses: actions/setup-node@v4
-        if: steps.window.outputs.eligible == 'true'
         with:
           node-version: 22
 
       - name: Validate canonical official-account directory
-        if: steps.window.outputs.eligible == 'true'
         run: node scripts/validate-directory.mjs
 
       - name: Check daily collector syntax
-        if: steps.window.outputs.eligible == 'true'
         run: node --check scripts/collect-daily-public.mjs
 
-      - name: Collect each canonical public profile once for the JST day
-        if: steps.window.outputs.eligible == 'true'
+      - name: Collect today's snapshot if it does not already exist
         run: node scripts/collect-daily-public.mjs
 
       - name: Detect whether a new snapshot was produced
-        if: steps.window.outputs.eligible == 'true'
         id: changes
         shell: bash
         run: |
@@ -94,13 +76,11 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Actual start: ${{ steps.window.outputs.actual_jst }}"
-          echo "Eligible: ${{ steps.window.outputs.eligible }}"
+          echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
-          echo "Scheduler gate cadence: every 5 minutes."
-          echo "Only actual starts in 00:00-01:30 JST can access public profiles."
-          echo "The frequent cron is only a resilience gate for GitHub scheduler delays."
-          echo "The collector still refuses a second profile read when the JST date is already complete."
+          echo "Schedule cadence: every 5 minutes."
+          echo "Capture time is unrestricted; acquisition takes priority."
+          echo "The collector refuses a second public-profile read when the current JST date already has a complete snapshot."
 
   deploy:
     name: Build and deploy latest snapshot
