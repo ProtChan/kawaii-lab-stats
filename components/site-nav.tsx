@@ -25,9 +25,9 @@ export function SiteNav() {
   const dataActive = dataItems.some(([, href]) => active(href));
 
   return (
-    <nav className="siteNav" aria-label="Primary navigation">
+    <nav className={`siteNav ${styles.navRoot}`} aria-label="Primary navigation">
       <Link className="siteBrand" href="/" aria-label="KAWAII LAB Stats home"><span className="brandMark">KL</span><b>STATS</b></Link>
-      <div className="siteNavLinks">
+      <div className={`siteNavLinks ${styles.navLinks}`}>
         {primaryItems.map(([label, href]) => <Link className={active(href) ? "active" : ""} href={href} key={href}>{label}</Link>)}
         <details className={`${styles.dataMenu} ${dataActive ? styles.dataMenuActive : ""}`}>
           <summary>Data</summary>
