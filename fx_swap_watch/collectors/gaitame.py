@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-from urllib.parse import urljoin
 
 from .base import BaseCollector, CollectorError
 
@@ -22,26 +21,39 @@ class GaitameCollector(BaseCollector):
             from bs4 import BeautifulSoup
 
             soup = BeautifulSoup(html, "html.parser")
-            scripts = [tag.get("src") for tag in soup.find_all("script") if tag.get("src")]
-            for src in scripts:
-                script_url = urljoin(self.source_url, src)
-                if "gaitame.com" not in script_url:
-                    continue
-                response = session.get(script_url, timeout=self.timeout)
-                response.raise_for_status()
-                text = response.text
-                matches = []
-                for match in re.finditer(r"swap", text, flags=re.IGNORECASE):
-                    start = max(0, match.start() - 240)
-                    end = min(len(text), match.end() + 360)
-                    snippet = text[start:end].replace("\n", " ")
-                    if snippet not in matches:
-                        matches.append(snippet)
-                    if len(matches) >= 20:
+            print("gaitame endpoint candidates:")
+            candidates: list[str] = []
+            patterns = (
+                r"[\"']([^\"']*(?:\.json|\.php|/api/|ajax|calendar|swap)[^\"']*)[\"']",
+                r"(?:data-[\w-]+|href|src)=[\"']([^\"']+)[\"']",
+            )
+            for pattern in patterns:
+                for match in re.finditer(pattern, html, flags=re.IGNORECASE):
+                    value = match.group(1).strip()
+                    lowered = value.lower()
+                    if not value or value in candidates:
+                        continue
+                    if any(token in lowered for token in ("swap", "calendar", ".json", ".php", "/api/", "ajax")):
+                        candidates.append(value)
+                    if len(candidates) >= 80:
                         break
-                print(f"gaitame diagnostic script={script_url} swap_matches={len(matches)}")
-                for snippet in matches:
-                    print(snippet)
+            for value in candidates:
+                print(value)
+
+            print("gaitame inline scripts:")
+            emitted = 0
+            for script in soup.find_all("script"):
+                if script.get("src"):
+                    continue
+                text = script.get_text(" ", strip=True)
+                if not text:
+                    continue
+                lowered = text.lower()
+                if any(token in lowered for token in ("swap", "calendar", ".json", "/api/", "ajax", "fetch(")):
+                    print(text[:4000])
+                    emitted += 1
+                    if emitted >= 10:
+                        break
             raise CollectorError("対象通貨ペアのスワップポイントを抽出できませんでした")
         except Exception as exc:
             error = {"broker": self.broker, "source_url": self.source_url, "message": f"{type(exc).__name__}: {exc}"}
