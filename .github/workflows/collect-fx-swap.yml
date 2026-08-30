@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: fx-swap-collect-public
@@ -42,3 +43,7 @@ jobs:
             git commit -m "Update public FX swap data"
             git push
           fi
+      - name: Deploy refreshed site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
