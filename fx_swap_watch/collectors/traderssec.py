@@ -17,7 +17,6 @@ NUMBER_RE = re.compile(r"^-?\d+(?:\.\d+)?$")
 
 
 def parse_recent_pair_table(html: str, captured_at: str, broker: str, source_url: str) -> list[dict]:
-    """Read the broker's two-day pair matrix and fall back to the latest valid day per pair."""
     soup = BeautifulSoup(html, "html.parser")
     today = datetime.fromisoformat(captured_at).astimezone(JST).date()
 
@@ -56,9 +55,13 @@ def parse_recent_pair_table(html: str, captured_at: str, broker: str, source_url
         return []
 
     _, header_dates, pair_rows = best
+    print(f"{broker} recent-table dates={header_dates}")
+    for pair, cells in pair_rows:
+        if pair == "GBPJPY":
+            print(f"{broker} GBPJPY cells={cells}")
+
     rows: list[dict] = []
     seen_pairs: set[str] = set()
-
     for pair, cells in pair_rows:
         if pair in seen_pairs:
             continue
@@ -90,28 +93,8 @@ def parse_recent_pair_table(html: str, captured_at: str, broker: str, source_url
         value_date, days, buy, sell, buy_raw, sell_raw = selected
         seen_pairs.add(pair)
         rows.extend([
-            make_row(
-                captured_at=captured_at,
-                value_date=value_date.isoformat(),
-                broker=broker,
-                pair=pair,
-                side="buy",
-                swap_points=buy,
-                raw_value=buy_raw,
-                days=days,
-                source_url=source_url,
-            ),
-            make_row(
-                captured_at=captured_at,
-                value_date=value_date.isoformat(),
-                broker=broker,
-                pair=pair,
-                side="sell",
-                swap_points=sell,
-                raw_value=sell_raw,
-                days=days,
-                source_url=source_url,
-            ),
+            make_row(captured_at=captured_at, value_date=value_date.isoformat(), broker=broker, pair=pair, side="buy", swap_points=buy, raw_value=buy_raw, days=days, source_url=source_url),
+            make_row(captured_at=captured_at, value_date=value_date.isoformat(), broker=broker, pair=pair, side="sell", swap_points=sell, raw_value=sell_raw, days=days, source_url=source_url),
         ])
 
     return rows
