@@ -13,6 +13,7 @@ const primaryItems = [
 ] as const;
 
 const dataItems = [
+  ["Observations", "/observations"],
   ["Coverage", "/coverage"],
   ["Directory", "/directory"],
   ["Methodology", "/methodology"],
