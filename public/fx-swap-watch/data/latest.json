@@ -1,36 +1,280 @@
 {
-  "captured_at": "2026-08-30T18:26:20+00:00",
-  "row_count": 34,
-  "errors": [
-    {
-      "broker": "外為どっとコム",
-      "source_url": "https://www.gaitame.com/service/fx/swap-cal.html",
-      "message": "CollectorError: 対象通貨ペアのスワップポイントを抽出できませんでした"
-    },
-    {
-      "broker": "GMOクリック証券 FXネオ",
-      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/",
-      "message": "CollectorError: 対象通貨ペアのスワップポイントを抽出できませんでした"
-    }
-  ],
+  "captured_at": "2026-08-30T18:29:10+00:00",
+  "row_count": 68,
+  "errors": [],
   "data": [
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
-      "value_date": "2026-08-30",
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
       "broker": "外為どっとコム",
-      "pair": "",
-      "side": "",
-      "swap_points": null,
+      "pair": "USDJPY",
+      "side": "buy",
+      "swap_points": 117,
       "days": 1,
       "unit": 10000,
-      "source_url": "https://www.gaitame.com/service/fx/swap-cal.html",
-      "raw_value": "",
-      "normalized_swap_per_10k": null,
-      "normalized_swap_per_10k_per_day": null,
-      "error": "CollectorError: 対象通貨ペアのスワップポイントを抽出できませんでした"
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "117",
+      "normalized_swap_per_10k": 117.0,
+      "normalized_swap_per_10k_per_day": 117.0,
+      "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "USDJPY",
+      "side": "sell",
+      "swap_points": -147,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-147",
+      "normalized_swap_per_10k": -147.0,
+      "normalized_swap_per_10k_per_day": -147.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "EURJPY",
+      "side": "buy",
+      "swap_points": 63,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "63",
+      "normalized_swap_per_10k": 63.0,
+      "normalized_swap_per_10k_per_day": 63.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "EURJPY",
+      "side": "sell",
+      "swap_points": -83,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-83",
+      "normalized_swap_per_10k": -83.0,
+      "normalized_swap_per_10k_per_day": -83.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-27",
+      "broker": "外為どっとコム",
+      "pair": "GBPJPY",
+      "side": "buy",
+      "swap_points": 164,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "164",
+      "normalized_swap_per_10k": 164.0,
+      "normalized_swap_per_10k_per_day": 164.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-27",
+      "broker": "外為どっとコム",
+      "pair": "GBPJPY",
+      "side": "sell",
+      "swap_points": -179,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-179",
+      "normalized_swap_per_10k": -179.0,
+      "normalized_swap_per_10k_per_day": -179.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "AUDJPY",
+      "side": "buy",
+      "swap_points": 97,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "97",
+      "normalized_swap_per_10k": 97.0,
+      "normalized_swap_per_10k_per_day": 97.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "AUDJPY",
+      "side": "sell",
+      "swap_points": -112,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-112",
+      "normalized_swap_per_10k": -112.0,
+      "normalized_swap_per_10k_per_day": -112.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "NZDJPY",
+      "side": "buy",
+      "swap_points": 38,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "38",
+      "normalized_swap_per_10k": 38.0,
+      "normalized_swap_per_10k_per_day": 38.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "NZDJPY",
+      "side": "sell",
+      "swap_points": -58,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-58",
+      "normalized_swap_per_10k": -58.0,
+      "normalized_swap_per_10k_per_day": -58.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "TRYJPY",
+      "side": "buy",
+      "swap_points": 23,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "23",
+      "normalized_swap_per_10k": 23.0,
+      "normalized_swap_per_10k_per_day": 23.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "TRYJPY",
+      "side": "sell",
+      "swap_points": -33,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-33",
+      "normalized_swap_per_10k": -33.0,
+      "normalized_swap_per_10k_per_day": -33.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "MXNJPY",
+      "side": "buy",
+      "swap_points": 13,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "13",
+      "normalized_swap_per_10k": 13.0,
+      "normalized_swap_per_10k_per_day": 13.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "MXNJPY",
+      "side": "sell",
+      "swap_points": -18,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-18",
+      "normalized_swap_per_10k": -18.0,
+      "normalized_swap_per_10k_per_day": -18.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "ZARJPY",
+      "side": "buy",
+      "swap_points": 12,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "12",
+      "normalized_swap_per_10k": 12.0,
+      "normalized_swap_per_10k_per_day": 12.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "ZARJPY",
+      "side": "sell",
+      "swap_points": -17,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-17",
+      "normalized_swap_per_10k": -17.0,
+      "normalized_swap_per_10k_per_day": -17.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "HUFJPY",
+      "side": "buy",
+      "swap_points": 6,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "6",
+      "normalized_swap_per_10k": 0.6,
+      "normalized_swap_per_10k_per_day": 0.6,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-28",
+      "broker": "外為どっとコム",
+      "pair": "HUFJPY",
+      "side": "sell",
+      "swap_points": -11,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.gaitame.com/products/nextneo/csv/202608.csv",
+      "raw_value": "-11",
+      "normalized_swap_per_10k": -1.1,
+      "normalized_swap_per_10k_per_day": -1.1,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "USDJPY",
@@ -45,7 +289,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "USDJPY",
@@ -60,7 +304,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "EURJPY",
@@ -75,7 +319,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "EURJPY",
@@ -90,7 +334,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "AUDJPY",
@@ -105,7 +349,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "AUDJPY",
@@ -120,7 +364,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "NZDJPY",
@@ -135,7 +379,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "NZDJPY",
@@ -150,7 +394,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "ZARJPY",
@@ -165,7 +409,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "ZARJPY",
@@ -180,7 +424,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "TRYJPY",
@@ -195,7 +439,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "TRYJPY",
@@ -210,7 +454,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "MXNJPY",
@@ -225,7 +469,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "MXNJPY",
@@ -240,7 +484,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "HUFJPY",
@@ -255,7 +499,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "みんなのFX",
       "pair": "HUFJPY",
@@ -270,7 +514,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "USDJPY",
@@ -285,7 +529,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "USDJPY",
@@ -300,7 +544,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "EURJPY",
@@ -315,7 +559,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "EURJPY",
@@ -330,7 +574,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "AUDJPY",
@@ -345,7 +589,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "AUDJPY",
@@ -360,7 +604,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "NZDJPY",
@@ -375,7 +619,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "NZDJPY",
@@ -390,7 +634,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "ZARJPY",
@@ -405,7 +649,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "ZARJPY",
@@ -420,7 +664,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "TRYJPY",
@@ -435,7 +679,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "TRYJPY",
@@ -450,7 +694,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "MXNJPY",
@@ -465,7 +709,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "MXNJPY",
@@ -480,7 +724,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "HUFJPY",
@@ -495,7 +739,7 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
+      "captured_at": "2026-08-30T18:29:10+00:00",
       "value_date": "2026-08-30",
       "broker": "LIGHT FX",
       "pair": "HUFJPY",
@@ -510,19 +754,274 @@
       "error": ""
     },
     {
-      "captured_at": "2026-08-30T18:26:20+00:00",
-      "value_date": "2026-08-30",
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
       "broker": "GMOクリック証券 FXネオ",
-      "pair": "",
-      "side": "",
-      "swap_points": null,
+      "pair": "USDJPY",
+      "side": "sell",
+      "swap_points": -123.0,
       "days": 1,
       "unit": 10000,
-      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/",
-      "raw_value": "",
-      "normalized_swap_per_10k": null,
-      "normalized_swap_per_10k_per_day": null,
-      "error": "CollectorError: 対象通貨ペアのスワップポイントを抽出できませんでした"
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=USDJPY",
+      "raw_value": "-123",
+      "normalized_swap_per_10k": -123.0,
+      "normalized_swap_per_10k_per_day": -123.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "USDJPY",
+      "side": "buy",
+      "swap_points": 123.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=USDJPY",
+      "raw_value": "123",
+      "normalized_swap_per_10k": 123.0,
+      "normalized_swap_per_10k_per_day": 123.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "EURJPY",
+      "side": "sell",
+      "swap_points": -75.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=EURJPY",
+      "raw_value": "-75",
+      "normalized_swap_per_10k": -75.0,
+      "normalized_swap_per_10k_per_day": -75.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "EURJPY",
+      "side": "buy",
+      "swap_points": 75.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=EURJPY",
+      "raw_value": "75",
+      "normalized_swap_per_10k": 75.0,
+      "normalized_swap_per_10k_per_day": 75.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "GBPJPY",
+      "side": "sell",
+      "swap_points": -168.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=GBPJPY",
+      "raw_value": "-168",
+      "normalized_swap_per_10k": -168.0,
+      "normalized_swap_per_10k_per_day": -168.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "GBPJPY",
+      "side": "buy",
+      "swap_points": 168.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=GBPJPY",
+      "raw_value": "168",
+      "normalized_swap_per_10k": 168.0,
+      "normalized_swap_per_10k_per_day": 168.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "AUDJPY",
+      "side": "sell",
+      "swap_points": -113.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=AUDJPY",
+      "raw_value": "-113",
+      "normalized_swap_per_10k": -113.0,
+      "normalized_swap_per_10k_per_day": -113.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "AUDJPY",
+      "side": "buy",
+      "swap_points": 113.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=AUDJPY",
+      "raw_value": "113",
+      "normalized_swap_per_10k": 113.0,
+      "normalized_swap_per_10k_per_day": 113.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "NZDJPY",
+      "side": "sell",
+      "swap_points": -47.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=NZDJPY",
+      "raw_value": "-47",
+      "normalized_swap_per_10k": -47.0,
+      "normalized_swap_per_10k_per_day": -47.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "NZDJPY",
+      "side": "buy",
+      "swap_points": 47.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=NZDJPY",
+      "raw_value": "47",
+      "normalized_swap_per_10k": 47.0,
+      "normalized_swap_per_10k_per_day": 47.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "TRYJPY",
+      "side": "sell",
+      "swap_points": -25.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=TRYJPY",
+      "raw_value": "-25",
+      "normalized_swap_per_10k": -25.0,
+      "normalized_swap_per_10k_per_day": -25.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "TRYJPY",
+      "side": "buy",
+      "swap_points": 25.0,
+      "days": 1,
+      "unit": 10000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=TRYJPY",
+      "raw_value": "25",
+      "normalized_swap_per_10k": 25.0,
+      "normalized_swap_per_10k_per_day": 25.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "MXNJPY",
+      "side": "sell",
+      "swap_points": -140.0,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=MXNJPY",
+      "raw_value": "-140",
+      "normalized_swap_per_10k": -14.0,
+      "normalized_swap_per_10k_per_day": -14.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "MXNJPY",
+      "side": "buy",
+      "swap_points": 140.0,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=MXNJPY",
+      "raw_value": "140",
+      "normalized_swap_per_10k": 14.0,
+      "normalized_swap_per_10k_per_day": 14.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "ZARJPY",
+      "side": "sell",
+      "swap_points": -130.0,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=ZARJPY",
+      "raw_value": "-130",
+      "normalized_swap_per_10k": -13.0,
+      "normalized_swap_per_10k_per_day": -13.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "ZARJPY",
+      "side": "buy",
+      "swap_points": 130.0,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=ZARJPY",
+      "raw_value": "130",
+      "normalized_swap_per_10k": 13.0,
+      "normalized_swap_per_10k_per_day": 13.0,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "HUFJPY",
+      "side": "sell",
+      "swap_points": -12.0,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=HUFJPY",
+      "raw_value": "-12",
+      "normalized_swap_per_10k": -1.2,
+      "normalized_swap_per_10k_per_day": -1.2,
+      "error": ""
+    },
+    {
+      "captured_at": "2026-08-30T18:29:10+00:00",
+      "value_date": "2026-08-31",
+      "broker": "GMOクリック証券 FXネオ",
+      "pair": "HUFJPY",
+      "side": "buy",
+      "swap_points": 12.0,
+      "days": 1,
+      "unit": 100000,
+      "source_url": "https://www.click-sec.com/corp/guide/fxneo/swplog/?year=2026&month=08&pare=HUFJPY",
+      "raw_value": "12",
+      "normalized_swap_per_10k": 1.2,
+      "normalized_swap_per_10k_per_day": 1.2,
+      "error": ""
     }
   ],
   "downloads": {
