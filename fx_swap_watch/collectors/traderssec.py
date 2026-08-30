@@ -1,4 +1,4 @@
-"""Parser for the shared Minna no FX / LIGHT FX recent-swap table."""
+"""Shared parser for the Minna no FX / LIGHT FX swap calendar."""
 
 from __future__ import annotations
 
@@ -13,114 +13,165 @@ from fx_swap_watch.schema import make_row
 
 JST = ZoneInfo("Asia/Tokyo")
 DATE_RE = re.compile(r"(\d{1,2})/(\d{1,2})")
+PAIR_CODE_RE = re.compile(r"\b([A-Z]{6})\b")
 NUMBER_RE = re.compile(r"^-?\d+(?:\.\d+)?$")
 
 
 def parse_recent_pair_table(html: str, captured_at: str, broker: str, source_url: str) -> list[dict]:
+    """Return the latest valid calendar entry for every target pair.
+
+    The small "recent swaps" matrix can contain only a zero-day row plus a future
+    unpublished row (for example GBPJPY around a holiday/weekend).  The full
+    calendar on the same official page retains older valid rows, so use that as
+    the authoritative source and choose the newest numeric row with days > 0 for
+    each pair.
+    """
     soup = BeautifulSoup(html, "html.parser")
     today = datetime.fromisoformat(captured_at).astimezone(JST).date()
 
-    best = None
+    selected: dict[str, tuple[date, int, float, float, str, str]] = {}
+
     for table in soup.find_all("table"):
-        table_rows = table.find_all("tr")
-        pair_rows = []
-        first_pair_index = None
-        for index, tr in enumerate(table_rows):
-            cells = [cell.get_text(" ", strip=True) for cell in tr.find_all(["td", "th"])]
-            if not cells:
+        row_cells = [
+            [cell.get_text(" ", strip=True) for cell in tr.find_all(["td", "th"])]
+            for tr in table.find_all("tr")
+        ]
+        row_cells = [cells for cells in row_cells if cells]
+        if not row_cells:
+            continue
+
+        header_index = None
+        all_pairs: list[str] = []
+        for index, cells in enumerate(row_cells):
+            codes = _pair_codes(cells)
+            target_count = sum(code in TARGET_PAIRS for code in codes)
+            if target_count >= 5:
+                header_index = index
+                all_pairs = codes
+                break
+        if header_index is None or not all_pairs:
+            continue
+
+        pair_positions = {pair: all_pairs.index(pair) for pair in TARGET_PAIRS if pair in all_pairs}
+        if len(pair_positions) < 5:
+            continue
+
+        index = header_index + 1
+        while index < len(row_cells):
+            cells = row_cells[index]
+            date_match = DATE_RE.search(cells[0]) if cells else None
+            if not date_match:
+                index += 1
                 continue
-            pair = _detect_pair(cells[0])
-            if pair and len(cells) >= 4:
-                if first_pair_index is None:
-                    first_pair_index = index
-                pair_rows.append((pair, cells))
 
-        if len({pair for pair, _ in pair_rows}) < 5 or first_pair_index is None:
-            continue
+            month, day = map(int, date_match.groups())
+            value_date = _resolve_date(today, month, day)
 
-        header_text = " ".join(
-            cell.get_text(" ", strip=True)
-            for tr in table_rows[:first_pair_index]
-            for cell in tr.find_all(["td", "th"])
-        )
-        header_dates = _dedupe_dates(DATE_RE.findall(header_text))
-        if not header_dates:
-            continue
+            days_values = _calendar_payload(cells, "days", len(all_pairs))
+            buy_values = None
+            sell_values = None
 
-        score = len({pair for pair, _ in pair_rows})
-        if best is None or score > best[0]:
-            best = (score, header_dates, pair_rows)
+            cursor = index + 1
+            while cursor < len(row_cells):
+                next_cells = row_cells[cursor]
+                if DATE_RE.search(next_cells[0]):
+                    break
+                label = next_cells[0].replace(" ", "")
+                if label.startswith("買"):
+                    buy_values = _calendar_payload(next_cells, "side", len(all_pairs))
+                elif label.startswith("売"):
+                    sell_values = _calendar_payload(next_cells, "side", len(all_pairs))
+                cursor += 1
 
-    if best is None:
-        return []
+            if value_date <= today and days_values is not None and buy_values is not None and sell_values is not None:
+                for pair, position in pair_positions.items():
+                    if position >= len(days_values) or position >= len(buy_values) or position >= len(sell_values):
+                        continue
+                    days_raw = _clean(days_values[position])
+                    buy_raw = _clean(buy_values[position])
+                    sell_raw = _clean(sell_values[position])
+                    if not (NUMBER_RE.fullmatch(days_raw) and NUMBER_RE.fullmatch(buy_raw) and NUMBER_RE.fullmatch(sell_raw)):
+                        continue
+                    days = int(float(days_raw))
+                    if days <= 0:
+                        continue
+                    prior = selected.get(pair)
+                    if prior is None or value_date > prior[0]:
+                        selected[pair] = (
+                            value_date,
+                            days,
+                            float(buy_raw),
+                            float(sell_raw),
+                            buy_raw,
+                            sell_raw,
+                        )
 
-    _, header_dates, pair_rows = best
-    print(f"{broker} recent-table dates={header_dates}")
-    for pair, cells in pair_rows:
-        if pair == "GBPJPY":
-            print(f"{broker} GBPJPY cells={cells}")
+            index = max(cursor, index + 1)
 
     rows: list[dict] = []
-    seen_pairs: set[str] = set()
-    for pair, cells in pair_rows:
-        if pair in seen_pairs:
+    for pair in TARGET_PAIRS:
+        item = selected.get(pair)
+        if item is None:
             continue
-        payload = cells[1:]
-        triples = [payload[index:index + 3] for index in range(0, len(payload), 3)]
-        usable = min(len(triples), len(header_dates))
-
-        selected = None
-        for index in range(usable - 1, -1, -1):
-            triple = triples[index]
-            if len(triple) != 3:
-                continue
-            days_raw = triple[0].replace(",", "").strip()
-            buy_raw = triple[1].replace(",", "").strip()
-            sell_raw = triple[2].replace(",", "").strip()
-            if not (NUMBER_RE.fullmatch(days_raw) and NUMBER_RE.fullmatch(buy_raw) and NUMBER_RE.fullmatch(sell_raw)):
-                continue
-            days = int(float(days_raw))
-            if days <= 0:
-                continue
-            month, day = header_dates[index]
-            value_date = _resolve_date(today, int(month), int(day))
-            selected = (value_date, days, float(buy_raw), float(sell_raw), buy_raw, sell_raw)
-            break
-
-        if selected is None:
-            continue
-
-        value_date, days, buy, sell, buy_raw, sell_raw = selected
-        seen_pairs.add(pair)
+        value_date, days, buy, sell, buy_raw, sell_raw = item
         rows.extend([
-            make_row(captured_at=captured_at, value_date=value_date.isoformat(), broker=broker, pair=pair, side="buy", swap_points=buy, raw_value=buy_raw, days=days, source_url=source_url),
-            make_row(captured_at=captured_at, value_date=value_date.isoformat(), broker=broker, pair=pair, side="sell", swap_points=sell, raw_value=sell_raw, days=days, source_url=source_url),
+            make_row(
+                captured_at=captured_at,
+                value_date=value_date.isoformat(),
+                broker=broker,
+                pair=pair,
+                side="buy",
+                swap_points=buy,
+                raw_value=buy_raw,
+                days=days,
+                source_url=source_url,
+            ),
+            make_row(
+                captured_at=captured_at,
+                value_date=value_date.isoformat(),
+                broker=broker,
+                pair=pair,
+                side="sell",
+                swap_points=sell,
+                raw_value=sell_raw,
+                days=days,
+                source_url=source_url,
+            ),
         ])
-
     return rows
 
 
-def _detect_pair(text: str) -> str | None:
-    compact = text.replace(" ", "").replace("／", "/")
-    for pair, aliases in TARGET_PAIRS.items():
-        if pair in compact:
-            return pair
-        for alias in aliases:
-            if alias.replace(" ", "") in compact:
-                return pair
+def _pair_codes(cells: list[str]) -> list[str]:
+    codes: list[str] = []
+    for cell in cells:
+        match = PAIR_CODE_RE.search(cell.upper())
+        if match and match.group(1) not in codes:
+            codes.append(match.group(1))
+    return codes
+
+
+def _calendar_payload(cells: list[str], kind: str, expected: int) -> list[str] | None:
+    if kind == "days":
+        # Date rows are: date, 付与日数, pair1, pair2, ...
+        if len(cells) >= expected + 2 and "付与" in cells[1]:
+            return cells[2:2 + expected]
+        if len(cells) >= expected + 1:
+            return cells[-expected:]
+        return None
+
+    # Buy/sell rows are: 買|売, pair1, pair2, ...
+    if len(cells) >= expected + 1:
+        return cells[1:1 + expected] if len(cells) == expected + 1 else cells[-expected:]
     return None
 
 
-def _dedupe_dates(matches: list[tuple[str, str]]) -> list[tuple[str, str]]:
-    result: list[tuple[str, str]] = []
-    for item in matches:
-        if item not in result:
-            result.append(item)
-    return result
+def _clean(value: str) -> str:
+    return value.replace(",", "").replace("−", "-").strip()
 
 
 def _resolve_date(today: date, month: int, day: int) -> date:
     candidate = date(today.year, month, day)
-    if candidate > today:
+    # Around New Year, a December row displayed in January belongs to last year.
+    if candidate > today and (candidate - today).days > 180:
         candidate = date(today.year - 1, month, day)
     return candidate
