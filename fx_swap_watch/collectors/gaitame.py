@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import re
-
 from .base import BaseCollector, CollectorError
 
 
@@ -21,39 +19,16 @@ class GaitameCollector(BaseCollector):
             from bs4 import BeautifulSoup
 
             soup = BeautifulSoup(html, "html.parser")
-            print("gaitame endpoint candidates:")
-            candidates: list[str] = []
-            patterns = (
-                r"[\"']([^\"']*(?:\.json|\.php|/api/|ajax|calendar|swap)[^\"']*)[\"']",
-                r"(?:data-[\w-]+|href|src)=[\"']([^\"']+)[\"']",
-            )
-            for pattern in patterns:
-                for match in re.finditer(pattern, html, flags=re.IGNORECASE):
-                    value = match.group(1).strip()
-                    lowered = value.lower()
-                    if not value or value in candidates:
-                        continue
-                    if any(token in lowered for token in ("swap", "calendar", ".json", ".php", "/api/", "ajax")):
-                        candidates.append(value)
-                    if len(candidates) >= 80:
-                        break
-            for value in candidates:
-                print(value)
-
-            print("gaitame inline scripts:")
-            emitted = 0
             for script in soup.find_all("script"):
                 if script.get("src"):
                     continue
-                text = script.get_text(" ", strip=True)
-                if not text:
-                    continue
-                lowered = text.lower()
-                if any(token in lowered for token in ("swap", "calendar", ".json", "/api/", "ajax", "fetch(")):
-                    print(text[:4000])
-                    emitted += 1
-                    if emitted >= 10:
-                        break
+                raw = script.string or ""
+                marker = "function fetchSwapData"
+                index = raw.find(marker)
+                if index >= 0:
+                    print("gaitame raw fetchSwapData:")
+                    print(raw[index:index + 5000])
+                    break
             raise CollectorError("対象通貨ペアのスワップポイントを抽出できませんでした")
         except Exception as exc:
             error = {"broker": self.broker, "source_url": self.source_url, "message": f"{type(exc).__name__}: {exc}"}
