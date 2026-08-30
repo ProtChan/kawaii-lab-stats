@@ -1,5 +1,5 @@
-:global(.siteNav){position:relative;z-index:100}
-:global(.siteNavLinks){overflow:visible!important;position:relative}
+.navRoot{position:relative;z-index:100}
+.navLinks{overflow:visible!important;position:relative}
 .dataMenu{position:relative;flex:0 0 auto;z-index:110}
 .dataMenu summary{list-style:none;cursor:pointer;color:var(--muted);font-size:12px;white-space:nowrap;padding:18px 0 16px;font-weight:650;position:relative;user-select:none;touch-action:manipulation}
 .dataMenu summary::-webkit-details-marker{display:none}
@@ -11,7 +11,7 @@
 .menu a:after{display:none!important}
 .menu a:hover,.menu a.active{background:#1b1f29;color:var(--text)!important}
 @media(max-width:900px){
-  :global(.siteNavLinks){overflow:visible!important;flex-wrap:wrap;align-items:center}
+  .navLinks{overflow:visible!important;flex-wrap:wrap;align-items:center}
   .dataMenu summary{padding:12px 0}
   .menu{top:39px;right:auto;left:0}
 }
