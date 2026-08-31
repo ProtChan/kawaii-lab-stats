@@ -65,7 +65,14 @@ for (const file of historyFiles) {
     errors.push(`${file}: accounts is not an array.`);
     continue;
   }
+
+  const failedCount = snapshot.accounts.filter((account) => Boolean(account.error)).length;
+  const successfulCount = snapshot.accounts.length - failedCount;
   if (snapshot.attempted != null && snapshot.attempted !== snapshot.accounts.length) errors.push(`${file}: attempted ${snapshot.attempted} != accounts ${snapshot.accounts.length}.`);
+  if (snapshot.successful != null && snapshot.successful !== successfulCount) errors.push(`${file}: successful ${snapshot.successful} != observed successful rows ${successfulCount}.`);
+  if (snapshot.failed != null && snapshot.failed !== failedCount) errors.push(`${file}: failed ${snapshot.failed} != observed failed rows ${failedCount}.`);
+  if (Boolean(snapshot.complete) !== (failedCount === 0)) errors.push(`${file}: complete=${snapshot.complete} is inconsistent with failed=${failedCount}.`);
+
   const seen = new Set();
   for (const account of snapshot.accounts) {
     const key = accountKey(account);
