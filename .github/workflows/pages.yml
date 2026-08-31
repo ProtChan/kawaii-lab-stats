@@ -35,8 +35,6 @@ jobs:
         run: npm run typecheck
       - name: Build static site
         run: npm run build
-      - name: Exclude unrelated public artifacts from this site deployment
-        run: rm -rf out/fx-dashboard
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
