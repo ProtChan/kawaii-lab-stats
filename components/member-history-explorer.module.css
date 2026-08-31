@@ -5,9 +5,15 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
   color: var(--muted);
   font-size: 10px;
+}
+
+.periods {
+  margin-left: 2px;
 }
 
 .strip {
@@ -64,7 +70,16 @@
 
   .actions {
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .actions > span {
+    width: 100%;
+  }
+
+  .periods {
+    margin-left: 0;
   }
 
   .strip {
