@@ -9,7 +9,9 @@ type ValueFormat = "number" | "percent" | "index";
 const compact = new Intl.NumberFormat("ja-JP", { notation: "compact", maximumFractionDigits: 1 });
 
 function finiteValue(value: unknown): number | null {
-  const numeric = typeof value === "number" ? value : Number(value);
+  if (value === null || value === undefined || value === "") return null;
+  if (typeof value === "number") return Number.isFinite(value) ? value : null;
+  const numeric = Number(value);
   return Number.isFinite(numeric) ? numeric : null;
 }
 
@@ -21,7 +23,7 @@ function niceStep(raw: number) {
   return factor * power;
 }
 
-function fittedDomain(values: number[], includeZero: boolean): [number, number] | undefined {
+function fittedDomain(values: number[], includeZero: boolean, anchor?: number): [number, number] | undefined {
   if (!values.length) return undefined;
 
   let min = Math.min(...values);
@@ -29,6 +31,10 @@ function fittedDomain(values: number[], includeZero: boolean): [number, number] 
   if (includeZero) {
     min = Math.min(min, 0);
     max = Math.max(max, 0);
+  }
+  if (anchor != null && Number.isFinite(anchor)) {
+    min = Math.min(min, anchor);
+    max = Math.max(max, anchor);
   }
 
   const magnitude = Math.max(Math.abs(min), Math.abs(max), 1);
@@ -45,6 +51,10 @@ function fittedDomain(values: number[], includeZero: boolean): [number, number] 
   if (includeZero) {
     lower = Math.min(lower, 0);
     upper = Math.max(upper, 0);
+  }
+  if (anchor != null && Number.isFinite(anchor)) {
+    lower = Math.min(lower, anchor);
+    upper = Math.max(upper, anchor);
   }
   if (lower === upper) {
     lower -= step;
@@ -121,8 +131,8 @@ export function GrowthChart({
         .map((group) => finiteValue(row[group]))
         .filter((value): value is number => value != null),
     );
-    return fittedDomain(values, zeroLine);
-  }, [visibleData, visibleGroups, zeroLine]);
+    return fittedDomain(values, zeroLine, valueFormat === "index" ? 100 : undefined);
+  }, [visibleData, visibleGroups, zeroLine, valueFormat]);
 
   function toggleGroup(group: string) {
     setHiddenGroups((current) => {
@@ -186,6 +196,7 @@ export function GrowthChart({
               axisLine={false}
             />
             {zeroLine ? <ReferenceLine y={0} stroke="var(--line2)" /> : null}
+            {valueFormat === "index" ? <ReferenceLine y={100} stroke="var(--line2)" strokeDasharray="4 4" /> : null}
             <Tooltip formatter={(v) => formatTooltip(v, valueFormat)} contentStyle={{ background: "#11131a", border: "1px solid #2a2f3d", borderRadius: 12 }} />
             {groups.map((group, index) => <Line key={group} type="monotone" dataKey={group} hide={hiddenGroups.has(group)} stroke={`var(--chart-${(index % 5) + 1})`} strokeWidth={3} dot={visibleData.length < 10} connectNulls={connectNulls} />)}
           </LineChart>
