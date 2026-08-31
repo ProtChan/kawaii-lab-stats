@@ -14,7 +14,7 @@
     "db:seed": "node prisma/seed.mjs",
     "directory:validate": "node scripts/validate-directory.mjs",
     "data:validate": "node scripts/validate-snapshots.mjs",
-    "collect:daily-public": "node scripts/collect-daily-public.mjs",
+    "collect:daily-public": "node scripts/collect-or-retry-daily.mjs",
     "collect:youtube": "node scripts/collect-youtube.mjs",
     "collect:x": "node scripts/collect-x.mjs",
     "collect:instagram": "node scripts/collect-instagram.mjs",
