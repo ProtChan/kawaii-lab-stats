@@ -3,8 +3,8 @@ name: Daily public social snapshot
 on:
   schedule:
     # GitHub scheduled workflows are best-effort and may be delayed.
-    # Run every five minutes; the first run that finds no completed JST-day
-    # snapshot performs the one daily public-profile observation.
+    # Run every five minutes. The first run creates the JST-day snapshot;
+    # later runs retry only failed or newly missing canonical accounts.
     - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
@@ -12,6 +12,7 @@ on:
       - main
     paths:
       - ".github/workflows/collect-daily-public.yml"
+      - "scripts/collect-or-retry-daily.mjs"
 
 permissions:
   contents: write
@@ -41,29 +42,31 @@ jobs:
       - name: Validate canonical official-account directory
         run: node scripts/validate-directory.mjs
 
-      - name: Check daily collector syntax
-        run: node --check scripts/collect-daily-public.mjs
+      - name: Check collector syntax
+        run: |
+          node --check scripts/collect-daily-public.mjs
+          node --check scripts/collect-or-retry-daily.mjs
 
-      - name: Collect today's snapshot if it does not already exist
-        run: node scripts/collect-daily-public.mjs
+      - name: Collect or retry today's snapshot
+        run: node scripts/collect-or-retry-daily.mjs
 
-      - name: Detect whether a new snapshot was produced
+      - name: Detect whether snapshot data changed
         id: changes
         shell: bash
         run: |
           if git diff --quiet -- data/live public/data && [ -z "$(git status --porcelain -- data/live public/data)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No new snapshot; this JST date was already complete."
+            echo "No changes; today's snapshot is already complete."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "New snapshot files detected."
+            echo "Snapshot files changed."
           fi
 
       - name: Validate snapshot integrity before commit
         if: steps.changes.outputs.changed == 'true'
         run: node scripts/validate-snapshots.mjs
 
-      - name: Commit the daily snapshot
+      - name: Commit snapshot progress
         if: steps.changes.outputs.changed == 'true'
         shell: bash
         run: |
@@ -80,7 +83,7 @@ jobs:
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes."
           echo "Capture time is unrestricted; acquisition takes priority."
-          echo "The collector refuses a second public-profile read when the current JST date already has a complete snapshot."
+          echo "Successful rows are retained; only failed or missing rows are retried on later Actions until complete."
 
   deploy:
     name: Build and deploy latest snapshot
@@ -115,8 +118,10 @@ jobs:
       - name: Validate snapshot integrity
         run: npm run data:validate
 
-      - name: Check daily collector syntax
-        run: node --check scripts/collect-daily-public.mjs
+      - name: Check collector syntax
+        run: |
+          node --check scripts/collect-daily-public.mjs
+          node --check scripts/collect-or-retry-daily.mjs
 
       - name: Typecheck
         run: npm run typecheck
