@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 type ChartRow = Record<string, string | number | null>;
+type ValueFormat = "number" | "percent" | "index";
 const compact = new Intl.NumberFormat("ja-JP", { notation: "compact", maximumFractionDigits: 1 });
 
 function finiteValue(value: unknown): number | null {
@@ -53,6 +54,25 @@ function fittedDomain(values: number[], includeZero: boolean): [number, number] 
   return [lower, upper];
 }
 
+function formatAxis(value: unknown, format: ValueFormat) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return "—";
+  if (format === "percent") {
+    const digits = Math.abs(numeric) < 10 ? 1 : 0;
+    return `${numeric.toFixed(digits)}%`;
+  }
+  if (format === "index") return numeric.toFixed(1);
+  return compact.format(numeric);
+}
+
+function formatTooltip(value: unknown, format: ValueFormat) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return "—";
+  if (format === "percent") return `${numeric.toLocaleString("ja-JP", { maximumFractionDigits: 3 })}%`;
+  if (format === "index") return numeric.toLocaleString("ja-JP", { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+  return numeric.toLocaleString("ja-JP");
+}
+
 export function GrowthChart({
   data,
   groups,
@@ -60,6 +80,7 @@ export function GrowthChart({
   connectNulls = true,
   zeroLine = false,
   seriesLinks = {},
+  valueFormat = "number",
 }: {
   data: ChartRow[];
   groups: string[];
@@ -67,6 +88,7 @@ export function GrowthChart({
   connectNulls?: boolean;
   zeroLine?: boolean;
   seriesLinks?: Record<string, string | undefined>;
+  valueFormat?: ValueFormat;
 }) {
   const [hiddenGroups, setHiddenGroups] = useState<Set<string>>(() => new Set());
 
@@ -159,12 +181,12 @@ export function GrowthChart({
               width={66}
               domain={yDomain}
               allowDataOverflow={Boolean(yDomain)}
-              tickFormatter={(v) => compact.format(Number(v))}
+              tickFormatter={(v) => formatAxis(v, valueFormat)}
               tickLine={false}
               axisLine={false}
             />
             {zeroLine ? <ReferenceLine y={0} stroke="var(--line2)" /> : null}
-            <Tooltip formatter={(v) => v == null ? "—" : Number(v).toLocaleString("ja-JP")} contentStyle={{ background: "#11131a", border: "1px solid #2a2f3d", borderRadius: 12 }} />
+            <Tooltip formatter={(v) => formatTooltip(v, valueFormat)} contentStyle={{ background: "#11131a", border: "1px solid #2a2f3d", borderRadius: 12 }} />
             {groups.map((group, index) => <Line key={group} type="monotone" dataKey={group} hide={hiddenGroups.has(group)} stroke={`var(--chart-${(index % 5) + 1})`} strokeWidth={3} dot={visibleData.length < 10} connectNulls={connectNulls} />)}
           </LineChart>
         </ResponsiveContainer>
