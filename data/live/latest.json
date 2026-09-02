@@ -1358,7 +1358,7 @@
       "handle": "miyu_ume",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@miyu_ume",
-      "capturedAt": "2026-09-01T22:54:47.747Z",
+      "capturedAt": "2026-09-02T00:43:10.290Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -1366,7 +1366,7 @@
       "likes": null,
       "views": null,
       "error": "batch_failed",
-      "detail": "Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\""
+      "detail": "Pulse HTTP 502: origin unreachable"
     },
     {
       "entitySlug": "nagisa-manabe",
@@ -2029,7 +2029,7 @@
       "handle": "luna_luna073",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@luna_luna073",
-      "capturedAt": "2026-09-01T22:54:47.747Z",
+      "capturedAt": "2026-09-02T00:43:10.290Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2037,7 +2037,7 @@
       "likes": null,
       "views": null,
       "error": "batch_failed",
-      "detail": "Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\""
+      "detail": "Pulse HTTP 502: origin unreachable"
     },
     {
       "entitySlug": "mana-manaka",
@@ -2107,7 +2107,7 @@
       "handle": "manafy_fz0422",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@manafy_fz0422",
-      "capturedAt": "2026-09-01T22:54:47.747Z",
+      "capturedAt": "2026-09-02T00:43:10.290Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2115,7 +2115,7 @@
       "likes": null,
       "views": null,
       "error": "batch_failed",
-      "detail": "Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\""
+      "detail": "Pulse HTTP 502: origin unreachable"
     },
     {
       "entitySlug": "karen-matsumoto",
@@ -2354,7 +2354,7 @@
       "handle": "kawaiilab.mates",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@kawaiilab.mates",
-      "capturedAt": "2026-09-01T22:54:47.747Z",
+      "capturedAt": "2026-09-02T00:43:10.290Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2362,7 +2362,7 @@
       "likes": null,
       "views": null,
       "error": "batch_failed",
-      "detail": "Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\""
+      "detail": "Pulse HTTP 502: origin unreachable"
     },
     {
       "entitySlug": "momo-aoshima",
@@ -2432,7 +2432,7 @@
       "handle": "momo_klm0306",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@momo_klm0306",
-      "capturedAt": "2026-09-01T22:54:47.747Z",
+      "capturedAt": "2026-09-02T00:43:10.290Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2440,7 +2440,7 @@
       "likes": null,
       "views": null,
       "error": "batch_failed",
-      "detail": "Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\""
+      "detail": "Pulse HTTP 502: origin unreachable"
     },
     {
       "entitySlug": "erena-itami",
@@ -5908,12 +5908,12 @@
     }
   ],
   "errors": [
-    "miyu-umeda:TIKTOK:miyu_ume: Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\"",
-    "luna-nakagawa:TIKTOK:luna_luna073: Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\"",
-    "mana-manaka:TIKTOK:manafy_fz0422: Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\"",
-    "kawaii-lab-mates:TIKTOK:kawaiilab.mates: Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\"",
-    "momo-aoshima:TIKTOK:momo_klm0306: Pulse HTTP 502: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502/\",\"title\":\"Error 502: Bad gateway\",\"status\":502,\"detail\":\"The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.\",\"instance\":\"a347dbdffa5b514d\",\"error_code\":502,\"error_name\":\"origin_bad_gateway\",\"error_category\":\"origin\",\"ray_id\":\"a347dbdffa5b514d\",\"timestamp\":\"2026-09-01T22:54:48Z\",\"zone\""
+    "miyu-umeda:TIKTOK:miyu_ume: Pulse HTTP 502: origin unreachable",
+    "luna-nakagawa:TIKTOK:luna_luna073: Pulse HTTP 502: origin unreachable",
+    "mana-manaka:TIKTOK:manafy_fz0422: Pulse HTTP 502: origin unreachable",
+    "kawaii-lab-mates:TIKTOK:kawaiilab.mates: Pulse HTTP 502: origin unreachable",
+    "momo-aoshima:TIKTOK:momo_klm0306: Pulse HTTP 502: origin unreachable"
   ],
-  "lastAttemptAt": "2026-09-01T22:54:47.747Z",
-  "retryAttempts": 2
+  "lastAttemptAt": "2026-09-02T00:43:10.290Z",
+  "retryAttempts": 3
 }
