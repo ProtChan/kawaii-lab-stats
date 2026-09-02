@@ -636,37 +636,37 @@
       "more-star": {
         "name": "MORE STAR",
         "official": 211588,
-        "members": 557956,
-        "ecosystem": 769544,
+        "members": 857132,
+        "ecosystem": 1068720,
         "platforms": {
           "X": 223497,
           "Instagram": 365000,
-          "TikTok": 143447,
+          "TikTok": 442623,
           "YouTube": 37600
         },
         "youtubeViews": 13203865,
         "youtubeViewAccounts": 1,
-        "tiktokLikes": 7489632,
-        "tiktokLikeAccounts": 4,
-        "observedAccounts": 25,
+        "tiktokLikes": 17562255,
+        "tiktokLikeAccounts": 10,
+        "observedAccounts": 31,
         "expectedAccounts": 31
       },
       "sweet-steady": {
         "name": "SWEET STEADY",
-        "official": 426561,
-        "members": 1652929,
-        "ecosystem": 2079490,
+        "official": 573167,
+        "members": 2689148,
+        "ecosystem": 3262315,
         "platforms": {
           "X": 494248,
           "Instagram": 1347000,
-          "TikTok": 40242,
+          "TikTok": 1223067,
           "YouTube": 198000
         },
         "youtubeViews": 164777811,
         "youtubeViewAccounts": 1,
-        "tiktokLikes": 982389,
-        "tiktokLikeAccounts": 1,
-        "observedAccounts": 18,
+        "tiktokLikes": 34388179,
+        "tiktokLikeAccounts": 8,
+        "observedAccounts": 25,
         "expectedAccounts": 25
       }
     }
