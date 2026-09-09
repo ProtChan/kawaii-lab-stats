@@ -1246,5 +1246,101 @@
         "expectedAccounts": 25
       }
     }
+  },
+  {
+    "date": "2026-09-10",
+    "collectedAt": "2026-09-09T17:34:04.413Z",
+    "groups": {
+      "candy-tune": {
+        "name": "CANDY TUNE",
+        "official": 1338171,
+        "members": 4573937,
+        "ecosystem": 5912108,
+        "platforms": {
+          "X": 1142262,
+          "Instagram": 2342000,
+          "TikTok": 1896946,
+          "YouTube": 530900
+        },
+        "youtubeViews": 569148782,
+        "youtubeViewAccounts": 2,
+        "tiktokLikes": 71137770,
+        "tiktokLikeAccounts": 8,
+        "observedAccounts": 26,
+        "expectedAccounts": 26
+      },
+      "cutie-street": {
+        "name": "CUTIE STREET",
+        "official": 2791957,
+        "members": 8636836,
+        "ecosystem": 11428793,
+        "platforms": {
+          "X": 1656738,
+          "Instagram": 4251000,
+          "TikTok": 4729055,
+          "YouTube": 792000
+        },
+        "youtubeViews": 1912688692,
+        "youtubeViewAccounts": 1,
+        "tiktokLikes": 312135424,
+        "tiktokLikeAccounts": 9,
+        "observedAccounts": 28,
+        "expectedAccounts": 28
+      },
+      "fruits-zipper": {
+        "name": "FRUITS ZIPPER",
+        "official": 2911372,
+        "members": 8789376,
+        "ecosystem": 11700748,
+        "platforms": {
+          "X": 2349901,
+          "Instagram": 4449000,
+          "TikTok": 3919247,
+          "YouTube": 982600
+        },
+        "youtubeViews": 1500890367,
+        "youtubeViewAccounts": 4,
+        "tiktokLikes": 187413140,
+        "tiktokLikeAccounts": 8,
+        "observedAccounts": 28,
+        "expectedAccounts": 28
+      },
+      "more-star": {
+        "name": "MORE STAR",
+        "official": 212044,
+        "members": 859809,
+        "ecosystem": 1071853,
+        "platforms": {
+          "X": 223843,
+          "Instagram": 366000,
+          "TikTok": 444210,
+          "YouTube": 37800
+        },
+        "youtubeViews": 13344044,
+        "youtubeViewAccounts": 1,
+        "tiktokLikes": 17807818,
+        "tiktokLikeAccounts": 10,
+        "observedAccounts": 31,
+        "expectedAccounts": 31
+      },
+      "sweet-steady": {
+        "name": "SWEET STEADY",
+        "official": 585139,
+        "members": 2696649,
+        "ecosystem": 3281788,
+        "platforms": {
+          "X": 495968,
+          "Instagram": 1347000,
+          "TikTok": 1229820,
+          "YouTube": 209000
+        },
+        "youtubeViews": 165880592,
+        "youtubeViewAccounts": 1,
+        "tiktokLikes": 34840178,
+        "tiktokLikeAccounts": 8,
+        "observedAccounts": 25,
+        "expectedAccounts": 25
+      }
+    }
   }
 ]
