@@ -48,7 +48,20 @@ jobs:
           node --check scripts/collect-or-retry-daily.mjs
 
       - name: Collect or retry today's snapshot
-        run: node scripts/collect-or-retry-daily.mjs
+        shell: bash
+        run: |
+          for attempt in 1 2 3 4; do
+            echo "Collection attempt ${attempt}/4"
+            node scripts/collect-or-retry-daily.mjs
+            if node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); process.exit(s.complete ? 0 : 1)'; then
+              echo "Snapshot is complete."
+              break
+            fi
+            if [ "$attempt" -lt 4 ]; then
+              echo "Snapshot still incomplete; retrying failed/missing rows in 30 seconds."
+              sleep 30
+            fi
+          done
 
       - name: Detect whether snapshot data changed
         id: changes
@@ -82,8 +95,9 @@ jobs:
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes."
+          echo "Each Action makes up to four attempts, retrying only failed or missing rows."
           echo "Capture time is unrestricted; acquisition takes priority."
-          echo "Successful rows are retained; only failed or missing rows are retried on later Actions until complete."
+          echo "Successful rows are retained and never re-read during retry passes."
 
   deploy:
     name: Build and deploy latest snapshot
