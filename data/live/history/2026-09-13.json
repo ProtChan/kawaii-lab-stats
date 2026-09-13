@@ -4609,7 +4609,7 @@
       "handle": "suzuki_karin",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@suzuki_karin",
-      "capturedAt": "2026-09-13T09:49:08.291Z",
+      "capturedAt": "2026-09-13T13:57:21.701Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5934,6 +5934,6 @@
   "errors": [
     "karin-suzuki:TIKTOK:suzuki_karin: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-09-13T09:49:08.291Z",
-  "retryAttempts": 27
+  "lastAttemptAt": "2026-09-13T13:57:21.701Z",
+  "retryAttempts": 31
 }
