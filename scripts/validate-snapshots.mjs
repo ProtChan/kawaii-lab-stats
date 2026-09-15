@@ -67,11 +67,16 @@ for (const file of historyFiles) {
   }
 
   const failedCount = snapshot.accounts.filter((account) => Boolean(account.error)).length;
-  const successfulCount = snapshot.accounts.length - failedCount;
+  const imputedCount = snapshot.accounts.filter((account) => !account.error && account.imputed === true).length;
+  const usableCount = snapshot.accounts.length - failedCount;
+  const observedCount = usableCount - imputedCount;
   if (snapshot.attempted != null && snapshot.attempted !== snapshot.accounts.length) errors.push(`${file}: attempted ${snapshot.attempted} != accounts ${snapshot.accounts.length}.`);
-  if (snapshot.successful != null && snapshot.successful !== successfulCount) errors.push(`${file}: successful ${snapshot.successful} != observed successful rows ${successfulCount}.`);
-  if (snapshot.failed != null && snapshot.failed !== failedCount) errors.push(`${file}: failed ${snapshot.failed} != observed failed rows ${failedCount}.`);
+  if (snapshot.successful != null && snapshot.successful !== usableCount) errors.push(`${file}: successful ${snapshot.successful} != usable rows ${usableCount}.`);
+  if (snapshot.failed != null && snapshot.failed !== failedCount) errors.push(`${file}: failed ${snapshot.failed} != failed rows ${failedCount}.`);
+  if (snapshot.imputed != null && snapshot.imputed !== imputedCount) errors.push(`${file}: imputed ${snapshot.imputed} != imputed rows ${imputedCount}.`);
+  if (snapshot.observedSuccessful != null && snapshot.observedSuccessful !== observedCount) errors.push(`${file}: observedSuccessful ${snapshot.observedSuccessful} != observed rows ${observedCount}.`);
   if (Boolean(snapshot.complete) !== (failedCount === 0)) errors.push(`${file}: complete=${snapshot.complete} is inconsistent with failed=${failedCount}.`);
+  if (snapshot.observedComplete != null && Boolean(snapshot.observedComplete) !== (failedCount === 0 && imputedCount === 0)) errors.push(`${file}: observedComplete=${snapshot.observedComplete} is inconsistent with failed=${failedCount}, imputed=${imputedCount}.`);
 
   const seen = new Set();
   for (const account of snapshot.accounts) {
@@ -79,10 +84,16 @@ for (const file of historyFiles) {
     if (seen.has(key)) errors.push(`${file}: duplicate account ${key}.`);
     seen.add(key);
     if (!account.capturedAt || Number.isNaN(Date.parse(account.capturedAt))) errors.push(`${file}:${key}: invalid capturedAt.`);
+    if (account.imputed === true) {
+      if (!account.imputedFromDate || !/^\d{4}-\d{2}-\d{2}$/.test(account.imputedFromDate)) errors.push(`${file}:${key}: imputed row missing imputedFromDate.`);
+      if (!account.imputedFromCapturedAt || Number.isNaN(Date.parse(account.imputedFromCapturedAt))) errors.push(`${file}:${key}: imputed row missing valid imputedFromCapturedAt.`);
+      if (account.imputationMethod !== "LAST_OBSERVED_VALUE") errors.push(`${file}:${key}: unsupported imputationMethod=${account.imputationMethod}.`);
+    }
     if (expectedDate >= "2026-08-25" && account.platform === "YOUTUBE" && !account.error && account.parserVersion !== TRUSTED_YOUTUBE_PARSER) {
       errors.push(`${file}:${key}: successful YouTube row is not from trusted parser.`);
     }
   }
+  if (imputedCount) warn.push(`${file}: ${imputedCount} row(s) are filled from the last observed value and must not be used for growth calculations.`);
 }
 
 const latest = await readJson(path.join(LIVE, "latest.json"));
