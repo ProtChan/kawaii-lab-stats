@@ -30,15 +30,25 @@ export type LiveAccount = {
   precision?: string;
   error?: string;
   detail?: string | null;
+  imputed?: boolean;
+  imputationMethod?: "LAST_OBSERVED_VALUE";
+  imputedFromDate?: string;
+  imputedFromCapturedAt?: string;
+  imputedAt?: string;
+  imputedSourceType?: string | null;
+  acquisitionError?: { error: string; detail?: string | null };
 };
 
 export type Snapshot = {
   date: string | null;
   collectedAt: string | null;
   complete: boolean;
+  observedComplete?: boolean;
   attempted?: number;
   successful?: number;
+  observedSuccessful?: number;
   failed?: number;
+  imputed?: number;
   accounts: LiveAccount[];
   errors: string[];
 };
@@ -54,6 +64,7 @@ type SeriesGroup = {
   tiktokLikes?: number | null;
   tiktokLikeAccounts?: number;
   observedAccounts: number;
+  imputedAccounts?: number;
   expectedAccounts: number;
 };
 
@@ -70,7 +81,10 @@ export const trustedAccount = (account: LiveAccount) => trustedMetricAccount(acc
 
 const attemptedAccounts = liveSnapshot.attempted ?? liveSnapshot.accounts.length;
 const trustedObservedAccounts = liveSnapshot.accounts.filter(
-  (account) => trustedAccount(account) && !account.error && typeof account.followers === "number" && Number.isFinite(account.followers),
+  (account) => trustedAccount(account) && !account.error && !account.imputed && typeof account.followers === "number" && Number.isFinite(account.followers),
+);
+const imputedAccounts = liveSnapshot.accounts.filter(
+  (account) => trustedAccount(account) && !account.error && account.imputed && typeof account.followers === "number" && Number.isFinite(account.followers),
 );
 const latestSeriesDate = liveSeries.at(-1)?.date ?? liveSnapshot.date;
 const previousPoint = latestSeriesDate
@@ -106,6 +120,7 @@ export const liveGroupStats = debutedGroups.map((group) => {
     tiktokLikeAccounts: aggregate.tiktokLikes.observed,
     tiktokLikeExpected: aggregate.tiktokLikes.expected,
     observedAccounts: aggregate.audience.observed,
+    imputedAccounts: aggregate.audience.imputed,
     expectedAccounts: aggregate.audience.expected,
     complete: aggregate.audience.complete,
     dailyGain,
@@ -131,7 +146,8 @@ export const liveSummary = {
   collectedAt: liveSnapshot.collectedAt,
   attempted: attemptedAccounts,
   successful: trustedObservedAccounts.length,
-  failed: Math.max(0, attemptedAccounts - trustedObservedAccounts.length),
+  imputed: imputedAccounts.length,
+  failed: Math.max(0, attemptedAccounts - trustedObservedAccounts.length - imputedAccounts.length),
   observedAudience: groupAudienceValues.length ? groupAudienceValues.reduce((sum, value) => sum + value, 0) : null,
   youtubeViews: youtubeValues.length ? youtubeValues.reduce((sum, value) => sum + value, 0) : null,
   tiktokLikes: tiktokValues.length ? tiktokValues.reduce((sum, value) => sum + value, 0) : null,
