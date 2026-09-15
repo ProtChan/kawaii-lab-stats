@@ -45,11 +45,20 @@ function cleanBase(row) {
     posts,
     likes,
     views,
+    viewsPrecision,
     verified,
     avatar,
+    parserVersion,
     audienceMetric,
     precision,
     engagementMetric,
+    imputed,
+    imputationMethod,
+    imputedFromDate,
+    imputedFromCapturedAt,
+    imputedAt,
+    imputedSourceType,
+    acquisitionError,
     ...base
   } = row;
   return base;
@@ -68,9 +77,7 @@ function instagramHeaders(username) {
 
 async function readResponseJson(response, label) {
   const text = await response.text();
-  if (!response.ok) {
-    throw new Error(`${label} HTTP ${response.status}: ${text.slice(0, 180)}`);
-  }
+  if (!response.ok) throw new Error(`${label} HTTP ${response.status}: ${text.slice(0, 180)}`);
   try {
     return JSON.parse(text);
   } catch {
@@ -116,13 +123,10 @@ async function fetchInstagramWebProfile(row) {
     const response = await fetch(feedUrl, { redirect: "follow", headers });
     const payload = await readResponseJson(response, "Instagram feed-by-username");
     const feedUser = payload?.user;
-    if (numericOrNull(feedUser?.follower_count) != null) {
-      return mapInstagramUser(feedUser, username, feedUrl, "INSTAGRAM_FEED_USERNAME");
-    }
+    if (numericOrNull(feedUser?.follower_count) != null) return mapInstagramUser(feedUser, username, feedUrl, "INSTAGRAM_FEED_USERNAME");
 
     const pk = String(feedUser?.pk ?? "").trim();
     if (!/^\d+$/.test(pk)) throw new Error("Instagram feed-by-username returned no valid profile id");
-
     const infoUrl = `https://www.instagram.com/api/v1/users/${pk}/info/`;
     const infoResponse = await fetch(infoUrl, { redirect: "follow", headers });
     const infoPayload = await readResponseJson(infoResponse, "Instagram users info");
@@ -154,9 +158,9 @@ async function main() {
     return;
   }
 
-  const targets = snapshot.accounts.filter((row) => row.platform === "INSTAGRAM" && row.error);
+  const targets = snapshot.accounts.filter((row) => row.platform === "INSTAGRAM" && (row.error || row.imputed === true));
   if (!targets.length) {
-    console.log("No failed Instagram rows require web fallback.");
+    console.log("No failed or imputed Instagram rows require web fallback.");
     return;
   }
 
@@ -198,17 +202,22 @@ async function main() {
   }
 
   if (!replacements.size) {
-    console.warn(`Instagram web/feed fallback recovered 0/${targets.length}; ${failures.length} still failed.`);
+    console.warn(`Instagram web/feed fallback recovered 0/${targets.length}; ${failures.length} still unavailable.`);
     return;
   }
 
   const accounts = snapshot.accounts.map((row) => replacements.get(accountKey(row)) ?? row);
   const failedRows = accounts.filter((row) => row.error);
+  const imputedRows = accounts.filter((row) => !row.error && row.imputed === true);
+  const observedRows = accounts.filter((row) => !row.error && !row.imputed);
   const next = {
     ...snapshot,
-    complete: false,
+    complete: failedRows.length === 0,
+    observedComplete: failedRows.length === 0 && imputedRows.length === 0,
     successful: accounts.length - failedRows.length,
+    observedSuccessful: observedRows.length,
     failed: failedRows.length,
+    imputed: imputedRows.length,
     lastAttemptAt: capturedAt,
     source: {
       ...(snapshot.source ?? {}),
@@ -219,7 +228,7 @@ async function main() {
   };
 
   await writeSnapshot(next);
-  console.log(`Instagram fallback recovered ${replacements.size}/${targets.length}; ${next.failed} total row(s) still missing.`);
+  console.log(`Instagram fallback recovered ${replacements.size}/${targets.length}; observed=${observedRows.length}, imputed=${imputedRows.length}, failed=${failedRows.length}.`);
 }
 
 main().catch((error) => {
