@@ -3,8 +3,8 @@ name: Daily public social snapshot
 on:
   schedule:
     # GitHub scheduled workflows are best-effort and may be delayed.
-    # Run every five minutes. The first run creates the JST-day snapshot;
-    # later runs retry only failed or newly missing canonical accounts.
+    # Run every five minutes. Every later run retries rows that are still
+    # missing or currently filled from an imputed fallback.
     - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
@@ -14,6 +14,8 @@ on:
       - ".github/workflows/collect-daily-public.yml"
       - "scripts/collect-or-retry-daily.mjs"
       - "scripts/retry-instagram-web.mjs"
+      - "scripts/prepare-imputed-retry.mjs"
+      - "scripts/impute-missing-daily.mjs"
 
 permissions:
   contents: write
@@ -48,27 +50,42 @@ jobs:
           node --check scripts/collect-daily-public.mjs
           node --check scripts/collect-or-retry-daily.mjs
           node --check scripts/retry-instagram-web.mjs
+          node --check scripts/prepare-imputed-retry.mjs
+          node --check scripts/impute-missing-daily.mjs
 
-      - name: Collect or retry today's snapshot
+      - name: Collect, retry, then fill unresolved gaps
         shell: bash
         run: |
+          observed_complete() {
+            node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); const imputed=Number(s.imputed)||s.accounts.filter(r=>r.imputed&&!r.error).length; const failed=Number(s.failed)||s.accounts.filter(r=>r.error).length; process.exit((s.observedComplete === true || (s.observedComplete == null && failed===0 && imputed===0)) ? 0 : 1)'
+          }
+
+          # Values imputed by an earlier run are never treated as final.
+          # Turn them back into retry targets before attempting collection.
+          node scripts/prepare-imputed-retry.mjs
           node scripts/collect-or-retry-daily.mjs
 
-          if ! node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); process.exit(s.complete ? 0 : 1)'; then
-            echo "Snapshot incomplete; trying Instagram web fallback for failed Instagram rows."
+          if ! observed_complete; then
+            echo "Snapshot not fully observed; trying Instagram public web fallback."
             node scripts/retry-instagram-web.mjs || true
             node scripts/collect-or-retry-daily.mjs
           fi
 
           for attempt in 1 2; do
-            if node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); process.exit(s.complete ? 0 : 1)'; then
-              echo "Snapshot is complete."
+            if observed_complete; then
+              echo "Snapshot is fully observed."
               break
             fi
-            echo "Snapshot still incomplete; retrying failed/missing rows in 30 seconds (${attempt}/2)."
+            echo "Still not fully observed; retrying failed rows in 30 seconds (${attempt}/2)."
             sleep 30
             node scripts/collect-or-retry-daily.mjs
           done
+
+          # Do not leave holes in the usable daily dataset. Any row that is
+          # still unavailable is filled from its most recent real observation.
+          # imputed=true keeps it out of growth/rate calculations, and the next
+          # Action will retry it as a real observation again.
+          node scripts/impute-missing-daily.mjs
 
       - name: Detect whether snapshot data changed
         id: changes
@@ -76,7 +93,7 @@ jobs:
         run: |
           if git diff --quiet -- data/live public/data && [ -z "$(git status --porcelain -- data/live public/data)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes; today's snapshot is already complete."
+            echo "No snapshot data changed."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Snapshot files changed."
@@ -102,9 +119,9 @@ jobs:
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes."
-          echo "Failed Instagram rows use a public web-profile fallback after Pulse fails."
-          echo "Capture time is unrestricted; acquisition takes priority."
-          echo "Successful rows are retained and never re-read during retry passes."
+          echo "Order: real capture -> Instagram fallback -> retry -> last-observed imputation."
+          echo "Imputed rows are retried as real observations by later Actions."
+          echo "Imputed rows are excluded from growth and rate calculations."
 
   deploy:
     name: Build and deploy latest snapshot
@@ -144,6 +161,8 @@ jobs:
           node --check scripts/collect-daily-public.mjs
           node --check scripts/collect-or-retry-daily.mjs
           node --check scripts/retry-instagram-web.mjs
+          node --check scripts/prepare-imputed-retry.mjs
+          node --check scripts/impute-missing-daily.mjs
 
       - name: Typecheck
         run: npm run typecheck
