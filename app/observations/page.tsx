@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Observations",
-  description: "KAWAII LAB. Statsの日別SNS snapshot取得時刻・成功件数・欠測を監査するページ。",
+  description: "KAWAII LAB. Statsの日別SNS snapshot取得時刻・実観測・補完件数・欠測を監査するページ。",
 };
 
 const DAY_MS = 86_400_000;
@@ -93,15 +93,17 @@ export default function ObservationsPage() {
     const offset = midnightOffsetMinutes(collectedAt);
     const attempted = snapshot?.attempted ?? snapshot?.accounts.length ?? 0;
     const failed = snapshot?.failed ?? snapshot?.accounts.filter((account) => account.error).length ?? 0;
-    const successful = snapshot?.successful ?? Math.max(0, attempted - failed);
+    const imputed = snapshot?.imputed ?? snapshot?.accounts.filter((account) => !account.error && account.imputed).length ?? 0;
+    const observed = snapshot?.observedSuccessful ?? snapshot?.accounts.filter((account) => !account.error && !account.imputed).length ?? 0;
+    const usable = Math.max(0, attempted - failed);
     const interval = snapshot ? intervalLabel(previousCapturedAt, collectedAt) : "—";
     if (snapshot?.collectedAt) previousCapturedAt = snapshot.collectedAt;
-    return { date, snapshot, collectedAt, offset, attempted, successful, failed, interval };
+    return { date, snapshot, collectedAt, offset, attempted, observed, imputed, usable, failed, interval };
   });
 
   const missing = rows.filter((row) => !row.snapshot).length;
   const latest = rows.filter((row) => row.snapshot).at(-1) ?? null;
-  const coverage = latest?.attempted ? (latest.successful / latest.attempted) * 100 : null;
+  const coverage = latest?.attempted ? (latest.observed / latest.attempted) * 100 : null;
 
   return (
     <main>
@@ -110,7 +112,7 @@ export default function ObservationsPage() {
         <div>
           <p className="eyebrow">DATA · OBSERVATIONS</p>
           <h1>Daily capture log</h1>
-          <p className="lead">各JST日付のsnapshotが実際に何時に取得されたかを監査します。取得できなかった日も消さずに表示し、実観測間隔とraw JSONまで追跡できます。</p>
+          <p className="lead">各JST日付のsnapshot取得時刻と品質を監査します。実測できなかった値は直近の正常観測から補完されても、実観測とは分離して表示し、増分・増加率には使用しません。</p>
         </div>
         <span className="badge">AUDITABLE · JST</span>
       </header>
@@ -119,7 +121,7 @@ export default function ObservationsPage() {
         <article><span>Captured snapshots</span><strong>{snapshots.length}</strong><small>retained observations</small></article>
         <article><span>Calendar span</span><strong>{rows.length}</strong><small>{firstDate ?? "—"} → {lastDate ?? "—"}</small></article>
         <article><span>Missing dates</span><strong>{missing}</strong><small>no snapshot retained</small></article>
-        <article><span>Latest coverage</span><strong>{coverage == null ? "—" : `${coverage.toFixed(1)}%`}</strong><small>{latest ? `${latest.successful}/${latest.attempted} profiles` : "no snapshot"}</small></article>
+        <article><span>Latest observed</span><strong>{coverage == null ? "—" : `${coverage.toFixed(1)}%`}</strong><small>{latest ? `${latest.observed} observed · ${latest.imputed} imputed` : "no snapshot"}</small></article>
       </section>
 
       <section className="panel">
@@ -153,24 +155,27 @@ export default function ObservationsPage() {
           <table className={styles.table}>
             <thead><tr><th>Date</th><th>Captured JST</th><th>From midnight</th><th>Since previous capture</th><th>Profiles</th><th>Status</th><th>Raw</th></tr></thead>
             <tbody>
-              {[...rows].reverse().map((row) => (
-                <tr key={row.date} className={!row.snapshot ? styles.missingTableRow : undefined}>
-                  <td><strong>{row.date}</strong></td>
-                  <td>{row.snapshot ? jstTime(row.collectedAt) : "—"}</td>
-                  <td>{row.snapshot ? offsetLabel(row.offset) : "—"}</td>
-                  <td>{row.interval}</td>
-                  <td>{row.snapshot ? `${row.successful}/${row.attempted}` : "—"}{row.failed ? <small className={styles.failed}> · {row.failed} failed</small> : null}</td>
-                  <td><span className={`${styles.status} ${row.snapshot ? styles.captured : styles.missingStatus}`}>{row.snapshot ? "CAPTURED" : "MISSING"}</span></td>
-                  <td>{row.snapshot ? <Link href={`/data/history/${row.date}.json`}>JSON ↗</Link> : "—"}</td>
-                </tr>
-              ))}
+              {[...rows].reverse().map((row) => {
+                const status = !row.snapshot ? "MISSING" : row.failed ? "PARTIAL" : row.imputed ? "IMPUTED" : "OBSERVED";
+                return (
+                  <tr key={row.date} className={!row.snapshot ? styles.missingTableRow : undefined}>
+                    <td><strong>{row.date}</strong></td>
+                    <td>{row.snapshot ? jstTime(row.collectedAt) : "—"}</td>
+                    <td>{row.snapshot ? offsetLabel(row.offset) : "—"}</td>
+                    <td>{row.interval}</td>
+                    <td>{row.snapshot ? `${row.observed} observed` : "—"}{row.imputed ? <small> · {row.imputed} imputed</small> : null}{row.failed ? <small className={styles.failed}> · {row.failed} failed</small> : null}</td>
+                    <td><span className={`${styles.status} ${row.snapshot ? styles.captured : styles.missingStatus}`}>{status}</span></td>
+                    <td>{row.snapshot ? <Link href={`/data/history/${row.date}.json`}>JSON ↗</Link> : "—"}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       </section>
 
-      <section className="notice">取得時刻はsnapshot内の <code>collectedAt</code> をJSTへ変換した実時刻です。日付ラベルだけを基準に24時間間隔だったと仮定せず、実際の取得間隔も併記しています。</section>
-      <footer>Observation timestamps, coverage and missing dates remain visible so the historical series can be audited later.</footer>
+      <section className="notice">補完値は <code>imputed=true</code> / <code>imputedFromDate</code> 付きでraw JSONに残ります。表示用の合計には利用できますが、INDEX・1D/7D/30D増分・増加率では実観測として扱いません。後続Actionは補完行を再び取得対象にし、実測できれば自動置換します。</section>
+      <footer>Observation timestamps, observed coverage, imputed values and missing dates remain auditable.</footer>
     </main>
   );
 }
