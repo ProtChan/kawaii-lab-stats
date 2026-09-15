@@ -11,11 +11,13 @@ export type MetricAccount = {
   likes?: number | null;
   views?: number | null;
   error?: string;
+  imputed?: boolean;
 };
 
 export type Observation = {
   value: number | null;
   observed: number;
+  imputed: number;
   expected: number;
   complete: boolean;
 };
@@ -56,15 +58,15 @@ export function accountSetKey(accounts: MetricAccount[], platform?: PlatformLabe
 }
 
 function observation(accounts: MetricAccount[], read: (account: MetricAccount) => number | null | undefined): Observation {
-  const values = accounts
-    .filter((account) => trustedMetricAccount(account) && !account.error)
-    .map(read)
-    .filter(finiteNumber);
+  const usableRows = accounts.filter((account) => trustedMetricAccount(account) && !account.error);
+  const values = usableRows.map(read).filter(finiteNumber);
+  const observed = usableRows.filter((account) => !account.imputed && finiteNumber(read(account))).length;
+  const imputed = usableRows.filter((account) => account.imputed && finiteNumber(read(account))).length;
   const expected = accounts.length;
-  const observed = values.length;
   return {
-    value: observed ? values.reduce((total, value) => total + value, 0) : expected === 0 ? 0 : null,
+    value: values.length ? values.reduce((total, value) => total + value, 0) : expected === 0 ? 0 : null,
     observed,
+    imputed,
     expected,
     complete: observed === expected,
   };
