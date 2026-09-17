@@ -21,6 +21,20 @@ function jstDateKey(date = new Date()) {
   return `${parts.year}-${parts.month}-${parts.day}`;
 }
 
+function defaultRetryMinutes(platform) {
+  if (platform === "INSTAGRAM") return 360;
+  if (platform === "X") return 60;
+  if (platform === "TIKTOK") return 60;
+  if (platform === "YOUTUBE") return 30;
+  return 60;
+}
+
+function retryDue(row, now) {
+  if (row.nextRetryAt && Number.isFinite(Date.parse(row.nextRetryAt))) return Date.parse(row.nextRetryAt) <= now;
+  if (!row.imputedAt || !Number.isFinite(Date.parse(row.imputedAt))) return true;
+  return Date.parse(row.imputedAt) + defaultRetryMinutes(row.platform) * 60_000 <= now;
+}
+
 function clearImputation(row) {
   const {
     imputed,
@@ -30,6 +44,8 @@ function clearImputation(row) {
     imputedAt,
     imputedSourceType,
     acquisitionError,
+    nextRetryAt,
+    retryBackoffMinutes,
     ...base
   } = row;
   return {
@@ -40,7 +56,9 @@ function clearImputation(row) {
     likes: null,
     views: null,
     error: "imputed_refresh_pending",
-    detail: "A previous fallback value is being retried as a real observation.",
+    detail: "A previous fallback value is due for another real observation attempt.",
+    refreshAttemptCount: (Number(row.refreshAttemptCount) || 0) + 1,
+    previousAcquisitionError: acquisitionError ?? row.previousAcquisitionError ?? null,
   };
 }
 
@@ -66,24 +84,39 @@ async function main() {
     return;
   }
 
-  const keys = new Set(imputedRows.map((row) => `${row.platform}:${String(row.handle).toLowerCase()}`));
+  const now = Date.now();
+  const dueRows = imputedRows.filter((row) => retryDue(row, now));
+  if (!dueRows.length) {
+    const next = imputedRows
+      .map((row) => row.nextRetryAt)
+      .filter((value) => value && Number.isFinite(Date.parse(value)))
+      .sort()[0] ?? null;
+    console.log(`No imputed rows are due yet; retaining ${imputedRows.length} fallback value(s).${next ? ` Next retry ${next}.` : ""}`);
+    return;
+  }
+
+  const keys = new Set(dueRows.map((row) => `${row.platform}:${String(row.handle).toLowerCase()}`));
   const accounts = snapshot.accounts.map((row) => keys.has(`${row.platform}:${String(row.handle).toLowerCase()}`) ? clearImputation(row) : row);
   const failed = accounts.filter((row) => row.error).length;
+  const imputed = accounts.filter((row) => !row.error && row.imputed === true).length;
   const observedSuccessful = accounts.filter((row) => !row.error && !row.imputed).length;
   const next = {
     ...snapshot,
     complete: failed === 0,
-    observedComplete: failed === 0,
+    observedComplete: failed === 0 && imputed === 0,
     successful: accounts.length - failed,
     observedSuccessful,
     failed,
-    imputed: 0,
+    imputed,
     accounts,
     errors: accounts.filter((row) => row.error).map((row) => `${row.entitySlug}:${row.platform}:${row.handle}: ${row.detail ?? row.error}`),
   };
 
   await writeSnapshot(next);
-  console.log(`Prepared ${imputedRows.length} imputed row(s) for a real observation retry.`);
+  const byPlatform = Object.fromEntries(
+    ["X", "INSTAGRAM", "TIKTOK", "YOUTUBE"].map((platform) => [platform, dueRows.filter((row) => row.platform === platform).length]),
+  );
+  console.log(`Prepared ${dueRows.length}/${imputedRows.length} imputed row(s) whose retry backoff has expired: ${JSON.stringify(byPlatform)}.`);
 }
 
 main().catch((error) => {
