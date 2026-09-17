@@ -14,6 +14,7 @@ on:
       - ".github/workflows/collect-daily-public.yml"
       - "scripts/collect-or-retry-daily.mjs"
       - "scripts/retry-platform-fallbacks.mjs"
+      - "scripts/retry-x-fxtwitter.mjs"
       - "scripts/prepare-imputed-retry.mjs"
       - "scripts/impute-missing-daily.mjs"
 
@@ -56,6 +57,7 @@ jobs:
         run: |
           node --check scripts/collect-daily-public.mjs
           node --check scripts/collect-or-retry-daily.mjs
+          node --check scripts/retry-x-fxtwitter.mjs
           node --check scripts/retry-platform-fallbacks.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
@@ -74,12 +76,18 @@ jobs:
           # Primary route: Pulse for X/Instagram/TikTok and direct YouTube About.
           node scripts/collect-or-retry-daily.mjs
 
+          # Current no-auth X profile API. In testing the legacy Twitter
+          # followbutton endpoint recovered 0/54, so FxTwitter is tried first.
+          if has_failed_rows; then
+            node scripts/retry-x-fxtwitter.mjs || true
+          fi
+
           # Independent fallbacks, not another request through the same provider:
           # Instagram: optional Meta Business Discovery -> i.instagram.com -> www/feed
           # TikTok: public profile hydration JSON (statsV2 when available)
-          # X: optional API v2 -> public syndication endpoint
+          # X: optional API v2 -> legacy syndication as a last-resort route
           if has_failed_rows; then
-            echo "Primary route left gaps; trying independent platform fallbacks."
+            echo "Primary/current X routes left gaps; trying remaining independent platform fallbacks."
             node scripts/retry-platform-fallbacks.mjs || true
           fi
 
@@ -127,7 +135,7 @@ jobs:
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes; per-row acquisition retries are backoff-controlled."
-          echo "Routes: primary provider/direct YouTube -> independent platform fallbacks -> one transient retry -> tagged imputation."
+          echo "Routes: primary -> FxTwitter for X -> platform-specific fallbacks -> one transient retry -> tagged imputation."
           echo "Instagram backoff starts at 6h; X/TikTok at 1h; YouTube at 30m and increases after repeated failures."
           echo "Imputed rows remain excluded from growth and rate calculations."
 
@@ -168,6 +176,7 @@ jobs:
         run: |
           node --check scripts/collect-daily-public.mjs
           node --check scripts/collect-or-retry-daily.mjs
+          node --check scripts/retry-x-fxtwitter.mjs
           node --check scripts/retry-platform-fallbacks.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
