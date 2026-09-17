@@ -34,6 +34,12 @@ function finite(value) {
   return typeof value === "number" && Number.isFinite(value);
 }
 
+function retryBackoffMinutes(row) {
+  const base = row.platform === "INSTAGRAM" ? 360 : row.platform === "YOUTUBE" ? 30 : 60;
+  const attempts = Math.min(3, Number(row.refreshAttemptCount) || 0);
+  return Math.min(row.platform === "INSTAGRAM" ? 1440 : 360, base * Math.max(1, attempts + 1));
+}
+
 async function loadPrimaryGroups() {
   const files = (await readdir(DIRECTORY_DIR)).filter((file) => file.endsWith(".json")).sort();
   const groups = [];
@@ -110,6 +116,7 @@ async function writeSnapshot(snapshot, primaryGroups) {
 
 function imputedRow(current, source, sourceDate, imputedAt) {
   const { error, detail, ...base } = current;
+  const retryMinutes = retryBackoffMinutes(current);
   return {
     ...base,
     capturedAt: source.capturedAt,
@@ -137,6 +144,8 @@ function imputedRow(current, source, sourceDate, imputedAt) {
     imputedAt,
     imputedSourceType: source.sourceType ?? null,
     acquisitionError: { error: error ?? "missing", detail: detail ?? null },
+    retryBackoffMinutes: retryMinutes,
+    nextRetryAt: new Date(Date.parse(imputedAt) + retryMinutes * 60_000).toISOString(),
   };
 }
 
@@ -203,7 +212,7 @@ async function main() {
     source: {
       ...(snapshot.source ?? {}),
       imputation: "LAST_OBSERVED_VALUE",
-      note: "Acquisition is retried first. Remaining gaps are filled from the most recent real observation, tagged imputed=true, excluded from growth calculations, and retried as real observations by later Actions.",
+      note: "Acquisition uses independent platform fallbacks first. Remaining gaps are filled from the most recent real observation, excluded from growth calculations, and retried later using platform-aware backoff.",
     },
     accounts,
     errors: failedRows.map((row) => `${row.entitySlug}:${row.platform}:${row.handle}: ${row.detail ?? row.error}`),
@@ -211,7 +220,8 @@ async function main() {
 
   const primaryGroups = await loadPrimaryGroups();
   await writeSnapshot(next, primaryGroups);
-  console.log(`Imputed ${filled}/${targets.length} unresolved row(s); observed=${observedRows.length}, imputed=${imputedRows.length}, hard-failed=${failedRows.length}.`);
+  const nextRetry = imputedRows.map((row) => row.nextRetryAt).filter(Boolean).sort()[0] ?? null;
+  console.log(`Imputed ${filled}/${targets.length} unresolved row(s); observed=${observedRows.length}, imputed=${imputedRows.length}, hard-failed=${failedRows.length}.${nextRetry ? ` Earliest retry ${nextRetry}.` : ""}`);
 }
 
 main().catch((error) => {
