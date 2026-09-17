@@ -21,18 +21,19 @@ function jstDateKey(date = new Date()) {
   return `${parts.year}-${parts.month}-${parts.day}`;
 }
 
-function defaultRetryMinutes(platform) {
+function legacyRetryMinutes(platform) {
+  // Rows written before nextRetryAt existed get one early probe through the
+  // new independent routes. New imputed rows carry their own longer backoff.
   if (platform === "INSTAGRAM") return 360;
-  if (platform === "X") return 60;
-  if (platform === "TIKTOK") return 60;
-  if (platform === "YOUTUBE") return 30;
-  return 60;
+  if (platform === "X" || platform === "TIKTOK") return 15;
+  if (platform === "YOUTUBE") return 15;
+  return 30;
 }
 
 function retryDue(row, now) {
   if (row.nextRetryAt && Number.isFinite(Date.parse(row.nextRetryAt))) return Date.parse(row.nextRetryAt) <= now;
   if (!row.imputedAt || !Number.isFinite(Date.parse(row.imputedAt))) return true;
-  return Date.parse(row.imputedAt) + defaultRetryMinutes(row.platform) * 60_000 <= now;
+  return Date.parse(row.imputedAt) + legacyRetryMinutes(row.platform) * 60_000 <= now;
 }
 
 function clearImputation(row) {
