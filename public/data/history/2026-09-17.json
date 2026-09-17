@@ -90,7 +90,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -216,7 +216,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -313,7 +313,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -410,7 +410,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -507,7 +507,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -604,7 +604,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -645,7 +645,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
@@ -714,7 +714,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -811,7 +811,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -937,7 +937,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1063,7 +1063,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1160,7 +1160,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1257,7 +1257,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1354,7 +1354,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1451,7 +1451,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1548,7 +1548,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1645,7 +1645,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1742,7 +1742,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1837,7 +1837,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -1963,7 +1963,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2091,7 +2091,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2219,7 +2219,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2316,7 +2316,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2413,7 +2413,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2510,7 +2510,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2607,7 +2607,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2706,7 +2706,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2802,7 +2802,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2899,7 +2899,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -2996,7 +2996,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3093,7 +3093,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3190,7 +3190,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3259,7 +3259,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3356,7 +3356,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3453,7 +3453,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3550,7 +3550,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3647,7 +3647,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3744,7 +3744,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3841,7 +3841,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -3909,7 +3909,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4005,7 +4005,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4102,7 +4102,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4199,7 +4199,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4296,7 +4296,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4393,7 +4393,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4490,7 +4490,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4587,7 +4587,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4684,7 +4684,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4781,7 +4781,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -4876,7 +4876,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5002,7 +5002,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5099,7 +5099,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5196,7 +5196,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5293,7 +5293,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5334,7 +5334,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-12",
       "imputedFromCapturedAt": "2026-09-11T15:05:52.956Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
@@ -5403,7 +5403,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5500,7 +5500,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5597,7 +5597,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5694,7 +5694,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5791,7 +5791,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -5886,7 +5886,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6008,7 +6008,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6104,7 +6104,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6230,7 +6230,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6327,7 +6327,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6424,7 +6424,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6521,7 +6521,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6618,7 +6618,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6715,7 +6715,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6812,7 +6812,7 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T19:27:31.335Z",
-      "imputedAt": "2026-09-17T00:44:59.674Z",
+      "imputedAt": "2026-09-17T05:28:03.396Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
@@ -6849,10 +6849,10 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-17T00:44:31.492Z",
-  "retryAttempts": 15,
+  "lastAttemptAt": "2026-09-17T05:27:34.872Z",
+  "retryAttempts": 19,
   "observedComplete": false,
   "observedSuccessful": 141,
   "imputed": 70,
-  "imputedAt": "2026-09-17T00:44:59.674Z"
+  "imputedAt": "2026-09-17T05:28:03.396Z"
 }
