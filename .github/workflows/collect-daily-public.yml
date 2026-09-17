@@ -3,8 +3,8 @@ name: Daily public social snapshot
 on:
   schedule:
     # GitHub scheduled workflows are best-effort and may be delayed.
-    # Run every five minutes. Every later run retries rows that are still
-    # missing or currently filled from an imputed fallback.
+    # Five-minute runs are cheap gates. Imputed rows only become real retry
+    # targets after their platform-specific backoff expires.
     - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
@@ -13,7 +13,7 @@ on:
     paths:
       - ".github/workflows/collect-daily-public.yml"
       - "scripts/collect-or-retry-daily.mjs"
-      - "scripts/retry-instagram-web.mjs"
+      - "scripts/retry-platform-fallbacks.mjs"
       - "scripts/prepare-imputed-retry.mjs"
       - "scripts/impute-missing-daily.mjs"
 
@@ -30,6 +30,13 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      # Optional official fallbacks. The workflow remains functional when
+      # these secrets are unset; public/no-auth routes are tried instead.
+      META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+      META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+      META_GRAPH_VERSION: ${{ secrets.META_GRAPH_VERSION }}
+      X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
     outputs:
       snapshot_changed: ${{ steps.changes.outputs.changed }}
 
@@ -49,42 +56,43 @@ jobs:
         run: |
           node --check scripts/collect-daily-public.mjs
           node --check scripts/collect-or-retry-daily.mjs
-          node --check scripts/retry-instagram-web.mjs
+          node --check scripts/retry-platform-fallbacks.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
 
-      - name: Collect, retry, then fill unresolved gaps
+      - name: Collect through independent routes, then fill unresolved gaps
         shell: bash
         run: |
-          observed_complete() {
-            node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); const imputed=Number(s.imputed)||s.accounts.filter(r=>r.imputed&&!r.error).length; const failed=Number(s.failed)||s.accounts.filter(r=>r.error).length; process.exit((s.observedComplete === true || (s.observedComplete == null && failed===0 && imputed===0)) ? 0 : 1)'
+          has_failed_rows() {
+            node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); process.exit(s.accounts.some(r=>r.error) ? 0 : 1)'
           }
 
-          # Values imputed by an earlier run are never treated as final.
-          # Turn them back into retry targets before attempting collection.
+          # Only imputed rows whose retry window has expired are reopened.
+          # This prevents a five-minute cron from hammering a rate-limited API.
           node scripts/prepare-imputed-retry.mjs
+
+          # Primary route: Pulse for X/Instagram/TikTok and direct YouTube About.
           node scripts/collect-or-retry-daily.mjs
 
-          if ! observed_complete; then
-            echo "Snapshot not fully observed; trying Instagram public web fallback."
-            node scripts/retry-instagram-web.mjs || true
+          # Independent fallbacks, not another request through the same provider:
+          # Instagram: optional Meta Business Discovery -> i.instagram.com -> www/feed
+          # TikTok: public profile hydration JSON (statsV2 when available)
+          # X: optional API v2 -> public syndication endpoint
+          if has_failed_rows; then
+            echo "Primary route left gaps; trying independent platform fallbacks."
+            node scripts/retry-platform-fallbacks.mjs || true
+          fi
+
+          # One delayed primary retry handles transient provider/network faults.
+          # Persistent blocks are not hammered repeatedly in the same Action.
+          if has_failed_rows; then
+            echo "Some rows remain unavailable; one transient retry in 45 seconds."
+            sleep 45
             node scripts/collect-or-retry-daily.mjs
           fi
 
-          for attempt in 1 2; do
-            if observed_complete; then
-              echo "Snapshot is fully observed."
-              break
-            fi
-            echo "Still not fully observed; retrying failed rows in 30 seconds (${attempt}/2)."
-            sleep 30
-            node scripts/collect-or-retry-daily.mjs
-          done
-
-          # Do not leave holes in the usable daily dataset. Any row that is
-          # still unavailable is filled from its most recent real observation.
-          # imputed=true keeps it out of growth/rate calculations, and the next
-          # Action will retry it as a real observation again.
+          # Keep the daily table usable without pretending stale values are real.
+          # Imputed rows are tagged and excluded from growth/rate calculations.
           node scripts/impute-missing-daily.mjs
 
       - name: Detect whether snapshot data changed
@@ -118,10 +126,10 @@ jobs:
         run: |
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
-          echo "Schedule cadence: every 5 minutes."
-          echo "Order: real capture -> Instagram fallback -> retry -> last-observed imputation."
-          echo "Imputed rows are retried as real observations by later Actions."
-          echo "Imputed rows are excluded from growth and rate calculations."
+          echo "Schedule cadence: every 5 minutes; per-row acquisition retries are backoff-controlled."
+          echo "Routes: primary provider/direct YouTube -> independent platform fallbacks -> one transient retry -> tagged imputation."
+          echo "Instagram backoff starts at 6h; X/TikTok at 1h; YouTube at 30m and increases after repeated failures."
+          echo "Imputed rows remain excluded from growth and rate calculations."
 
   deploy:
     name: Build and deploy latest snapshot
@@ -160,7 +168,7 @@ jobs:
         run: |
           node --check scripts/collect-daily-public.mjs
           node --check scripts/collect-or-retry-daily.mjs
-          node --check scripts/retry-instagram-web.mjs
+          node --check scripts/retry-platform-fallbacks.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
 
