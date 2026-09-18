@@ -657,14 +657,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-17T23:45:39.293Z",
+      "imputedAt": "2026-09-18T01:34:39.939Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "upstream 403 for www.tiktok.com"
+        "error": "content_unavailable",
+        "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-18T00:45:39.293Z"
+      "nextRetryAt": "2026-09-18T02:34:39.939Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -6975,15 +6975,15 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-17T23:45:38.057Z",
-  "retryAttempts": 10,
+  "lastAttemptAt": "2026-09-18T01:34:38.999Z",
+  "retryAttempts": 12,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 69,
-  "imputedAt": "2026-09-17T23:45:39.293Z",
-  "lastFallbackAt": "2026-09-17T23:44:52.556Z",
+  "imputedAt": "2026-09-18T01:34:39.939Z",
+  "lastFallbackAt": "2026-09-18T01:33:53.375Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-17T23:44:52.556Z",
+    "attemptedAt": "2026-09-18T01:33:53.375Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 1,
