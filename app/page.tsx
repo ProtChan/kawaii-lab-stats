@@ -3,7 +3,7 @@ import { AudienceBarList } from "@/components/audience-bar-list";
 import { DeltaBarList } from "@/components/delta-bar-list";
 import { GrowthChart } from "@/components/growth-chart";
 import { SiteNav } from "@/components/site-nav";
-import { currentMemberRanking, historySnapshots } from "@/lib/analytics";
+import { currentMemberRanking, groupGrowth, historySnapshots } from "@/lib/analytics";
 import { directorySummary } from "@/lib/official-directory";
 import { hasLiveData, liveGroupStats, liveSummary, liveTimeline } from "@/lib/live-stats";
 
@@ -16,10 +16,12 @@ export default function Home() {
   }
 
   const ranked = [...liveGroupStats].sort((a,b)=>(b.ecosystemFollowers ?? -1)-(a.ecosystemFollowers ?? -1));
-  const groupMovers = [...liveGroupStats].sort((a,b)=>(b.dailyGain ?? Number.NEGATIVE_INFINITY)-(a.dailyGain ?? Number.NEGATIVE_INFINITY));
+  const groupMovers = [...liveGroupStats]
+    .map((group) => ({ group, growth: groupGrowth(group.slug) }))
+    .sort((a,b)=>(b.growth.day ?? Number.NEGATIVE_INFINITY)-(a.growth.day ?? Number.NEGATIVE_INFINITY));
   const memberMovers = currentMemberRanking().sort((a,b)=>(b.growth.day ?? Number.NEGATIVE_INFINITY)-(a.growth.day ?? Number.NEGATIVE_INFINITY)).slice(0,8);
   const top = ranked[0];
-  const topMover = groupMovers.find((group) => group.dailyGain != null) ?? null;
+  const topMover = groupMovers.find(({ growth }) => growth.day != null) ?? null;
   const coverage = liveSummary.attempted ? (liveSummary.successful/liveSummary.attempted)*100 : 0;
   const collectedAt = liveSummary.collectedAt ? new Date(liveSummary.collectedAt).toLocaleString("ja-JP",{timeZone:"Asia/Tokyo",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "—";
 
@@ -41,14 +43,14 @@ export default function Home() {
       <section className="metricGrid metricGrid4 overviewKpis">
         <article className="metricHero"><span>Observed audience</span><strong>{fmt(liveSummary.observedAudience)}</strong><small>primary-group ecosystem sum</small></article>
         <article><span>Largest group</span><strong>{top?.name ?? "—"}</strong><small>{fmt(top?.ecosystemFollowers ?? null)}</small></article>
-        <article><span>Top group mover</span><strong>{topMover?.name ?? "—"}</strong><small>{signed(topMover?.dailyGain ?? null)} / day</small></article>
+        <article><span>Top group mover</span><strong>{topMover?.group.name ?? "—"}</strong><small>{signed(topMover?.growth.day ?? null)} / day</small></article>
         <article><span>TikTok total likes</span><strong>{fmt(liveSummary.tiktokLikes)}</strong><small>trusted observed profiles</small></article>
       </section>
 
       <section className="grid2">
         <div className="panel panelFeature">
           <div className="sectionHead"><div><p className="eyebrow">TODAY · GROUPS</p><h2>前日増加数</h2></div><Link href="/rankings">Full rankings →</Link></div>
-          <DeltaBarList items={groupMovers.map((group)=>({href:`/compare/?scope=groups&metric=audience&view=daily&selected=${group.slug}`,label:group.name,sub:group.dailyGrowthRate==null?"not comparable":`${group.dailyGrowthRate>=0?"+":""}${group.dailyGrowthRate.toFixed(3)}%`,value:group.dailyGain}))}/>
+          <DeltaBarList items={groupMovers.map(({group,growth})=>({href:`/compare/?scope=groups&metric=audience&view=daily&selected=${group.slug}`,label:group.name,sub:growth.dayRate==null?"not comparable":`${growth.dayRate>=0?"+":""}${growth.dayRate.toFixed(3)}% · ${growth.dayMatched} matched`,value:growth.day}))}/>
         </div>
         <div className="panel panelFeature">
           <div className="sectionHead"><div><p className="eyebrow">TODAY · MEMBERS</p><h2>個人前日増加 Top 8</h2></div><Link href="/rankings">Full rankings →</Link></div>
