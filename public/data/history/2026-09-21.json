@@ -657,14 +657,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-20T19:45:19.145Z",
+      "imputedAt": "2026-09-20T21:53:17.701Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-20T20:45:19.145Z"
+      "nextRetryAt": "2026-09-20T22:53:17.701Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -6975,22 +6975,22 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-20T19:45:18.313Z",
-  "retryAttempts": 3,
+  "lastAttemptAt": "2026-09-20T21:53:16.625Z",
+  "retryAttempts": 5,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 69,
-  "lastFallbackAt": "2026-09-20T19:44:31.960Z",
+  "lastFallbackAt": "2026-09-20T21:52:31.201Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-20T19:44:31.960Z",
+    "attemptedAt": "2026-09-20T21:52:31.201Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 2,
-        "success": 1,
+        "attempts": 1,
+        "success": 0,
         "failed": 1,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       }
     }
   },
-  "imputedAt": "2026-09-20T19:45:19.145Z"
+  "imputedAt": "2026-09-20T21:53:17.701Z"
 }
