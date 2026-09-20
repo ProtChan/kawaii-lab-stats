@@ -91,6 +91,9 @@ const previousPoint = latestSeriesDate
   ? [...liveSeries].reverse().find((point) => point.date !== latestSeriesDate && exactDayInterval(point.date, latestSeriesDate, 1)) ?? null
   : null;
 
+const seriesGroupUsable = (group: SeriesGroup | null | undefined) =>
+  Boolean(group && group.observedAccounts + (group.imputedAccounts ?? 0) === group.expectedAccounts);
+
 export const liveGroupStats = debutedGroups.map((group) => {
   const all = liveSnapshot.accounts.filter((account) => account.groupSlug === group.slug);
   const officialRows = all.filter((account) => account.entityType === "GROUP" && account.entitySlug === group.slug);
@@ -99,9 +102,10 @@ export const liveGroupStats = debutedGroups.map((group) => {
   const official = aggregateAccounts(officialRows);
   const members = aggregateAccounts(memberRows);
   const previous = previousPoint?.groups[group.slug] ?? null;
-  const previousComplete = Boolean(previous && previous.observedAccounts === previous.expectedAccounts);
+  const previousUsable = seriesGroupUsable(previous);
   const ecosystem = aggregate.audience.value;
-  const dailyGain = aggregate.audience.complete && previousComplete && ecosystem != null ? ecosystem - previous!.ecosystem : null;
+  const currentUsable = aggregate.audience.observed + aggregate.audience.imputed === aggregate.audience.expected;
+  const dailyGain = currentUsable && previousUsable && ecosystem != null ? ecosystem - previous!.ecosystem : null;
 
   return {
     slug: group.slug,
@@ -124,7 +128,7 @@ export const liveGroupStats = debutedGroups.map((group) => {
     expectedAccounts: aggregate.audience.expected,
     complete: aggregate.audience.complete,
     dailyGain,
-    dailyGrowthRate: previousComplete && previous!.ecosystem > 0 && dailyGain != null ? (dailyGain / previous!.ecosystem) * 100 : null,
+    dailyGrowthRate: previousUsable && previous!.ecosystem > 0 && dailyGain != null ? (dailyGain / previous!.ecosystem) * 100 : null,
   };
 });
 
@@ -132,7 +136,7 @@ export const liveTimeline = liveSeries.map((point) => {
   const row: Record<string, string | number | null> = { date: point.date.slice(5) };
   for (const group of debutedGroups) {
     const item = point.groups[group.slug];
-    row[group.name] = item && item.observedAccounts === item.expectedAccounts ? item.ecosystem : null;
+    row[group.name] = seriesGroupUsable(item) ? item.ecosystem : null;
   }
   return row;
 });
