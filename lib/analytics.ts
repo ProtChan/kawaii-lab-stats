@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { officialGroups, type DirectoryGroup, type DirectoryMember } from "@/lib/official-directory";
 import { liveSnapshot, type LiveAccount, type Snapshot } from "@/lib/live-stats";
-import { accountSetKey, aggregateAccounts, completeDelta, exactDayInterval, platformLabels, type PlatformLabel } from "@/lib/metrics";
+import { accountSetKey, aggregateAccounts, exactDayInterval, platformLabel, platformLabels, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
 
 type RawSnapshot = Snapshot;
 
@@ -94,6 +94,8 @@ function snapshotRows(snapshot: RawSnapshot, predicate: (account: LiveAccount) =
   return snapshot.accounts.filter(predicate);
 }
 
+type TimelineSeriesKey = "Total" | PlatformLabel;
+
 export type MemberTimelinePoint = {
   date: string;
   isoDate: string;
@@ -102,8 +104,28 @@ export type MemberTimelinePoint = {
   Instagram: number | null;
   TikTok: number | null;
   YouTube: number | null;
-  accountSet: Record<"Total" | PlatformLabel, string>;
+  accountSet: Record<TimelineSeriesKey, string>;
+  observedValues: Record<TimelineSeriesKey, Record<string, number>>;
 };
+
+function observationUsable(observation: { value: number | null; observed: number; imputed: number; expected: number }) {
+  return observation.value != null && observation.observed + observation.imputed === observation.expected;
+}
+
+function observedFollowerValues(rows: LiveAccount[], platform?: PlatformLabel) {
+  return Object.fromEntries(
+    rows
+      .filter((account) =>
+        trustedMetricAccount(account) &&
+        !account.error &&
+        !account.imputed &&
+        typeof account.followers === "number" &&
+        Number.isFinite(account.followers) &&
+        (!platform || platformLabel(account.platform) === platform)
+      )
+      .map((account) => [`${account.platform}:${String(account.handle).toLowerCase()}`, account.followers as number]),
+  );
+}
 
 function timelinePoint(snapshot: RawSnapshot, rows: LiveAccount[]): MemberTimelinePoint {
   const aggregate = aggregateAccounts(rows);
@@ -111,17 +133,24 @@ function timelinePoint(snapshot: RawSnapshot, rows: LiveAccount[]): MemberTimeli
   return {
     date: isoDate.slice(5),
     isoDate,
-    Total: aggregate.audience.complete ? aggregate.audience.value : null,
-    X: aggregate.platforms.X.complete ? aggregate.platforms.X.value : null,
-    Instagram: aggregate.platforms.Instagram.complete ? aggregate.platforms.Instagram.value : null,
-    TikTok: aggregate.platforms.TikTok.complete ? aggregate.platforms.TikTok.value : null,
-    YouTube: aggregate.platforms.YouTube.complete ? aggregate.platforms.YouTube.value : null,
+    Total: observationUsable(aggregate.audience) ? aggregate.audience.value : null,
+    X: observationUsable(aggregate.platforms.X) ? aggregate.platforms.X.value : null,
+    Instagram: observationUsable(aggregate.platforms.Instagram) ? aggregate.platforms.Instagram.value : null,
+    TikTok: observationUsable(aggregate.platforms.TikTok) ? aggregate.platforms.TikTok.value : null,
+    YouTube: observationUsable(aggregate.platforms.YouTube) ? aggregate.platforms.YouTube.value : null,
     accountSet: {
       Total: accountSetKey(rows),
       X: accountSetKey(rows, "X"),
       Instagram: accountSetKey(rows, "Instagram"),
       TikTok: accountSetKey(rows, "TikTok"),
       YouTube: accountSetKey(rows, "YouTube"),
+    },
+    observedValues: {
+      Total: observedFollowerValues(rows),
+      X: observedFollowerValues(rows, "X"),
+      Instagram: observedFollowerValues(rows, "Instagram"),
+      TikTok: observedFollowerValues(rows, "TikTok"),
+      YouTube: observedFollowerValues(rows, "YouTube"),
     },
   };
 }
@@ -134,22 +163,50 @@ export function getGroupTimeline(slug: string): MemberTimelinePoint[] {
   return historySnapshots.map((snapshot) => timelinePoint(snapshot, snapshotRows(snapshot, (account) => account.groupSlug === slug)));
 }
 
+function matchedObservedChange(
+  previous: Record<string, number>,
+  current: Record<string, number>,
+) {
+  const keys = Object.keys(current).filter((key) => key in previous);
+  if (!keys.length) return null;
+  const before = keys.reduce((sum, key) => sum + previous[key], 0);
+  const after = keys.reduce((sum, key) => sum + current[key], 0);
+  return {
+    delta: after - before,
+    rate: before > 0 ? ((after - before) / before) * 100 : null,
+    matched: keys.length,
+  };
+}
+
 function growthForRows(predicate: (account: LiveAccount) => boolean) {
   const points = historySnapshots.map((snapshot) => {
     const rows = snapshotRows(snapshot, predicate);
-    return { date: snapshot.date ?? "", observation: aggregateAccounts(rows).audience, accountSet: accountSetKey(rows) };
+    return {
+      date: snapshot.date ?? "",
+      accountSet: accountSetKey(rows),
+      observedValues: observedFollowerValues(rows),
+    };
   });
   const latest = points.at(-1) ?? null;
-  const deltaAtDays = (days: number) => {
+  const changeAtDays = (days: number) => {
     if (!latest) return null;
     const from = [...points].reverse().find((point) => exactDayInterval(point.date, latest.date, days));
     if (!from || from.accountSet !== latest.accountSet) return null;
-    return completeDelta(from.observation, latest.observation);
+    return matchedObservedChange(from.observedValues, latest.observedValues);
   };
+  const day = changeAtDays(1);
+  const week = changeAtDays(7);
+  const month = changeAtDays(30);
   return {
-    day: deltaAtDays(1),
-    week: deltaAtDays(7),
-    month: deltaAtDays(30),
+    day: day?.delta ?? null,
+    week: week?.delta ?? null,
+    month: month?.delta ?? null,
+    dayRate: day?.rate ?? null,
+    weekRate: week?.rate ?? null,
+    monthRate: month?.rate ?? null,
+    dayMatched: day?.matched ?? 0,
+    weekMatched: week?.matched ?? 0,
+    monthMatched: month?.matched ?? 0,
   };
 }
 
