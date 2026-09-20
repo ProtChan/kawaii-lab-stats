@@ -35,18 +35,21 @@ function periodDelta(history: ComparePoint[], index: number, metric: CompareMetr
   const current = history[index];
   if (!current) return null;
   const previous = history.slice(0, index).reverse().find((point) => exactDayInterval(point.date, current.date, days));
-  if (!previous?.complete[metric] || !current.complete[metric]) return null;
-  if (previous.accountSet[metric] !== current.accountSet[metric]) return null;
-  const before = previous[metric];
-  const after = current[metric];
-  return typeof before === "number" && typeof after === "number" ? after - before : null;
+  if (!previous || previous.accountSet[metric] !== current.accountSet[metric]) return null;
+  const beforeMap = previous.observedValues[metric];
+  const afterMap = current.observedValues[metric];
+  const matched = Object.keys(afterMap).filter((key) => key in beforeMap);
+  if (!matched.length) return null;
+  const before = matched.reduce((sum, key) => sum + beforeMap[key], 0);
+  const after = matched.reduce((sum, key) => sum + afterMap[key], 0);
+  return after - before;
 }
 
 function indexedValue(history: ComparePoint[], index: number, metric: CompareMetricKey) {
   const current = history[index];
-  if (!current?.complete[metric] || typeof current[metric] !== "number") return null;
+  if (!current?.usable[metric] || typeof current[metric] !== "number") return null;
   const setKey = current.accountSet[metric];
-  const base = history.find((point) => point.complete[metric] && point.accountSet[metric] === setKey && typeof point[metric] === "number" && (point[metric] as number) > 0);
+  const base = history.find((point) => point.usable[metric] && point.accountSet[metric] === setKey && typeof point[metric] === "number" && (point[metric] as number) > 0);
   if (!base || typeof base[metric] !== "number" || base[metric] <= 0) return null;
   return ((current[metric] as number) / (base[metric] as number)) * 100;
 }
@@ -207,8 +210,8 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">{isDelta ? "GROWTH RANKING" : view === "indexed" ? "NORMALIZED SCALE" : "CURRENT RANKING"}</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{isDelta ? `${latestDate} endpoint` : `${orderedCandidates.length} candidates`}</span></div>
         {metric === "audience" && view === "level" ? <div className="platformLegend">{platformKeys.map((platform) => <span key={platform}><i className={`platformDot platform${platform}`} />{platform}</span>)}</div> : null}
-        {isDelta ? <p className="deltaNote">両端が完全観測で、canonical account集合が同一、かつ実際の日付差が1/7/30日ちょうどの区間だけ算出します。欠測日をまたいだ差分は短い期間として扱いません。</p> : null}
-        {view === "indexed" ? <p className="deltaNote">各entityの現在のcanonical account集合で最初に得られた完全観測を100として正規化します。</p> : null}
+        {isDelta ? <p className="deltaNote">canonical account集合が同一で、実際の日付差が1/7/30日ちょうどの区間について、両端で実測できた同一アカウントだけを突き合わせて算出します。補完値は差分から除外します。</p> : null}
+        {view === "indexed" ? <p className="deltaNote">各entityの現在のcanonical account集合で最初に得られたusable snapshot（実測または明示的補完で全行が埋まった日）を100として正規化します。</p> : null}
         <div className="compareBarList">
           {orderedCandidates.map((entity, index) => {
             const value = valueFor(entity);
