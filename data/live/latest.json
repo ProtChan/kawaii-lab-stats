@@ -657,14 +657,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-20T17:46:04.077Z",
+      "imputedAt": "2026-09-20T19:45:19.145Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-20T18:46:04.077Z"
+      "nextRetryAt": "2026-09-20T20:45:19.145Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -5420,36 +5420,22 @@
       "handle": "suzuki_karin",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@suzuki_karin",
-      "capturedAt": "2026-09-19T16:48:15.257Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
+      "capturedAt": "2026-09-20T19:44:31.960Z",
+      "sourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
       "followers": 20201,
       "following": 180,
       "posts": 478,
-      "likes": 645333,
+      "likes": 645352,
       "views": null,
       "sourceUrl": "https://www.tiktok.com/@suzuki_karin",
       "providerPlatform": "tiktok",
       "providerHandle": "suzuki_karin",
       "providerName": "鈴木花梨",
-      "viewsPrecision": null,
       "verified": false,
-      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=08939286&x-expires=1790006400&x-signature=pmg9PLisymX1Wa4LQMTwuM1Jc5g%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
-      "parserVersion": null,
+      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=137d132c&x-expires=1790103600&x-signature=rqmZITiIeRF%2FX%2BwPALUnbRqcWZQ%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": "TOTAL_LIKES",
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-20",
-      "imputedFromCapturedAt": "2026-09-19T16:48:15.257Z",
-      "imputedAt": "2026-09-20T17:46:04.077Z",
-      "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
-      "acquisitionError": {
-        "error": "content_unavailable",
-        "detail": "content unavailable: tiktok status 10221"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-20T18:46:04.077Z"
+      "engagementMetric": "TOTAL_LIKES"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -6989,28 +6975,22 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-20T17:45:32.835Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-09-20T19:45:18.313Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 141,
-  "imputed": 70,
-  "lastFallbackAt": "2026-09-20T17:44:45.421Z",
+  "observedSuccessful": 142,
+  "imputed": 69,
+  "lastFallbackAt": "2026-09-20T19:44:31.960Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-20T17:44:45.421Z",
+    "attemptedAt": "2026-09-20T19:44:31.960Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
-        "success": 0,
-        "failed": 2,
+        "success": 1,
+        "failed": 1,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       }
     }
   },
-  "imputedAt": "2026-09-20T17:46:04.077Z"
+  "imputedAt": "2026-09-20T19:45:19.145Z"
 }
