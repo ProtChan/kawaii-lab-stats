@@ -56,13 +56,22 @@ function periodRows(data: MemberTimelinePoint[], days: PeriodDays, mode: "change
         row[key] = null;
         continue;
       }
-      const before = previous[key];
-      const after = point[key];
       const sameAccounts = previous.accountSet[key as SeriesKey] === point.accountSet[key as SeriesKey];
-      if (!sameAccounts || typeof before !== "number" || typeof after !== "number") {
+      if (!sameAccounts) {
         row[key] = null;
         continue;
       }
+
+      const beforeMap = previous.observedValues[key as SeriesKey];
+      const afterMap = point.observedValues[key as SeriesKey];
+      const matchedKeys = Object.keys(afterMap).filter((accountKey) => accountKey in beforeMap);
+      if (!matchedKeys.length) {
+        row[key] = null;
+        continue;
+      }
+
+      const before = matchedKeys.reduce((sum, accountKey) => sum + beforeMap[accountKey], 0);
+      const after = matchedKeys.reduce((sum, accountKey) => sum + afterMap[accountKey], 0);
       const delta = after - before;
       row[key] = mode === "change" ? delta : before !== 0 ? (delta / before) * 100 : null;
     }
@@ -152,11 +161,11 @@ export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] })
       ) : null}
 
       {view === "indexed" ? (
-        <p className={styles.note}>Total / X / Instagram / TikTok / YouTubeをそれぞれ独立してINDEX化します。同じcanonical account集合で最初に取得できた値を100とし、アカウント集合が変わった場合はその新しい区間で基準を取り直します。</p>
+        <p className={styles.note}>Total / X / Instagram / TikTok / YouTubeをそれぞれ独立してINDEX化します。絶対値・INDEXは明示的な補完値を含むusable snapshotを表示し、増分・増加率だけは実測同士に限定します。</p>
       ) : null}
 
       {derived ? (
-        <p className={styles.note}>{period}日前の実日付と一致し、両端が観測済みで、そのSNSのcanonical account集合が同じ場合だけ{view === "rate" ? "増加率" : "増分"}を表示します。欠測やアカウント変更をまたぐ区間は `—` のままです。</p>
+        <p className={styles.note}>{period}日前の実日付と一致し、canonical account集合が同じ区間について、両端で実測できた同一アカウントだけを突き合わせて{view === "rate" ? "増加率" : "増分"}を算出します。補完値は差分計算から除外します。</p>
       ) : null}
 
       {chartData.some(hasAnyValue) && chartData.length >= (view === "level" || view === "indexed" ? 2 : 1)
