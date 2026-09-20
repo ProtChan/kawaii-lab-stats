@@ -663,14 +663,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-19T23:15:48.580Z",
+      "imputedAt": "2026-09-20T01:12:12.597Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-20T00:15:48.580Z"
+      "nextRetryAt": "2026-09-20T02:12:12.597Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -7040,8 +7040,8 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-19T23:15:19.727Z",
-  "retryAttempts": 7,
+  "lastAttemptAt": "2026-09-20T01:12:11.050Z",
+  "retryAttempts": 9,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 69,
@@ -7052,16 +7052,10 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-09-19T23:14:33.691Z",
+  "lastFallbackAt": "2026-09-20T01:11:25.549Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-19T23:14:33.691Z",
+    "attemptedAt": "2026-09-20T01:11:25.549Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 1,
         "success": 0,
@@ -7070,5 +7064,5 @@
       }
     }
   },
-  "imputedAt": "2026-09-19T23:15:48.580Z"
+  "imputedAt": "2026-09-20T01:12:12.597Z"
 }
