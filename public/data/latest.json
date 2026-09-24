@@ -657,14 +657,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-24T18:02:47.587Z",
+      "imputedAt": "2026-09-24T21:20:15.125Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-24T19:02:47.587Z"
+      "nextRetryAt": "2026-09-24T22:20:15.125Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -5467,14 +5467,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-24",
       "imputedFromCapturedAt": "2026-09-23T18:31:21.386Z",
-      "imputedAt": "2026-09-24T18:02:47.587Z",
+      "imputedAt": "2026-09-24T21:20:15.125Z",
       "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-24T19:02:47.587Z"
+      "nextRetryAt": "2026-09-24T22:20:15.125Z"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -7029,8 +7029,8 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-24T18:02:15.926Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-09-24T21:20:13.836Z",
+  "retryAttempts": 3,
   "observedComplete": false,
   "observedSuccessful": 141,
   "imputed": 70,
@@ -7041,16 +7041,10 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-09-24T18:01:29.384Z",
+  "lastFallbackAt": "2026-09-24T21:19:28.129Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-24T18:01:29.384Z",
+    "attemptedAt": "2026-09-24T21:19:28.129Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
@@ -7059,5 +7053,5 @@
       }
     }
   },
-  "imputedAt": "2026-09-24T18:02:47.587Z"
+  "imputedAt": "2026-09-24T21:20:15.125Z"
 }
