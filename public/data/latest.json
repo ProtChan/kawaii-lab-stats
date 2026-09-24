@@ -90,14 +90,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "candy-tune",
@@ -219,14 +219,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "rino-fukuyama",
@@ -319,14 +319,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "mizuki-kirihara",
@@ -419,14 +419,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "natsu-minami",
@@ -519,14 +519,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "nanako-ogawa",
@@ -619,14 +619,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kotomi-tachibana",
@@ -662,14 +662,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-23T23:58:42.788Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-24T00:58:42.788Z"
+      "nextRetryAt": "2026-09-24T04:32:38.152Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -734,14 +734,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -834,14 +834,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "bibian-murakawa",
@@ -963,14 +963,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "cutie-street",
@@ -1092,14 +1092,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "risa-furusawa",
@@ -1192,14 +1192,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "aika-sano",
@@ -1292,14 +1292,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kana-itakura",
@@ -1392,14 +1392,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "ayano-masuda",
@@ -1492,14 +1492,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "emiru-kawamoto",
@@ -1592,14 +1592,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "miyu-umeda",
@@ -1692,14 +1692,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "nagisa-manabe",
@@ -1792,14 +1792,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "haruka-sakuraba",
@@ -1890,14 +1890,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "fruits-zipper",
@@ -2019,14 +2019,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "amane-tsukiashi",
@@ -2150,14 +2150,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "suzuka-chinzei",
@@ -2281,14 +2281,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "yui-sakurai",
@@ -2381,14 +2381,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "luna-nakagawa",
@@ -2481,14 +2481,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "mana-manaka",
@@ -2581,14 +2581,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "karen-matsumoto",
@@ -2681,14 +2681,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "noel-hayase",
@@ -2782,14 +2782,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kawaii-lab-mates",
@@ -2881,14 +2881,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "momo-aoshima",
@@ -2981,14 +2981,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "erena-itami",
@@ -3081,14 +3081,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "konomi-kato",
@@ -3181,14 +3181,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "shui-sato",
@@ -3281,14 +3281,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -3353,14 +3353,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -3453,14 +3453,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kaho-takayama",
@@ -3553,14 +3553,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "lilica-tsuji",
@@ -3653,14 +3653,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "leona-nakamori",
@@ -3753,14 +3753,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "keina-hashimoto",
@@ -3853,14 +3853,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "coco-yamashita",
@@ -3953,14 +3953,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kanon-yokoyama",
@@ -4023,14 +4023,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kawaii-lab-south",
@@ -4122,14 +4122,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "koharu-arimura",
@@ -4222,14 +4222,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "seri-ohkawa",
@@ -4322,14 +4322,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "ayaka-kadokura",
@@ -4422,14 +4422,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "iroha-sawamura",
@@ -4522,14 +4522,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "aiko-hamasaki",
@@ -4622,14 +4622,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "nana-matsuda",
@@ -4722,14 +4722,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "mene-morino",
@@ -4822,14 +4822,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "mao-kuroda",
@@ -4922,14 +4922,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kaede-fukumoto",
@@ -5020,14 +5020,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "more-star",
@@ -5149,14 +5149,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "cocona-arai",
@@ -5249,14 +5249,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "marin-endo",
@@ -5349,14 +5349,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "nanaka-sasahara",
@@ -5449,14 +5449,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "karin-suzuki",
@@ -5550,14 +5550,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -5650,14 +5650,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kohaku-nakayama",
@@ -5750,14 +5750,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "sora-hagita",
@@ -5850,14 +5850,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "ami-morita",
@@ -5950,14 +5950,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
         "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "rushia-yamamoto",
@@ -6048,14 +6048,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "piki",
@@ -6173,14 +6173,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "kawaii-lab",
@@ -6272,14 +6272,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "sweet-steady",
@@ -6401,14 +6401,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "ayu-okuda",
@@ -6501,14 +6501,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "yui-otoi",
@@ -6601,14 +6601,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "natsuka-kurita",
@@ -6701,14 +6701,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "rise-shiokawa",
@@ -6801,14 +6801,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "nagisa-shoji",
@@ -6901,14 +6901,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -7001,14 +7001,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-21",
       "imputedFromCapturedAt": "2026-09-21T01:37:21.240Z",
-      "imputedAt": "2026-09-23T18:32:37.150Z",
+      "imputedAt": "2026-09-24T03:32:38.152Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "fetch_failed",
+        "detail": "upstream 429 for www.instagram.com"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-09-24T00:32:37.150Z"
+      "nextRetryAt": "2026-09-24T09:32:38.152Z"
     },
     {
       "entitySlug": "sakina-yamauchi",
@@ -7040,8 +7040,8 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-23T23:58:42.186Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-09-24T03:32:09.915Z",
+  "retryAttempts": 7,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 69,
@@ -7052,10 +7052,16 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-09-23T23:57:56.715Z",
+  "lastFallbackAt": "2026-09-24T03:31:23.315Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-23T23:57:56.715Z",
+    "attemptedAt": "2026-09-24T03:31:23.315Z",
     "routes": {
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+        "attempts": 2,
+        "success": 0,
+        "failed": 2,
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
+      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 1,
         "success": 0,
@@ -7064,5 +7070,5 @@
       }
     }
   },
-  "imputedAt": "2026-09-23T23:58:42.788Z"
+  "imputedAt": "2026-09-24T03:32:38.152Z"
 }
