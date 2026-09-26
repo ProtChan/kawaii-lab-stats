@@ -663,14 +663,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-26T17:28:49.416Z",
+      "imputedAt": "2026-09-26T20:01:54.809Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-26T18:28:49.416Z"
+      "nextRetryAt": "2026-09-26T21:01:54.809Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -4072,36 +4072,22 @@
       "handle": "koharu_kls0411",
       "platformId": null,
       "profileUrl": "https://x.com/koharu_kls0411",
-      "capturedAt": "2026-09-25T18:07:37.758Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 5724,
+      "capturedAt": "2026-09-26T20:01:05.408Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 5725,
       "following": 93,
-      "posts": 4492,
-      "likes": 178789,
+      "posts": 4498,
+      "likes": 178933,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/koharu_kls0411",
       "providerPlatform": "x",
       "providerHandle": "koharu_KLS0411",
       "providerName": "有村心晴(KAWAII LAB. SOUTH)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/1977037121870610435/4bY5azZ0_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-26",
-      "imputedFromCapturedAt": "2026-09-25T18:07:37.758Z",
-      "imputedAt": "2026-09-26T17:28:49.416Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-26T18:28:49.416Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "koharu-arimura",
@@ -4386,36 +4372,22 @@
       "handle": "iroha_KLS0208",
       "platformId": null,
       "profileUrl": "https://x.com/iroha_KLS0208",
-      "capturedAt": "2026-09-25T18:07:37.758Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 6794,
+      "capturedAt": "2026-09-26T20:01:05.408Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 6798,
       "following": 93,
       "posts": 6048,
-      "likes": 16045,
+      "likes": 16049,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/iroha_KLS0208",
       "providerPlatform": "x",
       "providerHandle": "iroha_KLS0208",
       "providerName": "澤村いろは(KAWAII LAB. SOUTH)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/1976879369634430982/7jYwpIqo_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-26",
-      "imputedFromCapturedAt": "2026-09-25T18:07:37.758Z",
-      "imputedAt": "2026-09-26T17:28:49.416Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-26T18:28:49.416Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "iroha-sawamura",
@@ -4999,36 +4971,22 @@
       "handle": "MORE_STAR_",
       "platformId": null,
       "profileUrl": "https://x.com/MORE_STAR_",
-      "capturedAt": "2026-09-25T21:30:09.464Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 42479,
+      "capturedAt": "2026-09-26T20:01:05.408Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 42595,
       "following": 17,
-      "posts": 3696,
-      "likes": null,
+      "posts": 3725,
+      "likes": 19,
       "views": null,
-      "sourceUrl": "https://x.com/MORE_STAR_",
+      "sourceUrl": "https://api.fxtwitter.com/2/profile/MORE_STAR_",
       "providerPlatform": "x",
       "providerHandle": "MORE_STAR_",
       "providerName": "MORE STAR【Official】",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1999312365754679296/a-iq75sa_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
-      "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-26",
-      "imputedFromCapturedAt": "2026-09-25T21:30:09.464Z",
-      "imputedAt": "2026-09-26T17:28:49.416Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-26T18:28:49.416Z"
+      "precision": "PUBLIC_EXACT",
+      "engagementMetric": null
     },
     {
       "entitySlug": "more-star",
@@ -5141,36 +5099,22 @@
       "handle": "cocona_ms1218",
       "platformId": null,
       "profileUrl": "https://x.com/cocona_ms1218",
-      "capturedAt": "2026-09-25T18:07:37.758Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 17098,
+      "capturedAt": "2026-09-26T20:01:05.408Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 17136,
       "following": 161,
-      "posts": 18295,
-      "likes": 93571,
+      "posts": 18307,
+      "likes": 93842,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/cocona_ms1218",
       "providerPlatform": "x",
       "providerHandle": "cocona_ms1218",
       "providerName": "新井心菜(MORE STAR)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2103332272388894721/V1Mrtr8G_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-26",
-      "imputedFromCapturedAt": "2026-09-25T18:07:37.758Z",
-      "imputedAt": "2026-09-26T17:28:49.416Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-26T18:28:49.416Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "cocona-arai",
@@ -5549,14 +5493,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-26",
       "imputedFromCapturedAt": "2026-09-25T21:30:12.186Z",
-      "imputedAt": "2026-09-26T17:28:49.416Z",
+      "imputedAt": "2026-09-26T20:01:54.809Z",
       "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-26T18:28:49.416Z"
+      "nextRetryAt": "2026-09-26T21:01:54.809Z"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -7111,45 +7055,29 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-26T17:28:19.585Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-09-26T20:01:52.858Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 137,
-  "imputed": 74,
-  "lastFxTwitterFallbackAt": "2026-09-26T17:27:13.221Z",
+  "observedSuccessful": 141,
+  "imputed": 70,
+  "lastFxTwitterFallbackAt": "2026-09-26T20:01:05.408Z",
   "xFxTwitterHealth": {
-    "attempted": 66,
-    "success": 62,
-    "failed": 4,
-    "lastErrors": [
-      "iroha_KLS0208: FxTwitter HTTP 404 code=404: User not found",
-      "MORE_STAR_: FxTwitter HTTP 404 code=404: User not found",
-      "cocona_ms1218: FxTwitter HTTP 404 code=404: User not found"
-    ]
+    "attempted": 4,
+    "success": 4,
+    "failed": 0,
+    "lastErrors": []
   },
-  "lastFallbackAt": "2026-09-26T17:27:32.953Z",
+  "lastFallbackAt": "2026-09-26T20:01:06.693Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-26T17:27:32.953Z",
+    "attemptedAt": "2026-09-26T20:01:06.693Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 4,
-        "success": 0,
-        "failed": 4,
-        "lastError": "X syndication returned invalid JSON: "
       }
     }
   },
-  "imputedAt": "2026-09-26T17:28:49.416Z"
+  "imputedAt": "2026-09-26T20:01:54.809Z"
 }
