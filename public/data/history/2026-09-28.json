@@ -663,14 +663,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-27T15:36:04.057Z",
+      "imputedAt": "2026-09-27T19:14:20.799Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-27T16:36:04.057Z"
+      "nextRetryAt": "2026-09-27T20:14:20.799Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -5486,14 +5486,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-27",
       "imputedFromCapturedAt": "2026-09-26T22:39:03.428Z",
-      "imputedAt": "2026-09-27T15:36:04.057Z",
+      "imputedAt": "2026-09-27T19:14:20.799Z",
       "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-27T16:36:04.057Z"
+      "nextRetryAt": "2026-09-27T20:14:20.799Z"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -7044,8 +7044,8 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-27T15:35:09.905Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-09-27T19:14:19.400Z",
+  "retryAttempts": 3,
   "observedComplete": false,
   "observedSuccessful": 141,
   "imputed": 70,
@@ -7060,29 +7060,17 @@
       "natsuka_ss0719: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-09-27T15:34:22.872Z",
+  "lastFallbackAt": "2026-09-27T19:13:33.270Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-27T15:34:22.872Z",
+    "attemptedAt": "2026-09-27T19:13:33.270Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 11,
-        "success": 0,
-        "failed": 11,
-        "lastError": "X syndication returned invalid JSON: "
       }
     }
   },
-  "imputedAt": "2026-09-27T15:36:04.057Z"
+  "imputedAt": "2026-09-27T19:14:20.799Z"
 }
