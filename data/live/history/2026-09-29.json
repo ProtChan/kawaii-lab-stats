@@ -663,14 +663,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-28T19:54:44.035Z",
+      "imputedAt": "2026-09-28T23:59:28.540Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-28T20:54:44.035Z"
+      "nextRetryAt": "2026-09-29T00:59:28.540Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -5470,36 +5470,22 @@
       "handle": "suzuki_karin",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@suzuki_karin",
-      "capturedAt": "2026-09-27T22:13:11.829Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 20361,
+      "capturedAt": "2026-09-28T23:58:40.322Z",
+      "sourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
+      "followers": 20366,
       "following": 180,
       "posts": 478,
-      "likes": 649815,
+      "likes": 649921,
       "views": null,
       "sourceUrl": "https://www.tiktok.com/@suzuki_karin",
       "providerPlatform": "tiktok",
       "providerHandle": "suzuki_karin",
       "providerName": "鈴木花梨",
-      "viewsPrecision": null,
       "verified": false,
-      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=497a1f25&x-expires=1790719200&x-signature=xtQkfePiII8hujSqmzizuhRC5AA%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
-      "parserVersion": null,
+      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=40be9fb6&x-expires=1790809200&x-signature=rvEb372ntc4Z981zyA8KXNW%2F0oI%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": "TOTAL_LIKES",
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-28",
-      "imputedFromCapturedAt": "2026-09-27T22:13:11.829Z",
-      "imputedAt": "2026-09-28T19:54:44.035Z",
-      "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
-      "acquisitionError": {
-        "error": "content_unavailable",
-        "detail": "content unavailable: tiktok status 10221"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-28T20:54:44.035Z"
+      "engagementMetric": "TOTAL_LIKES"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -7040,11 +7026,11 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-28T19:54:14.098Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-09-28T23:59:26.719Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 141,
-  "imputed": 70,
+  "observedSuccessful": 142,
+  "imputed": 69,
   "lastFxTwitterFallbackAt": "2026-09-28T19:53:01.355Z",
   "xFxTwitterHealth": {
     "attempted": 53,
@@ -7055,29 +7041,17 @@
       "kohaku_ms0730: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-09-28T19:53:26.655Z",
+  "lastFallbackAt": "2026-09-28T23:58:40.322Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-28T19:53:26.655Z",
+    "attemptedAt": "2026-09-28T23:58:40.322Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram users info HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
-        "success": 0,
-        "failed": 2,
+        "success": 1,
+        "failed": 1,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "X syndication returned invalid JSON: "
       }
     }
   },
-  "imputedAt": "2026-09-28T19:54:44.035Z"
+  "imputedAt": "2026-09-28T23:59:28.540Z"
 }
