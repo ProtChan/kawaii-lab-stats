@@ -663,14 +663,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-27T22:14:27.738Z",
+      "imputedAt": "2026-09-28T00:47:12.786Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-27T23:14:27.738Z"
+      "nextRetryAt": "2026-09-28T01:47:12.786Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -7030,8 +7030,8 @@
     }
   ],
   "errors": [],
-  "lastAttemptAt": "2026-09-27T22:13:58.490Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-09-28T00:47:12.080Z",
+  "retryAttempts": 7,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 69,
@@ -7046,23 +7046,17 @@
       "natsuka_ss0719: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-09-27T22:13:11.829Z",
+  "lastFallbackAt": "2026-09-28T00:46:26.548Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-27T22:13:11.829Z",
+    "attemptedAt": "2026-09-28T00:46:26.548Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 2,
-        "success": 1,
+        "attempts": 1,
+        "success": 0,
         "failed": 1,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       }
     }
   },
-  "imputedAt": "2026-09-27T22:14:27.738Z"
+  "imputedAt": "2026-09-28T00:47:12.786Z"
 }
