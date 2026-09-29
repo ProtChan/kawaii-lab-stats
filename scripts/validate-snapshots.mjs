@@ -87,13 +87,13 @@ for (const file of historyFiles) {
     if (account.imputed === true) {
       if (!account.imputedFromDate || !/^\d{4}-\d{2}-\d{2}$/.test(account.imputedFromDate)) errors.push(`${file}:${key}: imputed row missing imputedFromDate.`);
       if (!account.imputedFromCapturedAt || Number.isNaN(Date.parse(account.imputedFromCapturedAt))) errors.push(`${file}:${key}: imputed row missing valid imputedFromCapturedAt.`);
-      if (account.imputationMethod !== "LAST_OBSERVED_VALUE") errors.push(`${file}:${key}: unsupported imputationMethod=${account.imputationMethod}.`);
+      if (!["LAST_OBSERVED_VALUE", "PUBLIC_MIRROR"].includes(account.imputationMethod)) errors.push(`${file}:${key}: unsupported imputationMethod=${account.imputationMethod}.`);
     }
     if (expectedDate >= "2026-08-25" && account.platform === "YOUTUBE" && !account.error && account.parserVersion !== TRUSTED_YOUTUBE_PARSER) {
       errors.push(`${file}:${key}: successful YouTube row is not from trusted parser.`);
     }
   }
-  if (imputedCount) warn.push(`${file}: ${imputedCount} row(s) are filled from the last observed value and must not be used for growth calculations.`);
+  if (imputedCount) warn.push(`${file}: ${imputedCount} fallback/imputed row(s) must not be used for growth calculations.`);
 }
 
 const latest = await readJson(path.join(LIVE, "latest.json"));
