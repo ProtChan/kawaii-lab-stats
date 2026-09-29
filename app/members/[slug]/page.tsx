@@ -47,7 +47,7 @@ export default async function MemberPage({ params }: { params: Promise<{ slug: s
 
       <section className="metricGrid metricGrid4">
         <article className="metricHero"><span>SNS total</span><strong>{fmt(stats.totalFollowers)}</strong><small>trusted account audience sum</small></article>
-        <article><span>1-day audience Δ</span><strong>{signed(growth.day)}</strong><small>complete comparable account set only</small></article>
+        <article><span>1-day audience Δ</span><strong>{signed(growth.day)}</strong><small>matched observed accounts only</small></article>
         <article><span>TikTok total likes</span><strong>{fmt(stats.tiktokLikes)}</strong><small>profile total likes</small></article>
         <article><span>YouTube total views</span><strong>{fmt(stats.youtubeViews)}</strong><small>trusted channel lifetime views</small></article>
       </section>
@@ -67,7 +67,7 @@ export default async function MemberPage({ params }: { params: Promise<{ slug: s
           </div>
         </div>
         <div className="panel">
-          <div className="sectionHead"><div><p className="eyebrow">GROWTH WINDOWS</p><h2>増加数</h2></div><span>same account set only</span></div>
+          <div className="sectionHead"><div><p className="eyebrow">GROWTH WINDOWS</p><h2>増加数</h2></div><span>matched observed accounts only</span></div>
           <div className="metricList metricListDense"><div><span>1 day</span><strong>{signed(growth.day)}</strong></div><div><span>7 days</span><strong>{signed(growth.week)}</strong></div><div><span>30 days</span><strong>{signed(growth.month)}</strong></div></div>
         </div>
       </section>
