@@ -252,6 +252,14 @@ async function runInitialCollector() {
   });
 }
 
+function syncCanonicalMetadata(canonical, row) {
+  if (!row) return null;
+  return {
+    ...row,
+    ...canonical,
+  };
+}
+
 async function retryExisting(snapshot, canonicalAccounts, primaryGroups) {
   const retryAt = new Date().toISOString();
   const existing = new Map(snapshot.accounts.map((row) => [accountKey(row), row]));
@@ -261,13 +269,27 @@ async function retryExisting(snapshot, canonicalAccounts, primaryGroups) {
   });
 
   if (!targets.length) {
-    const shouldNormalize = snapshot.complete !== true || snapshot.failed !== 0 || snapshot.successful !== canonicalAccounts.length || snapshot.attempted !== canonicalAccounts.length;
-    if (!shouldNormalize) {
-      console.log(`Daily snapshot ${snapshot.date} is complete; no public profile requests will be made.`);
-      return false;
-    }
-    const normalized = { ...snapshot, complete: true, attempted: canonicalAccounts.length, successful: canonicalAccounts.length, failed: 0, errors: [] };
+    const normalizedAccounts = canonicalAccounts.map((canonical) =>
+      syncCanonicalMetadata(canonical, existing.get(accountKey(canonical))) ??
+      { ...canonical, capturedAt: retryAt, sourceType: "RETRY_MISSING", followers: null, following: null, posts: null, likes: null, views: null, error: "retry_missing", detail: "No result was produced for this canonical account." }
+    );
+    const failedRows = normalizedAccounts.filter((row) => row.error);
+    const imputedRows = normalizedAccounts.filter((row) => !row.error && row.imputed === true);
+    const observedRows = normalizedAccounts.filter((row) => !row.error && !row.imputed);
+    const normalized = {
+      ...snapshot,
+      complete: failedRows.length === 0,
+      observedComplete: failedRows.length === 0 && imputedRows.length === 0,
+      attempted: canonicalAccounts.length,
+      successful: canonicalAccounts.length - failedRows.length,
+      observedSuccessful: observedRows.length,
+      failed: failedRows.length,
+      imputed: imputedRows.length,
+      accounts: normalizedAccounts,
+      errors: failedRows.map((row) => `${row.entitySlug}:${row.platform}:${row.handle}: ${row.detail ?? row.error}`),
+    };
     await writeSnapshot(normalized, primaryGroups);
+    console.log(`Daily snapshot ${snapshot.date} has no acquisition gaps; canonical metadata synchronized.`);
     return true;
   }
 
@@ -306,7 +328,7 @@ async function retryExisting(snapshot, canonicalAccounts, primaryGroups) {
     if (index + 1 < youtubeTargets.length) await sleep(YOUTUBE_DELAY_MS);
   }
 
-  const mergedAccounts = canonicalAccounts.map((canonical) => replacements.get(accountKey(canonical)) ?? existing.get(accountKey(canonical)) ?? { ...canonical, capturedAt: retryAt, sourceType: "RETRY_MISSING", followers: null, following: null, posts: null, likes: null, views: null, error: "retry_missing", detail: "No result was produced for this canonical account." });
+  const mergedAccounts = canonicalAccounts.map((canonical) => replacements.get(accountKey(canonical)) ?? syncCanonicalMetadata(canonical, existing.get(accountKey(canonical))) ?? { ...canonical, capturedAt: retryAt, sourceType: "RETRY_MISSING", followers: null, following: null, posts: null, likes: null, views: null, error: "retry_missing", detail: "No result was produced for this canonical account." });
   const failedRows = mergedAccounts.filter((row) => row.error);
   const errors = failedRows.map((row) => `${row.entitySlug}:${row.platform}:${row.handle}: ${row.detail ?? row.error}`);
   const next = {
