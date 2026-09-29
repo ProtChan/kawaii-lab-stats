@@ -76,7 +76,7 @@ type SeriesPoint = {
 
 export const liveSnapshot = latestJson as Snapshot;
 export const liveSeries = seriesJson as SeriesPoint[];
-export const hasLiveData = Boolean(liveSnapshot.complete && liveSnapshot.collectedAt && liveSnapshot.accounts.length);
+export const hasLiveData = Boolean(liveSnapshot.collectedAt && liveSnapshot.accounts.length);
 export const trustedAccount = (account: LiveAccount) => trustedMetricAccount(account);
 
 const attemptedAccounts = liveSnapshot.attempted ?? liveSnapshot.accounts.length;
