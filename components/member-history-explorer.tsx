@@ -56,12 +56,6 @@ function periodRows(data: MemberTimelinePoint[], days: PeriodDays, mode: "change
         row[key] = null;
         continue;
       }
-      const sameAccounts = previous.accountSet[key as SeriesKey] === point.accountSet[key as SeriesKey];
-      if (!sameAccounts) {
-        row[key] = null;
-        continue;
-      }
-
       const beforeMap = previous.observedValues[key as SeriesKey];
       const afterMap = point.observedValues[key as SeriesKey];
       const matchedKeys = Object.keys(afterMap).filter((accountKey) => accountKey in beforeMap);
@@ -165,7 +159,7 @@ export function MemberHistoryExplorer({ data }: { data: MemberTimelinePoint[] })
       ) : null}
 
       {derived ? (
-        <p className={styles.note}>{period}日前の実日付と一致し、canonical account集合が同じ区間について、両端で実測できた同一アカウントだけを突き合わせて{view === "rate" ? "増加率" : "増分"}を算出します。補完値は差分計算から除外します。</p>
+        <p className={styles.note}>{period}日前の実日付と一致する区間について、両端で実測できた同一アカウントだけを突き合わせて{view === "rate" ? "増加率" : "増分"}を算出します。補完値は差分計算から除外します。</p>
       ) : null}
 
       {chartData.some(hasAnyValue) && chartData.length >= (view === "level" || view === "indexed" ? 2 : 1)
