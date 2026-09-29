@@ -1,13 +1,14 @@
 {
   "date": "2026-09-13",
   "collectedAt": "2026-09-12T16:14:25.795Z",
-  "complete": false,
+  "complete": true,
   "attempted": 211,
-  "successful": 210,
-  "failed": 1,
+  "successful": 211,
+  "failed": 0,
   "source": {
     "method": "daily-public-profile-read-with-failed-row-retries",
-    "note": "Successful rows are retained. Only failed or newly missing canonical accounts are retried by later Actions until the JST-day snapshot is complete."
+    "note": "Historical hard failures are filled with tagged last-observed values for level-series continuity. Imputed values remain excluded from growth calculations.",
+    "historicalGapRepair": "LAST_OBSERVED_VALUE"
   },
   "sources": [
     {
@@ -4609,15 +4610,34 @@
       "handle": "suzuki_karin",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@suzuki_karin",
-      "capturedAt": "2026-09-13T13:57:21.701Z",
-      "sourceType": "PULSE_PUBLIC_PROFILE",
-      "followers": null,
-      "following": null,
-      "posts": null,
-      "likes": null,
+      "capturedAt": "2026-09-11T15:05:52.956Z",
+      "sourceType": "IMPUTED_LAST_OBSERVED",
+      "followers": 20202,
+      "following": 180,
+      "posts": 478,
+      "likes": 644976,
       "views": null,
-      "error": "content_unavailable",
-      "detail": "content unavailable: tiktok status 10221"
+      "sourceUrl": "https://www.tiktok.com/@suzuki_karin",
+      "providerPlatform": "tiktok",
+      "providerHandle": "suzuki_karin",
+      "providerName": "鈴木花梨",
+      "viewsPrecision": null,
+      "verified": false,
+      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=924c6c11&x-expires=1789311600&x-signature=e0%2FYzUT2Gi5cJirU7jF4YX6y42I%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast8",
+      "parserVersion": null,
+      "audienceMetric": "FOLLOWERS",
+      "precision": "PUBLIC_PROFILE",
+      "engagementMetric": "TOTAL_LIKES",
+      "imputed": true,
+      "imputationMethod": "LAST_OBSERVED_VALUE",
+      "imputedFromDate": "2026-09-12",
+      "imputedFromCapturedAt": "2026-09-11T15:05:52.956Z",
+      "imputedAt": "2026-09-29T16:50:06.052Z",
+      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
+      "acquisitionError": {
+        "error": "content_unavailable",
+        "detail": "content unavailable: tiktok status 10221"
+      }
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -5931,9 +5951,10 @@
       "engagementMetric": "TOTAL_LIKES"
     }
   ],
-  "errors": [
-    "karin-suzuki:TIKTOK:suzuki_karin: content unavailable: tiktok status 10221"
-  ],
+  "errors": [],
   "lastAttemptAt": "2026-09-13T13:57:21.701Z",
-  "retryAttempts": 31
+  "retryAttempts": 31,
+  "observedComplete": false,
+  "observedSuccessful": 210,
+  "imputed": 1
 }
