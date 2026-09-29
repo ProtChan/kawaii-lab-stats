@@ -99,9 +99,18 @@ jobs:
             node scripts/collect-or-retry-daily.mjs
           fi
 
+          # Instagram itself has blocked anonymous GitHub-runner traffic since
+          # 2026-09-15. Try independent public mirrors for level/index continuity.
+          # Mirror rows stay tagged as imputed and are NEVER used for growth.
+          node scripts/retry-instagram-mirrors.mjs || true
+
           # Keep the daily table usable without pretending stale values are real.
-          # Imputed rows are tagged and excluded from growth/rate calculations.
           node scripts/impute-missing-daily.mjs
+
+          # Repair old hard-failure holes (notably Sep 15/17) as tagged level-only
+          # fallbacks, then rebuild one canonical series representation.
+          node scripts/repair-historical-gaps.mjs
+          node scripts/rebuild-series.mjs
 
       - name: Detect whether snapshot data changed
         id: changes
@@ -135,9 +144,9 @@ jobs:
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes; per-row acquisition retries are backoff-controlled."
-          echo "Routes: primary -> FxTwitter for X -> platform-specific fallbacks -> one transient retry -> tagged imputation."
+          echo "Routes: primary -> FxTwitter/X + platform fallbacks -> transient retry -> Woomy/Imginn Instagram mirrors -> tagged imputation."
           echo "Instagram backoff starts at 6h; X/TikTok at 1h; YouTube at 30m and increases after repeated failures."
-          echo "Imputed rows remain excluded from growth and rate calculations."
+          echo "Mirror and last-observed fallback rows remain excluded from growth and rate calculations."
 
   deploy:
     name: Build and deploy latest snapshot
