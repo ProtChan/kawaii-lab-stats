@@ -7,6 +7,8 @@ const PUBLIC_DIR = path.join(ROOT, "public", "data");
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"));
 const accountKey = (row) => `${row.platform}:${String(row.handle).toLowerCase()}`;
 const MIRROR_RETRY_MS = 6 * 60 * 60 * 1000;
+const REQUEST_TIMEOUT_MS = 12_000;
+const FORCE_MIRROR_RETRY = process.env.FORCE_INSTAGRAM_MIRRORS === "1";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function jstDateKey(date = new Date()) {
@@ -55,9 +57,14 @@ function parseCompact(value) {
   return Math.round(Number(match[1]) * scale);
 }
 
+function systemicBlock(message) {
+  return /HTTP (401|403|408|425|429|5\d\d)|timeout|timed out|fetch failed|ECONN|ENOTFOUND|EAI_AGAIN|blocked|Too Many Requests/i.test(String(message));
+}
+
 async function fetchText(url, label) {
   const response = await fetch(url, {
     redirect: "follow",
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     headers: {
       Accept: "text/html,application/xhtml+xml,*/*;q=0.8",
       "Accept-Language": "ja,en-US;q=0.8,en;q=0.7",
@@ -166,10 +173,11 @@ async function main() {
     console.log("No Instagram gaps/fallback rows require mirror lookup.");
     return;
   }
-  if (Number.isFinite(previousAttempt) && Date.now() - previousAttempt < MIRROR_RETRY_MS) {
+  if (!FORCE_MIRROR_RETRY && Number.isFinite(previousAttempt) && Date.now() - previousAttempt < MIRROR_RETRY_MS) {
     console.log(`Instagram mirror lookup is inside 6h backoff; retaining ${targets.length} fallback row(s).`);
     return;
   }
+  if (FORCE_MIRROR_RETRY) console.log("Forced Instagram mirror retry requested; bypassing the 6h mirror backoff.");
 
   const capturedAt = new Date().toISOString();
   const replacements = new Map();
@@ -177,6 +185,10 @@ async function main() {
     INSTAGRAM_WOOMY_PUBLIC_MIRROR: { attempts: 0, success: 0, failed: 0, lastError: null },
     INSTAGRAM_IMGINN_PUBLIC_MIRROR: { attempts: 0, success: 0, failed: 0, lastError: null },
   };
+  let woomyCircuitOpen = false;
+  let imginnCircuitOpen = false;
+  let woomyBlockedStreak = 0;
+  let imginnBlockedStreak = 0;
 
   for (const row of targets) {
     const username = String(row.handle).replace(/^@/, "");
