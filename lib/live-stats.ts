@@ -105,7 +105,8 @@ export const liveGroupStats = debutedGroups.map((group) => {
   const previousUsable = seriesGroupUsable(previous);
   const ecosystem = aggregate.audience.value;
   const currentUsable = aggregate.audience.observed + aggregate.audience.imputed === aggregate.audience.expected;
-  const sameMembershipSize = previous?.expectedAccounts === aggregate.audience.expected;\n  const dailyGain = currentUsable && previousUsable && sameMembershipSize && ecosystem != null ? ecosystem - previous!.ecosystem : null;
+  const sameMembershipSize = previous?.expectedAccounts === aggregate.audience.expected;
+  const dailyGain = currentUsable && previousUsable && sameMembershipSize && ecosystem != null ? ecosystem - previous!.ecosystem : null;
 
   return {
     slug: group.slug,
