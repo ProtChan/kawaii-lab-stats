@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="dataStrip"><div><span>Coverage policy</span><strong>欠測 ≠ 0</strong></div><div><span>Growth policy</span><strong>exact day gap + same account set</strong></div><div><span>Public raw data</span><strong><Link href="/data/latest.json">latest.json ↗</Link></strong></div><div><span>Method</span><strong><Link href="/methodology">Read methodology →</Link></strong></div></section>
+      <section className="dataStrip"><div><span>Coverage policy</span><strong>欠測 ≠ 0</strong></div><div><span>Growth policy</span><strong>exact day gap + matched observed accounts</strong></div><div><span>Public raw data</span><strong><Link href="/data/latest.json">latest.json ↗</Link></strong></div><div><span>Method</span><strong><Link href="/methodology">Read methodology →</Link></strong></div></section>
 
       <footer>Unofficial fanmade analytics. SNS横断合計はユニーク人数ではありません。Source / capture time / missing observations are preserved in public JSON.</footer>
     </main>
