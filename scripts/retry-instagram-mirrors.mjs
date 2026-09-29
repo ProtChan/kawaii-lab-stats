@@ -181,25 +181,39 @@ async function main() {
   for (const row of targets) {
     const username = String(row.handle).replace(/^@/, "");
     let mirror = null;
-    try {
-      routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.attempts += 1;
-      mirror = await fetchWoomy(username);
-      routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.success += 1;
-    } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.failed += 1;
-      routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.lastError = message;
+    if (!woomyCircuitOpen) {
+      try {
+        routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.attempts += 1;
+        mirror = await fetchWoomy(username);
+        woomyBlockedStreak = 0;
+        routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.success += 1;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.failed += 1;
+        routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.lastError = message;
+        woomyBlockedStreak = systemicBlock(message) ? woomyBlockedStreak + 1 : 0;
+        if (woomyBlockedStreak >= 2) {
+          woomyCircuitOpen = true;
+          console.warn("Woomy circuit opened after repeated systemic failures.");
+        }
+      }
     }
 
-    if (!mirror) {
+    if (!mirror && !imginnCircuitOpen) {
       try {
         routeStats.INSTAGRAM_IMGINN_PUBLIC_MIRROR.attempts += 1;
         mirror = await fetchImginn(username);
+        imginnBlockedStreak = 0;
         routeStats.INSTAGRAM_IMGINN_PUBLIC_MIRROR.success += 1;
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
         routeStats.INSTAGRAM_IMGINN_PUBLIC_MIRROR.failed += 1;
         routeStats.INSTAGRAM_IMGINN_PUBLIC_MIRROR.lastError = message;
+        imginnBlockedStreak = systemicBlock(message) ? imginnBlockedStreak + 1 : 0;
+        if (imginnBlockedStreak >= 2) {
+          imginnCircuitOpen = true;
+          console.warn("Imginn circuit opened after repeated systemic failures.");
+        }
       }
     }
 
