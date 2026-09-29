@@ -30,9 +30,10 @@
       { "platform": "INSTAGRAM", "handle": "shui_klm0418", "url": "https://www.instagram.com/shui_klm0418" },
       { "platform": "TIKTOK", "handle": "shui_klm0418", "url": "https://www.tiktok.com/@shui_klm0418" }
     ]},
-    { "slug": "yuika-shimasaki", "name": "嶋﨑 結花", "notes": "The official profile currently points the TikTok label to the Instagram URL, so TikTok is intentionally omitted until independently verified.", "accounts": [
+    { "slug": "yuika-shimasaki", "name": "嶋﨑 結花", "notes": "Updated from the member's official KAWAII LAB. blog on 2026-09-06.", "accounts": [
       { "platform": "X", "handle": "yuika_KLM1125", "url": "https://x.com/yuika_KLM1125" },
-      { "platform": "INSTAGRAM", "handle": "yuika_klm1125", "url": "https://www.instagram.com/yuika_klm1125/" }
+      { "platform": "INSTAGRAM", "handle": "_yuikachamu_", "url": "https://www.instagram.com/_yuikachamu_/", "previousHandle": "yuika_klm1125", "sourceUrl": "https://kawaiilab.asobisystem.com/blog/detail/99164/" },
+      { "platform": "TIKTOK", "handle": "_yuikachamu_", "url": "https://www.tiktok.com/@_yuikachamu_", "sourceUrl": "https://kawaiilab.asobisystem.com/blog/detail/99164/" }
     ]},
     { "slug": "saki-sogawa", "name": "曽川 咲葵", "accounts": [
       { "platform": "X", "handle": "saki_KLM0819", "url": "https://x.com/saki_KLM0819" },
