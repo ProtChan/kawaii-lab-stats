@@ -7,7 +7,7 @@
   "failed": 2,
   "source": {
     "method": "daily-public-profile-read-with-failed-row-retries",
-    "note": "Successful rows are retained. Only failed or newly missing canonical accounts are retried by later Actions until the JST-day snapshot is complete.",
+    "note": "Acquisition uses independent platform fallbacks first. Remaining gaps are filled from the most recent real observation, excluded from growth calculations, and retried later using platform-aware backoff.",
     "imputation": "LAST_OBSERVED_VALUE"
   },
   "sources": [
@@ -657,14 +657,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-09-29T16:50:05.949Z",
+      "imputedAt": "2026-09-29T21:05:35.708Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-29T17:50:05.949Z"
+      "nextRetryAt": "2026-09-29T22:05:35.708Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -3230,7 +3230,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-09-29T17:39:25.065Z",
+      "capturedAt": "2026-09-29T21:05:34.408Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3252,7 +3252,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-09-29T17:39:25.065Z",
+      "capturedAt": "2026-09-29T21:05:34.408Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5061,36 +5061,22 @@
       "handle": "cocona_ms1218",
       "platformId": null,
       "profileUrl": "https://x.com/cocona_ms1218",
-      "capturedAt": "2026-09-28T19:53:01.355Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 17199,
+      "capturedAt": "2026-09-29T21:04:46.704Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 17210,
       "following": 161,
-      "posts": 18318,
-      "likes": 93501,
+      "posts": 18325,
+      "likes": 93660,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/cocona_ms1218",
       "providerPlatform": "x",
       "providerHandle": "cocona_ms1218",
       "providerName": "新井心菜(MORE STAR)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2103332272388894721/V1Mrtr8G_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-09-29",
-      "imputedFromCapturedAt": "2026-09-28T19:53:01.355Z",
-      "imputedAt": "2026-09-29T16:50:05.949Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-09-29T17:50:05.949Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "cocona-arai",
@@ -7020,39 +7006,37 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-09-29T17:39:25.065Z",
-  "retryAttempts": 3,
+  "lastAttemptAt": "2026-09-29T21:05:34.408Z",
+  "retryAttempts": 5,
   "observedComplete": false,
-  "observedSuccessful": 141,
-  "imputed": 69,
-  "lastFxTwitterFallbackAt": "2026-09-29T16:48:38.922Z",
+  "observedSuccessful": 142,
+  "imputed": 68,
+  "lastFxTwitterFallbackAt": "2026-09-29T21:04:46.704Z",
   "xFxTwitterHealth": {
-    "attempted": 27,
-    "success": 26,
-    "failed": 1,
-    "lastErrors": [
-      "cocona_ms1218: FxTwitter HTTP 404 code=404: User not found"
-    ]
+    "attempted": 1,
+    "success": 1,
+    "failed": 0,
+    "lastErrors": []
   },
-  "lastFallbackAt": "2026-09-29T17:38:39.191Z",
+  "lastFallbackAt": "2026-09-29T21:04:48.288Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-09-29T17:38:39.191Z",
+    "attemptedAt": "2026-09-29T21:04:48.288Z",
     "routes": {
+      "TIKTOK_PUBLIC_HYDRATION": {
+        "attempts": 2,
+        "success": 0,
+        "failed": 2,
+        "lastError": "TikTok userInfo/statsV2 followerCount missing"
+      },
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
         "attempts": 1,
         "success": 0,
         "failed": 1,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
-      "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 1,
-        "success": 0,
-        "failed": 1,
-        "lastError": "TikTok userInfo/statsV2 followerCount missing"
       }
     }
   },
-  "imputedAt": "2026-09-29T16:50:05.949Z",
+  "imputedAt": "2026-09-29T21:05:35.708Z",
   "instagramMirrorAttemptAt": "2026-09-29T17:39:25.966Z",
   "instagramMirrorRouteHealth": {
     "attemptedAt": "2026-09-29T17:39:25.966Z",
