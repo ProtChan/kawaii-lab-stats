@@ -79,7 +79,7 @@ export function getMemberStats(slug: string) {
 }
 
 export function getGroupStats(slug: string) {
-  const rows = liveSnapshot.accounts.filter((account) => account.groupSlug === slug);
+  const rows = liveSnapshot.accounts.filter((account) => account.groupSlug === slug && account.entityStatus !== "INACTIVE");
   const officialRows = rows.filter((account) => account.entityType === "GROUP" && account.entitySlug === slug);
   const memberRows = rows.filter((account) => account.entityType === "MEMBER");
   return {
@@ -160,7 +160,7 @@ export function getMemberTimeline(slug: string): MemberTimelinePoint[] {
 }
 
 export function getGroupTimeline(slug: string): MemberTimelinePoint[] {
-  return historySnapshots.map((snapshot) => timelinePoint(snapshot, snapshotRows(snapshot, (account) => account.groupSlug === slug)));
+  return historySnapshots.map((snapshot) => timelinePoint(snapshot, snapshotRows(snapshot, (account) => account.groupSlug === slug && account.entityStatus !== "INACTIVE")));
 }
 
 function matchedObservedChange(
@@ -191,7 +191,7 @@ function growthForRows(predicate: (account: LiveAccount) => boolean) {
   const changeAtDays = (days: number) => {
     if (!latest) return null;
     const from = [...points].reverse().find((point) => exactDayInterval(point.date, latest.date, days));
-    if (!from || from.accountSet !== latest.accountSet) return null;
+    if (!from) return null;
     return matchedObservedChange(from.observedValues, latest.observedValues);
   };
   const day = changeAtDays(1);
@@ -215,7 +215,7 @@ export function memberGrowth(slug: string) {
 }
 
 export function groupGrowth(slug: string) {
-  return growthForRows((account) => account.groupSlug === slug);
+  return growthForRows((account) => account.groupSlug === slug && account.entityStatus !== "INACTIVE");
 }
 
 export function groupMembers(group: DirectoryGroup) {
