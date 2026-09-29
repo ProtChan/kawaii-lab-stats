@@ -25,7 +25,9 @@ permissions:
 
 concurrency:
   group: daily-public-social-snapshot
-  cancel-in-progress: false
+  # Code/directory fixes should replace an older stuck run immediately.
+  # Scheduled five-minute runs do not cancel each other mid-collection.
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
 
 jobs:
   collect:
