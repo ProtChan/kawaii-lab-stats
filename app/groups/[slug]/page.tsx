@@ -44,7 +44,7 @@ export default async function GroupPage({ params }: { params: Promise<{ slug: st
 
       <section className="metricGrid metricGrid4">
         <article className="metricHero"><span>SNS total</span><strong>{fmt(stats.totalFollowers)}</strong><small>official + canonical members</small></article>
-        <article><span>1-day audience Δ</span><strong>{signed(growth.day)}</strong><small>complete comparable account set only</small></article>
+        <article><span>1-day audience Δ</span><strong>{signed(growth.day)}</strong><small>matched observed accounts only</small></article>
         <Link className="metricCardLink" href={`/compare/?scope=members&metric=tiktokLikes&group=${group.slug}`}><span>TikTok total likes</span><strong>{fmt(stats.tiktokLikes)}</strong><small>open member comparison →</small></Link>
         <Link className="metricCardLink" href={`/compare/?scope=members&metric=youtubeViews&group=${group.slug}`}><span>YouTube total views</span><strong>{fmt(stats.youtubeViews)}</strong><small>trusted parser only →</small></Link>
       </section>
