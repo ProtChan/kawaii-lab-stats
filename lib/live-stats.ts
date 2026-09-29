@@ -31,7 +31,7 @@ export type LiveAccount = {
   error?: string;
   detail?: string | null;
   imputed?: boolean;
-  imputationMethod?: "LAST_OBSERVED_VALUE";
+  imputationMethod?: "LAST_OBSERVED_VALUE" | "PUBLIC_MIRROR";
   imputedFromDate?: string;
   imputedFromCapturedAt?: string;
   imputedAt?: string;
@@ -95,7 +95,7 @@ const seriesGroupUsable = (group: SeriesGroup | null | undefined) =>
   Boolean(group && group.observedAccounts + (group.imputedAccounts ?? 0) === group.expectedAccounts);
 
 export const liveGroupStats = debutedGroups.map((group) => {
-  const all = liveSnapshot.accounts.filter((account) => account.groupSlug === group.slug);
+  const all = liveSnapshot.accounts.filter((account) => account.groupSlug === group.slug && account.entityStatus !== "INACTIVE");
   const officialRows = all.filter((account) => account.entityType === "GROUP" && account.entitySlug === group.slug);
   const memberRows = all.filter((account) => account.entityType === "MEMBER");
   const aggregate = aggregateAccounts(all);
@@ -105,7 +105,7 @@ export const liveGroupStats = debutedGroups.map((group) => {
   const previousUsable = seriesGroupUsable(previous);
   const ecosystem = aggregate.audience.value;
   const currentUsable = aggregate.audience.observed + aggregate.audience.imputed === aggregate.audience.expected;
-  const dailyGain = currentUsable && previousUsable && ecosystem != null ? ecosystem - previous!.ecosystem : null;
+  const sameMembershipSize = previous?.expectedAccounts === aggregate.audience.expected;\n  const dailyGain = currentUsable && previousUsable && sameMembershipSize && ecosystem != null ? ecosystem - previous!.ecosystem : null;
 
   return {
     slug: group.slug,
