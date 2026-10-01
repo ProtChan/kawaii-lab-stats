@@ -35,7 +35,7 @@ function periodDelta(history: ComparePoint[], index: number, metric: CompareMetr
   const current = history[index];
   if (!current) return null;
   const previous = history.slice(0, index).reverse().find((point) => exactDayInterval(point.date, current.date, days));
-  if (!previous || previous.accountSet[metric] !== current.accountSet[metric]) return null;
+  if (!previous) return null;
   const beforeMap = previous.observedValues[metric];
   const afterMap = current.observedValues[metric];
   const matched = Object.keys(afterMap).filter((key) => key in beforeMap);
@@ -210,7 +210,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">{isDelta ? "GROWTH RANKING" : view === "indexed" ? "NORMALIZED SCALE" : "CURRENT RANKING"}</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{isDelta ? `${latestDate} endpoint` : `${orderedCandidates.length} candidates`}</span></div>
         {metric === "audience" && view === "level" ? <div className="platformLegend">{platformKeys.map((platform) => <span key={platform}><i className={`platformDot platform${platform}`} />{platform}</span>)}</div> : null}
-        {isDelta ? <p className="deltaNote">canonical account集合が同一で、実際の日付差が1/7/30日ちょうどの区間について、両端で実測できた同一アカウントだけを突き合わせて算出します。補完値は差分から除外します。</p> : null}
+        {isDelta ? <p className="deltaNote">実際の日付差が1/7/30日ちょうどの区間について、両端で実測できた同一アカウントだけを突き合わせて算出します。新規アカウント追加や補完値は既存アカウントの差分を壊しません。</p> : null}
         {view === "indexed" ? <p className="deltaNote">各entityの現在のcanonical account集合で最初に得られたusable snapshot（実測または明示的補完で全行が埋まった日）を100として正規化します。</p> : null}
         <div className="compareBarList">
           {orderedCandidates.map((entity, index) => {
