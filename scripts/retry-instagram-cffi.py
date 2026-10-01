@@ -13,6 +13,9 @@ LIVE_DIR = ROOT / "data" / "live"
 PUBLIC_DIR = ROOT / "public" / "data"
 RETRY_HOURS = 6
 FORCE = os.getenv("FORCE_INSTAGRAM_CFFI") == "1"
+SESSION_ID = os.getenv("INSTAGRAM_SESSIONID", "").strip()
+DS_USER_ID = os.getenv("INSTAGRAM_DS_USER_ID", "").strip()
+CSRF_TOKEN = os.getenv("INSTAGRAM_CSRFTOKEN", "").strip()
 
 def jst_date_key():
     return datetime.now(ZoneInfo("Asia/Tokyo")).strftime("%Y-%m-%d")
@@ -58,7 +61,7 @@ def parse_user(row, payload, captured_at, source_url):
     base = clean_base(row)
     base.update({
         "capturedAt": captured_at,
-        "sourceType": "INSTAGRAM_CURL_CFFI_WEB_PROFILE_INFO",
+        "sourceType": "INSTAGRAM_SESSION_CURL_CFFI_WEB_PROFILE_INFO" if SESSION_ID else "INSTAGRAM_CURL_CFFI_WEB_PROFILE_INFO",
         "sourceUrl": source_url,
         "providerPlatform": "instagram",
         "providerHandle": user.get("username") or row.get("handle"),
@@ -104,12 +107,19 @@ def main():
 
     captured_at = datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
     session = requests.Session(impersonate="chrome")
+    if SESSION_ID:
+        session.cookies.set("sessionid", SESSION_ID, domain=".instagram.com")
+    if DS_USER_ID:
+        session.cookies.set("ds_user_id", DS_USER_ID, domain=".instagram.com")
+    if CSRF_TOKEN:
+        session.cookies.set("csrftoken", CSRF_TOKEN, domain=".instagram.com")
     session.headers.update({
         "Accept": "*/*",
         "Accept-Language": "en-US,en;q=0.9",
         "X-IG-App-ID": "936619743392459",
         "X-ASBD-ID": "198387",
         "Origin": "https://www.instagram.com",
+        "X-Requested-With": "XMLHttpRequest",
     })
 
     bootstrap_error = None
@@ -175,7 +185,8 @@ def main():
         "instagramCffiAttemptAt": captured_at,
         "instagramCffiRouteHealth": {
             "attemptedAt": captured_at,
-            "route": "CURL_CFFI_WEB_PROFILE_INFO",
+            "route": "SESSION_CURL_CFFI_WEB_PROFILE_INFO" if SESSION_ID else "CURL_CFFI_WEB_PROFILE_INFO",
+            "authenticated": bool(SESSION_ID),
             "targets": len(targets),
             "attempts": attempts,
             "recovered": len(replacements),
