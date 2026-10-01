@@ -15,6 +15,7 @@ on:
       - "scripts/collect-or-retry-daily.mjs"
       - "scripts/retry-platform-fallbacks.mjs"
       - "scripts/retry-x-fxtwitter.mjs"
+      - "scripts/retry-instagram-provider.mjs"
       - "scripts/retry-instagram-mirrors.mjs"
       - "scripts/prepare-imputed-retry.mjs"
       - "scripts/impute-missing-daily.mjs"
@@ -41,6 +42,11 @@ jobs:
       META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
       META_GRAPH_VERSION: ${{ secrets.META_GRAPH_VERSION }}
       X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+      # Optional exact Instagram provider. Refetcher accepts arbitrary public
+      # profiles and returns exact current profile counters.
+      REFETCHER_API_KEY: ${{ secrets.REFETCHER_API_KEY }}
+      # Push/manual runs are repair runs, so test provider/mirror fixes immediately.
+      FORCE_INSTAGRAM_PROVIDER: ${{ github.event_name == 'schedule' && '0' || '1' }}
       # Push/manual runs are repair runs, so test mirror fixes immediately.
       # Scheduled runs retain the normal six-hour mirror backoff.
       FORCE_INSTAGRAM_MIRRORS: ${{ github.event_name == 'schedule' && '0' || '1' }}
@@ -65,6 +71,7 @@ jobs:
           node --check scripts/collect-or-retry-daily.mjs
           node --check scripts/retry-x-fxtwitter.mjs
           node --check scripts/retry-platform-fallbacks.mjs
+          node --check scripts/retry-instagram-provider.mjs
           node --check scripts/retry-instagram-mirrors.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
@@ -97,6 +104,11 @@ jobs:
             echo "Primary/current X routes left gaps; trying remaining independent platform fallbacks."
             node scripts/retry-platform-fallbacks.mjs || true
           fi
+
+          # Exact provider fallback for Instagram. This is optional and only
+          # activates when REFETCHER_API_KEY is configured. Provider results are
+          # real observations, so they restore Instagram growth calculations.
+          node scripts/retry-instagram-provider.mjs || true
 
           # One delayed primary retry handles transient provider/network faults.
           # Persistent blocks are not hammered repeatedly in the same Action.
@@ -151,7 +163,7 @@ jobs:
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes; per-row acquisition retries are backoff-controlled."
-          echo "Routes: primary -> FxTwitter/X + platform fallbacks -> transient retry -> Woomy/Imginn Instagram mirrors -> tagged imputation."
+          echo "Routes: primary -> platform fallbacks -> optional exact Refetcher Instagram -> transient retry -> Woomy/Imginn mirrors -> tagged imputation."
           echo "Instagram backoff starts at 6h; X/TikTok at 1h; YouTube at 30m and increases after repeated failures."
           echo "Mirror and last-observed fallback rows remain excluded from growth and rate calculations."
 
@@ -194,6 +206,7 @@ jobs:
           node --check scripts/collect-or-retry-daily.mjs
           node --check scripts/retry-x-fxtwitter.mjs
           node --check scripts/retry-platform-fallbacks.mjs
+          node --check scripts/retry-instagram-provider.mjs
           node --check scripts/retry-instagram-mirrors.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
