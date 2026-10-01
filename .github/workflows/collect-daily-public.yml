@@ -46,6 +46,11 @@ jobs:
       # Optional exact Instagram provider. Refetcher accepts arbitrary public
       # profiles and returns exact current profile counters.
       REFETCHER_API_KEY: ${{ secrets.REFETCHER_API_KEY }}
+      # Optional logged-in read-only Instagram session. Use a dedicated account;
+      # these values are never written to snapshots or logs.
+      INSTAGRAM_SESSIONID: ${{ secrets.INSTAGRAM_SESSIONID }}
+      INSTAGRAM_DS_USER_ID: ${{ secrets.INSTAGRAM_DS_USER_ID }}
+      INSTAGRAM_CSRFTOKEN: ${{ secrets.INSTAGRAM_CSRFTOKEN }}
       # Push/manual runs are repair runs, so test provider/mirror fixes immediately.
       FORCE_INSTAGRAM_PROVIDER: ${{ github.event_name == 'schedule' && '0' || '1' }}
       FORCE_INSTAGRAM_CFFI: ${{ github.event_name == 'schedule' && '0' || '1' }}
