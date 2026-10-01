@@ -76,68 +76,6 @@ async function fetchText(url, label) {
   return body;
 }
 
-
-function metaContents(html) {
-  const contents = [];
-  for (const tag of String(html).match(/<meta\b[^>]*>/gi) ?? []) {
-    const attrs = Object.fromEntries(
-      [...tag.matchAll(/([:\w-]+)\s*=\s*(["'])(.*?)\2/gs)].map((match) => [match[1].toLowerCase(), decodeHtml(match[3])]),
-    );
-    const key = String(attrs.property ?? attrs.name ?? "").toLowerCase();
-    if (["og:title", "og:description", "twitter:title", "twitter:description", "description"].includes(key) && attrs.content) {
-      contents.push(attrs.content);
-    }
-  }
-  return contents;
-}
-
-function parseLabeledCount(text, labels) {
-  const escapedLabels = labels.map((label) => label.replace(/[.*+?^${\}()|[\]\\]/g, "\\async function fetchWoomy(username) {")).join("|");
-  const patterns = [
-    new RegExp(`([0-9][0-9,.]*\\s*[KMB]?)\\s*(?:${escapedLabels})\\b`, "i"),
-    new RegExp(`(?:${escapedLabels})\\s*[:：-]?\\s*([0-9][0-9,.]*\\s*[KMB]?)`, "i"),
-  ];
-  for (const pattern of patterns) {
-    const match = pattern.exec(text);
-    if (!match) continue;
-    const raw = match[1].replace(/\s+/g, "");
-    const parsed = /[KMB]$/i.test(raw) ? parseCompact(raw) : parseInteger(raw);
-    if (parsed != null) return { value: parsed, abbreviated: /[KMB]$/i.test(raw) };
-  }
-  return null;
-}
-
-async function fetchEmbedFixer(username, domain, sourceType) {
-  const url = `https://${domain}/${encodeURIComponent(username)}?refresh=${Date.now()}`;
-  const html = await fetchText(url, domain);
-  const texts = [...metaContents(html), plainText(html)].filter(Boolean);
-  const haystack = texts.join(" | ");
-  const handlePattern = new RegExp(`@?${username.replace(/[.*+?^${\}()|[\]\\]/g, "\\async function fetchWoomy(username) {")}\\b`, "i");
-  if (!handlePattern.test(haystack)) throw new Error(`${domain} profile identity did not match`);
-
-  const followers = parseLabeledCount(haystack, ["followers?", "フォロワー"]);
-  const following = parseLabeledCount(haystack, ["following", "フォロー中"]);
-  const posts = parseLabeledCount(haystack, ["posts?", "投稿"]);
-  if (!followers) throw new Error(`${domain} follower metrics not found`);
-
-  return {
-    followers: followers.value,
-    following: following?.value ?? null,
-    posts: posts?.value ?? null,
-    sourceUrl: url,
-    sourceType,
-    precision: followers.abbreviated ? "PUBLIC_MIRROR_ABBREVIATED" : "PUBLIC_MIRROR_EXACT",
-  };
-}
-
-async function fetchInstagramFix(username) {
-  return fetchEmbedFixer(username, "instagramfix.com", "INSTAGRAM_INSTAGRAMFIX_PUBLIC_MIRROR");
-}
-
-async function fetchKirkstagram(username) {
-  return fetchEmbedFixer(username, "kirkstagram.com", "INSTAGRAM_KIRKSTAGRAM_PUBLIC_MIRROR");
-}
-
 async function fetchWoomy(username) {
   const url = `https://item.woomy.me/analysis/instagrammer_info.php?instagrammer_user_id=${encodeURIComponent(username)}&map_date=week`;
   const text = plainText(await fetchText(url, "Woomy"));
@@ -244,61 +182,18 @@ async function main() {
   const capturedAt = new Date().toISOString();
   const replacements = new Map();
   const routeStats = {
-    INSTAGRAM_INSTAGRAMFIX_PUBLIC_MIRROR: { attempts: 0, success: 0, failed: 0, lastError: null },
-    INSTAGRAM_KIRKSTAGRAM_PUBLIC_MIRROR: { attempts: 0, success: 0, failed: 0, lastError: null },
     INSTAGRAM_WOOMY_PUBLIC_MIRROR: { attempts: 0, success: 0, failed: 0, lastError: null },
     INSTAGRAM_IMGINN_PUBLIC_MIRROR: { attempts: 0, success: 0, failed: 0, lastError: null },
   };
-  let instagramFixCircuitOpen = false;
-  let kirkstagramCircuitOpen = false;
   let woomyCircuitOpen = false;
   let imginnCircuitOpen = false;
-  let instagramFixBlockedStreak = 0;
-  let kirkstagramBlockedStreak = 0;
   let woomyBlockedStreak = 0;
   let imginnBlockedStreak = 0;
 
   for (const row of targets) {
     const username = String(row.handle).replace(/^@/, "");
     let mirror = null;
-
-    if (!instagramFixCircuitOpen) {
-      try {
-        routeStats.INSTAGRAM_INSTAGRAMFIX_PUBLIC_MIRROR.attempts += 1;
-        mirror = await fetchInstagramFix(username);
-        instagramFixBlockedStreak = 0;
-        routeStats.INSTAGRAM_INSTAGRAMFIX_PUBLIC_MIRROR.success += 1;
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        routeStats.INSTAGRAM_INSTAGRAMFIX_PUBLIC_MIRROR.failed += 1;
-        routeStats.INSTAGRAM_INSTAGRAMFIX_PUBLIC_MIRROR.lastError = message;
-        instagramFixBlockedStreak = systemicBlock(message) ? instagramFixBlockedStreak + 1 : 0;
-        if (instagramFixBlockedStreak >= 2) {
-          instagramFixCircuitOpen = true;
-          console.warn("Instagramfix circuit opened after repeated systemic failures.");
-        }
-      }
-    }
-
-    if (!mirror && !kirkstagramCircuitOpen) {
-      try {
-        routeStats.INSTAGRAM_KIRKSTAGRAM_PUBLIC_MIRROR.attempts += 1;
-        mirror = await fetchKirkstagram(username);
-        kirkstagramBlockedStreak = 0;
-        routeStats.INSTAGRAM_KIRKSTAGRAM_PUBLIC_MIRROR.success += 1;
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        routeStats.INSTAGRAM_KIRKSTAGRAM_PUBLIC_MIRROR.failed += 1;
-        routeStats.INSTAGRAM_KIRKSTAGRAM_PUBLIC_MIRROR.lastError = message;
-        kirkstagramBlockedStreak = systemicBlock(message) ? kirkstagramBlockedStreak + 1 : 0;
-        if (kirkstagramBlockedStreak >= 2) {
-          kirkstagramCircuitOpen = true;
-          console.warn("Kirkstagram circuit opened after repeated systemic failures.");
-        }
-      }
-    }
-
-    if (!mirror && !woomyCircuitOpen) {
+    if (!woomyCircuitOpen) {
       try {
         routeStats.INSTAGRAM_WOOMY_PUBLIC_MIRROR.attempts += 1;
         mirror = await fetchWoomy(username);
