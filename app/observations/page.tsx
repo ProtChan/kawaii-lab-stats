@@ -174,7 +174,7 @@ export default function ObservationsPage() {
         </div>
       </section>
 
-      <section className="notice">補完値は <code>imputed=true</code> / <code>imputedFromDate</code> 付きでraw JSONに残ります。表示用の合計には利用できますが、INDEX・1D/7D/30D増分・増加率では実観測として扱いません。後続Actionは補完行を再び取得対象にし、実測できれば自動置換します。</section>
+      <section className="notice">補完値は <code>imputed=true</code> / <code>imputedFromDate</code> 付きでraw JSONに残ります。絶対値とINDEXは連続性のため補完値を含むusable snapshotを表示できますが、1D/7D/30D増分・増加率は両端で実測できた同一アカウントだけを使います。後続Actionは補完行を再取得し、実測できれば自動置換します。</section>
       <footer>Observation timestamps, observed coverage, imputed values and missing dates remain auditable.</footer>
     </main>
   );
