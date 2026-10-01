@@ -16,6 +16,7 @@ on:
       - "scripts/retry-platform-fallbacks.mjs"
       - "scripts/retry-x-fxtwitter.mjs"
       - "scripts/retry-instagram-provider.mjs"
+      - "scripts/retry-instagram-cffi.py"
       - "scripts/retry-instagram-mirrors.mjs"
       - "scripts/prepare-imputed-retry.mjs"
       - "scripts/impute-missing-daily.mjs"
@@ -47,6 +48,7 @@ jobs:
       REFETCHER_API_KEY: ${{ secrets.REFETCHER_API_KEY }}
       # Push/manual runs are repair runs, so test provider/mirror fixes immediately.
       FORCE_INSTAGRAM_PROVIDER: ${{ github.event_name == 'schedule' && '0' || '1' }}
+      FORCE_INSTAGRAM_CFFI: ${{ github.event_name == 'schedule' && '0' || '1' }}
       # Push/manual runs are repair runs, so test mirror fixes immediately.
       # Scheduled runs retain the normal six-hour mirror backoff.
       FORCE_INSTAGRAM_MIRRORS: ${{ github.event_name == 'schedule' && '0' || '1' }}
@@ -72,6 +74,7 @@ jobs:
           node --check scripts/retry-x-fxtwitter.mjs
           node --check scripts/retry-platform-fallbacks.mjs
           node --check scripts/retry-instagram-provider.mjs
+          python3 -m py_compile scripts/retry-instagram-cffi.py
           node --check scripts/retry-instagram-mirrors.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
@@ -109,6 +112,20 @@ jobs:
           # activates when REFETCHER_API_KEY is configured. Provider results are
           # real observations, so they restore Instagram growth calculations.
           node scripts/retry-instagram-provider.mjs || true
+
+          # TLS/HTTP2 browser impersonation fallback. Plain Node/Python HTTP clients
+          # are currently rejected by Instagram from hosted-runner networks. Only
+          # provision curl_cffi when this route is actually due, so the 5-minute
+          # gate stays cheap outside the six-hour retry window.
+          instagram_cffi_due() {
+            node -e 'const fs=require("fs"); const s=JSON.parse(fs.readFileSync("data/live/latest.json","utf8")); const targets=s.accounts.some(r=>r.platform==="INSTAGRAM"&&(r.error||r.imputed===true)); if(!targets) process.exit(1); if(process.env.FORCE_INSTAGRAM_CFFI==="1") process.exit(0); const t=Date.parse(s.instagramCffiAttemptAt||""); process.exit(!Number.isFinite(t)||Date.now()-t>=6*60*60*1000 ? 0 : 1)'
+          }
+          if instagram_cffi_due; then
+            echo "Instagram still unresolved; trying Chrome/TLS-impersonated public profile route."
+            python3 -m venv /tmp/ig-cffi
+            /tmp/ig-cffi/bin/pip install --disable-pip-version-check --quiet "curl_cffi>=0.16.1"
+            /tmp/ig-cffi/bin/python scripts/retry-instagram-cffi.py || true
+          fi
 
           # One delayed primary retry handles transient provider/network faults.
           # Persistent blocks are not hammered repeatedly in the same Action.
@@ -163,7 +180,7 @@ jobs:
           echo "Actual start: $(TZ=Asia/Tokyo date '+%F %H:%M:%S %Z')"
           echo "Snapshot changed: ${{ steps.changes.outputs.changed || 'false' }}"
           echo "Schedule cadence: every 5 minutes; per-row acquisition retries are backoff-controlled."
-          echo "Routes: primary -> platform fallbacks -> optional exact Refetcher Instagram -> transient retry -> Woomy/Imginn mirrors -> tagged imputation."
+          echo "Routes: primary -> platform fallbacks -> optional Refetcher -> TLS-impersonated Instagram -> transient retry -> Woomy/Imginn mirrors -> tagged imputation."
           echo "Instagram backoff starts at 6h; X/TikTok at 1h; YouTube at 30m and increases after repeated failures."
           echo "Mirror and last-observed fallback rows remain excluded from growth and rate calculations."
 
@@ -207,6 +224,7 @@ jobs:
           node --check scripts/retry-x-fxtwitter.mjs
           node --check scripts/retry-platform-fallbacks.mjs
           node --check scripts/retry-instagram-provider.mjs
+          python3 -m py_compile scripts/retry-instagram-cffi.py
           node --check scripts/retry-instagram-mirrors.mjs
           node --check scripts/prepare-imputed-retry.mjs
           node --check scripts/impute-missing-daily.mjs
