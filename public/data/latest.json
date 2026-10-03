@@ -647,14 +647,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-03T16:50:04.956Z",
+      "imputedAt": "2026-10-03T19:30:37.587Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-03T17:50:04.956Z"
+      "nextRetryAt": "2026-10-03T20:30:37.587Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -3202,7 +3202,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-03T16:48:43.117Z",
+      "capturedAt": "2026-10-03T19:30:35.903Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3224,7 +3224,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-03T16:48:43.117Z",
+      "capturedAt": "2026-10-03T19:30:35.903Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5922,36 +5922,21 @@
       "handle": "piki__official",
       "platformId": null,
       "profileUrl": "https://x.com/piki__official",
-      "capturedAt": "2026-10-02T19:38:42.346Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 62604,
+      "capturedAt": "2026-10-03T19:29:46.266Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
+      "providerPlatform": "x",
+      "providerHandle": "piki__official",
+      "providerName": "PiKi",
+      "followers": 62601,
       "following": 4,
       "posts": 642,
       "likes": null,
       "views": null,
-      "sourceUrl": "https://x.com/piki__official",
-      "providerPlatform": "x",
-      "providerHandle": "piki__official",
-      "providerName": "PiKi",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1962888130392199168/yrvY7MiH_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-03",
-      "imputedFromCapturedAt": "2026-10-02T19:38:42.346Z",
-      "imputedAt": "2026-10-03T16:50:04.956Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-03T17:50:04.956Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "piki",
@@ -6062,36 +6047,21 @@
       "handle": "KAWAII__LAB",
       "platformId": null,
       "profileUrl": "https://x.com/KAWAII__LAB",
-      "capturedAt": "2026-10-02T19:38:42.346Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 161228,
+      "capturedAt": "2026-10-03T19:29:46.266Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
+      "providerPlatform": "x",
+      "providerHandle": "KAWAII__LAB",
+      "providerName": "KAWAII LAB.",
+      "followers": 161256,
       "following": 81,
       "posts": 5159,
       "likes": null,
       "views": null,
-      "sourceUrl": "https://x.com/KAWAII__LAB",
-      "providerPlatform": "x",
-      "providerHandle": "KAWAII__LAB",
-      "providerName": "KAWAII LAB.",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1492975626579738626/NEzgHR5p_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-03",
-      "imputedFromCapturedAt": "2026-10-02T19:38:42.346Z",
-      "imputedAt": "2026-10-03T16:50:04.956Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-03T17:50:04.956Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "kawaii-lab",
@@ -6989,11 +6959,11 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-03T16:48:43.117Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-10-03T19:30:35.903Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 140,
-  "imputed": 70,
+  "observedSuccessful": 142,
+  "imputed": 68,
   "lastFxTwitterFallbackAt": "2026-10-03T16:47:40.836Z",
   "xFxTwitterHealth": {
     "attempted": 16,
@@ -7004,27 +6974,21 @@
       "KAWAII__LAB: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-03T16:47:49.169Z",
+  "lastFallbackAt": "2026-10-03T19:29:48.556Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-03T16:47:49.169Z",
+    "attemptedAt": "2026-10-03T19:29:48.556Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+      "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
-      "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 3,
-        "success": 1,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 2,
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+        "attempts": 1,
         "success": 0,
-        "failed": 2,
-        "lastError": "X syndication returned invalid JSON: "
+        "failed": 1,
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
       }
     }
   },
@@ -7061,5 +7025,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-03T16:50:04.956Z"
+  "imputedAt": "2026-10-03T19:30:37.587Z"
 }
