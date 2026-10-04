@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-04T07:24:16.873Z",
+      "imputedAt": "2026-10-04T13:20:50.532Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "tiktok: user stats not found in page (shape may have changed)"
+        "error": "content_unavailable",
+        "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-04T08:24:16.873Z"
+      "nextRetryAt": "2026-10-04T14:20:50.532Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-04T07:24:15.306Z",
+      "capturedAt": "2026-10-04T13:20:20.297Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,15 +2802,15 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-04T07:24:15.306Z",
+      "capturedAt": "2026-10-04T13:20:20.297Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
       "posts": null,
       "likes": null,
       "views": null,
-      "error": "fetch_failed",
-      "detail": "tiktok: user stats not found in page (shape may have changed)"
+      "error": "content_unavailable",
+      "detail": "content unavailable: tiktok status 10221"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -5791,14 +5791,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-02",
       "imputedFromCapturedAt": "2026-10-02T02:08:53.801Z",
-      "imputedAt": "2026-10-04T01:44:05.690Z",
+      "imputedAt": "2026-10-04T13:20:50.532Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
         "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-04T07:44:05.690Z"
+      "nextRetryAt": "2026-10-04T19:20:50.532Z"
     },
     {
       "entitySlug": "nagisa-shoji",
@@ -5869,11 +5869,11 @@
       "handle": "mayumi.1227",
       "platformId": null,
       "profileUrl": "https://instagram.com/mayumi.1227",
-      "capturedAt": "2026-10-04T01:43:36.730Z",
+      "capturedAt": "2026-10-04T13:20:20.994Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
-      "followers": 305770,
-      "following": 398,
-      "posts": 206,
+      "followers": 305889,
+      "following": 399,
+      "posts": 208,
       "likes": null,
       "views": null,
       "sourceUrl": "https://item.woomy.me/analysis/instagrammer_info.php?instagrammer_user_id=mayumi.1227&map_date=week",
@@ -5888,15 +5888,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-10-04",
-      "imputedFromCapturedAt": "2026-10-04T01:43:36.730Z",
-      "imputedAt": "2026-10-04T01:43:36.730Z",
+      "imputedFromCapturedAt": "2026-10-04T13:20:20.994Z",
+      "imputedAt": "2026-10-04T13:20:20.994Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "login_required",
         "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-04T07:43:36.730Z"
+      "nextRetryAt": "2026-10-04T19:20:20.994Z"
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -5989,14 +5989,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-02",
       "imputedFromCapturedAt": "2026-10-02T02:08:53.801Z",
-      "imputedAt": "2026-10-04T01:44:05.690Z",
+      "imputedAt": "2026-10-04T13:20:50.532Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "login_required",
         "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-04T07:44:05.690Z"
+      "nextRetryAt": "2026-10-04T19:20:50.532Z"
     },
     {
       "entitySlug": "sakina-yamauchi",
@@ -6029,10 +6029,10 @@
   ],
   "errors": [
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
-    "yuika-shimasaki:TIKTOK:_yuikachamu_: tiktok: user stats not found in page (shape may have changed)"
+    "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-04T07:24:15.306Z",
-  "retryAttempts": 9,
+  "lastAttemptAt": "2026-10-04T13:20:20.297Z",
+  "retryAttempts": 11,
   "observedComplete": false,
   "observedSuccessful": 206,
   "imputed": 4,
@@ -6046,9 +6046,9 @@
       "KAWAII__LAB: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-04T07:23:27.306Z",
+  "lastFallbackAt": "2026-10-04T13:19:26.245Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-04T07:23:27.306Z",
+    "attemptedAt": "2026-10-04T13:19:26.245Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
@@ -6057,16 +6057,16 @@
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 1,
+        "attempts": 2,
         "success": 0,
-        "failed": 1,
+        "failed": 2,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-04T01:42:50.258Z",
+  "instagramCffiAttemptAt": "2026-10-04T13:19:34.454Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-04T01:42:50.258Z",
+    "attemptedAt": "2026-10-04T13:19:34.454Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 4,
@@ -6079,9 +6079,9 @@
       "@nagyuuu_official: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-04T01:43:36.730Z",
+  "instagramMirrorAttemptAt": "2026-10-04T13:20:20.994Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-04T01:43:36.730Z",
+    "attemptedAt": "2026-10-04T13:20:20.994Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 4,
@@ -6097,5 +6097,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-04T07:24:16.873Z"
+  "imputedAt": "2026-10-04T13:20:50.532Z"
 }
