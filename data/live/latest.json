@@ -568,14 +568,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-09T02:16:29.712Z",
+      "imputedAt": "2026-10-09T09:09:56.009Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-09T03:16:29.712Z"
+      "nextRetryAt": "2026-10-09T10:09:56.009Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -1694,36 +1694,21 @@
       "handle": "amane_fz1026",
       "platformId": null,
       "profileUrl": "https://x.com/amane_fz1026",
-      "capturedAt": "2026-10-07T19:38:11.955Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 309482,
-      "following": 0,
-      "posts": 11571,
-      "likes": 32285,
-      "views": null,
-      "sourceUrl": "https://api.fxtwitter.com/2/profile/amane_fz1026",
+      "capturedAt": "2026-10-09T09:08:48.274Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "amane_fz1026",
       "providerName": "月足天音 (FRUITS ZIPPER)",
-      "viewsPrecision": null,
+      "followers": 309335,
+      "following": 0,
+      "posts": 11574,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2006634155053035525/PJWxk9Yy_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
-      "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-08",
-      "imputedFromCapturedAt": "2026-10-07T19:38:11.955Z",
-      "imputedAt": "2026-10-09T02:16:29.712Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-09T03:16:29.712Z"
+      "precision": "PUBLIC_PROFILE",
+      "engagementMetric": null
     },
     {
       "entitySlug": "amane-tsukiashi",
@@ -2535,36 +2520,21 @@
       "handle": "erena_0701",
       "platformId": null,
       "profileUrl": "https://x.com/erena_0701",
-      "capturedAt": "2026-10-07T19:38:11.955Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 1865,
-      "following": 89,
-      "posts": 340,
-      "likes": 3834,
-      "views": null,
-      "sourceUrl": "https://api.fxtwitter.com/2/profile/erena_0701",
+      "capturedAt": "2026-10-09T09:08:48.274Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "erena_0701",
       "providerName": "伊丹 恵玲奈",
-      "viewsPrecision": null,
+      "followers": 1873,
+      "following": 89,
+      "posts": 342,
+      "likes": null,
+      "views": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2075510378268897280/e8dJwGwH_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
-      "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-08",
-      "imputedFromCapturedAt": "2026-10-07T19:38:11.955Z",
-      "imputedAt": "2026-10-09T02:16:29.712Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-09T03:16:29.712Z"
+      "precision": "PUBLIC_PROFILE",
+      "engagementMetric": null
     },
     {
       "entitySlug": "erena-itami",
@@ -2833,7 +2803,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-09T02:16:12.130Z",
+      "capturedAt": "2026-10-09T09:09:41.684Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2855,7 +2825,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-09T02:16:12.130Z",
+      "capturedAt": "2026-10-09T09:09:41.684Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3047,36 +3017,21 @@
       "handle": "lilica_KLM0517",
       "platformId": null,
       "profileUrl": "https://x.com/lilica_KLM0517",
-      "capturedAt": "2026-10-07T19:38:11.955Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 8327,
-      "following": 112,
-      "posts": 8726,
-      "likes": 40745,
-      "views": null,
-      "sourceUrl": "https://api.fxtwitter.com/2/profile/lilica_KLM0517",
+      "capturedAt": "2026-10-09T09:08:48.274Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "lilica_KLM0517",
       "providerName": "辻りりか",
-      "viewsPrecision": null,
+      "followers": 8322,
+      "following": 112,
+      "posts": 8726,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2006548954184560640/90jHLfyl_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
-      "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-08",
-      "imputedFromCapturedAt": "2026-10-07T19:38:11.955Z",
-      "imputedAt": "2026-10-09T02:16:29.712Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-09T03:16:29.712Z"
+      "precision": "PUBLIC_PROFILE",
+      "engagementMetric": null
     },
     {
       "entitySlug": "lilica-tsuji",
@@ -3316,36 +3271,21 @@
       "handle": "coco_klm_0218",
       "platformId": null,
       "profileUrl": "https://x.com/coco_klm_0218",
-      "capturedAt": "2026-10-07T19:38:11.955Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 6956,
-      "following": 133,
-      "posts": 4048,
-      "likes": 18975,
-      "views": null,
-      "sourceUrl": "https://api.fxtwitter.com/2/profile/coco_klm_0218",
+      "capturedAt": "2026-10-09T09:08:48.274Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "coco_KLM_0218",
       "providerName": "山下ここ(KAWAIILAB.MATES)",
-      "viewsPrecision": null,
+      "followers": 6966,
+      "following": 133,
+      "posts": 4052,
+      "likes": null,
+      "views": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2006532504321507328/5ff4yqw6_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
-      "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-08",
-      "imputedFromCapturedAt": "2026-10-07T19:38:11.955Z",
-      "imputedAt": "2026-10-09T02:16:29.712Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-09T03:16:29.712Z"
+      "precision": "PUBLIC_PROFILE",
+      "engagementMetric": null
     },
     {
       "entitySlug": "coco-yamashita",
@@ -3894,36 +3834,21 @@
       "handle": "aiko_KLS1018",
       "platformId": null,
       "profileUrl": "https://x.com/aiko_KLS1018",
-      "capturedAt": "2026-10-07T23:46:28.410Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 7183,
-      "following": 108,
-      "posts": 2410,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/aiko_KLS1018",
+      "capturedAt": "2026-10-09T09:08:48.274Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "aiko_KLS1018",
       "providerName": "濵嵜愛子(KAWAII LAB. SOUTH)",
-      "viewsPrecision": null,
+      "followers": 7181,
+      "following": 108,
+      "posts": 2417,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1976878904007884800/ICN2lv4d_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-08",
-      "imputedFromCapturedAt": "2026-10-07T23:46:28.410Z",
-      "imputedAt": "2026-10-09T02:16:29.712Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-09T03:16:29.712Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "aiko-hamasaki",
@@ -6105,11 +6030,11 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-09T02:16:12.130Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-10-09T09:09:41.684Z",
+  "retryAttempts": 7,
   "observedComplete": false,
-  "observedSuccessful": 204,
-  "imputed": 6,
+  "observedSuccessful": 209,
+  "imputed": 1,
   "lastFxTwitterFallbackAt": "2026-10-09T02:15:12.357Z",
   "xFxTwitterHealth": {
     "attempted": 9,
@@ -6121,21 +6046,15 @@
       "aiko_KLS1018: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-09T02:15:18.802Z",
+  "lastFallbackAt": "2026-10-09T09:08:49.760Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-09T02:15:18.802Z",
+    "attemptedAt": "2026-10-09T09:08:49.760Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 5,
-        "success": 0,
-        "failed": 5,
-        "lastError": "X syndication returned invalid JSON: "
       },
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
         "attempts": 1,
@@ -6145,9 +6064,9 @@
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-09T02:15:26.652Z",
+  "instagramCffiAttemptAt": "2026-10-09T09:08:56.166Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-09T02:15:26.652Z",
+    "attemptedAt": "2026-10-09T09:08:56.166Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 1,
@@ -6159,9 +6078,9 @@
       "@_yuikachamu_: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-09T02:16:13.726Z",
+  "instagramMirrorAttemptAt": "2026-10-09T09:09:42.445Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-09T02:16:13.726Z",
+    "attemptedAt": "2026-10-09T09:09:42.445Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 1,
@@ -6177,5 +6096,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-09T02:16:29.712Z"
+  "imputedAt": "2026-10-09T09:09:56.009Z"
 }
