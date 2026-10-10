@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-10T00:22:32.429Z",
+      "imputedAt": "2026-10-10T06:04:23.508Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-10T01:22:32.429Z"
+      "nextRetryAt": "2026-10-10T07:04:23.508Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-10T00:22:15.976Z",
+      "capturedAt": "2026-10-10T06:04:22.689Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,7 +2802,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-10T00:22:15.976Z",
+      "capturedAt": "2026-10-10T06:04:22.689Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5974,14 +5974,14 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-10T00:22:15.976Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-10-10T06:04:22.689Z",
+  "retryAttempts": 7,
   "observedComplete": false,
   "observedSuccessful": 209,
   "imputed": 1,
-  "lastFallbackAt": "2026-10-10T00:21:25.152Z",
+  "lastFallbackAt": "2026-10-10T06:03:35.779Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-10T00:21:25.152Z",
+    "attemptedAt": "2026-10-10T06:03:35.779Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
@@ -6029,5 +6029,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-10T00:22:32.429Z"
+  "imputedAt": "2026-10-10T06:04:23.508Z"
 }
