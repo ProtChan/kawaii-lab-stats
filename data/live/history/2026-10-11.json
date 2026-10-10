@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-10T20:37:48.129Z",
+      "imputedAt": "2026-10-10T23:49:32.256Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-10T21:37:48.129Z"
+      "nextRetryAt": "2026-10-11T00:49:32.256Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-10T20:37:44.884Z",
+      "capturedAt": "2026-10-10T23:49:17.788Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,7 +2802,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-10T20:37:44.884Z",
+      "capturedAt": "2026-10-10T23:49:17.788Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -4641,36 +4641,22 @@
       "handle": "suzuki_karin",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@suzuki_karin",
-      "capturedAt": "2026-10-09T16:11:15.478Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 20276,
+      "capturedAt": "2026-10-10T23:48:25.532Z",
+      "sourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
+      "followers": 20275,
       "following": 180,
       "posts": 478,
-      "likes": 650492,
+      "likes": 650575,
       "views": null,
       "sourceUrl": "https://www.tiktok.com/@suzuki_karin",
       "providerPlatform": "tiktok",
       "providerHandle": "suzuki_karin",
       "providerName": "鈴木花梨",
-      "viewsPrecision": null,
       "verified": false,
-      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=2424499d&x-expires=1791734400&x-signature=%2FvwvrgoWGYzHxIEefjauLvQxF0w%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
-      "parserVersion": null,
+      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=01c9cb56&x-expires=1791846000&x-signature=OebF4QrUqPDmH2F31iXMlgX5%2F3s%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": "TOTAL_LIKES",
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-10",
-      "imputedFromCapturedAt": "2026-10-09T16:11:15.478Z",
-      "imputedAt": "2026-10-10T20:37:48.129Z",
-      "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
-      "acquisitionError": {
-        "error": "content_unavailable",
-        "detail": "content unavailable: tiktok status 10221"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-10T21:37:48.129Z"
+      "engagementMetric": "TOTAL_LIKES"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -5992,11 +5978,11 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-10T20:37:44.884Z",
-  "retryAttempts": 3,
+  "lastAttemptAt": "2026-10-10T23:49:17.788Z",
+  "retryAttempts": 5,
   "observedComplete": false,
-  "observedSuccessful": 208,
-  "imputed": 2,
+  "observedSuccessful": 209,
+  "imputed": 1,
   "lastFxTwitterFallbackAt": "2026-10-10T20:36:57.577Z",
   "xFxTwitterHealth": {
     "attempted": 3,
@@ -6004,14 +5990,14 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-10-10T20:36:58.206Z",
+  "lastFallbackAt": "2026-10-10T23:48:25.532Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-10T20:36:58.206Z",
+    "attemptedAt": "2026-10-10T23:48:25.532Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 3,
-        "success": 0,
-        "failed": 3,
+        "success": 1,
+        "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
@@ -6022,9 +6008,9 @@
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-10T17:26:25.545Z",
+  "instagramCffiAttemptAt": "2026-10-10T23:48:32.112Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-10T17:26:25.545Z",
+    "attemptedAt": "2026-10-10T23:48:32.112Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 1,
@@ -6036,9 +6022,9 @@
       "@_yuikachamu_: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-10T17:27:12.138Z",
+  "instagramMirrorAttemptAt": "2026-10-10T23:49:18.564Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-10T17:27:12.138Z",
+    "attemptedAt": "2026-10-10T23:49:18.564Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 1,
@@ -6054,5 +6040,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-10T20:37:48.129Z"
+  "imputedAt": "2026-10-10T23:49:32.256Z"
 }
