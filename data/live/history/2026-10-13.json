@@ -572,14 +572,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-13T01:20:21.188Z",
+      "imputedAt": "2026-10-13T07:49:51.230Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-13T02:20:21.188Z"
+      "nextRetryAt": "2026-10-13T08:49:51.230Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2802,7 +2802,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-13T01:20:01.914Z",
+      "capturedAt": "2026-10-13T07:49:33.885Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2824,7 +2824,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-13T01:20:01.914Z",
+      "capturedAt": "2026-10-13T07:49:33.885Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -6020,8 +6020,8 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-13T01:20:01.914Z",
-  "retryAttempts": 3,
+  "lastAttemptAt": "2026-10-13T07:49:33.885Z",
+  "retryAttempts": 5,
   "observedComplete": false,
   "observedSuccessful": 209,
   "imputed": 1,
@@ -6036,9 +6036,9 @@
       "sakina_ss0229: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-13T01:19:10.176Z",
+  "lastFallbackAt": "2026-10-13T07:48:43.035Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-13T01:19:10.176Z",
+    "attemptedAt": "2026-10-13T07:48:43.035Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
@@ -6054,9 +6054,9 @@
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-13T01:19:16.430Z",
+  "instagramCffiAttemptAt": "2026-10-13T07:48:48.366Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-13T01:19:16.430Z",
+    "attemptedAt": "2026-10-13T07:48:48.366Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 1,
@@ -6068,9 +6068,9 @@
       "@_yuikachamu_: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-13T01:20:04.215Z",
+  "instagramMirrorAttemptAt": "2026-10-13T07:49:35.560Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-13T01:20:04.215Z",
+    "attemptedAt": "2026-10-13T07:49:35.560Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 1,
@@ -6086,5 +6086,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-13T01:20:21.188Z"
+  "imputedAt": "2026-10-13T07:49:51.230Z"
 }
