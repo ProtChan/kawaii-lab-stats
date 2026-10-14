@@ -4930,10 +4930,10 @@
       "sweet-steady": {
         "name": "SWEET STEADY",
         "official": 691864,
-        "members": 2722202,
-        "ecosystem": 3414066,
+        "members": 2722178,
+        "ecosystem": 3414042,
         "platforms": {
-          "X": 505414,
+          "X": 505390,
           "Instagram": 1354000,
           "TikTok": 1245652,
           "YouTube": 309000
@@ -4942,8 +4942,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 37061854,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 23,
-        "imputedAccounts": 2,
+        "observedAccounts": 25,
+        "imputedAccounts": 0,
         "expectedAccounts": 25
       }
     }

@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-14T18:46:34.082Z",
+      "imputedAt": "2026-10-14T21:57:44.670Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-14T19:46:34.082Z"
+      "nextRetryAt": "2026-10-14T22:57:44.670Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-14T18:46:30.336Z",
+      "capturedAt": "2026-10-14T21:57:43.447Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,7 +2802,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-14T18:46:30.336Z",
+      "capturedAt": "2026-10-14T21:57:43.447Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5734,36 +5734,21 @@
       "handle": "nagisa_ss1029",
       "platformId": null,
       "profileUrl": "https://x.com/nagisa_ss1029",
-      "capturedAt": "2026-10-13T15:18:33.915Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 34790,
-      "following": 312,
-      "posts": 7567,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/nagisa_ss1029",
+      "capturedAt": "2026-10-14T21:56:54.341Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "nagisa_ss1029",
       "providerName": "庄司 なぎさ（SWEET STEADY）",
-      "viewsPrecision": null,
+      "followers": 34786,
+      "following": 312,
+      "posts": 7572,
+      "likes": null,
+      "views": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2025533883597619200/mK3gLq6b_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-14",
-      "imputedFromCapturedAt": "2026-10-13T15:18:33.915Z",
-      "imputedAt": "2026-10-14T18:46:34.082Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-14T19:46:34.082Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "nagisa-shoji",
@@ -5833,36 +5818,21 @@
       "handle": "mayumi_ss1227",
       "platformId": null,
       "profileUrl": "https://x.com/mayumi_ss1227",
-      "capturedAt": "2026-10-13T15:18:33.915Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 90740,
-      "following": 585,
-      "posts": 27405,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/mayumi_ss1227",
+      "capturedAt": "2026-10-14T21:56:54.341Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "mayumi_ss1227",
       "providerName": "白石まゆみ(SWEET STEADY)",
-      "viewsPrecision": null,
+      "followers": 90720,
+      "following": 585,
+      "posts": 27413,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2025538277764452352/ai4LSzd4_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-14",
-      "imputedFromCapturedAt": "2026-10-13T15:18:33.915Z",
-      "imputedAt": "2026-10-14T18:46:34.082Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-14T19:46:34.082Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -6010,11 +5980,11 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-14T18:46:30.336Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-10-14T21:57:43.447Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 207,
-  "imputed": 3,
+  "observedSuccessful": 209,
+  "imputed": 1,
   "lastFxTwitterFallbackAt": "2026-10-14T18:45:33.613Z",
   "xFxTwitterHealth": {
     "attempted": 8,
@@ -6025,13 +5995,13 @@
       "mayumi_ss1227: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-14T18:45:38.135Z",
+  "lastFallbackAt": "2026-10-14T21:56:57.060Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-14T18:45:38.135Z",
+    "attemptedAt": "2026-10-14T21:56:57.060Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 3,
-        "success": 1,
+        "attempts": 2,
+        "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
@@ -6040,12 +6010,6 @@
         "success": 0,
         "failed": 1,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "X syndication returned invalid JSON: "
       }
     }
   },
@@ -6081,5 +6045,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-14T18:46:34.082Z"
+  "imputedAt": "2026-10-14T21:57:44.670Z"
 }
