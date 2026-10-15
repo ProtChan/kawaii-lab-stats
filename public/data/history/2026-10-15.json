@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-15T00:17:54.532Z",
+      "imputedAt": "2026-10-15T04:50:42.684Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T01:17:54.532Z"
+      "nextRetryAt": "2026-10-15T05:50:42.684Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-15T00:17:51.368Z",
+      "capturedAt": "2026-10-15T04:50:24.887Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,7 +2802,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-15T00:17:51.368Z",
+      "capturedAt": "2026-10-15T04:50:24.887Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5980,8 +5980,8 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-15T00:17:51.368Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-10-15T04:50:24.887Z",
+  "retryAttempts": 7,
   "observedComplete": false,
   "observedSuccessful": 209,
   "imputed": 1,
@@ -5995,9 +5995,9 @@
       "mayumi_ss1227: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-15T00:17:04.781Z",
+  "lastFallbackAt": "2026-10-15T04:49:34.482Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-15T00:17:04.781Z",
+    "attemptedAt": "2026-10-15T04:49:34.482Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
@@ -6013,9 +6013,9 @@
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-14T18:45:44.720Z",
+  "instagramCffiAttemptAt": "2026-10-15T04:49:39.393Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-14T18:45:44.720Z",
+    "attemptedAt": "2026-10-15T04:49:39.393Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 1,
@@ -6027,9 +6027,9 @@
       "@_yuikachamu_: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-14T18:46:31.992Z",
+  "instagramMirrorAttemptAt": "2026-10-15T04:50:26.493Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-14T18:46:31.992Z",
+    "attemptedAt": "2026-10-15T04:50:26.493Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 1,
@@ -6041,9 +6041,9 @@
         "attempts": 1,
         "success": 0,
         "failed": 1,
-        "lastError": "Imginn HTTP 403: <!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA | Imginn via CodeTabs HTTP 503: <!doctype html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endi"
+        "lastError": "Imginn HTTP 403: <!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA | The operation was aborted due to timeout"
       }
     }
   },
-  "imputedAt": "2026-10-15T00:17:54.532Z"
+  "imputedAt": "2026-10-15T04:50:42.684Z"
 }
