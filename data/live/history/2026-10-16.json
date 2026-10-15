@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-15T18:26:27.877Z",
+      "imputedAt": "2026-10-15T21:33:24.885Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "tiktok: user stats not found in page (shape may have changed)"
+        "error": "content_unavailable",
+        "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T19:26:27.877Z"
+      "nextRetryAt": "2026-10-15T22:33:24.885Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-15T18:26:08.908Z",
+      "capturedAt": "2026-10-15T21:33:23.168Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,15 +2802,15 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-15T18:26:08.908Z",
+      "capturedAt": "2026-10-15T21:33:23.168Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
       "posts": null,
       "likes": null,
       "views": null,
-      "error": "fetch_failed",
-      "detail": "tiktok: user stats not found in page (shape may have changed)"
+      "error": "content_unavailable",
+      "detail": "content unavailable: tiktok status 10221"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -3808,36 +3808,21 @@
       "handle": "aiko_KLS1018",
       "platformId": null,
       "profileUrl": "https://x.com/aiko_KLS1018",
-      "capturedAt": "2026-10-14T18:43:02.472Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 7263,
-      "following": 109,
-      "posts": 2468,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/aiko_KLS1018",
+      "capturedAt": "2026-10-15T21:32:33.930Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "aiko_KLS1018",
       "providerName": "濵嵜愛子(KAWAII LAB. SOUTH)",
-      "viewsPrecision": null,
+      "followers": 7268,
+      "following": 109,
+      "posts": 2473,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2109560299598819328/UB5r631B_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-15",
-      "imputedFromCapturedAt": "2026-10-14T18:43:02.472Z",
-      "imputedAt": "2026-10-15T18:26:27.877Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T19:26:27.877Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "aiko-hamasaki",
@@ -3908,36 +3893,21 @@
       "handle": "nana_kls0404",
       "platformId": null,
       "profileUrl": "https://x.com/nana_kls0404",
-      "capturedAt": "2026-10-14T18:43:02.472Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 6081,
-      "following": 120,
-      "posts": 3478,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/nana_kls0404",
+      "capturedAt": "2026-10-15T21:32:33.930Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "nana_KLS0404",
       "providerName": "松田 奈々（KAWAII LAB. SOUTH）",
-      "viewsPrecision": null,
+      "followers": 6087,
+      "following": 120,
+      "posts": 3484,
+      "likes": null,
+      "views": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2109560175082491904/x6UMxfPX_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-15",
-      "imputedFromCapturedAt": "2026-10-14T18:43:02.472Z",
-      "imputedAt": "2026-10-15T18:26:27.877Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T19:26:27.877Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "nana-matsuda",
@@ -4721,36 +4691,21 @@
       "handle": "yuna_ms0918",
       "platformId": null,
       "profileUrl": "https://x.com/yuna_ms0918",
-      "capturedAt": "2026-10-14T18:43:02.472Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 21569,
-      "following": 200,
-      "posts": 5284,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/yuna_ms0918",
+      "capturedAt": "2026-10-15T21:32:33.930Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "yuna_ms0918",
       "providerName": "高梨ゆな(MORE STAR)",
-      "viewsPrecision": null,
+      "followers": 21583,
+      "following": 201,
+      "posts": 5286,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2103316973090451456/lPaRDFuX_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-15",
-      "imputedFromCapturedAt": "2026-10-14T18:43:02.472Z",
-      "imputedAt": "2026-10-15T18:26:27.877Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T19:26:27.877Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -4991,36 +4946,21 @@
       "handle": "ami_ms0206",
       "platformId": null,
       "profileUrl": "https://x.com/ami_ms0206",
-      "capturedAt": "2026-10-14T18:43:02.472Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 16926,
-      "following": 138,
-      "posts": 12294,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/ami_ms0206",
+      "capturedAt": "2026-10-15T21:32:33.930Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "ami_ms0206",
       "providerName": "森田あみ（MORE STAR）",
-      "viewsPrecision": null,
+      "followers": 16934,
+      "following": 139,
+      "posts": 12301,
+      "likes": null,
+      "views": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2103297794744430592/w6maDkx-_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-15",
-      "imputedFromCapturedAt": "2026-10-14T18:43:02.472Z",
-      "imputedAt": "2026-10-15T18:26:27.877Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T19:26:27.877Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "ami-morita",
@@ -5906,36 +5846,21 @@
       "handle": "mayumi_ss1227",
       "platformId": null,
       "profileUrl": "https://x.com/mayumi_ss1227",
-      "capturedAt": "2026-10-14T21:56:54.341Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 90720,
-      "following": 585,
-      "posts": 27413,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/mayumi_ss1227",
+      "capturedAt": "2026-10-15T21:32:33.930Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "mayumi_ss1227",
       "providerName": "白石まゆみ(SWEET STEADY)",
-      "viewsPrecision": null,
+      "followers": 90737,
+      "following": 585,
+      "posts": 27423,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2025538277764452352/ai4LSzd4_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-15",
-      "imputedFromCapturedAt": "2026-10-14T21:56:54.341Z",
-      "imputedAt": "2026-10-15T18:26:27.877Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-15T19:26:27.877Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -6081,13 +6006,13 @@
   ],
   "errors": [
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
-    "yuika-shimasaki:TIKTOK:_yuikachamu_: tiktok: user stats not found in page (shape may have changed)"
+    "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-15T18:26:08.908Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-10-15T21:33:23.168Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 204,
-  "imputed": 6,
+  "observedSuccessful": 209,
+  "imputed": 1,
   "lastFxTwitterFallbackAt": "2026-10-15T18:24:51.845Z",
   "xFxTwitterHealth": {
     "attempted": 29,
@@ -6099,13 +6024,13 @@
       "mayumi_ss1227: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-15T18:25:11.269Z",
+  "lastFallbackAt": "2026-10-15T21:32:36.813Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-15T18:25:11.269Z",
+    "attemptedAt": "2026-10-15T21:32:36.813Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 13,
-        "success": 11,
+        "attempts": 2,
+        "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
@@ -6114,12 +6039,6 @@
         "success": 0,
         "failed": 1,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 5,
-        "success": 0,
-        "failed": 5,
-        "lastError": "X syndication returned invalid JSON: "
       }
     }
   },
@@ -6155,5 +6074,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-15T18:26:27.877Z"
+  "imputedAt": "2026-10-15T21:33:24.885Z"
 }
