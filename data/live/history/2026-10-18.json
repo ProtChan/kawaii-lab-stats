@@ -647,14 +647,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-17T15:51:45.486Z",
+      "imputedAt": "2026-10-17T17:58:36.807Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-17T16:51:45.486Z"
+      "nextRetryAt": "2026-10-17T18:58:36.807Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -3202,7 +3202,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-17T15:49:38.248Z",
+      "capturedAt": "2026-10-17T17:58:35.881Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3224,7 +3224,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-17T15:49:38.248Z",
+      "capturedAt": "2026-10-17T17:58:35.881Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5224,36 +5224,21 @@
       "handle": "nanaka_ms0707",
       "platformId": null,
       "profileUrl": "https://x.com/nanaka_ms0707",
-      "capturedAt": "2026-10-16T15:35:55.245Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 16538,
-      "following": 149,
-      "posts": 6068,
-      "likes": 24657,
-      "views": null,
-      "sourceUrl": "https://api.fxtwitter.com/2/profile/nanaka_ms0707",
+      "capturedAt": "2026-10-17T17:57:47.164Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "nanaka_ms0707",
       "providerName": "笹原なな花(MORE STAR)",
-      "viewsPrecision": null,
+      "followers": 16546,
+      "following": 149,
+      "posts": 6073,
+      "likes": null,
+      "views": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2103319677682561024/hHOrHZBU_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
-      "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-17",
-      "imputedFromCapturedAt": "2026-10-16T15:35:55.245Z",
-      "imputedAt": "2026-10-17T15:51:45.486Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-17T16:51:45.486Z"
+      "precision": "PUBLIC_PROFILE",
+      "engagementMetric": null
     },
     {
       "entitySlug": "nanaka-sasahara",
@@ -6162,36 +6147,21 @@
       "handle": "SWEET_STEADY",
       "platformId": null,
       "profileUrl": "https://x.com/SWEET_STEADY",
-      "capturedAt": "2026-10-16T15:33:14.993Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 89981,
-      "following": 15,
-      "posts": 10003,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/SWEET_STEADY",
+      "capturedAt": "2026-10-17T17:57:47.164Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "SWEET_STEADY",
       "providerName": "SWEET STEADY【Official】",
-      "viewsPrecision": null,
+      "followers": 90004,
+      "following": 15,
+      "posts": 10020,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1749725845730840576/uc31AEDt_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-17",
-      "imputedFromCapturedAt": "2026-10-16T15:33:14.993Z",
-      "imputedAt": "2026-10-17T15:51:45.486Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-17T16:51:45.486Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "sweet-steady",
@@ -6602,36 +6572,21 @@
       "handle": "rise_ss0731",
       "platformId": null,
       "profileUrl": "https://x.com/rise_ss0731",
-      "capturedAt": "2026-10-16T15:33:14.993Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 75457,
-      "following": 382,
-      "posts": 13890,
-      "likes": null,
-      "views": null,
-      "sourceUrl": "https://x.com/rise_ss0731",
+      "capturedAt": "2026-10-17T17:57:47.164Z",
+      "sourceType": "PULSE_PUBLIC_PROFILE",
       "providerPlatform": "x",
       "providerHandle": "rise_ss0731",
       "providerName": "塩川莉世(SWEET STEADY)",
-      "viewsPrecision": null,
+      "followers": 75474,
+      "following": 382,
+      "posts": 13896,
+      "likes": null,
+      "views": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2025537357316063232/WLAEdSlH_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_PROFILE",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-10-17",
-      "imputedFromCapturedAt": "2026-10-16T15:33:14.993Z",
-      "imputedAt": "2026-10-17T15:51:45.486Z",
-      "imputedSourceType": "PULSE_PUBLIC_PROFILE",
-      "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "x graphql user: 429"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-17T16:51:45.486Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "rise-shiokawa",
@@ -7005,11 +6960,11 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-17T15:49:38.248Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-10-17T17:58:35.881Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 139,
-  "imputed": 71,
+  "observedSuccessful": 142,
+  "imputed": 68,
   "lastFxTwitterFallbackAt": "2026-10-17T15:48:35.443Z",
   "xFxTwitterHealth": {
     "attempted": 18,
@@ -7021,27 +6976,21 @@
       "rise_ss0731: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-10-17T15:48:45.530Z",
+  "lastFallbackAt": "2026-10-17T17:57:49.232Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-17T15:48:45.530Z",
+    "attemptedAt": "2026-10-17T17:57:49.232Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+      "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
         "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
-      },
-      "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 3,
-        "success": 1,
-        "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 3,
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+        "attempts": 1,
         "success": 0,
-        "failed": 3,
-        "lastError": "X syndication returned invalid JSON: "
+        "failed": 1,
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
       }
     }
   },
@@ -7078,5 +7027,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-17T15:51:45.486Z"
+  "imputedAt": "2026-10-17T17:58:36.807Z"
 }
