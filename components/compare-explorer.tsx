@@ -267,7 +267,7 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
       <section className="panel">
         <div className="sectionHead"><div><p className="eyebrow">TIME SERIES</p><h2>{metricLabels[metric]} · {viewLabel(view)}</h2></div><span>{selectedEntities.length} selected</span></div>
         <div className="selectionLegend">{selectedEntities.map((entity) => <span className="selectionPill" key={entity.slug}><Link href={entityHref(entity)}>{entity.name}</Link><button type="button" onClick={() => toggleEntity(entity.slug)} aria-label={`${entity.name}を比較から外す`}>×</button></span>)}</div>
-        {chartData.length >= (view === "level" ? 2 : 1) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} zeroLine={isDelta} seriesLinks={seriesLinks} /> : <p className="lead">{isDelta ? `${viewLabel(view)}に必要な比較可能履歴がまだ足りません。` : "この指標は履歴が2点以上になると比較推移を表示します。"}</p>}
+        {chartData.length >= (view === "level" ? 2 : 1) ? <GrowthChart data={chartData} groups={selectedEntities.map((entity) => entity.name)} xKey="date" connectNulls={false} zeroLine={isDelta} seriesLinks={seriesLinks} valueFormat={view === "indexed" ? "index" : "number"} /> : <p className="lead">{isDelta ? `${viewLabel(view)}に必要な比較可能履歴がまだ足りません。` : "この指標は履歴が2点以上になると比較推移を表示します。"}</p>}
       </section>
     </>
   );
