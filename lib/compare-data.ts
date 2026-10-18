@@ -1,14 +1,36 @@
 import { officialGroups } from "@/lib/official-directory";
 import { allMembers, getGroupStats, getMemberStats, historySnapshots } from "@/lib/analytics";
-import { accountSetKey, aggregateAccounts, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
+import { accountSetKey, aggregateAccounts, platformLabel, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
 import type { LiveAccount } from "@/lib/live-stats";
 
-export type CompareMetricKey = "audience" | "tiktokLikes" | "youtubeViews";
+export type CompareMetricKey =
+  | "audience"
+  | "xFollowers"
+  | "instagramFollowers"
+  | "tiktokFollowers"
+  | "youtubeSubscribers"
+  | "tiktokLikes"
+  | "youtubeViews";
+
+export const compareMetricKeys: CompareMetricKey[] = [
+  "audience",
+  "xFollowers",
+  "instagramFollowers",
+  "tiktokFollowers",
+  "youtubeSubscribers",
+  "tiktokLikes",
+  "youtubeViews",
+];
+
 export type PlatformAudience = Record<PlatformLabel, number | null>;
 
 export type ComparePoint = {
   date: string;
   audience: number | null;
+  xFollowers: number | null;
+  instagramFollowers: number | null;
+  tiktokFollowers: number | null;
+  youtubeSubscribers: number | null;
   tiktokLikes: number | null;
   youtubeViews: number | null;
   complete: Record<CompareMetricKey, boolean>;
@@ -28,8 +50,35 @@ export type CompareEntity = {
   history: ComparePoint[];
 };
 
-function observationUsable(observation: { value: number | null; observed: number; imputed: number; expected: number }) {
+type MetricObservation = {
+  value: number | null;
+  observed: number;
+  imputed: number;
+  expected: number;
+  complete: boolean;
+};
+
+function observationUsable(observation: MetricObservation) {
   return observation.value != null && observation.observed + observation.imputed === observation.expected;
+}
+
+function metricValue(account: LiveAccount, metric: CompareMetricKey): number | null | undefined {
+  switch (metric) {
+    case "audience":
+      return account.followers;
+    case "xFollowers":
+      return account.platform === "X" ? account.followers : null;
+    case "instagramFollowers":
+      return account.platform === "INSTAGRAM" ? account.followers : null;
+    case "tiktokFollowers":
+      return account.platform === "TIKTOK" ? account.followers : null;
+    case "youtubeSubscribers":
+      return account.platform === "YOUTUBE" ? account.followers : null;
+    case "tiktokLikes":
+      return account.platform === "TIKTOK" ? account.likes : null;
+    case "youtubeViews":
+      return account.platform === "YOUTUBE" ? account.views : null;
+  }
 }
 
 function observedMetricValues(rows: LiveAccount[], metric: CompareMetricKey) {
@@ -37,64 +86,96 @@ function observedMetricValues(rows: LiveAccount[], metric: CompareMetricKey) {
     rows
       .filter((account) => {
         if (!trustedMetricAccount(account) || account.error || account.imputed) return false;
-        const value = metric === "audience" ? account.followers : metric === "tiktokLikes" ? account.likes : account.views;
-        if (metric === "tiktokLikes" && account.platform !== "TIKTOK") return false;
-        if (metric === "youtubeViews" && account.platform !== "YOUTUBE") return false;
+        const value = metricValue(account, metric);
         return typeof value === "number" && Number.isFinite(value);
       })
-      .map((account) => {
-        const value = metric === "audience" ? account.followers : metric === "tiktokLikes" ? account.likes : account.views;
-        return [`${account.platform}:${String(account.handle).toLowerCase()}`, value as number];
-      }),
+      .map((account) => [
+        `${account.platform}:${String(account.handle).toLowerCase()}`,
+        metricValue(account, metric) as number,
+      ]),
   );
+}
+
+function metricAccountSet(rows: LiveAccount[], metric: CompareMetricKey) {
+  switch (metric) {
+    case "audience":
+      return accountSetKey(rows);
+    case "xFollowers":
+      return accountSetKey(rows, "X");
+    case "instagramFollowers":
+      return accountSetKey(rows, "Instagram");
+    case "tiktokFollowers":
+    case "tiktokLikes":
+      return accountSetKey(rows, "TikTok");
+    case "youtubeSubscribers":
+    case "youtubeViews":
+      return accountSetKey(rows, "YouTube");
+  }
 }
 
 function metricsForRows(rows: LiveAccount[]) {
   const aggregate = aggregateAccounts(rows);
-  const tiktokRows = rows.filter((account) => account.platform === "TIKTOK");
-  const youtubeRows = rows.filter((account) => account.platform === "YOUTUBE");
-  const audienceUsable = observationUsable(aggregate.audience);
-  const tiktokUsable = aggregate.tiktokLikes.expected > 0 && observationUsable(aggregate.tiktokLikes);
-  const youtubeUsable = aggregate.youtubeViews.expected > 0 && observationUsable(aggregate.youtubeViews);
-  return {
-    audience: audienceUsable ? aggregate.audience.value : null,
-    tiktokLikes: tiktokUsable ? aggregate.tiktokLikes.value : null,
-    youtubeViews: youtubeUsable ? aggregate.youtubeViews.value : null,
-    complete: {
-      audience: aggregate.audience.complete,
-      tiktokLikes: aggregate.tiktokLikes.expected > 0 && aggregate.tiktokLikes.complete,
-      youtubeViews: aggregate.youtubeViews.expected > 0 && aggregate.youtubeViews.complete,
-    },
-    usable: {
-      audience: audienceUsable,
-      tiktokLikes: tiktokUsable,
-      youtubeViews: youtubeUsable,
-    },
-    accountSet: {
-      audience: accountSetKey(rows),
-      tiktokLikes: accountSetKey(tiktokRows),
-      youtubeViews: accountSetKey(youtubeRows),
-    },
-    observedValues: {
-      audience: observedMetricValues(rows, "audience"),
-      tiktokLikes: observedMetricValues(rows, "tiktokLikes"),
-      youtubeViews: observedMetricValues(rows, "youtubeViews"),
-    },
+  const observations: Record<CompareMetricKey, MetricObservation> = {
+    audience: aggregate.audience,
+    xFollowers: aggregate.platforms.X,
+    instagramFollowers: aggregate.platforms.Instagram,
+    tiktokFollowers: aggregate.platforms.TikTok,
+    youtubeSubscribers: aggregate.platforms.YouTube,
+    tiktokLikes: aggregate.tiktokLikes,
+    youtubeViews: aggregate.youtubeViews,
   };
+
+  const values = Object.fromEntries(
+    compareMetricKeys.map((metric) => {
+      const observation = observations[metric];
+      const usable = metric === "audience"
+        ? observationUsable(observation)
+        : observation.expected > 0 && observationUsable(observation);
+      return [metric, usable ? observation.value : null];
+    }),
+  ) as Record<CompareMetricKey, number | null>;
+
+  const complete = Object.fromEntries(
+    compareMetricKeys.map((metric) => [metric, observations[metric].complete && observations[metric].expected > 0]),
+  ) as Record<CompareMetricKey, boolean>;
+
+  const usable = Object.fromEntries(
+    compareMetricKeys.map((metric) => [
+      metric,
+      metric === "audience"
+        ? observationUsable(observations[metric])
+        : observations[metric].expected > 0 && observationUsable(observations[metric]),
+    ]),
+  ) as Record<CompareMetricKey, boolean>;
+
+  const accountSet = Object.fromEntries(
+    compareMetricKeys.map((metric) => [metric, metricAccountSet(rows, metric)]),
+  ) as Record<CompareMetricKey, string>;
+
+  const observedValues = Object.fromEntries(
+    compareMetricKeys.map((metric) => [metric, observedMetricValues(rows, metric)]),
+  ) as Record<CompareMetricKey, Record<string, number>>;
+
+  return { ...values, complete, usable, accountSet, observedValues };
 }
 
 export function buildComparePayload() {
   const groups: CompareEntity[] = officialGroups.map((group) => {
     const current = getGroupStats(group.slug);
+    const currentMetrics = metricsForRows(current.accounts);
     return {
       slug: group.slug,
       name: group.name,
       type: "GROUP",
       groupSlugs: [group.slug],
       current: {
-        audience: current.totalFollowers,
-        tiktokLikes: current.tiktokLikes,
-        youtubeViews: current.youtubeViews,
+        audience: currentMetrics.audience,
+        xFollowers: currentMetrics.xFollowers,
+        instagramFollowers: currentMetrics.instagramFollowers,
+        tiktokFollowers: currentMetrics.tiktokFollowers,
+        youtubeSubscribers: currentMetrics.youtubeSubscribers,
+        tiktokLikes: currentMetrics.tiktokLikes,
+        youtubeViews: currentMetrics.youtubeViews,
       },
       platforms: current.platformFollowers,
       history: historySnapshots.map((snapshot) => ({
@@ -106,6 +187,7 @@ export function buildComparePayload() {
 
   const members: CompareEntity[] = allMembers.map((member) => {
     const current = getMemberStats(member.slug);
+    const currentMetrics = metricsForRows(current.accounts);
     return {
       slug: member.slug,
       name: member.name,
@@ -113,9 +195,13 @@ export function buildComparePayload() {
       groupSlugs: member.relations.map((group) => group.slug),
       primaryGroupName: member.primaryGroup?.name ?? member.relations[0]?.name ?? null,
       current: {
-        audience: current.totalFollowers,
-        tiktokLikes: current.tiktokLikes,
-        youtubeViews: current.youtubeViews,
+        audience: currentMetrics.audience,
+        xFollowers: currentMetrics.xFollowers,
+        instagramFollowers: currentMetrics.instagramFollowers,
+        tiktokFollowers: currentMetrics.tiktokFollowers,
+        youtubeSubscribers: currentMetrics.youtubeSubscribers,
+        tiktokLikes: currentMetrics.tiktokLikes,
+        youtubeViews: currentMetrics.youtubeViews,
       },
       platforms: current.platformFollowers,
       history: historySnapshots.map((snapshot) => ({
