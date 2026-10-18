@@ -1,6 +1,6 @@
 import { officialGroups } from "@/lib/official-directory";
 import { allMembers, getGroupStats, getMemberStats, historySnapshots } from "@/lib/analytics";
-import { accountSetKey, aggregateAccounts, platformLabel, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
+import { accountSetKey, aggregateAccounts, trustedMetricAccount, type PlatformLabel } from "@/lib/metrics";
 import type { LiveAccount } from "@/lib/live-stats";
 
 export type CompareMetricKey =
@@ -136,7 +136,7 @@ function metricsForRows(rows: LiveAccount[]) {
   ) as Record<CompareMetricKey, number | null>;
 
   const complete = Object.fromEntries(
-    compareMetricKeys.map((metric) => [metric, observations[metric].complete && observations[metric].expected > 0]),
+    compareMetricKeys.map((metric) => [metric, metric === "audience" ? observations[metric].complete : observations[metric].expected > 0 && observations[metric].complete]),
   ) as Record<CompareMetricKey, boolean>;
 
   const usable = Object.fromEntries(
