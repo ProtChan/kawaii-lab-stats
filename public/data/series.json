@@ -5315,11 +5315,11 @@
       "more-star": {
         "name": "MORE STAR",
         "official": 220361,
-        "members": 722273,
-        "ecosystem": 942634,
+        "members": 723273,
+        "ecosystem": 943634,
         "platforms": {
           "X": 191277,
-          "Instagram": 318000,
+          "Instagram": 319000,
           "TikTok": 393057,
           "YouTube": 40300
         },
@@ -5327,8 +5327,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 17652613,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 17,
-        "imputedAccounts": 8,
+        "observedAccounts": 18,
+        "imputedAccounts": 7,
         "expectedAccounts": 25
       },
       "sweet-steady": {
