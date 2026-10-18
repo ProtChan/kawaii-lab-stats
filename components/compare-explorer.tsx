@@ -8,9 +8,23 @@ import { exactDayInterval } from "@/lib/metrics";
 
 const metricLabels: Record<CompareMetricKey, string> = {
   audience: "SNS total audience",
+  xFollowers: "X followers",
+  instagramFollowers: "Instagram followers",
+  tiktokFollowers: "TikTok followers",
+  youtubeSubscribers: "YouTube subscribers",
   tiktokLikes: "TikTok total likes",
   youtubeViews: "YouTube total views",
 };
+
+const metricOptions: { value: CompareMetricKey; label: string }[] = [
+  { value: "audience", label: "Total audience · all SNS" },
+  { value: "xFollowers", label: "X followers" },
+  { value: "instagramFollowers", label: "Instagram followers" },
+  { value: "tiktokFollowers", label: "TikTok followers" },
+  { value: "youtubeSubscribers", label: "YouTube subscribers" },
+  { value: "tiktokLikes", label: "TikTok total likes" },
+  { value: "youtubeViews", label: "YouTube total views" },
+];
 
 const platformKeys = ["X", "Instagram", "TikTok", "YouTube"] as const;
 type ViewMode = "level" | "daily" | "7d" | "30d" | "indexed";
@@ -20,7 +34,9 @@ const fmtSigned = (value: number | null) => value == null ? "—" : `${value > 0
 const fmtIndexed = (value: number | null) => value == null ? "—" : value.toFixed(1);
 
 function validMetric(value: string | null): CompareMetricKey {
-  return value === "tiktokLikes" || value === "youtubeViews" ? value : "audience";
+  return metricOptions.some((option) => option.value === value)
+    ? value as CompareMetricKey
+    : "audience";
 }
 
 function validView(value: string | null): ViewMode {
@@ -196,10 +212,12 @@ export function CompareExplorer({ groups, members }: { groups: CompareEntity[]; 
           <span className="controlLabel">Scope</span>
           <div className="segmented"><button className={scope === "groups" ? "active" : ""} onClick={() => changeScope("groups")}>Groups</button><button className={scope === "members" ? "active" : ""} onClick={() => changeScope("members")}>Members</button></div>
         </div>
-        <div className="controlBlock">
+        <label className="controlBlock">
           <span className="controlLabel">Metric</span>
-          <div className="segmented metricSegments"><button className={metric === "audience" ? "active" : ""} onClick={() => changeMetric("audience")}>Audience</button><button className={metric === "tiktokLikes" ? "active" : ""} onClick={() => changeMetric("tiktokLikes")}>TikTok likes</button><button className={metric === "youtubeViews" ? "active" : ""} onClick={() => changeMetric("youtubeViews")}>YouTube views</button></div>
-        </div>
+          <select value={metric} onChange={(event) => changeMetric(validMetric(event.target.value))}>
+            {metricOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+          </select>
+        </label>
         <div className="controlBlock">
           <span className="controlLabel">View</span>
           <div className="segmented compareViewSegments"><button className={view === "level" ? "active" : ""} onClick={() => changeView("level")}>Total</button><button className={view === "daily" ? "active" : ""} onClick={() => changeView("daily")}>1D</button><button className={view === "7d" ? "active" : ""} onClick={() => changeView("7d")}>7D</button><button className={view === "30d" ? "active" : ""} onClick={() => changeView("30d")}>30D</button><button className={view === "indexed" ? "active" : ""} onClick={() => changeView("indexed")}>Index</button></div>
