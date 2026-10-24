@@ -647,14 +647,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-24T19:05:54.280Z",
+      "imputedAt": "2026-10-24T21:33:31.094Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "content_unavailable",
         "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-24T20:05:54.280Z"
+      "nextRetryAt": "2026-10-24T22:33:31.094Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -3202,7 +3202,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-24T19:05:52.834Z",
+      "capturedAt": "2026-10-24T21:33:30.119Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3224,7 +3224,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-24T19:05:52.834Z",
+      "capturedAt": "2026-10-24T21:33:30.119Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -6945,18 +6945,18 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-24T19:05:52.834Z",
-  "retryAttempts": 3,
+  "lastAttemptAt": "2026-10-24T21:33:30.119Z",
+  "retryAttempts": 5,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 68,
-  "lastFallbackAt": "2026-10-24T19:05:06.585Z",
+  "lastFallbackAt": "2026-10-24T21:32:43.741Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-24T19:05:06.585Z",
+    "attemptedAt": "2026-10-24T21:32:43.741Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 3,
-        "success": 1,
+        "attempts": 2,
+        "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
@@ -7001,5 +7001,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-24T19:05:54.280Z"
+  "imputedAt": "2026-10-24T21:33:31.094Z"
 }
