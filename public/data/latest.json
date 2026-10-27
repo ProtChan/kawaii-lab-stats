@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T07:44:54.894Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "fetch_failed",
-        "detail": "tiktok: user stats not found in page (shape may have changed)"
+        "error": "content_unavailable",
+        "detail": "content unavailable: tiktok status 10221"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-27T03:08:22.779Z"
+      "nextRetryAt": "2026-10-27T08:44:54.894Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,7 +2780,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-27T02:07:42.124Z",
+      "capturedAt": "2026-10-27T07:44:54.007Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -2802,15 +2802,15 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-27T02:07:42.124Z",
+      "capturedAt": "2026-10-27T07:44:54.007Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
       "posts": null,
       "likes": null,
       "views": null,
-      "error": "fetch_failed",
-      "detail": "tiktok: user stats not found in page (shape may have changed)"
+      "error": "content_unavailable",
+      "detail": "content unavailable: tiktok status 10221"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -6189,10 +6189,10 @@
   ],
   "errors": [
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
-    "yuika-shimasaki:TIKTOK:_yuikachamu_: tiktok: user stats not found in page (shape may have changed)"
+    "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
   ],
-  "lastAttemptAt": "2026-10-27T02:07:42.124Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-10-27T07:44:54.007Z",
+  "retryAttempts": 7,
   "observedComplete": false,
   "observedSuccessful": 195,
   "imputed": 15,
@@ -6203,9 +6203,9 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-10-27T02:06:51.065Z",
+  "lastFallbackAt": "2026-10-27T07:44:07.508Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-27T02:06:51.065Z",
+    "attemptedAt": "2026-10-27T07:44:07.508Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
@@ -6214,9 +6214,9 @@
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
+        "attempts": 1,
         "success": 0,
-        "failed": 2,
+        "failed": 1,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       }
     }
@@ -6254,5 +6254,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-27T02:08:22.779Z"
+  "imputedAt": "2026-10-27T07:44:54.894Z"
 }
