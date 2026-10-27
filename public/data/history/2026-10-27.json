@@ -567,14 +567,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-27T07:44:54.894Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "content_unavailable",
-        "detail": "content unavailable: tiktok status 10221"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-27T08:44:54.894Z"
+      "nextRetryAt": "2026-10-27T14:38:39.731Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2780,15 +2780,15 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-27T07:44:54.007Z",
+      "capturedAt": "2026-10-27T13:37:58.079Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
       "posts": null,
       "likes": null,
       "views": null,
-      "error": "login_required",
-      "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+      "error": "batch_failed",
+      "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
     },
     {
       "entitySlug": "yuika-shimasaki",
@@ -2802,15 +2802,15 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-27T07:44:54.007Z",
+      "capturedAt": "2026-10-27T13:37:58.079Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
       "posts": null,
       "likes": null,
       "views": null,
-      "error": "content_unavailable",
-      "detail": "content unavailable: tiktok status 10221"
+      "error": "batch_failed",
+      "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -4804,14 +4804,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "kohaku-nakayama",
@@ -4904,14 +4904,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "sora-hagita",
@@ -5004,14 +5004,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "ami-morita",
@@ -5104,14 +5104,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "rushia-yamamoto",
@@ -5202,14 +5202,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "piki",
@@ -5327,14 +5327,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "kawaii-lab",
@@ -5426,14 +5426,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "sweet-steady",
@@ -5555,14 +5555,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "ayu-okuda",
@@ -5633,9 +5633,9 @@
       "handle": "otoi_yui_19",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/otoi_yui_19/",
-      "capturedAt": "2026-10-27T02:07:44.339Z",
+      "capturedAt": "2026-10-27T13:37:59.231Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
-      "followers": 142326,
+      "followers": 142318,
       "following": 311,
       "posts": 1041,
       "likes": null,
@@ -5652,15 +5652,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-10-27",
-      "imputedFromCapturedAt": "2026-10-27T02:07:44.339Z",
-      "imputedAt": "2026-10-27T02:07:44.339Z",
+      "imputedFromCapturedAt": "2026-10-27T13:37:59.231Z",
+      "imputedAt": "2026-10-27T13:37:59.231Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:07:44.339Z"
+      "nextRetryAt": "2026-10-27T19:37:59.231Z"
     },
     {
       "entitySlug": "yui-otoi",
@@ -5753,14 +5753,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "natsuka-kurita",
@@ -5831,9 +5831,9 @@
       "handle": "rise_shio",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/rise_shio/",
-      "capturedAt": "2026-10-27T02:07:44.339Z",
+      "capturedAt": "2026-10-27T13:37:59.231Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
-      "followers": 93572,
+      "followers": 93589,
       "following": 410,
       "posts": 257,
       "likes": null,
@@ -5850,15 +5850,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-10-27",
-      "imputedFromCapturedAt": "2026-10-27T02:07:44.339Z",
-      "imputedAt": "2026-10-27T02:07:44.339Z",
+      "imputedFromCapturedAt": "2026-10-27T13:37:59.231Z",
+      "imputedAt": "2026-10-27T13:37:59.231Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:07:44.339Z"
+      "nextRetryAt": "2026-10-27T19:37:59.231Z"
     },
     {
       "entitySlug": "rise-shiokawa",
@@ -5951,14 +5951,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "nagisa-shoji",
@@ -6029,11 +6029,11 @@
       "handle": "mayumi.1227",
       "platformId": null,
       "profileUrl": "https://instagram.com/mayumi.1227",
-      "capturedAt": "2026-10-27T02:07:44.339Z",
+      "capturedAt": "2026-10-27T13:37:59.231Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
-      "followers": 305917,
-      "following": 398,
-      "posts": 173,
+      "followers": 305935,
+      "following": 399,
+      "posts": 175,
       "likes": null,
       "views": null,
       "sourceUrl": "https://item.woomy.me/analysis/instagrammer_info.php?instagrammer_user_id=mayumi.1227&map_date=week",
@@ -6048,15 +6048,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-10-27",
-      "imputedFromCapturedAt": "2026-10-27T02:07:44.339Z",
-      "imputedAt": "2026-10-27T02:07:44.339Z",
+      "imputedFromCapturedAt": "2026-10-27T13:37:59.231Z",
+      "imputedAt": "2026-10-27T13:37:59.231Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:07:44.339Z"
+      "nextRetryAt": "2026-10-27T19:37:59.231Z"
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -6149,14 +6149,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-10-27T02:08:22.779Z",
+      "imputedAt": "2026-10-27T13:38:39.731Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
-        "error": "login_required",
-        "detail": "instagram: reading this needs a logged-in session (login wall from our residential reader)"
+        "error": "batch_failed",
+        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-10-27T08:08:22.779Z"
+      "nextRetryAt": "2026-10-27T19:38:39.731Z"
     },
     {
       "entitySlug": "sakina-yamauchi",
@@ -6188,11 +6188,11 @@
     }
   ],
   "errors": [
-    "yuika-shimasaki:INSTAGRAM:_yuikachamu_: instagram: reading this needs a logged-in session (login wall from our residential reader)",
-    "yuika-shimasaki:TIKTOK:_yuikachamu_: content unavailable: tiktok status 10221"
+    "yuika-shimasaki:INSTAGRAM:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}",
+    "yuika-shimasaki:TIKTOK:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
   ],
-  "lastAttemptAt": "2026-10-27T07:44:54.007Z",
-  "retryAttempts": 7,
+  "lastAttemptAt": "2026-10-27T13:37:58.079Z",
+  "retryAttempts": 9,
   "observedComplete": false,
   "observedSuccessful": 195,
   "imputed": 15,
@@ -6203,9 +6203,9 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-10-27T07:44:07.508Z",
+  "lastFallbackAt": "2026-10-27T13:37:06.974Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-27T07:44:07.508Z",
+    "attemptedAt": "2026-10-27T13:37:06.974Z",
     "routes": {
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
@@ -6214,16 +6214,16 @@
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 1,
+        "attempts": 2,
         "success": 0,
-        "failed": 1,
+        "failed": 2,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-27T02:06:56.508Z",
+  "instagramCffiAttemptAt": "2026-10-27T13:37:12.454Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-27T02:06:56.508Z",
+    "attemptedAt": "2026-10-27T13:37:12.454Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 15,
@@ -6236,9 +6236,9 @@
       "@kohaku_si2: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-27T02:07:44.339Z",
+  "instagramMirrorAttemptAt": "2026-10-27T13:37:59.231Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-27T02:07:44.339Z",
+    "attemptedAt": "2026-10-27T13:37:59.231Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 15,
@@ -6254,5 +6254,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-27T07:44:54.894Z"
+  "imputedAt": "2026-10-27T13:38:39.731Z"
 }
