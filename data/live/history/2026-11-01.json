@@ -199,7 +199,7 @@
       "handle": "rinomaru_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/rinomaru_/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 269339,
       "following": 617,
@@ -218,15 +218,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "rino-fukuyama",
@@ -298,7 +298,7 @@
       "handle": "kirihara_mizuki",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/kirihara_mizuki/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 347784,
       "following": 180,
@@ -317,15 +317,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "mizuki-kirihara",
@@ -397,7 +397,7 @@
       "handle": "nattanntan",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/nattanntan/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 111022,
       "following": 780,
@@ -416,15 +416,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "natsu-minami",
@@ -496,7 +496,7 @@
       "handle": "__nchisan__",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/__nchisan__/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 276533,
       "following": 468,
@@ -515,15 +515,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "nanako-ogawa",
@@ -595,7 +595,7 @@
       "handle": "kotomi_5chan",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/kotomi_5chan/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 570388,
       "following": 146,
@@ -614,15 +614,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "kotomi-tachibana",
@@ -658,14 +658,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-10-31T21:09:07.555Z",
+      "imputedAt": "2026-11-01T00:06:14.387Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-10-31T22:09:07.555Z"
+      "nextRetryAt": "2026-11-01T01:06:14.387Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -809,7 +809,7 @@
       "handle": "murakawabibiann",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/murakawabibiann/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 280037,
       "following": 794,
@@ -828,15 +828,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "bibian-murakawa",
@@ -1067,7 +1067,7 @@
       "handle": "fuuuuu_ri",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/fuuuuu_ri/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 520043,
       "following": 367,
@@ -1086,15 +1086,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "risa-furusawa",
@@ -1871,7 +1871,7 @@
       "handle": "fruits_zipper",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/fruits_zipper/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 807539,
       "following": 21,
@@ -1890,15 +1890,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "fruits-zipper",
@@ -1999,7 +1999,7 @@
       "handle": "am1026_official",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/am1026_official/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 495200,
       "following": 234,
@@ -2018,15 +2018,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "amane-tsukiashi",
@@ -2129,7 +2129,7 @@
       "handle": "tarasuzuka24",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/tarasuzuka24/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 679092,
       "following": 543,
@@ -2148,15 +2148,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "suzuka-chinzei",
@@ -2259,7 +2259,7 @@
       "handle": "yui.sakurai_7",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/yui.sakurai_7/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 791612,
       "following": 683,
@@ -2278,15 +2278,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "yui-sakurai",
@@ -2358,7 +2358,7 @@
       "handle": "luna_7373",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/luna_7373/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 402188,
       "following": 468,
@@ -2377,15 +2377,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "luna-nakagawa",
@@ -2457,7 +2457,7 @@
       "handle": "manafy_baby",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/manafy_baby/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 273275,
       "following": 95,
@@ -2476,15 +2476,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "mana-manaka",
@@ -2657,7 +2657,7 @@
       "handle": "noel_hayase",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/noel_hayase/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 286605,
       "following": 260,
@@ -2676,15 +2676,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "noel-hayase",
@@ -3261,7 +3261,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-10-31T21:09:06.155Z",
+      "capturedAt": "2026-11-01T00:05:03.415Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3283,7 +3283,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-10-31T21:09:06.155Z",
+      "capturedAt": "2026-11-01T00:05:03.415Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -6511,7 +6511,7 @@
       "handle": "otoi_yui_19",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/otoi_yui_19/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 142304,
       "following": 311,
@@ -6530,15 +6530,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "yui-otoi",
@@ -6711,7 +6711,7 @@
       "handle": "rise_shio",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/rise_shio/",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 93656,
       "following": 410,
@@ -6730,15 +6730,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "rise-shiokawa",
@@ -6911,7 +6911,7 @@
       "handle": "mayumi.1227",
       "platformId": null,
       "profileUrl": "https://instagram.com/mayumi.1227",
-      "capturedAt": "2026-10-31T18:02:58.003Z",
+      "capturedAt": "2026-11-01T00:05:03.954Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 305864,
       "following": 400,
@@ -6930,15 +6930,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-01",
-      "imputedFromCapturedAt": "2026-10-31T18:02:58.003Z",
-      "imputedAt": "2026-10-31T18:02:58.003Z",
+      "imputedFromCapturedAt": "2026-11-01T00:05:03.954Z",
+      "imputedAt": "2026-11-01T00:05:03.954Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-01T00:02:58.003Z"
+      "nextRetryAt": "2026-11-01T06:05:03.954Z"
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -7075,8 +7075,8 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
   ],
-  "lastAttemptAt": "2026-10-31T21:09:06.155Z",
-  "retryAttempts": 3,
+  "lastAttemptAt": "2026-11-01T00:05:03.415Z",
+  "retryAttempts": 5,
   "observedComplete": false,
   "observedSuccessful": 142,
   "imputed": 68,
@@ -7087,27 +7087,27 @@
     "failed": 0,
     "lastErrors": []
   },
-  "lastFallbackAt": "2026-10-31T21:08:18.966Z",
+  "lastFallbackAt": "2026-11-01T00:04:10.156Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-10-31T21:08:18.966Z",
+    "attemptedAt": "2026-11-01T00:04:10.156Z",
     "routes": {
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+        "attempts": 2,
+        "success": 0,
+        "failed": 2,
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
+      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
-      },
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 1,
-        "success": 0,
-        "failed": 1,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-10-31T18:01:45.354Z",
+  "instagramCffiAttemptAt": "2026-11-01T00:04:17.447Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-10-31T18:01:45.354Z",
+    "attemptedAt": "2026-11-01T00:04:17.447Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 68,
@@ -7120,9 +7120,9 @@
       "@rinomaru_: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-10-31T18:02:58.003Z",
+  "instagramMirrorAttemptAt": "2026-11-01T00:05:03.954Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-10-31T18:02:58.003Z",
+    "attemptedAt": "2026-11-01T00:05:03.954Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 68,
@@ -7138,5 +7138,5 @@
       }
     }
   },
-  "imputedAt": "2026-10-31T21:09:07.555Z"
+  "imputedAt": "2026-11-01T00:06:14.387Z"
 }
