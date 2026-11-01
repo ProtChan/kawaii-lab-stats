@@ -6672,10 +6672,10 @@
       "candy-tune": {
         "name": "CANDY TUNE",
         "official": 1457277,
-        "members": 4572503,
-        "ecosystem": 6029780,
+        "members": 4572495,
+        "ecosystem": 6029772,
         "platforms": {
-          "X": 1151545,
+          "X": 1151537,
           "Instagram": 2321241,
           "TikTok": 1906394,
           "YouTube": 650600
@@ -6684,17 +6684,17 @@
         "youtubeViewAccounts": 2,
         "tiktokLikes": 73752200,
         "tiktokLikeAccounts": 7,
-        "observedAccounts": 16,
-        "imputedAccounts": 10,
+        "observedAccounts": 17,
+        "imputedAccounts": 9,
         "expectedAccounts": 26
       },
       "cutie-street": {
         "name": "CUTIE STREET",
         "official": 2943555,
-        "members": 8661243,
-        "ecosystem": 11604798,
+        "members": 8661305,
+        "ecosystem": 11604860,
         "platforms": {
-          "X": 1686270,
+          "X": 1686332,
           "Instagram": 4252131,
           "TikTok": 4754397,
           "YouTube": 912000
@@ -6703,17 +6703,17 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 321211797,
         "tiktokLikeAccounts": 9,
-        "observedAccounts": 16,
-        "imputedAccounts": 12,
+        "observedAccounts": 18,
+        "imputedAccounts": 10,
         "expectedAccounts": 28
       },
       "fruits-zipper": {
         "name": "FRUITS ZIPPER",
         "official": 3172638,
-        "members": 8747092,
-        "ecosystem": 11919730,
+        "members": 8746868,
+        "ecosystem": 11919506,
         "platforms": {
-          "X": 2380805,
+          "X": 2380581,
           "Instagram": 4364811,
           "TikTok": 3933414,
           "YouTube": 1240700
@@ -6722,17 +6722,17 @@
         "youtubeViewAccounts": 4,
         "tiktokLikes": 193878484,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 17,
-        "imputedAccounts": 11,
+        "observedAccounts": 19,
+        "imputedAccounts": 9,
         "expectedAccounts": 28
       },
       "more-star": {
         "name": "MORE STAR",
         "official": 221178,
-        "members": 728526,
-        "ecosystem": 949704,
+        "members": 728543,
+        "ecosystem": 949721,
         "platforms": {
-          "X": 192221,
+          "X": 192238,
           "Instagram": 319000,
           "TikTok": 397883,
           "YouTube": 40600
@@ -6741,17 +6741,17 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 18218923,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 14,
-        "imputedAccounts": 11,
+        "observedAccounts": 17,
+        "imputedAccounts": 8,
         "expectedAccounts": 25
       },
       "sweet-steady": {
         "name": "SWEET STEADY",
         "official": 750525,
-        "members": 2728995,
-        "ecosystem": 3479520,
+        "members": 2729010,
+        "ecosystem": 3479535,
         "platforms": {
-          "X": 507456,
+          "X": 507471,
           "Instagram": 1354923,
           "TikTok": 1251141,
           "YouTube": 366000
@@ -6760,8 +6760,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 37960227,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 12,
-        "imputedAccounts": 13,
+        "observedAccounts": 16,
+        "imputedAccounts": 9,
         "expectedAccounts": 25
       }
     }
