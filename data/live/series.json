@@ -6691,10 +6691,10 @@
       "cutie-street": {
         "name": "CUTIE STREET",
         "official": 2943555,
-        "members": 8661305,
-        "ecosystem": 11604860,
+        "members": 8661388,
+        "ecosystem": 11604943,
         "platforms": {
-          "X": 1686332,
+          "X": 1686415,
           "Instagram": 4252131,
           "TikTok": 4754397,
           "YouTube": 912000
@@ -6703,8 +6703,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 321211797,
         "tiktokLikeAccounts": 9,
-        "observedAccounts": 18,
-        "imputedAccounts": 10,
+        "observedAccounts": 19,
+        "imputedAccounts": 9,
         "expectedAccounts": 28
       },
       "fruits-zipper": {
