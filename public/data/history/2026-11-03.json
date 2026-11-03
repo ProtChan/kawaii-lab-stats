@@ -91,14 +91,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "candy-tune",
@@ -199,7 +199,7 @@
       "handle": "rinomaru_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/rinomaru_/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 269302,
       "following": 617,
@@ -218,15 +218,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "rino-fukuyama",
@@ -269,36 +269,22 @@
       "handle": "mizuki_ct0221",
       "platformId": null,
       "profileUrl": "https://x.com/mizuki_ct0221",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 169872,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 169836,
       "following": 231,
-      "posts": 13175,
-      "likes": 59740,
+      "posts": 12087,
+      "likes": 59739,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/mizuki_ct0221",
       "providerPlatform": "x",
       "providerHandle": "mizuki_ct0221",
       "providerName": "桐原美月 (CANDY TUNE)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2090765726663725056/LQUTMuOU_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "mizuki-kirihara",
@@ -312,7 +298,7 @@
       "handle": "kirihara_mizuki",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/kirihara_mizuki/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 347784,
       "following": 180,
@@ -331,15 +317,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "mizuki-kirihara",
@@ -411,7 +397,7 @@
       "handle": "nattanntan",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/nattanntan/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 111054,
       "following": 782,
@@ -430,15 +416,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "natsu-minami",
@@ -503,14 +489,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "nanako-ogawa",
@@ -524,7 +510,7 @@
       "handle": "__nchisan__",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/__nchisan__/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 276643,
       "following": 468,
@@ -543,15 +529,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "nanako-ogawa",
@@ -623,7 +609,7 @@
       "handle": "kotomi_5chan",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/kotomi_5chan/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 570405,
       "following": 146,
@@ -642,15 +628,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "kotomi-tachibana",
@@ -686,14 +672,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -729,14 +715,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -772,14 +758,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -822,36 +808,22 @@
       "handle": "bibian_ct1203",
       "platformId": null,
       "profileUrl": "https://x.com/bibian_ct1203",
-      "capturedAt": "2026-11-01T17:56:29.151Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 162959,
-      "following": 880,
-      "posts": 18506,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 162956,
+      "following": 881,
+      "posts": 18507,
       "likes": 100382,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/bibian_ct1203",
       "providerPlatform": "x",
       "providerHandle": "bibian_ct1203",
       "providerName": "村川緋杏（CANDY TUNE）",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2090765477148848128/p4qMSdnE_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "bibian-murakawa",
@@ -865,7 +837,7 @@
       "handle": "murakawabibiann",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/murakawabibiann/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 279926,
       "following": 794,
@@ -884,15 +856,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "bibian-murakawa",
@@ -987,14 +959,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "cutie-street",
@@ -1029,14 +1001,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "cutie-street",
@@ -1137,7 +1109,7 @@
       "handle": "fuuuuu_ri",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/fuuuuu_ri/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 520152,
       "following": 367,
@@ -1156,15 +1128,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "risa-furusawa",
@@ -1207,36 +1179,22 @@
       "handle": "aika_cs1126",
       "platformId": null,
       "profileUrl": "https://x.com/aika_cs1126",
-      "capturedAt": "2026-11-01T17:56:29.151Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 132457,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 132486,
       "following": 160,
-      "posts": 3699,
-      "likes": 42284,
+      "posts": 3702,
+      "likes": 42287,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/aika_cs1126",
       "providerPlatform": "x",
       "providerHandle": "aika_cs1126",
       "providerName": "佐野 愛花 (CUTIE STREET)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2027372979961860096/Eb-cnyGu_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "aika-sano",
@@ -1272,14 +1230,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "aika-sano",
@@ -1344,14 +1302,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "kana-itakura",
@@ -1387,14 +1345,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kana-itakura",
@@ -1437,36 +1395,22 @@
       "handle": "ayano_cs0526",
       "platformId": null,
       "profileUrl": "https://x.com/ayano_cs0526",
-      "capturedAt": "2026-11-01T17:56:29.151Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 208620,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 208611,
       "following": 88,
       "posts": 8234,
-      "likes": 72892,
+      "likes": 72854,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/ayano_cs0526",
       "providerPlatform": "x",
       "providerHandle": "ayano_cs0526",
       "providerName": "増田 彩乃 (CUTIE STREET)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2027374673210847232/ajNcn7N7_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "ayano-masuda",
@@ -1502,14 +1446,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "ayano-masuda",
@@ -1603,14 +1547,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "emiru-kawamoto",
@@ -1675,14 +1619,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "miyu-umeda",
@@ -1718,14 +1662,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "miyu-umeda",
@@ -1819,14 +1763,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "nagisa-manabe",
@@ -1891,14 +1835,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "haruka-sakuraba",
@@ -1934,14 +1878,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "haruka-sakuraba",
@@ -2011,7 +1955,7 @@
       "handle": "fruits_zipper",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/fruits_zipper/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 806849,
       "following": 21,
@@ -2030,15 +1974,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "fruits-zipper",
@@ -2139,7 +2083,7 @@
       "handle": "am1026_official",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/am1026_official/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 495200,
       "following": 234,
@@ -2158,15 +2102,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "amane-tsukiashi",
@@ -2269,7 +2213,7 @@
       "handle": "tarasuzuka24",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/tarasuzuka24/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 678792,
       "following": 543,
@@ -2288,15 +2232,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "suzuka-chinzei",
@@ -2399,7 +2343,7 @@
       "handle": "yui.sakurai_7",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/yui.sakurai_7/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 791084,
       "following": 683,
@@ -2418,15 +2362,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "yui-sakurai",
@@ -2491,14 +2435,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "luna-nakagawa",
@@ -2512,7 +2456,7 @@
       "handle": "luna_7373",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/luna_7373/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 402188,
       "following": 468,
@@ -2531,15 +2475,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "luna-nakagawa",
@@ -2604,14 +2548,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "mana-manaka",
@@ -2625,7 +2569,7 @@
       "handle": "manafy_baby",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/manafy_baby/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 273192,
       "following": 95,
@@ -2644,15 +2588,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "mana-manaka",
@@ -2695,36 +2639,22 @@
       "handle": "karen_fz0328",
       "platformId": null,
       "profileUrl": "https://x.com/karen_fz0328",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 319623,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 319550,
       "following": 14,
-      "posts": 12382,
-      "likes": 69147,
+      "posts": 12386,
+      "likes": 69146,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/karen_fz0328",
       "providerPlatform": "x",
       "providerHandle": "karen_fz0328",
       "providerName": "松本かれん( FRUITS ZIPPER )",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2006384437324574720/S9k-R98a_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "karen-matsumoto",
@@ -2760,14 +2690,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "karen-matsumoto",
@@ -2839,7 +2769,7 @@
       "handle": "noel_hayase",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/noel_hayase/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 286524,
       "following": 260,
@@ -2858,15 +2788,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "noel-hayase",
@@ -2961,14 +2891,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kawaii-lab-mates",
@@ -3032,14 +2962,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "momo-aoshima",
@@ -3075,14 +3005,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "momo-aoshima",
@@ -3125,36 +3055,22 @@
       "handle": "erena_0701",
       "platformId": null,
       "profileUrl": "https://x.com/erena_0701",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 2008,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 2012,
       "following": 92,
-      "posts": 444,
-      "likes": 5061,
+      "posts": 452,
+      "likes": 5088,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/erena_0701",
       "providerPlatform": "x",
       "providerHandle": "erena_0701",
       "providerName": "伊丹 恵玲奈",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2075510378268897280/e8dJwGwH_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "erena-itami",
@@ -3190,14 +3106,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "erena-itami",
@@ -3262,14 +3178,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "konomi-kato",
@@ -3305,14 +3221,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "konomi-kato",
@@ -3406,14 +3322,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "shui-sato",
@@ -3485,7 +3401,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-11-02T17:23:36.915Z",
+      "capturedAt": "2026-11-02T23:57:38.656Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3507,7 +3423,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-11-02T17:23:36.915Z",
+      "capturedAt": "2026-11-02T23:57:38.656Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3580,14 +3496,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "saki-sogawa",
@@ -3681,14 +3597,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kaho-takayama",
@@ -3753,14 +3669,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "lilica-tsuji",
@@ -3796,14 +3712,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "lilica-tsuji",
@@ -3846,36 +3762,22 @@
       "handle": "leona_KLM0627",
       "platformId": null,
       "profileUrl": "https://x.com/leona_KLM0627",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 2866,
-      "following": 96,
-      "posts": 1177,
-      "likes": 6663,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 2881,
+      "following": 98,
+      "posts": 1181,
+      "likes": 6732,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/leona_KLM0627",
       "providerPlatform": "x",
       "providerHandle": "leona_KLM0627",
       "providerName": "中森玲緒奈(KAWAII LAB. MATES)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2075510602454470657/-fXcY9gz_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "leona-nakamori",
@@ -3911,14 +3813,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "leona-nakamori",
@@ -3983,14 +3885,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "keina-hashimoto",
@@ -4026,14 +3928,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "keina-hashimoto",
@@ -4076,36 +3978,22 @@
       "handle": "coco_klm_0218",
       "platformId": null,
       "profileUrl": "https://x.com/coco_klm_0218",
-      "capturedAt": "2026-11-01T17:56:29.151Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 7192,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 7194,
       "following": 138,
-      "posts": 4172,
-      "likes": 20879,
+      "posts": 4175,
+      "likes": 20930,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/coco_klm_0218",
       "providerPlatform": "x",
       "providerHandle": "coco_KLM_0218",
       "providerName": "山下ここ(KAWAIILAB.MATES)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2006532504321507328/5ff4yqw6_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "coco-yamashita",
@@ -4141,14 +4029,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "coco-yamashita",
@@ -4242,14 +4130,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kanon-yokoyama",
@@ -4313,14 +4201,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kawaii-lab-south",
@@ -4413,14 +4301,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "koharu-arimura",
@@ -4514,14 +4402,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "seri-ohkawa",
@@ -4586,14 +4474,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "ayaka-kadokura",
@@ -4629,14 +4517,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "ayaka-kadokura",
@@ -4730,14 +4618,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "iroha-sawamura",
@@ -4780,36 +4668,22 @@
       "handle": "aiko_KLS1018",
       "platformId": null,
       "profileUrl": "https://x.com/aiko_KLS1018",
-      "capturedAt": "2026-11-02T00:59:00.291Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 7452,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 7464,
       "following": 109,
-      "posts": 2612,
-      "likes": 16177,
+      "posts": 2618,
+      "likes": 16205,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/aiko_KLS1018",
       "providerPlatform": "x",
       "providerHandle": "aiko_KLS1018",
       "providerName": "濵嵜愛子(KAWAII LAB. SOUTH)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2111877243421294592/U7QZk1Ai_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-02T00:59:00.291Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "aiko-hamasaki",
@@ -4845,14 +4719,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "aiko-hamasaki",
@@ -4946,14 +4820,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "nana-matsuda",
@@ -5047,14 +4921,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "mene-morino",
@@ -5148,14 +5022,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "mao-kuroda",
@@ -5249,14 +5123,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kaede-fukumoto",
@@ -5348,14 +5222,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "more-star",
@@ -5478,14 +5352,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "cocona-arai",
@@ -5528,36 +5402,22 @@
       "handle": "marin_ms_0329",
       "platformId": null,
       "profileUrl": "https://x.com/marin_ms_0329",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 28879,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 28880,
       "following": 222,
-      "posts": 3400,
-      "likes": 62489,
+      "posts": 3406,
+      "likes": 62647,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/marin_ms_0329",
       "providerPlatform": "x",
       "providerHandle": "marin_ms_0329",
       "providerName": "遠藤まりん(MORE STAR)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2103359001409036288/sFysmAua_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "marin-endo",
@@ -5593,14 +5453,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "marin-endo",
@@ -5643,36 +5503,22 @@
       "handle": "nanaka_ms0707",
       "platformId": null,
       "profileUrl": "https://x.com/nanaka_ms0707",
-      "capturedAt": "2026-11-01T17:56:29.151Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 16645,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 16649,
       "following": 151,
-      "posts": 6182,
-      "likes": 25426,
+      "posts": 6189,
+      "likes": 25536,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/nanaka_ms0707",
       "providerPlatform": "x",
       "providerHandle": "nanaka_ms0707",
       "providerName": "笹原なな花(MORE STAR)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2103319677682561024/hHOrHZBU_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "nanaka-sasahara",
@@ -5708,14 +5554,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "nanaka-sasahara",
@@ -5809,14 +5655,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "karin-suzuki",
@@ -5910,14 +5756,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-27",
       "imputedFromCapturedAt": "2026-10-26T19:28:03.508Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -5960,36 +5806,22 @@
       "handle": "kohaku_ms0730",
       "platformId": null,
       "profileUrl": "https://x.com/kohaku_ms0730",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 28977,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 28976,
       "following": 129,
-      "posts": 6575,
-      "likes": 74516,
+      "posts": 6577,
+      "likes": 74576,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/kohaku_ms0730",
       "providerPlatform": "x",
       "providerHandle": "kohaku_ms0730",
       "providerName": "中山こはく（MORE STAR)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2103318279909691392/HS0eYsdd_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "kohaku-nakayama",
@@ -6025,14 +5857,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kohaku-nakayama",
@@ -6075,36 +5907,22 @@
       "handle": "sora_ms0816",
       "platformId": null,
       "profileUrl": "https://x.com/sora_ms0816",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 18295,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 18298,
       "following": 156,
-      "posts": 20956,
-      "likes": 60169,
+      "posts": 20973,
+      "likes": 60217,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/sora_ms0816",
       "providerPlatform": "x",
       "providerHandle": "sora_ms0816",
       "providerName": "萩田そら(MORE STAR)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2103316866928353280/APyCWF38_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "sora-hagita",
@@ -6140,14 +5958,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "sora-hagita",
@@ -6241,14 +6059,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "ami-morita",
@@ -6291,36 +6109,22 @@
       "handle": "rushia_ms1013",
       "platformId": null,
       "profileUrl": "https://x.com/rushia_ms1013",
-      "capturedAt": "2026-11-02T00:59:00.291Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 25717,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 25708,
       "following": 228,
       "posts": 12944,
-      "likes": 127638,
+      "likes": 127627,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/rushia_ms1013",
       "providerPlatform": "x",
       "providerHandle": "rushia_ms1013",
       "providerName": "山本るしあ(MORE STAR)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/1997954306469941248/yBIuoD2y_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-02T00:59:00.291Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "rushia-yamamoto",
@@ -6356,14 +6160,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "rushia-yamamoto",
@@ -6405,9 +6209,9 @@
       "handle": "piki__official",
       "platformId": null,
       "profileUrl": "https://x.com/piki__official",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 62071,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 62042,
       "following": 4,
       "posts": 642,
       "likes": 35,
@@ -6416,25 +6220,11 @@
       "providerPlatform": "x",
       "providerHandle": "piki__official",
       "providerName": "PiKi",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1962888130392199168/yrvY7MiH_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "piki",
@@ -6469,14 +6259,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "piki",
@@ -6595,14 +6385,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "kawaii-lab",
@@ -6666,14 +6456,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "sweet-steady",
@@ -6708,14 +6498,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "sweet-steady",
@@ -6838,14 +6628,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "ayu-okuda",
@@ -6888,36 +6678,22 @@
       "handle": "yui_ss0109",
       "platformId": null,
       "profileUrl": "https://x.com/yui_ss0109",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 67485,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 67490,
       "following": 591,
-      "posts": 26196,
-      "likes": 887257,
+      "posts": 26207,
+      "likes": 887373,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/yui_ss0109",
       "providerPlatform": "x",
       "providerHandle": "yui_ss0109",
       "providerName": "音井 結衣(SWEET STEADY)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2025536289660153856/1UIS-Yc6_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "yui-otoi",
@@ -6931,7 +6707,7 @@
       "handle": "otoi_yui_19",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/otoi_yui_19/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 142318,
       "following": 312,
@@ -6950,15 +6726,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "yui-otoi",
@@ -7023,14 +6799,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "natsuka-kurita",
@@ -7066,14 +6842,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "natsuka-kurita",
@@ -7138,14 +6914,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-02",
       "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "nextRetryAt": "2026-11-03T01:00:03.368Z"
     },
     {
       "entitySlug": "rise-shiokawa",
@@ -7159,7 +6935,7 @@
       "handle": "rise_shio",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/rise_shio/",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 93673,
       "following": 410,
@@ -7178,15 +6954,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "rise-shiokawa",
@@ -7280,14 +7056,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "nagisa-shoji",
@@ -7330,36 +7106,22 @@
       "handle": "mayumi_ss1227",
       "platformId": null,
       "profileUrl": "https://x.com/mayumi_ss1227",
-      "capturedAt": "2026-11-01T17:56:29.151Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 91002,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 90994,
       "following": 586,
-      "posts": 27563,
-      "likes": 193445,
+      "posts": 27566,
+      "likes": 193444,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/mayumi_ss1227",
       "providerPlatform": "x",
       "providerHandle": "mayumi_ss1227",
       "providerName": "白石まゆみ(SWEET STEADY)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2025538277764452352/ai4LSzd4_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T17:56:29.151Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -7373,7 +7135,7 @@
       "handle": "mayumi.1227",
       "platformId": null,
       "profileUrl": "https://instagram.com/mayumi.1227",
-      "capturedAt": "2026-11-02T17:24:30.371Z",
+      "capturedAt": "2026-11-02T23:58:30.411Z",
       "sourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "followers": 305875,
       "following": 399,
@@ -7392,15 +7154,15 @@
       "imputed": true,
       "imputationMethod": "PUBLIC_MIRROR",
       "imputedFromDate": "2026-11-03",
-      "imputedFromCapturedAt": "2026-11-02T17:24:30.371Z",
-      "imputedAt": "2026-11-02T17:24:30.371Z",
+      "imputedFromCapturedAt": "2026-11-02T23:58:30.411Z",
+      "imputedAt": "2026-11-02T23:58:30.411Z",
       "imputedSourceType": "INSTAGRAM_WOOMY_PUBLIC_MIRROR",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:24:30.371Z"
+      "nextRetryAt": "2026-11-03T05:58:30.411Z"
     },
     {
       "entitySlug": "mayumi-shiraishi",
@@ -7443,36 +7205,22 @@
       "handle": "sakina_ss0229",
       "platformId": null,
       "profileUrl": "https://x.com/sakina_ss0229",
-      "capturedAt": "2026-11-01T21:28:59.192Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 32917,
+      "capturedAt": "2026-11-02T23:56:18.834Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 32911,
       "following": 133,
-      "posts": 10407,
-      "likes": 171551,
+      "posts": 10412,
+      "likes": 171579,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/sakina_ss0229",
       "providerPlatform": "x",
       "providerHandle": "sakina_ss0229",
       "providerName": "山内咲奈（SWEET STEADY）",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2025536615347834881/a5FXq_Mv_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-02",
-      "imputedFromCapturedAt": "2026-11-01T21:28:59.192Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-02T18:25:46.071Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "sakina-yamauchi",
@@ -7508,14 +7256,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-10-26",
       "imputedFromCapturedAt": "2026-10-25T16:03:13.724Z",
-      "imputedAt": "2026-11-02T17:25:46.071Z",
+      "imputedAt": "2026-11-03T00:00:03.368Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 360,
-      "nextRetryAt": "2026-11-02T23:25:46.071Z"
+      "nextRetryAt": "2026-11-03T06:00:03.368Z"
     },
     {
       "entitySlug": "sakina-yamauchi",
@@ -7551,25 +7299,25 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
   ],
-  "lastAttemptAt": "2026-11-02T17:23:36.915Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-11-02T23:57:38.656Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 108,
-  "imputed": 102,
-  "lastFxTwitterFallbackAt": "2026-11-02T17:21:01.413Z",
+  "observedSuccessful": 126,
+  "imputed": 84,
+  "lastFxTwitterFallbackAt": "2026-11-02T23:56:18.834Z",
   "xFxTwitterHealth": {
-    "attempted": 66,
-    "success": 32,
-    "failed": 34,
+    "attempted": 34,
+    "success": 18,
+    "failed": 16,
     "lastErrors": [
-      "rise_ss0731: FxTwitter HTTP 404 code=404: User not found",
-      "mayumi_ss1227: FxTwitter HTTP 404 code=404: User not found",
-      "sakina_ss0229: FxTwitter HTTP 404 code=404: User not found"
+      "SWEET_STEADY: FxTwitter HTTP 404 code=404: User not found",
+      "natsuka_ss0719: FxTwitter HTTP 404 code=404: User not found",
+      "rise_ss0731: FxTwitter HTTP 404 code=404: User not found"
     ]
   },
-  "lastFallbackAt": "2026-11-02T17:21:48.021Z",
+  "lastFallbackAt": "2026-11-02T23:56:43.294Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-11-02T17:21:48.021Z",
+    "attemptedAt": "2026-11-02T23:56:43.294Z",
     "routes": {
       "INSTAGRAM_ANONYMOUS_MULTIHOST": {
         "attempts": 2,
@@ -7577,23 +7325,23 @@
         "failed": 2,
         "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       },
+      "X_PUBLIC_SYNDICATION": {
+        "attempts": 16,
+        "success": 0,
+        "failed": 16,
+        "lastError": "X syndication returned invalid JSON: "
+      },
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 67,
-        "success": 65,
+        "attempts": 2,
+        "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
-      },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 34,
-        "success": 0,
-        "failed": 34,
-        "lastError": "X syndication returned invalid JSON: "
       }
     }
   },
-  "instagramCffiAttemptAt": "2026-11-02T17:22:51.032Z",
+  "instagramCffiAttemptAt": "2026-11-02T23:56:52.963Z",
   "instagramCffiRouteHealth": {
-    "attemptedAt": "2026-11-02T17:22:51.032Z",
+    "attemptedAt": "2026-11-02T23:56:52.963Z",
     "route": "CURL_CFFI_WEB_PROFILE_INFO",
     "authenticated": false,
     "targets": 68,
@@ -7606,9 +7354,9 @@
       "@rinomaru_: HTTP 401: {\"message\":\"Please wait a few minutes before you try again.\",\"require_login\":true,\"igweb_rollout\":true,\"status\":\"fail\"}"
     ]
   },
-  "instagramMirrorAttemptAt": "2026-11-02T17:24:30.371Z",
+  "instagramMirrorAttemptAt": "2026-11-02T23:58:30.411Z",
   "instagramMirrorRouteHealth": {
-    "attemptedAt": "2026-11-02T17:24:30.371Z",
+    "attemptedAt": "2026-11-02T23:58:30.411Z",
     "routes": {
       "INSTAGRAM_WOOMY_PUBLIC_MIRROR": {
         "attempts": 68,
@@ -7624,5 +7372,5 @@
       }
     }
   },
-  "imputedAt": "2026-11-02T17:25:46.071Z"
+  "imputedAt": "2026-11-03T00:00:03.368Z"
 }
