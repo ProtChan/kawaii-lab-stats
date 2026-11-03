@@ -6773,11 +6773,11 @@
       "candy-tune": {
         "name": "CANDY TUNE",
         "official": 1460253,
-        "members": 4572548,
-        "ecosystem": 6032801,
+        "members": 4572731,
+        "ecosystem": 6032984,
         "platforms": {
           "X": 1151452,
-          "Instagram": 2321114,
+          "Instagram": 2321297,
           "TikTok": 1906635,
           "YouTube": 653600
         },
@@ -6791,12 +6791,12 @@
       },
       "cutie-street": {
         "name": "CUTIE STREET",
-        "official": 2944772,
-        "members": 8661625,
-        "ecosystem": 11606397,
+        "official": 2944906,
+        "members": 8661658,
+        "ecosystem": 11606564,
         "platforms": {
-          "X": 1686540,
-          "Instagram": 4252152,
+          "X": 1686674,
+          "Instagram": 4252185,
           "TikTok": 4754705,
           "YouTube": 913000
         },
@@ -6804,18 +6804,18 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 321363517,
         "tiktokLikeAccounts": 9,
-        "observedAccounts": 17,
-        "imputedAccounts": 11,
+        "observedAccounts": 18,
+        "imputedAccounts": 10,
         "expectedAccounts": 28
       },
       "fruits-zipper": {
         "name": "FRUITS ZIPPER",
-        "official": 3172038,
-        "members": 8746394,
-        "ecosystem": 11918432,
+        "official": 3172125,
+        "members": 8746982,
+        "ecosystem": 11919107,
         "platforms": {
-          "X": 2380365,
-          "Instagram": 4363829,
+          "X": 2380244,
+          "Instagram": 4364625,
           "TikTok": 3933538,
           "YouTube": 1240700
         },
@@ -6823,8 +6823,8 @@
         "youtubeViewAccounts": 4,
         "tiktokLikes": 193974386,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 19,
-        "imputedAccounts": 9,
+        "observedAccounts": 20,
+        "imputedAccounts": 8,
         "expectedAccounts": 28
       },
       "more-star": {
@@ -6849,11 +6849,11 @@
       "sweet-steady": {
         "name": "SWEET STEADY",
         "official": 752596,
-        "members": 2729113,
-        "ecosystem": 3481709,
+        "members": 2729115,
+        "ecosystem": 3481711,
         "platforms": {
           "X": 507445,
-          "Instagram": 1354866,
+          "Instagram": 1354868,
           "TikTok": 1251398,
           "YouTube": 368000
         },
