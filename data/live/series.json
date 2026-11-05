@@ -6975,10 +6975,10 @@
       "candy-tune": {
         "name": "CANDY TUNE",
         "official": 1466750,
-        "members": 4578525,
-        "ecosystem": 6045275,
+        "members": 4578401,
+        "ecosystem": 6045151,
         "platforms": {
-          "X": 1150290,
+          "X": 1150166,
           "Instagram": 2326935,
           "TikTok": 1908450,
           "YouTube": 659600
@@ -6987,8 +6987,8 @@
         "youtubeViewAccounts": 2,
         "tiktokLikes": 73909151,
         "tiktokLikeAccounts": 7,
-        "observedAccounts": 15,
-        "imputedAccounts": 11,
+        "observedAccounts": 16,
+        "imputedAccounts": 10,
         "expectedAccounts": 26
       },
       "cutie-street": {
@@ -7013,10 +7013,10 @@
       "fruits-zipper": {
         "name": "FRUITS ZIPPER",
         "official": 3182822,
-        "members": 8752171,
-        "ecosystem": 11934993,
+        "members": 8751929,
+        "ecosystem": 11934751,
         "platforms": {
-          "X": 2378367,
+          "X": 2378125,
           "Instagram": 4370228,
           "TikTok": 3935598,
           "YouTube": 1250800
@@ -7025,17 +7025,17 @@
         "youtubeViewAccounts": 4,
         "tiktokLikes": 194151171,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 19,
-        "imputedAccounts": 9,
+        "observedAccounts": 20,
+        "imputedAccounts": 8,
         "expectedAccounts": 28
       },
       "more-star": {
         "name": "MORE STAR",
         "official": 221615,
-        "members": 730429,
-        "ecosystem": 952044,
+        "members": 730400,
+        "ecosystem": 952015,
         "platforms": {
-          "X": 192441,
+          "X": 192412,
           "Instagram": 319000,
           "TikTok": 400003,
           "YouTube": 40600
@@ -7044,8 +7044,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 18343969,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 15,
-        "imputedAccounts": 10,
+        "observedAccounts": 17,
+        "imputedAccounts": 8,
         "expectedAccounts": 25
       },
       "sweet-steady": {
