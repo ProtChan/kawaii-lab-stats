@@ -7095,10 +7095,10 @@
       "cutie-street": {
         "name": "CUTIE STREET",
         "official": 2948669,
-        "members": 8664691,
-        "ecosystem": 11613360,
+        "members": 8664641,
+        "ecosystem": 11613310,
         "platforms": {
-          "X": 1685074,
+          "X": 1685024,
           "Instagram": 4254086,
           "TikTok": 4759200,
           "YouTube": 915000
@@ -7107,8 +7107,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 321844402,
         "tiktokLikeAccounts": 9,
-        "observedAccounts": 17,
-        "imputedAccounts": 11,
+        "observedAccounts": 18,
+        "imputedAccounts": 10,
         "expectedAccounts": 28
       },
       "fruits-zipper": {
@@ -7133,10 +7133,10 @@
       "more-star": {
         "name": "MORE STAR",
         "official": 221822,
-        "members": 730599,
-        "ecosystem": 952421,
+        "members": 730575,
+        "ecosystem": 952397,
         "platforms": {
-          "X": 192423,
+          "X": 192399,
           "Instagram": 319000,
           "TikTok": 400298,
           "YouTube": 40700
@@ -7145,8 +7145,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 18378977,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 16,
-        "imputedAccounts": 9,
+        "observedAccounts": 17,
+        "imputedAccounts": 8,
         "expectedAccounts": 25
       },
       "sweet-steady": {
