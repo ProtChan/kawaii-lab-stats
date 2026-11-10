@@ -7619,10 +7619,10 @@
       "fruits-zipper": {
         "name": "FRUITS ZIPPER",
         "official": 3201709,
-        "members": 8748621,
-        "ecosystem": 11950330,
+        "members": 8748563,
+        "ecosystem": 11950272,
         "platforms": {
-          "X": 2376589,
+          "X": 2376531,
           "Instagram": 4367986,
           "TikTok": 3934955,
           "YouTube": 1270800
@@ -7631,8 +7631,8 @@
         "youtubeViewAccounts": 4,
         "tiktokLikes": 194767404,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 19,
-        "imputedAccounts": 9,
+        "observedAccounts": 20,
+        "imputedAccounts": 8,
         "expectedAccounts": 28
       },
       "more-star": {

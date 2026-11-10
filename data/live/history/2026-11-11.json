@@ -658,14 +658,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-11-10T18:05:35.768Z",
+      "imputedAt": "2026-11-10T23:04:42.667Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-10T19:05:35.768Z"
+      "nextRetryAt": "2026-11-11T00:04:42.667Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -2230,36 +2230,22 @@
       "handle": "yui_fz0221",
       "platformId": null,
       "profileUrl": "https://x.com/yui_fz0221",
-      "capturedAt": "2026-11-10T02:40:20.180Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 366383,
+      "capturedAt": "2026-11-10T23:03:54.446Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 366325,
       "following": 473,
-      "posts": 19983,
-      "likes": 48511,
+      "posts": 19982,
+      "likes": 48508,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/yui_fz0221",
       "providerPlatform": "x",
       "providerHandle": "yui_fz0221",
       "providerName": "櫻井優衣(FRUITS ZIPPER)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2010201070543482885/Bh_YsYMX_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-10",
-      "imputedFromCapturedAt": "2026-11-10T02:40:20.180Z",
-      "imputedAt": "2026-11-10T18:05:35.768Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-10T19:05:35.768Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "yui-sakurai",
@@ -3275,7 +3261,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-11-10T18:04:00.540Z",
+      "capturedAt": "2026-11-10T23:04:41.231Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3297,7 +3283,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-11-10T18:04:00.540Z",
+      "capturedAt": "2026-11-10T23:04:41.231Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5530,14 +5516,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-11-10",
       "imputedFromCapturedAt": "2026-11-09T20:06:44.421Z",
-      "imputedAt": "2026-11-10T18:05:35.768Z",
+      "imputedAt": "2026-11-10T23:04:42.667Z",
       "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-10T19:05:35.768Z"
+      "nextRetryAt": "2026-11-11T00:04:42.667Z"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -7103,41 +7089,33 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
   ],
-  "lastAttemptAt": "2026-11-10T18:04:00.540Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-11-10T23:04:41.231Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 140,
-  "imputed": 70,
-  "lastFxTwitterFallbackAt": "2026-11-10T18:02:20.480Z",
+  "observedSuccessful": 141,
+  "imputed": 69,
+  "lastFxTwitterFallbackAt": "2026-11-10T23:03:54.446Z",
   "xFxTwitterHealth": {
-    "attempted": 66,
-    "success": 65,
-    "failed": 1,
-    "lastErrors": [
-      "yui_fz0221: FxTwitter HTTP 404 code=404: User not found"
-    ]
+    "attempted": 1,
+    "success": 1,
+    "failed": 0,
+    "lastErrors": []
   },
-  "lastFallbackAt": "2026-11-10T18:02:44.468Z",
+  "lastFallbackAt": "2026-11-10T23:03:54.839Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-11-10T18:02:44.468Z",
+    "attemptedAt": "2026-11-10T23:03:54.839Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 67,
-        "success": 64,
+        "attempts": 3,
+        "success": 0,
         "failed": 3,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
-      "X_PUBLIC_SYNDICATION": {
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
         "attempts": 1,
         "success": 0,
         "failed": 1,
-        "lastError": "X syndication returned invalid JSON: "
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       }
     }
   },
@@ -7180,5 +7158,5 @@
       }
     }
   },
-  "imputedAt": "2026-11-10T18:05:35.768Z"
+  "imputedAt": "2026-11-10T23:04:42.667Z"
 }
