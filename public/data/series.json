@@ -7682,10 +7682,10 @@
       "candy-tune": {
         "name": "CANDY TUNE",
         "official": 1485555,
-        "members": 4579677,
-        "ecosystem": 6065232,
+        "members": 4579655,
+        "ecosystem": 6065210,
         "platforms": {
-          "X": 1149889,
+          "X": 1149867,
           "Instagram": 2328399,
           "TikTok": 1909444,
           "YouTube": 677500
@@ -7694,17 +7694,17 @@
         "youtubeViewAccounts": 2,
         "tiktokLikes": 74247611,
         "tiktokLikeAccounts": 7,
-        "observedAccounts": 12,
-        "imputedAccounts": 14,
+        "observedAccounts": 13,
+        "imputedAccounts": 13,
         "expectedAccounts": 26
       },
       "cutie-street": {
         "name": "CUTIE STREET",
         "official": 2962397,
-        "members": 8668819,
-        "ecosystem": 11631216,
+        "members": 8668812,
+        "ecosystem": 11631209,
         "platforms": {
-          "X": 1686129,
+          "X": 1686122,
           "Instagram": 4255259,
           "TikTok": 4766828,
           "YouTube": 923000
@@ -7713,8 +7713,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 323332968,
         "tiktokLikeAccounts": 9,
-        "observedAccounts": 17,
-        "imputedAccounts": 11,
+        "observedAccounts": 18,
+        "imputedAccounts": 10,
         "expectedAccounts": 28
       },
       "fruits-zipper": {
@@ -7738,11 +7738,11 @@
       },
       "more-star": {
         "name": "MORE STAR",
-        "official": 222526,
+        "official": 222531,
         "members": 732552,
-        "ecosystem": 955078,
+        "ecosystem": 955083,
         "platforms": {
-          "X": 192731,
+          "X": 192736,
           "Instagram": 319000,
           "TikTok": 402447,
           "YouTube": 40900
@@ -7751,8 +7751,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 18618105,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 15,
-        "imputedAccounts": 10,
+        "observedAccounts": 16,
+        "imputedAccounts": 9,
         "expectedAccounts": 25
       },
       "sweet-steady": {
