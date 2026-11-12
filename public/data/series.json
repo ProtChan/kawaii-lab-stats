@@ -7682,11 +7682,11 @@
       "candy-tune": {
         "name": "CANDY TUNE",
         "official": 1485555,
-        "members": 4579655,
-        "ecosystem": 6065210,
+        "members": 4579639,
+        "ecosystem": 6065194,
         "platforms": {
-          "X": 1149867,
-          "Instagram": 2328399,
+          "X": 1149813,
+          "Instagram": 2328437,
           "TikTok": 1909444,
           "YouTube": 677500
         },
@@ -7694,17 +7694,17 @@
         "youtubeViewAccounts": 2,
         "tiktokLikes": 74247611,
         "tiktokLikeAccounts": 7,
-        "observedAccounts": 13,
-        "imputedAccounts": 13,
+        "observedAccounts": 15,
+        "imputedAccounts": 11,
         "expectedAccounts": 26
       },
       "cutie-street": {
         "name": "CUTIE STREET",
         "official": 2962397,
-        "members": 8668812,
-        "ecosystem": 11631209,
+        "members": 8668817,
+        "ecosystem": 11631214,
         "platforms": {
-          "X": 1686122,
+          "X": 1686127,
           "Instagram": 4255259,
           "TikTok": 4766828,
           "YouTube": 923000
@@ -7713,8 +7713,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 323332968,
         "tiktokLikeAccounts": 9,
-        "observedAccounts": 18,
-        "imputedAccounts": 10,
+        "observedAccounts": 19,
+        "imputedAccounts": 9,
         "expectedAccounts": 28
       },
       "fruits-zipper": {
@@ -7757,11 +7757,11 @@
       },
       "sweet-steady": {
         "name": "SWEET STEADY",
-        "official": 768003,
-        "members": 2737049,
-        "ecosystem": 3505052,
+        "official": 768013,
+        "members": 2737032,
+        "ecosystem": 3505045,
         "platforms": {
-          "X": 507002,
+          "X": 506995,
           "Instagram": 1360157,
           "TikTok": 1255893,
           "YouTube": 382000
@@ -7770,8 +7770,8 @@
         "youtubeViewAccounts": 1,
         "tiktokLikes": 38381631,
         "tiktokLikeAccounts": 8,
-        "observedAccounts": 15,
-        "imputedAccounts": 10,
+        "observedAccounts": 17,
+        "imputedAccounts": 8,
         "expectedAccounts": 25
       }
     }
