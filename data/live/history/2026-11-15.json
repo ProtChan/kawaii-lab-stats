@@ -658,14 +658,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-11-14T23:49:43.277Z",
+      "imputedAt": "2026-11-15T03:08:46.740Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-15T00:49:43.277Z"
+      "nextRetryAt": "2026-11-15T04:08:46.740Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -3261,7 +3261,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-11-14T23:47:59.108Z",
+      "capturedAt": "2026-11-15T03:08:45.292Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3283,7 +3283,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-11-14T23:47:59.108Z",
+      "capturedAt": "2026-11-15T03:08:45.292Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3709,36 +3709,22 @@
       "handle": "keina_klm0109",
       "platformId": null,
       "profileUrl": "https://x.com/keina_klm0109",
-      "capturedAt": "2026-11-13T21:59:38.505Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 3494,
+      "capturedAt": "2026-11-15T03:07:56.628Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 3490,
       "following": 112,
       "posts": 1380,
-      "likes": 14362,
+      "likes": 14360,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/keina_klm0109",
       "providerPlatform": "x",
       "providerHandle": "keina_KLM0109",
       "providerName": "橋本けいな（KAWAIILAB.MATES）",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2006551451624157189/1k1hlwjL_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-14",
-      "imputedFromCapturedAt": "2026-11-13T21:59:38.505Z",
-      "imputedAt": "2026-11-14T23:49:43.277Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-15T00:49:43.277Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "keina-hashimoto",
@@ -3925,36 +3911,22 @@
       "handle": "kanon_klm1003",
       "platformId": null,
       "profileUrl": "https://x.com/kanon_klm1003",
-      "capturedAt": "2026-11-14T02:06:55.966Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 10547,
+      "capturedAt": "2026-11-15T03:07:56.628Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 10545,
       "following": 105,
       "posts": 20014,
-      "likes": 25148,
+      "likes": 25136,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/kanon_klm1003",
       "providerPlatform": "x",
       "providerHandle": "kanon_KLM1003",
       "providerName": "横山かのん(KAWAII LAB. MATES)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2006547924034138116/5JIVaXVc_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-14",
-      "imputedFromCapturedAt": "2026-11-14T02:06:55.966Z",
-      "imputedAt": "2026-11-14T23:49:43.277Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-15T00:49:43.277Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "kanon-yokoyama",
@@ -5450,36 +5422,22 @@
       "handle": "karin_ms0910",
       "platformId": null,
       "profileUrl": "https://x.com/karin_ms0910",
-      "capturedAt": "2026-11-13T16:17:45.293Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 15538,
+      "capturedAt": "2026-11-15T03:07:56.628Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 15529,
       "following": 174,
       "posts": 14113,
-      "likes": 180126,
+      "likes": 180047,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/karin_ms0910",
       "providerPlatform": "x",
       "providerHandle": "karin_ms0910",
       "providerName": "鈴木花梨(MORE STAR)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/1997954391262089216/0nAnJt3S_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-14",
-      "imputedFromCapturedAt": "2026-11-13T16:17:45.293Z",
-      "imputedAt": "2026-11-14T23:49:43.277Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-15T00:49:43.277Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "karin-suzuki",
@@ -7117,43 +7075,33 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
   ],
-  "lastAttemptAt": "2026-11-14T23:47:59.108Z",
-  "retryAttempts": 5,
+  "lastAttemptAt": "2026-11-15T03:08:45.292Z",
+  "retryAttempts": 7,
   "observedComplete": false,
-  "observedSuccessful": 139,
-  "imputed": 71,
-  "lastFxTwitterFallbackAt": "2026-11-14T23:46:57.508Z",
+  "observedSuccessful": 142,
+  "imputed": 68,
+  "lastFxTwitterFallbackAt": "2026-11-15T03:07:56.628Z",
   "xFxTwitterHealth": {
-    "attempted": 14,
-    "success": 11,
-    "failed": 3,
-    "lastErrors": [
-      "keina_klm0109: FxTwitter HTTP 404 code=404: User not found",
-      "kanon_klm1003: FxTwitter HTTP 404 code=404: User not found",
-      "karin_ms0910: FxTwitter HTTP 404 code=404: User not found"
-    ]
+    "attempted": 3,
+    "success": 3,
+    "failed": 0,
+    "lastErrors": []
   },
-  "lastFallbackAt": "2026-11-14T23:47:04.930Z",
+  "lastFallbackAt": "2026-11-15T03:07:57.736Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-11-14T23:47:04.930Z",
+    "attemptedAt": "2026-11-15T03:07:57.736Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
         "attempts": 2,
         "success": 0,
         "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 3,
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+        "attempts": 1,
         "success": 0,
-        "failed": 3,
-        "lastError": "X syndication returned invalid JSON: "
+        "failed": 1,
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       }
     }
   },
@@ -7196,5 +7144,5 @@
       }
     }
   },
-  "imputedAt": "2026-11-14T23:49:43.277Z"
+  "imputedAt": "2026-11-15T03:08:46.740Z"
 }
