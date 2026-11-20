@@ -8490,10 +8490,10 @@
       "candy-tune": {
         "name": "CANDY TUNE",
         "official": 1503252,
-        "members": 4580383,
-        "ecosystem": 6083635,
+        "members": 4580329,
+        "ecosystem": 6083581,
         "platforms": {
-          "X": 1148888,
+          "X": 1148834,
           "Instagram": 2330000,
           "TikTok": 1910247,
           "YouTube": 694500
@@ -8502,8 +8502,8 @@
         "youtubeViewAccounts": 2,
         "tiktokLikes": 74598807,
         "tiktokLikeAccounts": 7,
-        "observedAccounts": 16,
-        "imputedAccounts": 10,
+        "observedAccounts": 17,
+        "imputedAccounts": 9,
         "expectedAccounts": 26
       },
       "cutie-street": {
