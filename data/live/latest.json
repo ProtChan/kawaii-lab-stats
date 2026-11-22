@@ -668,14 +668,14 @@
       "imputationMethod": "LAST_OBSERVED_VALUE",
       "imputedFromDate": "2026-09-14",
       "imputedFromCapturedAt": "2026-09-13T17:12:53.079Z",
-      "imputedAt": "2026-11-22T16:46:38.754Z",
+      "imputedAt": "2026-11-22T22:02:38.314Z",
       "imputedSourceType": "PULSE_PUBLIC_PROFILE",
       "acquisitionError": {
         "error": "batch_failed",
         "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
       },
       "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-22T17:46:38.754Z"
+      "nextRetryAt": "2026-11-22T23:02:38.314Z"
     },
     {
       "entitySlug": "shizuka-miyano",
@@ -1656,36 +1656,22 @@
       "handle": "nagisa_cs0628",
       "platformId": null,
       "profileUrl": "https://x.com/nagisa_cs0628",
-      "capturedAt": "2026-11-21T16:28:00.021Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 132550,
+      "capturedAt": "2026-11-22T22:01:49.414Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 132501,
       "following": 114,
       "posts": 8074,
-      "likes": 14579,
+      "likes": 14576,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/nagisa_cs0628",
       "providerPlatform": "x",
       "providerHandle": "nagisa_cs0628",
       "providerName": "真鍋凪咲 （CUTIE STREET）",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/2027372096708628480/tSLC0vVc_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-22",
-      "imputedFromCapturedAt": "2026-11-21T16:28:00.021Z",
-      "imputedAt": "2026-11-22T16:46:38.754Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-22T17:46:38.754Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "nagisa-manabe",
@@ -2132,36 +2118,22 @@
       "handle": "suzuka_fz1124",
       "platformId": null,
       "profileUrl": "https://x.com/suzuka_fz1124",
-      "capturedAt": "2026-11-21T16:28:00.021Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 316285,
+      "capturedAt": "2026-11-22T22:01:49.414Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 316175,
       "following": 290,
       "posts": 14820,
-      "likes": 55264,
+      "likes": 55259,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/suzuka_fz1124",
       "providerPlatform": "x",
       "providerHandle": "suzuka_fz1124",
       "providerName": "鎮西寿々歌(FRUITS ZIPPER)",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/2113908650993737728/rpWbPvqk_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-22",
-      "imputedFromCapturedAt": "2026-11-21T16:28:00.021Z",
-      "imputedAt": "2026-11-22T16:46:38.754Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-22T17:46:38.754Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "suzuka-chinzei",
@@ -3317,7 +3289,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.instagram.com/_yuikachamu_/",
-      "capturedAt": "2026-11-22T16:45:29.489Z",
+      "capturedAt": "2026-11-22T22:02:37.590Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -3339,7 +3311,7 @@
       "handle": "_yuikachamu_",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@_yuikachamu_",
-      "capturedAt": "2026-11-22T16:45:29.489Z",
+      "capturedAt": "2026-11-22T22:02:37.590Z",
       "sourceType": "PULSE_PUBLIC_PROFILE",
       "followers": null,
       "following": null,
@@ -5550,36 +5522,22 @@
       "handle": "suzuki_karin",
       "platformId": null,
       "profileUrl": "https://www.tiktok.com/@suzuki_karin",
-      "capturedAt": "2026-11-21T16:28:40.589Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 20044,
+      "capturedAt": "2026-11-22T22:01:50.509Z",
+      "sourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
+      "followers": 20046,
       "following": 180,
       "posts": 478,
-      "likes": 652349,
+      "likes": 652415,
       "views": null,
       "sourceUrl": "https://www.tiktok.com/@suzuki_karin",
       "providerPlatform": "tiktok",
       "providerHandle": "suzuki_karin",
       "providerName": "鈴木花梨",
-      "viewsPrecision": null,
       "verified": false,
-      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=6309f46f&x-expires=1795449600&x-signature=7Tce5JJ12%2F8KA%2FHsq1igy9zdUS0%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
-      "parserVersion": null,
+      "avatar": "https://p16-common-sign.tiktokcdn-us.com/tos-alisg-avt-0068/09f3a94bb4b36c41814a9d3b4eea4e5e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=d268f134&x-expires=1795557600&x-signature=BQFegwWP73J9kXw%2F5xJaS1i6tw0%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast5",
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": "TOTAL_LIKES",
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-22",
-      "imputedFromCapturedAt": "2026-11-21T16:28:40.589Z",
-      "imputedAt": "2026-11-22T16:46:38.754Z",
-      "imputedSourceType": "TIKTOK_PUBLIC_HYDRATION_STATSV2",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-22T17:46:38.754Z"
+      "engagementMetric": "TOTAL_LIKES"
     },
     {
       "entitySlug": "yuna-takanashi",
@@ -5997,36 +5955,22 @@
       "handle": "rushia_ms1013",
       "platformId": null,
       "profileUrl": "https://x.com/rushia_ms1013",
-      "capturedAt": "2026-11-21T21:45:34.777Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 25447,
+      "capturedAt": "2026-11-22T22:01:49.414Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 25426,
       "following": 228,
       "posts": 12940,
-      "likes": 125183,
+      "likes": 125180,
       "views": null,
       "sourceUrl": "https://api.fxtwitter.com/2/profile/rushia_ms1013",
       "providerPlatform": "x",
       "providerHandle": "rushia_ms1013",
       "providerName": "山本るしあ(MORE STAR)",
-      "viewsPrecision": null,
       "verified": false,
       "avatar": "https://pbs.twimg.com/profile_images/1997954306469941248/yBIuoD2y_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-22",
-      "imputedFromCapturedAt": "2026-11-21T21:45:34.777Z",
-      "imputedAt": "2026-11-22T16:46:38.754Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-22T17:46:38.754Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "rushia-yamamoto",
@@ -6238,9 +6182,9 @@
       "handle": "KAWAII__LAB",
       "platformId": null,
       "profileUrl": "https://x.com/KAWAII__LAB",
-      "capturedAt": "2026-11-21T16:28:00.021Z",
-      "sourceType": "IMPUTED_LAST_OBSERVED",
-      "followers": 163988,
+      "capturedAt": "2026-11-22T22:01:49.414Z",
+      "sourceType": "X_FXTWITTER_V2_PROFILE",
+      "followers": 163977,
       "following": 82,
       "posts": 5197,
       "likes": 103,
@@ -6249,25 +6193,11 @@
       "providerPlatform": "x",
       "providerHandle": "KAWAII__LAB",
       "providerName": "KAWAII LAB.",
-      "viewsPrecision": null,
       "verified": true,
       "avatar": "https://pbs.twimg.com/profile_images/1492975626579738626/NEzgHR5p_normal.jpg",
-      "parserVersion": null,
       "audienceMetric": "FOLLOWERS",
       "precision": "PUBLIC_EXACT",
-      "engagementMetric": null,
-      "imputed": true,
-      "imputationMethod": "LAST_OBSERVED_VALUE",
-      "imputedFromDate": "2026-11-22",
-      "imputedFromCapturedAt": "2026-11-21T16:28:00.021Z",
-      "imputedAt": "2026-11-22T16:46:38.754Z",
-      "imputedSourceType": "X_FXTWITTER_V2_PROFILE",
-      "acquisitionError": {
-        "error": "batch_failed",
-        "detail": "Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
-      },
-      "retryBackoffMinutes": 60,
-      "nextRetryAt": "2026-11-22T17:46:38.754Z"
+      "engagementMetric": null
     },
     {
       "entitySlug": "kawaii-lab",
@@ -7179,43 +7109,33 @@
     "yuika-shimasaki:INSTAGRAM:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}",
     "yuika-shimasaki:TIKTOK:_yuikachamu_: Pulse HTTP 401: {\"error\":\"private\",\"message\":\"Pulse is a private service.\"}"
   ],
-  "lastAttemptAt": "2026-11-22T16:45:29.489Z",
-  "retryAttempts": 1,
+  "lastAttemptAt": "2026-11-22T22:02:37.590Z",
+  "retryAttempts": 3,
   "observedComplete": false,
-  "observedSuccessful": 137,
-  "imputed": 73,
-  "lastFxTwitterFallbackAt": "2026-11-22T16:43:39.471Z",
+  "observedSuccessful": 142,
+  "imputed": 68,
+  "lastFxTwitterFallbackAt": "2026-11-22T22:01:49.414Z",
   "xFxTwitterHealth": {
-    "attempted": 66,
-    "success": 62,
-    "failed": 4,
-    "lastErrors": [
-      "suzuka_fz1124: FxTwitter HTTP 404 code=404: User not found",
-      "rushia_ms1013: FxTwitter HTTP 404 code=404: User not found",
-      "KAWAII__LAB: FxTwitter HTTP 404 code=404: User not found"
-    ]
+    "attempted": 4,
+    "success": 4,
+    "failed": 0,
+    "lastErrors": []
   },
-  "lastFallbackAt": "2026-11-22T16:44:08.965Z",
+  "lastFallbackAt": "2026-11-22T22:01:50.509Z",
   "fallbackRouteHealth": {
-    "attemptedAt": "2026-11-22T16:44:08.965Z",
+    "attemptedAt": "2026-11-22T22:01:50.509Z",
     "routes": {
-      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
-        "attempts": 2,
-        "success": 0,
-        "failed": 2,
-        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
-      },
       "TIKTOK_PUBLIC_HYDRATION": {
-        "attempts": 67,
-        "success": 64,
-        "failed": 3,
+        "attempts": 3,
+        "success": 1,
+        "failed": 2,
         "lastError": "TikTok userInfo/statsV2 followerCount missing"
       },
-      "X_PUBLIC_SYNDICATION": {
-        "attempts": 4,
+      "INSTAGRAM_ANONYMOUS_MULTIHOST": {
+        "attempts": 1,
         "success": 0,
-        "failed": 4,
-        "lastError": "X syndication returned invalid JSON: "
+        "failed": 1,
+        "lastError": "i.instagram.com web_profile_info HTTP 429:  | www.instagram.com web_profile_info HTTP 429:  | Instagram feed-by-username HTTP 403: {\"message\":\"We're sorry, but something went wrong. Please try again.\",\"status_code\":\"403\",\"status\":\"fail\"}"
       }
     }
   },
@@ -7258,5 +7178,5 @@
       }
     }
   },
-  "imputedAt": "2026-11-22T16:46:38.754Z"
+  "imputedAt": "2026-11-22T22:02:38.314Z"
 }
